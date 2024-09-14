@@ -12,7 +12,7 @@
 # SupportedStyles: aligned, indented, indented_relative_to_receiver
 Layout/MultilineMethodCallIndentation:
   Exclude:
-    - 'config/environments/production.rb'
+    - "config/environments/production.rb"
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
@@ -21,22 +21,22 @@ Layout/MultilineMethodCallIndentation:
 # SupportedStylesForEmptyBrackets: space, no_space
 Layout/SpaceInsideArrayLiteralBrackets:
   Exclude:
-    - 'config/environments/production.rb'
+    - "config/environments/production.rb"
 
 # Offense count: 4
 # This cop supports safe autocorrection (--autocorrect).
 Layout/SpaceInsidePercentLiteralDelimiters:
   Exclude:
-    - 'Gemfile'
+    - "Gemfile"
 
 # Offense count: 4
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
   Exclude:
-    - 'app/controllers/application_controller.rb'
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
+    - "app/controllers/application_controller.rb"
+    - "app/helpers/application_helper.rb"
+    - "app/models/application_record.rb"
+    - "config/application.rb"
 
 # Offense count: 24
 # This cop supports unsafe autocorrection (--autocorrect-all).
@@ -49,13 +49,13 @@ Style/FrozenStringLiteralComment:
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Style/GlobalStdStream:
   Exclude:
-    - 'config/environments/production.rb'
+    - "config/environments/production.rb"
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
 Style/RedundantConstantBase:
   Exclude:
-    - 'config/environments/production.rb'
+    - "config/environments/production.rb"
 
 # Offense count: 63
 # This cop supports safe autocorrection (--autocorrect).
@@ -63,19 +63,19 @@ Style/RedundantConstantBase:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Exclude:
-    - 'Gemfile'
-    - 'Rakefile'
-    - 'config.ru'
-    - 'config/application.rb'
-    - 'config/boot.rb'
-    - 'config/environment.rb'
-    - 'config/environments/development.rb'
-    - 'config/environments/production.rb'
-    - 'config/environments/test.rb'
-    - 'config/importmap.rb'
-    - 'config/initializers/assets.rb'
-    - 'config/puma.rb'
-    - 'config/routes.rb'
+    - "Gemfile"
+    - "Rakefile"
+    - "config.ru"
+    - "config/application.rb"
+    - "config/boot.rb"
+    - "config/environment.rb"
+    - "config/environments/development.rb"
+    - "config/environments/production.rb"
+    - "config/environments/test.rb"
+    - "config/importmap.rb"
+    - "config/initializers/assets.rb"
+    - "config/puma.rb"
+    - "config/routes.rb"
 
 # Offense count: 1
 # This cop supports safe autocorrection (--autocorrect).
