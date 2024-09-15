@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+bundle exec rubocop -a
+npm run -s lint
