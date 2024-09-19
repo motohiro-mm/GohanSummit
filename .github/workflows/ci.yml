@@ -28,9 +28,8 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-#  migrationしたらコメントアウト外す
-#      - name: Set up database schema
-#        run: bin/rails db:schema:load
+      - name: Set up database schema
+        run: bin/rails db:schema:load
       - name: Run tests
         run: bundle exec rspec
   lint:
