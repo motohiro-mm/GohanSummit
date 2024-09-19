@@ -18,13 +18,11 @@ class User < ApplicationRecord
     end
   end
 
-  private
-
   def self.user_params_from_auth_hash(auth_hash)
     {
       name: auth_hash.info.name,
       uid: auth_hash.uid,
-      provider: auth_hash.provider,
+      provider: auth_hash.provider
     }
   end
 end
