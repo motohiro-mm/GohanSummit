@@ -19,6 +19,15 @@
   </head>
 
   <body>
+    <header>
+      <% if current_user %>
+        <%= current_user.name %>さん
+        <%= link_to 'ログアウト', log_out_path %>
+      <% else %>
+        ゲストさん
+        <%= button_to 'Googleでログイン', '/auth/google_oauth2', method: :post, data: { turbo: false } %>
+      <% end %>
+    </header>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
