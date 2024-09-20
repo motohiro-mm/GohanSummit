@@ -9,7 +9,7 @@ class User < ApplicationRecord
     end
   end
 
-  def find_or_create_family(invitation_token)
+  def find_or_new_family(invitation_token)
     if invitation_token.present?
       family = Family.find_by!(invitation_token:)
       self.family = family
