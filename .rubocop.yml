@@ -16,3 +16,12 @@ Style/Documentation:
 
 RSpec/DescribedClass:
   Enabled: false
+
+Rails/BulkChangeTable:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+Rails/I18nLocaleTexts:
+  Enabled: false

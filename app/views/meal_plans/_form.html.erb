@@ -1,0 +1,38 @@
+<%= form_with(model: meal_plan, class: 'contents') do |form| %>
+  <% if meal_plan.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(meal_plan.errors.count, 'error') %> prohibited this meal_plan from being saved:</h2>
+
+      <ul>
+        <% meal_plan.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <h2 class="font-bold text-3xl"><%= meal_plan.meal_date %></h2>
+    <%= form.hidden_field :meal_date %>
+  </div>
+
+  <%= form.fields_for :meals do |meal_form| %>
+    <strong><%= Meal.timings.key(meal_form.index) %></strong>
+    <%= meal_form.hidden_field :timing, value: Meal.timings.key(meal_form.index) %>
+    <div class="my-5">
+      <%= meal_form.label :name %>
+      <%= meal_form.text_field :name,
+                               class: 'block rounded-md border border-gray-400 px-3 py-2 mt-2 w-full' %>
+    </div>
+
+      <div class="my-5">
+        <%= meal_form.label :memo %>
+        <%= meal_form.text_area :memo, rows: 4,
+                                       class: 'block  rounded-md border border-gray-400 px-3 py-2 mt-2 w-full' %>
+      </div>
+  <% end %>
+
+  <div class="inline">
+    <%= form.submit class: 'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer' %>
+  </div>
+<% end %>

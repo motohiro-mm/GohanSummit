@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
 
   resources :sessions, only: %i[create destroy]
+  resources :meal_plans
+  resources :meals
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

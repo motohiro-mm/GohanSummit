@@ -1,0 +1,8 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">New meal plan</h1>
+
+  <%= render 'form', meal_plan: @meal_plan %>
+
+  <%= link_to 'Back to meal_plans', meal_plans_path(start_date: @meal_plan.meal_date),
+              class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+</div>

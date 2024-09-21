@@ -1,0 +1,32 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+    <span class="calendar-title">
+      <%= t('simple_calendar.week', default: 'Week') %>
+      <%= calendar.week_number %>
+      <% if calendar.number_of_weeks > 1 %>
+        - <%= calendar.end_week %>
+      <% end %>
+    </span>
+
+    <nav>
+      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
+      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    </nav>
+  </div>
+
+  <table class="table table-striped">
+    <tbody>
+    <% date_range.each do |day| %>
+      <tr>
+        <th><%= t('date.abbr_day_names')[day.wday] %></th>
+        <td>
+          <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+            <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

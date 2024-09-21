@@ -1,0 +1,28 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <%#= link_to "ユーザー設定" , edit_user_path  %>
+
+  <% content_for :title, 'MealPlans' %>
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">MealPlans</h1>
+  </div>
+
+  <div>
+    <%= week_calendar events: @meal_plans do |date, meal_plan| %>
+      <%= date.day %>
+
+      <% if meal_plan.blank? || meal_plan.meals.blank? %>
+        <%= link_to '新規作成 >', new_meal_plan_path(meal_date: date) %>
+      <% else %>
+        <% meal_plan.meals.sort_by(&:timing_before_type_cast).each do |meal| %>
+          <%= meal.timing %>
+          <%= meal.name %>
+        <% end %>
+        <%= link_to '詳細 >', meal_plan %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
