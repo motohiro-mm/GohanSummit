@@ -1,4 +1,9 @@
-<div>
-  <h1 class="font-bold text-4xl">MealPlans#edit</h1>
-  <p>Find me in app/views/meal_plans/edit.html.erb</p>
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing meal_plan</h1>
+
+  <%= render 'form', meal_plan: @meal_plan %>
+
+  <%= link_to 'Show this meal_plan', @meal_plan, class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+  <%= link_to 'Back to meal plans', meal_plans_path(start_date: @meal_plan.meal_date),
+              class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
 </div>

@@ -6,7 +6,7 @@ class MealPlan < ApplicationRecord
 
   validates :meal_date, presence: true, uniqueness: { scope: :family_id }
 
-  accepts_nested_attributes_for :meals, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :meals, allow_destroy: true
 
   def start_time
     meal_date
