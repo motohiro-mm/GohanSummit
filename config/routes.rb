@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
 
   resources :sessions, only: %i[create destroy]
+  get 'meal_plans/calendar', to: 'meal_plans#calendar'
   resources :meal_plans
   resources :meals
 
