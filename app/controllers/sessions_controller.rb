@@ -6,8 +6,12 @@ class SessionsController < ApplicationController
   def create
     user = User.find_or_new_from_auth_hash(request.env['omniauth.auth'])
     user.find_or_new_family(request.env['omniauth.params']['invitation_token']) if user.family_id.nil?
-    log_in user if user.save
-    redirect_to root_path
+    if user.save
+      log_in user
+      redirect_to meal_plans_path
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
