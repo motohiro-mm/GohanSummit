@@ -40,6 +40,10 @@ class MealPlansController < ApplicationController
     redirect_to meal_plans_path, notice: 'MealPlan was successfully destroyed.', status: :see_other
   end
 
+  def calendar
+    @meal_plans = current_user.family.meal_plans
+  end
+
   private
 
   def set_meal_plan
