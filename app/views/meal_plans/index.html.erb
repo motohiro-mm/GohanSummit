@@ -7,13 +7,11 @@
 
   <% content_for :title, 'MealPlans' %>
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">MealPlans</h1>
+    <h1 class="font-bold text-4xl text-stone-800">MealPlans</h1>
   </div>
 
   <div>
     <%= week_calendar events: @meal_plans do |date, meal_plan| %>
-      <%= date.day %>
-
       <% if meal_plan.blank? || meal_plan.meals.blank? %>
         <%= link_to '新規作成 >', new_meal_plan_path(meal_date: date) %>
       <% else %>
@@ -25,6 +23,8 @@
       <% end %>
     <% end %>
   </div>
-  <%= link_to 'Meal Plans Calendar', meal_plans_calendar_path,
-              class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+  <div class="flex justify-end">
+    <%= link_to 'Meal Plans Calendar', meal_plans_calendar_path,
+                class: 'ml-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block font-medium' %>
+  </div>
 </div>
