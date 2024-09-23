@@ -1,27 +1,32 @@
 <div class="simple-calendar">
-  <div class="calendar-heading">
-    <span class="calendar-title">
-      <%= t('simple_calendar.week', default: 'Week') %>
-      <%= calendar.week_number %>
-      <% if calendar.number_of_weeks > 1 %>
-        - <%= calendar.end_week %>
-      <% end %>
+  <div class="flex justify-between items-center border-b p-4 bg-stone-100">
+    <span class="text-xl font-bold text-stone-800">
+      <time datetime="<%= start_date.strftime('%Y-%m') %>">
+        <%= start_date.year %>
+      </time>
     </span>
 
-    <nav>
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    <nav class="space-x-4">
+      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view,
+                  class: 'text-stone-500 hover:underline' %>
+      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view,
+                  class: 'text-stone-500 hover:underline' %>
+      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view,
+                  class: 'text-stone-500 hover:underline' %>
     </nav>
   </div>
 
-  <table class="table table-striped">
+  <table class="w-full table-fixed border-collapse">
     <tbody>
     <% date_range.each do |day| %>
-      <tr>
-        <th><%= t('date.abbr_day_names')[day.wday] %></th>
-        <td>
-          <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+      <tr class="border-t">
+        <th class="text-left p-4 w-1/4 text-lg font-semibold text-stone-500 align-top">
+          <span class="text-stone-800"><%= day.strftime('%-m月%-d日') %></span>
+          <%= t('date.abbr_day_names')[day.wday] %>
+        </th>
+
+        <td class="p-4 w-3/4 align-top">
+          <%= content_tag :div, class: calendar.td_classes_for(day) do %>
             <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
           <% end %>
         </td>

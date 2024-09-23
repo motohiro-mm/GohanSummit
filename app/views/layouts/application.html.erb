@@ -19,16 +19,19 @@
   </head>
 
   <body>
-    <header>
-      <% if current_user %>
-        <%= current_user.name %>さん
-        <%= link_to 'ログアウト', log_out_path %>
-      <% else %>
-        ゲストさん
-        <%= button_to 'Googleでログイン', '/auth/google_oauth2', method: :post, data: { turbo: false } %>
-      <% end %>
+    <header class="bg-stone-700 text-white py-4 px-5 flex justify-between items-center">
+      <div class="flex items-center">
+        <% if current_user %>
+          <span><%= current_user.name %>さん</span>
+          <%= link_to 'ログアウト', log_out_path, class: 'ml-4 text-stone-300 hover:underline' %>
+        <% else %>
+          <%= button_to 'Googleでログイン', '/auth/google_oauth2', method: :post, data: { turbo: false },
+                                                              class: 'ml-4 bg-stone-500 text-white rounded-md py-2 px-4' %>
+          <span class="mr-4">ゲストさん</span>
+        <% end %>
+      </div>
     </header>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-4 px-5 flex">
       <%= yield %>
     </main>
   </body>
