@@ -12,6 +12,6 @@ module LoginSupport
                                })
     end
     visit root_path
-    click_button 'Googleでログイン'
+    click_on 'Googleでログイン'
   end
 end
