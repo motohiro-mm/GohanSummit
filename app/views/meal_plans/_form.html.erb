@@ -17,19 +17,19 @@
   </div>
 
   <%= form.fields_for :meals do |meal_form| %>
-    <strong><%= Meal.timings.key(meal_form.index) %></strong>
-    <%= meal_form.hidden_field :timing, value: Meal.timings.key(meal_form.index) %>
-    <div class="my-5">
-      <%= meal_form.label :name %>
-      <%= meal_form.text_field :name,
-                               class: 'block rounded-md border border-gray-400 px-3 py-2 mt-2 w-full' %>
-    </div>
-
+    <div class="<%= meal_timing(meal_form) %>">
+      <strong><%= meal_timing(meal_form) %></strong>
+      <%= meal_form.hidden_field :timing, value: meal_timing(meal_form) %>
       <div class="my-5">
+        <%= meal_form.label :name %>
+        <%= meal_form.text_field :name,
+                                 class: 'block rounded-md border border-gray-400 px-3 py-2 mt-2 w-full' %>
+
         <%= meal_form.label :memo %>
         <%= meal_form.text_area :memo, rows: 4,
                                        class: 'block  rounded-md border border-gray-400 px-3 py-2 mt-2 w-full' %>
       </div>
+    </div>
   <% end %>
 
   <div class="inline">

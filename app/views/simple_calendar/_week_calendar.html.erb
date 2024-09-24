@@ -19,7 +19,7 @@
   <table class="w-full table-fixed border-collapse">
     <tbody>
     <% date_range.each do |day| %>
-      <tr class="border-t">
+      <tr class="<%= css_class_day(day) %> border-t">
         <th class="text-left p-4 w-1/4 text-lg font-semibold text-stone-500 align-top">
           <span class="text-stone-800"><%= day.strftime('%-m月%-d日') %></span>
           <%= t('date.abbr_day_names')[day.wday] %>
