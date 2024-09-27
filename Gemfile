@@ -66,8 +66,6 @@ group :test do
   gem 'selenium-webdriver', require: false
 end
 
-gem 'rexml', require: false
-
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
