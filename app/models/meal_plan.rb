@@ -7,7 +7,12 @@ class MealPlan < ApplicationRecord
 
   validates :meal_date, presence: true, uniqueness: { scope: :family_id }
 
-  accepts_nested_attributes_for :meals, allow_destroy: true
+  accepts_nested_attributes_for :meals, allow_destroy: true, reject_if: :reject_timing
+
+
+  def reject_timing(attributes)
+    attributes.except(:timing).values.all?(&:blank?)
+  end
 
   def update_meal_plan(attributes)
     if attributes[:meals_attributes].keys.size == 1
