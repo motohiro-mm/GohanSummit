@@ -1,0 +1,8 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">Editing remark</h1>
+
+  <%= render 'form', remark: @remark, meeting_room: @meeting_room %>
+
+  <%= link_to 'Back to remarks', meeting_room_path(@meeting_room) %>
+  <%= button_to 'Destroy this remark', meeting_room_remark_path(@meeting_room, @remark), method: :delete %>
+</div>

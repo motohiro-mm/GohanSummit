@@ -10,15 +10,16 @@ class MealPlansController < ApplicationController
   def show; end
 
   def new
-    @meal_plan = MealPlan.new
-    @meal_plan.meal_date = params[:meal_date]
-    3.times { @meal_plan.meals.build }
+    @meal_plan = MealPlan.build(meal_date: params[:meal_date])
+    @meal_plan.meals_build
   end
 
-  def edit; end
+  def edit
+    @meal_plan.meals_build if @meal_plan.meals.blank?
+  end
 
   def create
-    @meal_plan = current_user.family.meal_plans.new(meal_plan_params)
+    @meal_plan = current_user.family.meal_plans.build(meal_plan_params)
 
     if @meal_plan.save
       redirect_to @meal_plan, notice: 'MealPlan was successfully created.'
@@ -28,7 +29,7 @@ class MealPlansController < ApplicationController
   end
 
   def update
-    if @meal_plan.update(meal_plan_params)
+    if @meal_plan.update_meal_plan(meal_plan_params)
       redirect_to @meal_plan, notice: 'MealPlan was successfully updated.', status: :see_other
     else
       render :edit, status: :unprocessable_entity
@@ -47,7 +48,7 @@ class MealPlansController < ApplicationController
   private
 
   def set_meal_plan
-    @meal_plan = MealPlan.find(params[:id])
+    @meal_plan = current_user.family.meal_plans.find(params[:id])
   end
 
   def meal_plan_params
