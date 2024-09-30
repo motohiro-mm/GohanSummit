@@ -6,11 +6,15 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
-
   resources :sessions, only: %i[create destroy]
+
   get 'meal_plans/calendar', to: 'meal_plans#calendar'
-  resources :meal_plans
-  resources :meals
+  resources :meal_plans do
+    resources :meals, only: %i[new]
+  end
+  resources :meeting_rooms, only: %i[show create] do
+    resources :remarks, only: %i[new create edit update destroy]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
