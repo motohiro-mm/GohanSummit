@@ -1,0 +1,38 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div>
+    <%= link_to '献立表へ戻る', meal_plans_path(start_date: @meeting_room.meal_plan.meal_date) %>
+  </div>
+
+  <div class="flex justify-between items-center">
+    <% content_for :title, 'Remarks' %>
+    <h1 class="font-bold text-4xl">Remarks</h1>
+
+    <%= link_to 'New proposal', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal) %>
+    <%= link_to 'New comment', new_meeting_room_remark_path(@meeting_room, remark_type: :comment) %>
+  </div>
+
+  <div id="proposals" class="min-w-full">
+    <h2 class="font-bold text-3xl">Proposals</h2>
+    <% @remarks.filter(&:proposal?).each do |remark| %>
+      <%= render remark %>
+      <% if remark.editable?(current_user) %>
+        <%= link_to 'Edit', edit_meeting_room_remark_path(@meeting_room, remark) %>
+      <% end %>
+      <%= link_to '登録 >', new_meal_plan_meal_path(@meeting_room.meal_plan, remark:) %>
+    <% end %>
+  </div>
+  -----------------
+  <div id="comments" class="min-w-full">
+    <h2 class="font-bold text-3xl">Comments</h2>
+    <% @remarks.filter(&:comment?).each do |remark| %>
+      <%= render remark %>
+      <% if remark.editable?(current_user) %>
+        <%= link_to 'Edit', edit_meeting_room_remark_path(@meeting_room, remark) %>
+      <% end %>
+    <% end %>
+    </div>
+</div>
