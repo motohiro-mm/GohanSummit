@@ -12,8 +12,9 @@
 
   <div>
     <%= week_calendar events: @meal_plans do |date, meal_plan| %>
-      <% if meal_plan.blank? || meal_plan.meals.blank? %>
-        <%= link_to '新規作成 >', new_meal_plan_path(meal_date: date) %>
+      <% if meal_plan&.meals.blank? %>
+        <%= button_to '相談部屋 >', meeting_rooms_path(meal_plan:, meal_date: date), method: :post %>
+        <%= link_to '献立登録 >', new_or_edit_meal_plan_path(meal_plan, date) %>
       <% else %>
         <% meal_plan.meals.sort_by(&:timing_before_type_cast).each do |meal| %>
           <%= meal.timing %>

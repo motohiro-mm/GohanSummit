@@ -3,6 +3,6 @@
   <h2 class="font-bold text-3xl text-stone-800"><%= meal_plan.meal_date %></h2>
 
   <% @meal_plan.meals.sort_by(&:timing_before_type_cast).each do |meal| %>
-    <%= render 'meal', meal: %>
+    <%= render 'meals/meal', meal: %>
   <% end %>
 </div>

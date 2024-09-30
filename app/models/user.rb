@@ -2,6 +2,7 @@
 
 class User < ApplicationRecord
   belongs_to :family
+  has_many :remarks, dependent: :nullify
   def self.find_or_new_from_auth_hash(auth_hash)
     user_params = user_params_from_auth_hash(auth_hash)
     find_or_initialize_by(uid: user_params[:uid], provider: user_params[:provider]) do |user|
