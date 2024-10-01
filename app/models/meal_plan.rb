@@ -7,26 +7,49 @@ class MealPlan < ApplicationRecord
 
   validates :meal_date, presence: true, uniqueness: { scope: :family_id }
 
-  accepts_nested_attributes_for :meals, allow_destroy: true
+  accepts_nested_attributes_for :meals, allow_destroy: true, reject_if: :reject_timing
+
+  def reject_timing(attributes)
+    attributes.except(:timing).values.all?(&:blank?)
+  end
 
   def update_meal_plan(attributes)
     if attributes[:meals_attributes].keys.size == 1
-      meals_create if meals.blank?
-      new_meal_params = attributes[:meals_attributes]['0']
-      update_meal = meals.find_by(timing: new_meal_params[:timing])
-      update_meal.name = new_meal_params[:name]
-      update_meal.save
+      create_or_update_meals_by_proposal(attributes)
     else
       update(attributes)
+      destroy_unnecessary_meals(attributes)
+    end
+  end
+
+  def create_or_update_meals_by_proposal(attributes)
+    new_meal_params = attributes[:meals_attributes]['0']
+    same_timing_meal = meals.find_by(timing: new_meal_params[:timing])
+    if same_timing_meal.nil?
+      meals.create(new_meal_params)
+    else
+      same_timing_meal.name = new_meal_params[:name]
+      same_timing_meal.save
+    end
+  end
+
+  def destroy_unnecessary_meals(attributes)
+    attributes[:meals_attributes].each_value do |update_meal|
+      if update_meal[:id].present? && update_meal.except(:id, :timing).values.all?(&:blank?)
+        meals.find(update_meal[:id]).destroy
+      end
     end
   end
 
   def meals_build
-    3.times { meals.build }
+    required_timings = Meal.timings.keys - meals.pluck(:timing)
+    required_timings.each do |required_timing|
+      meals.build(timing: required_timing)
+    end
   end
 
-  def meals_create
-    3.times { |n| meals.create(timing: Meal.timings.keys[n]) }
+  def meals_sort_by_timing
+    meals.sort_by { |meal| Meal.timings[meal.timing] }
   end
 
   def start_time
