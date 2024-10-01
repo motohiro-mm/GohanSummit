@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[create destroy]
   resource :user, only: %i[update destroy]
   get 'user', to: 'users#edit', as: 'edit_user'
-  resource :family, only: :show
+  get 'family', to: 'families#show', as: 'family'
   get 'meal_plans/calendar', to: 'meal_plans#calendar'
   resources :meal_plans do
     resources :meals, only: %i[new]
