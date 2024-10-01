@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :meeting_rooms, only: %i[show create] do
     resources :remarks, only: %i[new create edit update destroy]
   end
+  get 'welcome', to: 'home#welcome'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
