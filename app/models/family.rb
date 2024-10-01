@@ -12,4 +12,8 @@ class Family < ApplicationRecord
 
     Family.find(id).destroy!
   end
+
+  def invitation_url(request)
+    "#{request.protocol}#{request.host_with_port}/welcome?invitation_token=#{invitation_token}"
+  end
 end

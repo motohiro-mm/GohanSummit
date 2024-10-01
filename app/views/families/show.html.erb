@@ -12,11 +12,12 @@
     <% end %>
 
     <p class="my-5">
-      <% copy_url = "#{request.protocol}#{request.host_with_port}/welcome?invitation_token=#{@family.invitation_token}" %>
-      <input id="copyTarget" type="text" value="<%= copy_url %>" readonly >
+      <input id="copyTarget" type="text" value="<%= @family.invitation_url(request) %>" readonly autocomplete="off">
       <button class="rounded-lg py-3 px-5 bg-gray-600 text-white inline-block font-medium cursor-pointer" onclick="copyToClipboard()">共有URLをCopyする</button>
     </p>
   </div>
+  <%= link_to '献立表へ戻る', meal_plans_path,
+              class: 'ml-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block font-medium' %>
 
   <script>
     function copyToClipboard() {
