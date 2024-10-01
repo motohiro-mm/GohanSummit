@@ -4,7 +4,7 @@ class User < ApplicationRecord
   belongs_to :family
   has_many :remarks, dependent: :nullify
 
-  enum icon: {
+  enum :icon, {
     'man.png': 0,
     'king.png': 1,
     'girl.png': 2,
@@ -13,19 +13,19 @@ class User < ApplicationRecord
     'fish.png': 5,
     'eagle.png': 6,
     'apple.png': 7,
-    'chimpanzee.png': 8,
+    'chimpanzee.png': 8
   }
 
   ICON = {
-    'man': 'man.png',
-    'king': 'king.png',
-    'girl': 'girl.png',
-    'clown': 'clown.png',
-    'fighter': 'fighter.png',
-    'eagle': 'eagle.png',
-    'apple': 'apple.png',
-    'chimpanzee': 'chimpanzee.png',
-  }
+    man: 'man.png',
+    king: 'king.png',
+    girl: 'girl.png',
+    clown: 'clown.png',
+    fighter: 'fighter.png',
+    eagle: 'eagle.png',
+    apple: 'apple.png',
+    chimpanzee: 'chimpanzee.png'
+  }.freeze
 
   def self.find_or_new_from_auth_hash(auth_hash)
     user_params = user_params_from_auth_hash(auth_hash)

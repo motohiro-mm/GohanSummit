@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: %i[edit update destroy]
   def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to meal_plans_path, notice: "User was successfully updated.", status: :see_other
+      redirect_to meal_plans_path, notice: 'User was successfully updated.', status: :see_other
     else
       render :edit, status: :unprocessable_entity
     end
@@ -14,7 +16,7 @@ class UsersController < ApplicationController
     current_user.destroy!
     current_user.family.destroy_family_having_no_user
     reset_session
-    redirect_to root_path, notice: "User was successfully deleted."
+    redirect_to root_path, notice: 'User was successfully deleted.'
   end
 
   private
