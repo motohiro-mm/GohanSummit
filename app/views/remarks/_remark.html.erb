@@ -1,9 +1,6 @@
-<div>
-
+<div id="<%= dom_id remark %>">
   <p class="my-5">
+    <%= image_tag remark.user.icon, class: 'icon' %>
     <%= remark.content %>
-    <%# if remark.proposal? %>
-      <%#= link_to "登録へ", remark_timing_path(remark), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%# end %>
   </p>
 </div>

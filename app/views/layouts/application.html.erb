@@ -22,7 +22,8 @@
     <header class="bg-stone-700 text-white py-4 px-5 flex justify-between items-center">
       <div class="flex items-center">
         <% if current_user %>
-          <span><%= current_user.name %>さん</span>
+          <%= image_tag current_user.icon, class: 'icon invert brightness-0' %>
+          <%= link_to "#{current_user.name}さん", edit_user_path, class: 'ml-4 text-stone-100 hover:underline' %>
           <%= link_to 'ログアウト', log_out_path, class: 'ml-4 text-stone-300 hover:underline' %>
         <% else %>
           <%= button_to 'Googleでログイン', '/auth/google_oauth2', method: :post, data: { turbo: false },

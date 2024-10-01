@@ -6,4 +6,10 @@ class Family < ApplicationRecord
   has_many :meeting_rooms, dependent: :destroy
 
   validates :invitation_token, presence: true
+
+  def destroy_family_having_no_user
+    return if User.exists?(family_id: id)
+
+    Family.find(id).destroy!
+  end
 end
