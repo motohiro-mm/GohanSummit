@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   get 'auth/failure', to: redirect('/')
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
   resources :sessions, only: %i[create destroy]
-  resource :user, only: %i[edit update destroy]
-
+  resource :user, only: %i[update destroy]
+  get 'user', to: 'users#edit', as: 'edit_user'
+  get 'family', to: 'families#show', as: 'family'
   get 'meal_plans/calendar', to: 'meal_plans#calendar'
   resources :meal_plans do
     resources :meals, only: %i[new]
