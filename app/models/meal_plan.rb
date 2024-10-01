@@ -15,14 +15,21 @@ class MealPlan < ApplicationRecord
 
   def update_meal_plan(attributes)
     if attributes[:meals_attributes].keys.size == 1
-      meals_create if meals.blank?
-      new_meal_params = attributes[:meals_attributes]['0']
-      update_meal = meals.find_by(timing: new_meal_params[:timing])
-      update_meal.name = new_meal_params[:name]
-      update_meal.save
+      create_or_update_meals_by_proposal(attributes)
     else
       update(attributes)
       destroy_unnecessary_meals(attributes)
+    end
+  end
+
+  def create_or_update_meals_by_proposal(attributes)
+    new_meal_params = attributes[:meals_attributes]['0']
+    same_timing_meal = meals.find_by(timing: new_meal_params[:timing])
+    if same_timing_meal.nil?
+      meals.create(new_meal_params)
+    else
+      same_timing_meal.name = new_meal_params[:name]
+      same_timing_meal.save
     end
   end
 
@@ -43,10 +50,6 @@ class MealPlan < ApplicationRecord
 
   def meals_sort_by_timing
     meals.sort_by { |meal| Meal.timings[meal.timing] }
-  end
-
-  def meals_create
-    3.times { |n| meals.create(timing: Meal.timings.keys[n]) }
   end
 
   def start_time
