@@ -25,7 +25,7 @@
     </div>
   <% end %>
 
-  <% @meal_plan.meals.sort_by(&:timing_before_type_cast).each do |meal| %>
+  <% @meal_plan.meals_sort_by_timing.each do |meal| %>
     <%= render meal %>
   <% end %>
 
