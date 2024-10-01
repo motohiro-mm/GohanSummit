@@ -9,7 +9,6 @@ class MealPlan < ApplicationRecord
 
   accepts_nested_attributes_for :meals, allow_destroy: true, reject_if: :reject_timing
 
-
   def reject_timing(attributes)
     attributes.except(:timing).values.all?(&:blank?)
   end
@@ -23,11 +22,27 @@ class MealPlan < ApplicationRecord
       update_meal.save
     else
       update(attributes)
+      destroy_unnecessary_meals(attributes)
+    end
+  end
+
+  def destroy_unnecessary_meals(attributes)
+    attributes[:meals_attributes].each_value do |update_meal|
+      if update_meal[:id].present? && update_meal.except(:id, :timing).values.all?(&:blank?)
+        meals.find(update_meal[:id]).destroy
+      end
     end
   end
 
   def meals_build
-    3.times { meals.build }
+    required_timings = Meal.timings.keys - meals.pluck(:timing)
+    required_timings.each do |required_timing|
+      meals.build(timing: required_timing)
+    end
+  end
+
+  def meals_sort_by_timing
+    meals.sort_by { |meal| Meal.timings[meal.timing] }
   end
 
   def meals_create

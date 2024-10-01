@@ -16,7 +16,7 @@
     <%= form.hidden_field :meal_date %>
   </div>
 
-  <%= form.fields_for :meals do |meal_form| %>
+  <%= form.fields_for :meals, meal_plan.meals_sort_by_timing do |meal_form| %>
     <div class="<%= meal_timing(meal_form) %>">
       <strong><%= meal_timing(meal_form) %></strong>
       <%= meal_form.hidden_field :timing, value: meal_timing(meal_form) %>

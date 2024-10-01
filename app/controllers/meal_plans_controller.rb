@@ -15,7 +15,7 @@ class MealPlansController < ApplicationController
   end
 
   def edit
-    @meal_plan.meals_build if @meal_plan.meals.blank?
+    @meal_plan.meals_build
   end
 
   def create
