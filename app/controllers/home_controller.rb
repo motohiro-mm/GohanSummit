@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  skip_before_action :check_logged_in
+  skip_before_action :check_logged_in, only: [:index, :welcome, :terms, :privacy]
 
   def index
     redirect_to meal_plans_path if current_user.present?
@@ -15,4 +15,6 @@ class HomeController < ApplicationController
   def terms; end
 
   def privacy; end
+
+  def about; end
 end
