@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
   get 'welcome', to: 'home#welcome'
   get 'terms', to: 'home#terms'
+  get 'privacy', to: 'home#privacy'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
