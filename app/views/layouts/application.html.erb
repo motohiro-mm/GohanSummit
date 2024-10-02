@@ -32,6 +32,9 @@
       </div>
       <div>
         <%= link_to '< home', root_path, class: 'ml-4 text-stone-300 hover:underline' %>
+        <% if current_user %>
+          <%= link_to '使い方', about_path, class: 'ml-4 text-stone-300 hover:underline' %>
+        <% end %>
         <%= link_to '利用規約', terms_path, class: 'ml-4 text-stone-300 hover:underline' %>
         <%= link_to 'プライバシーポリシー', privacy_path, class: 'ml-4 text-stone-300 hover:underline' %>
       </div>
