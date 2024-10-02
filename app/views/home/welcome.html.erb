@@ -7,7 +7,7 @@
     <h1 class="font-bold text-4xl text-stone-800">ごはんサミット</h1>
   </div>
   <p>
-    ごはんサミットへようこそ！
+    家族から招待されています！
   </p>
   <p>
     ログインして家族で献立を相談しよう！
@@ -16,6 +16,7 @@
     献立表を作ろう！
   </p>
   <div>
-    <%= button_to 'Googleでログイン', google_oauth2_path, method: :post, data: { turbo: false }, class: 'login-button' %>
+    <%= button_to '招待：Googleでログイン', google_oauth2_path(@invitation_token), method: :post,
+                                                                           data: { turbo: false }, class: 'login-button' %>
   </div>
 </div>
