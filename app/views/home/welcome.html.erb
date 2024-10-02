@@ -19,4 +19,7 @@
     <%= button_to '招待：Googleでログイン', google_oauth2_path(@invitation_token), method: :post,
                                                                            data: { turbo: false }, class: 'login-button' %>
   </div>
+  <div>
+    <%= link_to '利用規約', terms_path, class: 'ml-4 text-stone-800 hover:underline' %>
+  </div>
 </div>

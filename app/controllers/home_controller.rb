@@ -11,4 +11,6 @@ class HomeController < ApplicationController
     family = Family.find_by!(invitation_token: params[:invitation_token])
     @invitation_token = family.invitation_token
   end
+
+  def terms; end
 end
