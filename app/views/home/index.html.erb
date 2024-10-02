@@ -16,7 +16,6 @@
     献立表を作ろう！
   </p>
   <div>
-    <%= button_to 'Googleでログイン', '/auth/google_oauth2', method: :post, data: { turbo: false },
-                  class: 'ml-4 bg-stone-500 text-white rounded-md py-2 px-4' %>
+    <%= button_to 'Googleでログイン', google_oauth2_path, method: :post, data: { turbo: false }, class: 'login-button' %>
   </div>
 </div>

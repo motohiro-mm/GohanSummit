@@ -16,6 +16,7 @@
     献立表を作ろう！
   </p>
   <div>
-    <%= button_to "招待用：Googleでログイン", "/auth/google_oauth2/?invitation_token=#{@invitation_token}", method: :post, data: {turbo: false}, class: 'ml-4 bg-stone-500 text-white rounded-md py-2 px-4' %>
+    <%= button_to '招待：Googleでログイン', google_oauth2_path(@invitation_token), method: :post,
+                                                                          data: { turbo: false }, class: 'login-button' %>
   </div>
 </div>
