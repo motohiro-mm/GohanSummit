@@ -20,13 +20,13 @@
         <%= meal_form.hidden_field :timing, value: meal_timing(meal_form) %>
         <strong class="block font-bold text-lg"><%= meal_timing(meal_form) %></strong>
         <div class="my-5">
-          <%= meal_form.label :name , class: "block font-medium mb-1"%>
+          <%= meal_form.label :name, class: 'block font-medium mb-1' %>
           <%= meal_form.text_field :name,
                                    class: 'block rounded-md border border-gray-400  w-full' %>
         </div>
 
         <div class="my-5">
-          <%= meal_form.label :memo , class: "block font-medium mb-1"%>
+          <%= meal_form.label :memo, class: 'block font-medium mb-1' %>
           <%= meal_form.text_area :memo, rows: 1,
                                          class: 'block  rounded-md border border-gray-400 px-3 py-2 w-full' %>
         </div>
