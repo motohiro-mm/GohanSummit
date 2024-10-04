@@ -13,7 +13,7 @@
       <%= week_calendar events: @meal_plans do |date, meal_plan| %>
         <% if meal_plan&.meals.blank? %>
           <%= button_to '相談部屋 >', meeting_rooms_path(meal_plan:, meal_date: date), method: :post, data: { turbo_frame: "_top" } %>
-          <%= link_to '献立登録 >', new_or_edit_meal_plan_path(meal_plan, date), data: { turbo_frame: "_top" } %>
+          <%= link_to '献立登録 >', new_meal_plan_path(meal_date: date), data: { turbo_frame: "_top" } %>
         <% else %>
           <% meal_plan.meals_sort_by_timing.each do |meal| %>
             <%= meal.timing %>
