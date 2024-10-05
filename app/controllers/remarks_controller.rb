@@ -28,7 +28,7 @@ class RemarksController < ApplicationController
 
   def destroy
     @remark.destroy!
-    redirect_to meeting_room_url(@meeting_room), notice: 'Remark was successfully destroyed.', status: :see_other
+    # flash.now.notice = 'Remark was successfully destroyed.', status: :see_other
   end
 
   private

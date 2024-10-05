@@ -14,7 +14,6 @@
 
     <%= form.hidden_field :remark_type %>
     <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>
-
     <div>
       <div class="my-5">
         <%= form.text_area :content, rows: 1,
@@ -26,4 +25,7 @@
     </div>
   <% end %>
   <%= link_to 'キャンセル', meeting_room %>
+  <% if remark.persisted? %>
+    <%= button_to '削除', meeting_room_remark_path(remark.meeting_room, remark), method: :delete %>
+  <% end %>
 <% end %>

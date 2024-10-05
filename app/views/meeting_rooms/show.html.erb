@@ -28,8 +28,10 @@
     </div>
   </div>
   <div>
-    <%= link_to 'New proposal', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal), data: { turbo_frame: dom_id(Remark.new) } %>
-    <%= link_to 'New comment', new_meeting_room_remark_path(@meeting_room, remark_type: :comment), data: { turbo_frame: dom_id(Remark.new) } %>
+    <%= link_to 'New proposal', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal),
+                data: { turbo_frame: dom_id(Remark.new) } %>
+    <%= link_to 'New comment', new_meeting_room_remark_path(@meeting_room, remark_type: :comment),
+                data: { turbo_frame: dom_id(Remark.new) } %>
     <%= turbo_frame_tag Remark.new %>
   </div>
 </div>
