@@ -11,6 +11,7 @@
         <div class="my-5">
           <%= meal_form.hidden_field :id %>
           <%= meal_form.select :timing, %w[breakfast lunch dinner] %>
+          <%= meal_form.hidden_field :memo, value: '' %>
         </div>
 
         <p class="my-5">
