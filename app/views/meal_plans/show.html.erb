@@ -8,8 +8,6 @@
 
     <%= render @meal_plan %>
 
-    <%= link_to 'Edit this meal plan', edit_meal_plan_path(@meal_plan),
-                class: 'mt-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block' %>
     <%= link_to 'Back to meal plans', meal_plans_path(start_date: @meal_plan.meal_date),
                 class: 'ml-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block' %>
     <div class="inline-block ml-2">

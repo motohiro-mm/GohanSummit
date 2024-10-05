@@ -8,20 +8,23 @@
     <h1 class="font-bold text-4xl text-stone-800">MealPlans</h1>
   </div>
 
-  <div>
-    <%= week_calendar events: @meal_plans do |date, meal_plan| %>
-      <% if meal_plan&.meals.blank? %>
-        <%= button_to '相談部屋 >', meeting_rooms_path(meal_plan:, meal_date: date), method: :post %>
-        <%= link_to '献立登録 >', new_or_edit_meal_plan_path(meal_plan, date) %>
-      <% else %>
-        <% meal_plan.meals_sort_by_timing.each do |meal| %>
-          <%= meal.timing %>
-          <%= meal.name %>
+  <%= turbo_frame_tag 'meal_plan_list', data: { turbo_action: :advance } do %>
+    <div>
+      <%= week_calendar events: @meal_plans do |date, meal_plan| %>
+        <% if meal_plan&.meals.blank? %>
+          <%= button_to '相談部屋 >', meeting_rooms_path(meal_plan:, meal_date: date), method: :post,
+                                                                                   data: { turbo_frame: '_top' } %>
+          <%= link_to '献立登録 >', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' } %>
+        <% else %>
+          <% meal_plan.meals_sort_by_timing.each do |meal| %>
+            <%= meal.timing %>
+            <%= meal.name %>
+          <% end %>
+          <%= link_to '詳細 >', meal_plan, data: { turbo_frame: '_top' } %>
         <% end %>
-        <%= link_to '詳細 >', meal_plan %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
   <div class="flex justify-end">
     <%= link_to 'Meal Plans Calendar', meal_plans_calendar_path,
                 class: 'ml-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block font-medium' %>

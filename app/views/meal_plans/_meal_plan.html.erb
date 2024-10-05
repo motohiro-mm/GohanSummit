@@ -1,8 +1,12 @@
-<div id="<%= dom_id meal_plan %>" class="my-5">
+<%= turbo_frame_tag meal_plan do %>
+  <div class="my-5">
 
-  <h2 class="font-bold text-3xl text-stone-800"><%= meal_plan.meal_date %></h2>
+    <h2 class="font-bold text-3xl"><%= meal_plan.meal_date %></h2>
 
-  <% @meal_plan.meals_sort_by_timing.each do |meal| %>
-    <%= render 'meals/meal', meal: %>
-  <% end %>
-</div>
+    <% @meal_plan.meals_sort_by_timing.each do |meal| %>
+      <%= render 'meals/meal', meal: %>
+    <% end %>
+    <%= link_to 'Edit this meal plan', edit_meal_plan_path(@meal_plan),
+                class: 'mt-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block' %>
+  </div>
+<% end %>

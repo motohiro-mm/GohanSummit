@@ -16,13 +16,13 @@ RSpec.describe 'MealPlans', type: :system do
   it '献立を登録する' do
     visit new_meal_plan_path(meal_date: Time.zone.today)
 
-    within '.breakfast' do
+    within '#breakfast' do
       fill_in 'Name', with: 'シリアル'
     end
-    within '.lunch' do
+    within '#lunch' do
       fill_in 'Name', with: 'ハンバーガー'
     end
-    within '.dinner' do
+    within '#dinner' do
       fill_in 'Name', with: 'ステーキ'
     end
     click_on 'Create Meal plan'
@@ -50,8 +50,8 @@ RSpec.describe 'MealPlans', type: :system do
     visit meal_plan_path(meal_plan)
     click_on 'Edit this meal plan'
 
-    expect(page).to have_css 'h1', text: 'Editing meal_plan'
-    within '.lunch' do
+    expect(page).to have_button 'Update Meal plan'
+    within '#lunch' do
       fill_in 'Name', with: 'EditName'
     end
     click_on 'Update Meal plan'

@@ -4,28 +4,30 @@
     <h1 class="font-bold text-4xl">MealPlans Calendar</h1>
   </div>
 
-  <div>
-    <%= month_calendar events: @meal_plans do |date, meal_plan| %>
-      <p>
-        <%= date.day %>
-      </p>
+  <%= turbo_frame_tag 'meal_plan_list' do %>
+    <div>
+      <%= month_calendar events: @meal_plans do |date, meal_plan| %>
+        <p>
+          <%= date.day %>
+        </p>
 
-      <div>
-        <% if meal_plan.blank? || meal_plan.meals.blank? %>
-          <%= '🍚' %>
-        <% else %>
-          <ul>
-            <% meal_plan.meals.sort_by(&:timing_before_type_cast).each do |meal| %>
-              <li>
-                <%= meal.timing %>
-                <%= meal.name %>
-              </li>
-            <% end %>
-          </ul>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+        <div>
+          <% if meal_plan.blank? || meal_plan.meals.blank? %>
+            <%= '未定' %>
+          <% else %>
+            <ul>
+              <% meal_plan.meals.sort_by(&:timing_before_type_cast).each do |meal| %>
+                <li>
+                  <%= meal.timing %>
+                  <%= meal.name %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
   <div class="flex justify-end">
     <%= link_to 'Back to meal plans', meal_plans_path,
                 class: 'ml-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block font-medium' %>

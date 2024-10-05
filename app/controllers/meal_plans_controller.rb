@@ -19,7 +19,8 @@ class MealPlansController < ApplicationController
   end
 
   def create
-    @meal_plan = current_user.family.meal_plans.build(meal_plan_params)
+    @meal_plan = current_user.family.meal_plans.find_or_initialize_by(meal_date: meal_plan_params[:meal_date])
+    @meal_plan.assign_attributes(meal_plan_params)
 
     if @meal_plan.save
       redirect_to @meal_plan, notice: 'MealPlan was successfully created.'
