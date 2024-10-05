@@ -23,7 +23,7 @@ class MealPlansController < ApplicationController
     @meal_plan.assign_attributes(meal_plan_params)
 
     if @meal_plan.save
-      redirect_to @meal_plan, notice: 'MealPlan was successfully created.'
+      redirect_to @meal_plan, notice: '献立を作成しました。'
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class MealPlansController < ApplicationController
 
   def update
     if @meal_plan.update_meal_plan(meal_plan_params)
-      redirect_to @meal_plan, notice: 'MealPlan was successfully updated.', status: :see_other
+      redirect_to @meal_plan
     else
       render :edit, status: :unprocessable_entity
     end
