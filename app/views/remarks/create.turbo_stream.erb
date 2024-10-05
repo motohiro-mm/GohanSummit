@@ -1,0 +1,7 @@
+<% if @remark.proposal? %>
+  <%= turbo_stream.append "proposals", @remark %>
+<% else %>
+  <%= turbo_stream.append "comments", @remark %>
+<% end %>
+
+<%= turbo_stream.update Remark.new, "" %>
