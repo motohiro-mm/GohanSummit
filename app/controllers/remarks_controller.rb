@@ -12,7 +12,7 @@ class RemarksController < ApplicationController
   def create
     @remark = current_user.remarks.build(remark_params)
     if @remark.save
-      redirect_to meeting_room_url(@remark.meeting_room), notice: 'Remark was successfully created.'
+      # flash.now.notice = 'Remark was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class RemarksController < ApplicationController
 
   def destroy
     @remark.destroy!
-    redirect_to meeting_room_url(@meeting_room), notice: 'Remark was successfully destroyed.', status: :see_other
+    # flash.now.notice = 'Remark was successfully destroyed.', status: :see_other
   end
 
   private
