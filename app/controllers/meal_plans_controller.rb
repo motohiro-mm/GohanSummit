@@ -38,8 +38,8 @@ class MealPlansController < ApplicationController
   end
 
   def destroy
-    @meal_plan.destroy!
-    redirect_to meal_plans_path, notice: 'MealPlan was successfully destroyed.', status: :see_other
+    @meal_plan.meals.each(&:destroy!)
+    redirect_to meal_plans_path(meal_date: @meal_plan.meal_date), status: :see_other
   end
 
   def calendar

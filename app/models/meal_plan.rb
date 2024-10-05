@@ -35,9 +35,7 @@ class MealPlan < ApplicationRecord
 
   def destroy_unnecessary_meals(attributes)
     attributes[:meals_attributes].each_value do |update_meal|
-      if update_meal[:id].present? && update_meal.except(:id, :timing).values.all?(&:blank?)
-        meals.find(update_meal[:id]).destroy
-      end
+      meals.find(update_meal[:id]).destroy if update_meal[:id].present? && update_meal.except(:id, :timing).values.all?(&:blank?)
     end
   end
 

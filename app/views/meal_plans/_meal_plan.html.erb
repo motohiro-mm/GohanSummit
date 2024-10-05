@@ -6,7 +6,12 @@
     <% @meal_plan.meals_sort_by_timing.each do |meal| %>
       <%= render 'meals/meal', meal: %>
     <% end %>
-    <%= link_to '編集', edit_meal_plan_path(@meal_plan),
-                class: 'mt-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block' %>
+    <% if @meal_plan.meals.blank? %>
+      <%= link_to '献立登録', new_meal_plan_path(meal_date: @meal_plan.meal_date), data: { turbo_frame: '_top' },
+                                                                               class: 'mt-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100' %>
+    <% else %>
+      <%= link_to '編集', edit_meal_plan_path(@meal_plan),
+                  class: 'mt-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100' %>
+    <% end %>
   </div>
 <% end %>
