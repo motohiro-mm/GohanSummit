@@ -1,26 +1,29 @@
-<%= form_with model: [meeting_room, remark]  do |form| %>
-  <% if remark.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(remark.errors.count, 'error') %> prohibited this remark from being saved:</h2>
+<%= turbo_frame_tag remark do %>
+  <%= form_with model: [meeting_room, remark]  do |form| %>
+    <% if remark.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <h2><%= pluralize(remark.errors.count, 'error') %> prohibited this remark from being saved:</h2>
 
-      <ul>
-        <% remark.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% remark.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.hidden_field :remark_type %>
+    <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>
+
+    <div>
+      <div class="my-5">
+        <%= form.text_area :content, rows: 1,
+                                     class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
+      </div>
+      <div class="inline">
+        <%= form.submit class: 'inline-block font-medium cursor-pointer' %>
+      </div>
     </div>
   <% end %>
-
-  <%= form.hidden_field :remark_type %>
-  <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>
-
-  <div class="my-5">
-    <%= form.label :content %>
-    <%= form.text_area :content, rows: 4,
-                                 class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
-  </div>
-
-  <div class="inline">
-    <%= form.submit class: 'inline-block font-medium cursor-pointer' %>
-  </div>
+  <%= link_to 'キャンセル', meeting_room %>
 <% end %>

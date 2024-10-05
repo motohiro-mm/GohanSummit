@@ -1,6 +1,11 @@
-<div id="<%= dom_id remark %>">
-  <p class="my-5">
-    <%= image_tag remark.user.icon, class: 'icon' %>
-    <%= remark.content %>
-  </p>
-</div>
+<%= turbo_frame_tag remark do %>
+  <div>
+    <div class="my-5">
+      <%= image_tag remark.user.icon, class: 'icon' %>
+      <%= remark.content %>
+    </div>
+    <% if remark.editable?(current_user) %>
+      <%= link_to 'Edit', edit_meeting_room_remark_path(remark.meeting_room, remark) %>
+    <% end %>
+  </div>
+<% end %>
