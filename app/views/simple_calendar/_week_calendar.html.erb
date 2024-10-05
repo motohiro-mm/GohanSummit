@@ -2,16 +2,16 @@
   <div class="flex justify-between items-center border-b p-4 bg-stone-100">
     <span class="text-xl font-bold text-stone-800">
       <time datetime="<%= start_date.strftime('%Y-%m') %>">
-        <%= start_date.year %>
+        <%= "#{start_date.year}年" %>
       </time>
     </span>
 
     <nav class="space-x-4">
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view,
+      <%= link_to t('simple_calendar.week.previous'), calendar.url_for_previous_view,
                   class: 'text-stone-500 hover:underline' %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view,
+      <%= link_to t('simple_calendar.week.today'), calendar.url_for_today_view,
                   class: 'text-stone-500 hover:underline' %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view,
+      <%= link_to t('simple_calendar.week.next'), calendar.url_for_next_view,
                   class: 'text-stone-500 hover:underline' %>
     </nav>
   </div>
@@ -21,7 +21,7 @@
     <% date_range.each do |day| %>
       <tr class="<%= css_class_day(day) %> border-t">
         <th class="text-left p-4 w-1/4 text-lg font-semibold text-stone-500 align-top">
-          <span class="text-stone-800"><%= day.strftime('%-m月%-d日') %></span>
+          <span class="text-stone-800"><%= l day, format: :month_day %></span>
           <%= t('date.abbr_day_names')[day.wday] %>
         </th>
 

@@ -2,17 +2,16 @@
   <div class="header flex justify-between items-center border-b p-4 bg-stone-100">
     <span class="text-lg font-bold text-stone-700">
       <time datetime="<%= start_date.strftime('%Y-%m') %>">
-        <%= start_date.year %>
-        <%= t('date.month_names')[start_date.month] %>
+        <%= l start_date, format: :year_month %>
       </time>
     </span>
 
     <nav class="space-x-4">
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view,
+      <%= link_to t('simple_calendar.month.previous'), calendar.url_for_previous_view,
                   class: 'text-stone-500 hover:underline' %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view,
+      <%= link_to t('simple_calendar.month.today'), calendar.url_for_today_view,
                   class: 'text-stone-500 hover:underline' %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view,
+      <%= link_to t('simple_calendar.month.next'), calendar.url_for_next_view,
                   class: 'text-stone-500 hover:underline' %>
     </nav>
   </div>

@@ -1,7 +1,7 @@
 ja:
   activerecord:
     models:
-      meal_plan: 献立表
+      meal_plan: 献立
       meal: 料理
       meeting_room: 会議室
       remark: 意見
@@ -18,6 +18,9 @@ ja:
         breakfast: 朝ごはん
         lunch: 昼ごはん
         dinner: 夜ごはん
+        short_breakfast: 朝
+        short_lunch: 昼
+        short_dinner: 夜
       remark:
         remark_type: タイプ
         content: 内容
@@ -38,9 +41,6 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
         restrict_multiple_creation: "%{model}は1つしか作成できません"
-    success:
-      messages:
-        create: "%{model}を作成しました"
   date:
     abbr_day_names:
       - 日
@@ -75,6 +75,8 @@ ja:
     formats:
       default: "%Y/%m/%d"
       long: "%Y年%m月%d日(%a)"
+      year_month: "%Y年%m月"
+      month_day: "%m月%d日"
       short: "%m/%d"
     month_names:
       -
@@ -217,3 +219,12 @@ ja:
       short: "%m/%d %H:%M"
       without_date: "%k:%M"
     pm: 午後
+  simple_calendar:
+    week:
+      previous: 前週
+      today: 今週
+      next: 翌週
+    month:
+      previous: 前月
+      today: 今月
+      next: 翌月
