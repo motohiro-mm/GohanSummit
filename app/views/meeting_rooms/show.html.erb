@@ -8,29 +8,29 @@
   </div>
 
   <div class="flex justify-between items-center">
-    <% content_for :title, 'Remarks' %>
-    <h1 class="font-bold text-4xl">Remarks</h1>
+    <% content_for :title, '相談部屋' %>
+    <h1 class="font-bold text-4xl">相談部屋</h1>
   </div>
 
   <div id="remarks">
     <div id="proposals" class="min-w-full">
-      <h2 class="font-bold text-3xl">Proposals</h2>
+      <h2 class="font-bold text-3xl">食べたいもの</h2>
       <% @remarks.filter(&:proposal?).each do |remark| %>
         <%= render remark %>
       <% end %>
     </div>
     -----------------
     <div id="comments" class="min-w-full">
-      <h2 class="font-bold text-3xl">Comments</h2>
+      <h2 class="font-bold text-3xl">コメント</h2>
       <% @remarks.filter(&:comment?).each do |remark| %>
         <%= render remark %>
       <% end %>
     </div>
   </div>
   <div>
-    <%= link_to 'New proposal', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal),
+    <%= link_to '提案する', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal),
                 data: { turbo_frame: dom_id(Remark.new) } %>
-    <%= link_to 'New comment', new_meeting_room_remark_path(@meeting_room, remark_type: :comment),
+    <%= link_to 'コメントする', new_meeting_room_remark_path(@meeting_room, remark_type: :comment),
                 data: { turbo_frame: dom_id(Remark.new) } %>
     <%= turbo_frame_tag Remark.new %>
   </div>

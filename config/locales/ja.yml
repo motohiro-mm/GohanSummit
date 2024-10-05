@@ -3,7 +3,7 @@ ja:
     models:
       meal_plan: 献立
       meal: 料理
-      meeting_room: 会議室
+      meeting_room: 相談部屋
       remark: 意見
       user: ユーザー
       family: 家族
