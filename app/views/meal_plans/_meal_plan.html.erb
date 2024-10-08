@@ -1,17 +1,26 @@
 <%= turbo_frame_tag meal_plan do %>
   <div class="my-5">
-
-    <h2 class="font-bold text-3xl"><%= l meal_plan.meal_date, format: :long %></h2>
+    <div class="flex justify-between">
+      <h1 class="font-bold text-2xl"><%= l meal_plan.meal_date, format: :long %></h1>
+      <% unless @meal_plan.meals.blank? %>
+          <div class="flex items-center">
+            <%= link_to '編集', edit_meal_plan_path(@meal_plan), class: 'mr-4 text-l' %>
+          </div>
+      <% end %>
+    </div>
 
     <% @meal_plan.meals_sort_by_timing.each do |meal| %>
       <%= render 'meals/meal', meal: %>
     <% end %>
     <% if @meal_plan.meals.blank? %>
-      <%= link_to '献立登録', new_meal_plan_path(meal_date: @meal_plan.meal_date), data: { turbo_frame: '_top' },
-                                                                               class: 'mt-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100' %>
+      <div class="flex justify-center p-4">
+        <%= link_to '', new_meal_plan_path(meal_date: @meal_plan.meal_date), data: { turbo_frame: '_top' }, class: "plus_icon" %>
+      </div>
     <% else %>
-      <%= link_to '編集', edit_meal_plan_path(@meal_plan),
-                  class: 'mt-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100' %>
+      <div class="flex justify-end">
+        <%= button_to 'この献立を削除する', @meal_plan, method: :delete,
+                      class: 'text-stone-500' %>
+      </div>
     <% end %>
   </div>
 <% end %>

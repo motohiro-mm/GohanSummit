@@ -15,7 +15,7 @@
             <% if meal_plan&.meals.blank? %>
               <%= button_to meeting_rooms_path(meal_plan:, meal_date: date), method: :post, data: { turbo_frame: '_top' }, class: 'rounded-full py-2 px-4 bg-red-400 inline-block' do %>
                 <i class="fa-regular fa-comments text-xl text-white"></i>
-                <span class="ml-1 text-l text-white">相談</span>
+                <span class="ml-1 text-l text-white">会議へ</span>
               <% end %>
 
               <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, class: "plus_icon" %>

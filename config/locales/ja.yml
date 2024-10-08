@@ -12,7 +12,7 @@ ja:
         meal_date: 日付
       meal:
         timing: 食事タイミング
-        name: 料理名
+        name: 料理
         memo: メモ
       meal/timing:
         breakfast: 朝ごはん
@@ -153,9 +153,9 @@ ja:
     select:
       prompt: 選択してください
     submit:
-      create: 登録する
-      submit: 保存する
-      update: 更新する
+      create: 登録
+      submit: 保存
+      update: 保存
   number:
     currency:
       format:
