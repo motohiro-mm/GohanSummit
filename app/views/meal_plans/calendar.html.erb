@@ -1,35 +1,28 @@
 <div class="w-full">
   <% content_for :title, '献立カレンダー' %>
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">献立カレンダー</h1>
-  </div>
-
   <%= turbo_frame_tag 'meal_plan_list' do %>
     <div>
       <%= month_calendar events: @meal_plans do |date, meal_plan| %>
-        <p>
-          <%= date.day %>
-        </p>
-
         <div>
-          <% if meal_plan.blank? || meal_plan.meals.blank? %>
-            <%= '未定' %>
-          <% else %>
-            <ul>
-              <% meal_plan.meals_sort_by_timing.each do |meal| %>
-                <li>
-                  <%= Meal.human_attribute_name("timing.short_#{meal.timing}") %>
-                  <%= meal.name %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
+          <p>
+            <%= date.day %>
+          </p>
+
+          <div class="block">
+            <% if meal_plan.blank? || meal_plan.meals.blank? %>
+              <%= '未定' %>
+            <% else %>
+              <ul>
+                <% meal_plan.meals_sort_by_timing.each do |meal| %>
+                  <li>
+                    <%= meal.name %>
+                  </li>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </div>
   <% end %>
-  <div class="flex justify-end">
-    <%= link_to '献立表に戻る', meal_plans_path,
-                class: 'ml-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block font-medium' %>
-  </div>
 </div>
