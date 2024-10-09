@@ -1,31 +1,25 @@
 <%= turbo_frame_tag remark do %>
   <%= form_with model: [meeting_room, remark]  do |form| %>
-    <% if remark.errors.any? %>
-      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-        <h2><%= pluralize(remark.errors.count, 'error') %> prohibited this remark from being saved:</h2>
-
-        <ul>
-          <% remark.errors.each do |error| %>
-            <li><%= error.full_message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <%= form.hidden_field :remark_type %>
-    <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>
-    <div>
-      <div class="my-5">
+    <div class="flex justify-between">
+      <%= form.hidden_field :remark_type %>
+      <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>
+      <div class="my-5 w-full mx-auto md:w-3/4 ">
         <%= form.text_area :content, rows: 1,
-                                     class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
+                                     class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
       </div>
-      <div class="inline">
-        <%= form.submit class: 'inline-block font-medium cursor-pointer' %>
-      </div>
+      <%= form.button type: :submit, class: 'inline-block mx-auto text-3xl text-red-400 cursor-pointer' do %>
+        <i class="fa-solid fa-circle-check"></i>
+      <% end %>
     </div>
   <% end %>
-  <%= link_to 'キャンセル', meeting_room %>
-  <% if remark.persisted? %>
-    <%= button_to '削除', meeting_room_remark_path(remark.meeting_room, remark), method: :delete %>
-  <% end %>
+  <div class="flex justify-around items-center">
+    <% if remark.persisted? %>
+      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete,  class: 'inline-block text-2xl text-orange-950/70 cursor-pointer' do %>
+        <i class="fa-solid fa-trash-can"></i>
+      <% end %>
+    <% end %>
+    <%= link_to meeting_room , class: 'inline-block text-2xl cursor-pointer text-orange-950/70' do %>
+      <i class="fa-solid fa-xmark"></i>
+    <% end %>
+  </div>
 <% end %>

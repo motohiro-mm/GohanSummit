@@ -1,7 +1,7 @@
 <% if @remark.proposal? %>
-  <%= turbo_stream.append "proposals", @remark %>
+  <%= turbo_stream.prepend "proposals", partial: "proposal", locals: {remark: @remark} %>
 <% else %>
-  <%= turbo_stream.append "comments", @remark %>
+  <%= turbo_stream.prepend "comments", partial: "comment", locals: {remark: @remark} %>
 <% end %>
 
 <%= turbo_stream.update Remark.new, "" %>
