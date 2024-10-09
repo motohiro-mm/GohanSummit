@@ -30,7 +30,7 @@ input:-webkit-autofill:focus {
 }
 .login-button {
     margin-left: 1rem;
-    background-color: #6b7280;
+    background-color: rgb(248 113 113);
     color: #fff;
     border-radius: 0.375rem;
     padding: 0.5rem 1rem;
@@ -89,8 +89,8 @@ input:-webkit-autofill:focus {
     position: absolute;
     width: 0.7rem;
     height: 0.7rem;
-    border-top: 0.2rem solid #ff9142;
-    border-right: 0.2rem solid #ff9142;
+    border-top: 0.2rem solid rgb(67 20 7);
+    border-right: 0.2rem solid rgb(67 20 7);
     border-radius: 0.1rem;
     right: 0.5rem;
     top: 50%;
@@ -112,8 +112,8 @@ input:-webkit-autofill:focus {
     position: absolute;
     width: 0.7rem;
     height: 0.7rem;
-    border-top: 0.2rem solid #ff9142;
-    border-right: 0.2rem solid #ff9142;
+    border-top: 0.2rem solid rgb(67 20 7);
+    border-right: 0.2rem solid rgb(67 20 7);
     border-radius: 0.1rem;
     left: 0.5rem;
     top: 50%;
@@ -139,7 +139,7 @@ input:-webkit-autofill:focus {
     border-style: solid;
     border-color: transparent;
     border-width: 0.36em 0.62354em;
-    border-left-color: #ff9142;
+    border-left-color: rgb(67 20 7);
     border-right: 0;
     transform: translateX(15%);
     position: absolute;
@@ -148,4 +148,26 @@ input:-webkit-autofill:focus {
     right: 0;
     bottom: 0;
     margin: auto;
+}
+
+.box{
+    border: 0.2rem double rgb(67 20 7);
+    border-radius: 12px;
+    position: relative;
+    margin-top: 1em;
+}
+.box h2{
+    text-align: left;
+    position: absolute;
+    right: 0;
+    left: 1rem;
+    top: -1rem;
+}
+.box span{
+    padding: 1rem;
+    background: #FFF;
+    color: rgb(67 20 7);
+}
+.box .inner{
+    padding: 1.2em .5em .5em;
 }

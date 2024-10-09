@@ -8,6 +8,6 @@
 
   <div class="my-5">
     <strong class="block font-medium mb-1"><%= Meal.human_attribute_name(:memo) %></strong>
-    <span class="block rounded-md px-3 py-2"><%= format_memo(meal) %></span>
+    <span class="block rounded-md px-3 py-2"><%= format_line_break(meal.memo) %></span>
   </div>
 </div>

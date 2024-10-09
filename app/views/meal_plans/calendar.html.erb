@@ -14,7 +14,7 @@
             <% else %>
               <ul>
                 <% meal_plan.meals_sort_by_timing.each do |meal| %>
-                  <li>
+                  <li class="truncate">
                     <%= meal.name %>
                   </li>
                 <% end %>

@@ -8,7 +8,7 @@
       </span>
     </div>
 
-    <nav class="flex items-center space-x-3 text-orange-950/50">
+    <nav class="flex items-center space-x-3">
       <%= link_to "", calendar.url_for_previous_view,
                   class: 'arrow_left hover:underline' %>
       <%= link_to t('simple_calendar.month.today'), calendar.url_for_today_view,
@@ -20,25 +20,25 @@
     <div class="flex mr-2">
       <%= link_to meal_plans_path, data: { turbo_frame: '_top' },
                   class: 'flex items-center' do %>
-        <i class="fa-regular fa-rectangle-list text-xl text-orange-400"></i>
+        <i class="fa-regular fa-rectangle-list text-2xl"></i>
       <% end %>
     </div>
   </div>
 
   <table class="w-full table-fixed border-collapse">
     <thead>
-    <tr class="bg-stone-100">
+    <tr class="bg-orange-50">
       <% date_range.slice(0, 7).each do |day| %>
-        <th class="py-2 text-center text-stone-600"><%= t('date.abbr_day_names')[day.wday] %></th>
+        <th class="py-2 text-center"><%= t('date.abbr_day_names')[day.wday] %></th>
       <% end %>
     </tr>
     </thead>
 
     <tbody>
     <% date_range.each_slice(7) do |week| %>
-      <tr class="border-t">
+      <tr class="border-t border-dashed border-orange-100">
         <% week.each do |day| %>
-          <%= content_tag :td, class: "px-2 py-2 text-center border hover:bg-stone-100 #{calendar.td_classes_for(day)}" do %>
+          <%= content_tag :td, class: "px-2 py-2 text-center border border-dashed border-orange-100 #{calendar.td_classes_for(day)}" do %>
             <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
           <% end %>
         <% end %>

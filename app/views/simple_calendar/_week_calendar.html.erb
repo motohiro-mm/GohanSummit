@@ -8,7 +8,7 @@
       </span>
     </div>
 
-    <nav class="flex items-center space-x-3 text-orange-950/50">
+    <nav class="flex items-center space-x-3">
       <%= link_to "", calendar.url_for_previous_view,
                   class: 'arrow_left hover:underline' %>
       <%= link_to t('simple_calendar.week.today'), calendar.url_for_today_view,
@@ -19,7 +19,7 @@
 
     <div class="flex mr-2">
       <%= link_to meal_plans_calendar_path, data: { turbo_frame: '_top' }, class: 'flex items-center' do %>
-        <i class="fa-regular fa-calendar-days text-xl text-orange-400"></i>
+        <i class="fa-regular fa-calendar-days text-2xl "></i>
       <% end %>
     </div>
   </div>
@@ -28,7 +28,7 @@
     <tbody>
     <% date_range.each do |day| %>
       <tr class="<%= css_class_day(day) %> border-t border-dashed border-orange-900/10">
-        <th class="w-1/4 items-center text-left p-3 font-semibold text-orange-900/50">
+        <th class="w-1/4 items-center text-left p-3 font-semibold text-orange-900/70">
           <span class="ml-3"><%= l day, format: :short %></span>
           <p class="flex ml-6">
             <%= t('date.abbr_day_names')[day.wday] %>

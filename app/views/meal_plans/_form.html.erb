@@ -1,16 +1,4 @@
 <%= form_with(model: meal_plan, class: 'contents') do |form| %>
-  <% if meal_plan.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(meal_plan.errors.count, 'error') %> prohibited this meal_plan from being saved:</h2>
-
-      <ul>
-        <% meal_plan.errors.each do |error| %>
-          <li><%= l error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="my-5">
     <h1 class="font-bold text-2xl items-center"><%= l meal_plan.meal_date, format: :long %></h1>
     <%= form.hidden_field :meal_date %>
@@ -34,7 +22,7 @@
     <% end %>
 
     <div class="flex justify-center">
-      <%= form.submit class: 'rounded-full mt-2 py-3 px-9 bg-orange-500/80 text-white font-bold text-lg inline-block cursor-pointer' %>
+      <%= form.submit class: 'rounded-full mt-2 py-3 px-9 bg-red-400 text-white font-bold text-lg inline-block cursor-pointer' %>
     </div>
   </div>
 <% end %>

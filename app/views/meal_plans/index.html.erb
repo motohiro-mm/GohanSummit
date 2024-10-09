@@ -1,36 +1,30 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
   <% content_for :title, '献立表' %>
-<!--  <div class="flex justify-between items-center">-->
-<!--    <h1 class="py-2 px-3 font-bold text-2xl text-red-900">献立表</h1>-->
-<!--  </div>-->
 
   <%= turbo_frame_tag 'meal_plan_list', data: { turbo_action: :advance } do %>
     <div>
       <%= week_calendar events: @meal_plans do |date, meal_plan| %>
+        <% if meal_plan&.meals.blank? %>
           <div class="flex justify-around items-center">
-            <% if meal_plan&.meals.blank? %>
-              <%= button_to meeting_rooms_path(meal_plan:, meal_date: date), method: :post, data: { turbo_frame: '_top' }, class: 'rounded-full py-2 px-4 bg-red-400 inline-block' do %>
-                <i class="fa-regular fa-comments text-xl text-white"></i>
-                <span class="ml-1 text-l text-white">会議へ</span>
-              <% end %>
-
-              <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, class: "plus_icon" %>
-            <% else %>
-              <ul>
-                <% meal_plan.meals_sort_by_timing.each do |meal| %>
-                  <li class="p-1">
-                    <%= Meal.human_attribute_name("timing.short_#{meal.timing}") %>
-                    <%= meal.name %>
-                  </li>
-                 <% end %>
-              </ul>
-              <%= link_to '', meal_plan, data: { turbo_frame: '_top' }, class: "right_caret" %>
+            <%= button_to meeting_rooms_path(meal_plan:, meal_date: date), method: :post, data: { turbo_frame: '_top' }, class: 'rounded-full py-2 px-4 bg-red-400 inline-block' do %>
+              <i class="fa-regular fa-comments text-xl text-white"></i>
+              <span class="ml-1 text-l text-white">会議へ</span>
             <% end %>
+            <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, class: "plus_icon" %>
           </div>
+        <% else %>
+          <div class="flex justify-around items-center">
+            <ul class="inline-block ml-2">
+              <% meal_plan.meals_sort_by_timing.each do |meal| %>
+                <li class="p-1">
+                  <%= Meal.human_attribute_name("timing.short_#{meal.timing}") %>
+                  <%= meal.name %>
+                </li>
+              <% end %>
+            </ul>
+            <%= link_to '', meal_plan, data: { turbo_frame: '_top' }, class: "right_caret inline-block" %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>
