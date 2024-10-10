@@ -1,38 +1,31 @@
-<div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">タイミングを登録</h1>
-
-  <%= form_with(model: @meal_plan, url: meal_plan_path(@meal_plan), method: 'patch', class: 'contents') do |form| %>
-    <div class="my-5">
-      <h2 class="font-bold text-3xl"><%= l @meal_plan.meal_date, format: :long %></h2>
-      <%= form.hidden_field :meal_date %>
+<div class="mx-auto p-8 w-full">
+  <div class="text-center mb-8">
+    <%= link_to '会議へ戻る', meeting_room_path(@meal_plan.meeting_room),
+                class: 'rounded-full py-2 px-3 bg-orange-100/70' %>
+  </div>
+  <div class="mb-8">
+    <h2 class="my-4 font-bold text-2xl items-center">
+      <%= l @meal_plan.meal_date, format: :long %>
+    </h2>
+    以下の料理を献立に登録します。
+    <div class="my-4 text-xl font-bold">
+      <%= @meal.name %>
     </div>
-    <%= form.fields_for :meals, @meal do |meal_form| %>
-      <div class="border border-stone-300 rounded-md p-2 my-2 text-stone-800">
-        <div class="my-5">
-          <%= meal_form.hidden_field :id %>
-          <%= meal_form.select :timing, options_for_select(Meal.timings.keys.map do |timing|
-                [Meal.human_attribute_name("timing.#{timing}"), timing]
-              end) %>
-          <%= meal_form.hidden_field :memo, value: '' %>
-        </div>
+    食べるタイミングを選んでください。<br>
+    既に登録されている献立に上書きしますので注意してください。
 
-        <p class="my-5">
-          <%= meal_form.hidden_field :name, value: meal_form.object.name %>
-          <strong class="block font-medium mb-1"><%= Meal.human_attribute_name(:name) %></strong>
-          <span class="block rounded-md px-3 py-2"><%= meal_form.object.name %></span>
-        </p>
-      </div>
+    <%= render 'meals/timing_form', meal_plan: @meal_plan, meal: @meal %>
+  </div>
+
+  <div class="my-4">
+    <% if @meal_plan.meals.present? %>
+      <h3>現在登録されている献立</h3>
+      <% @meal_plan.meals_sort_by_timing.each do |meal| %>
+        <%= render meal %>
+      <% end %>
+    <% else %>
+      <h3>現在登録されている献立はありません。</h3>
     <% end %>
-    <div class="inline">
-      <%= form.submit %>
-    </div>
-  <% end %>
-
-  <% @meal_plan.meals_sort_by_timing.each do |meal| %>
-    <%= render meal %>
-  <% end %>
-
-  <%= link_to '相談部屋へ戻る', meeting_room_path(@meal_plan.meeting_room),
-              class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+  </div>
 
 </div>

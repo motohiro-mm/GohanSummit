@@ -1,31 +1,41 @@
-<div class="simple-calendar">
-  <div class="flex justify-between items-center border-b p-4 bg-stone-100">
-    <span class="text-xl font-bold text-stone-800">
-      <time datetime="<%= start_date.strftime('%Y-%m') %>">
-        <%= "#{start_date.year}年" %>
-      </time>
-    </span>
+<div>
+  <div class="flex justify-around p-2">
+    <div class="flex items-center">
+      <span class="font-bold">
+        <time datetime="<%= start_date.strftime('%Y-%m') %>">
+          <%= "#{start_date.year}年" %>
+        </time>
+      </span>
+    </div>
 
-    <nav class="space-x-4">
-      <%= link_to t('simple_calendar.week.previous'), calendar.url_for_previous_view,
-                  class: 'text-stone-500 hover:underline' %>
+    <nav class="flex items-center space-x-3">
+      <%= link_to '', calendar.url_for_previous_view,
+                  class: 'arrow_left hover:underline' %>
       <%= link_to t('simple_calendar.week.today'), calendar.url_for_today_view,
-                  class: 'text-stone-500 hover:underline' %>
-      <%= link_to t('simple_calendar.week.next'), calendar.url_for_next_view,
-                  class: 'text-stone-500 hover:underline' %>
+                  class: 'hover:underline' %>
+      <%= link_to '', calendar.url_for_next_view,
+                  class: 'arrow_right hover:underline' %>
     </nav>
+
+    <div class="flex mr-2">
+      <%= link_to meal_plans_calendar_path, data: { turbo_frame: '_top' }, class: 'flex items-center' do %>
+        <i class="fa-regular fa-calendar-days text-2xl "></i>
+      <% end %>
+    </div>
   </div>
 
   <table class="w-full table-fixed border-collapse">
     <tbody>
     <% date_range.each do |day| %>
-      <tr class="<%= css_class_day(day) %> border-t">
-        <th class="text-left p-4 w-1/4 text-lg font-semibold text-stone-500 align-top">
-          <span class="text-stone-800"><%= l day, format: :month_day %></span>
-          <%= t('date.abbr_day_names')[day.wday] %>
+      <tr class="<%= css_class_day(day) %> border-t border-dashed border-orange-900/10">
+        <th class="w-1/4 items-center text-left p-3 font-semibold text-orange-900/70">
+          <span class="ml-3"><%= l day, format: :short %></span>
+          <p class="flex ml-6">
+            <%= t('date.abbr_day_names')[day.wday] %>
+          </p>
         </th>
 
-        <td class="p-4 w-3/4 align-top">
+        <td class="w-3/4 p-3">
           <%= content_tag :div, class: calendar.td_classes_for(day) do %>
             <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
           <% end %>

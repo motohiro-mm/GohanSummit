@@ -36,4 +36,4 @@ RSpec/MultipleExpectations:
   Enabled: false
 
 Layout/LineLength:
-  Max: 150
+  Max: 200

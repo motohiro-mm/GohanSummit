@@ -1,18 +1,16 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto font-medium">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 rounded-lg inline-block" id="notice"><%= notice %></p>
+<div class="mx-auto p-4 w-full">
+  <div class="flex justify-around">
+    <%= button_to meeting_rooms_path(meal_plan: @meal_plan, meal_date: @meal_plan.meal_date), method: :post, data: { turbo_frame: '_top' }, class: 'rounded-full py-3 px-4 bg-red-400 inline-block' do %>
+      <i class="fa-regular fa-comments text-xl text-white"></i>
+      <span class="ml-1 text-white">会議へ</span>
     <% end %>
-
-    <%= button_to '相談部屋 >', meeting_rooms_path(meal_plan: @meal_plan, meal_date: @meal_plan.meal_date), method: :post %>
-
+    <%= link_to meal_plans_path(start_date: @meal_plan.meal_date),
+                class: 'inline-block flex items-center' do %>
+      <i class="fa-regular fa-rectangle-list text-xl"></i>
+      <span class="ml-2">献立表へ</span>
+    <% end %>
+  </div>
+  <div class="mt-4">
     <%= render @meal_plan %>
-
-    <%= link_to '献立表に戻る', meal_plans_path(start_date: @meal_plan.meal_date),
-                class: 'ml-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block' %>
-    <div class="inline-block ml-2">
-      <%= button_to '献立を削除する', @meal_plan, method: :delete,
-                                           class: 'rounded-lg py-3 px-5 text-stone-500 bg-stone-100' %>
-    </div>
   </div>
 </div>

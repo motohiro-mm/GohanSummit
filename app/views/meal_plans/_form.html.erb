@@ -1,40 +1,28 @@
 <%= form_with(model: meal_plan, class: 'contents') do |form| %>
-  <% if meal_plan.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(meal_plan.errors.count, 'error') %> prohibited this meal_plan from being saved:</h2>
-
-      <ul>
-        <% meal_plan.errors.each do |error| %>
-          <li><%= l error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="my-5">
-    <h2 class="font-bold text-3xl"><%= l meal_plan.meal_date, format: :long %></h2>
+    <h1 class="font-bold text-2xl"><%= l meal_plan.meal_date, format: :long %></h1>
     <%= form.hidden_field :meal_date %>
 
     <%= form.fields_for :meals, meal_plan.meals_sort_by_timing do |meal_form| %>
-      <div id="<%= meal_timing(meal_form) %>" class="border border-stone-300 rounded-md p-4 my-5 text-stone-800">
+      <div id="<%= meal_timing(meal_form) %>" class="border border-dashed border-red-900/10 rounded-lg p-4 my-5">
         <%= meal_form.hidden_field :timing, value: meal_timing(meal_form) %>
         <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal_timing(meal_form)}") %></strong>
         <div class="my-5">
-          <%= meal_form.label :name, class: 'block font-medium mb-1' %>
+          <%= meal_form.label :name, class: 'block mb-1' %>
           <%= meal_form.text_field :name,
-                                   class: 'block rounded-md border border-gray-400  w-full' %>
+                                   class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
         </div>
 
         <div class="my-5">
-          <%= meal_form.label :memo, class: 'block font-medium mb-1' %>
+          <%= meal_form.label :memo, class: 'block mb-1' %>
           <%= meal_form.text_area :memo, rows: 1,
-                                         class: 'block  rounded-md border border-gray-400 px-3 py-2 w-full' %>
+                                         class: 'block  rounded-md border border-red-950/20 px-3 py-2 w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
         </div>
       </div>
     <% end %>
 
-    <div class="inline">
-      <%= form.submit class: 'rounded-lg py-3 px-5 bg-gray-600 text-white inline-block font-medium cursor-pointer' %>
+    <div class="text-center">
+      <%= form.submit class: 'rounded-full mt-2 py-3 px-9 bg-red-400 text-white font-bold text-lg inline-block cursor-pointer' %>
     </div>
   </div>
 <% end %>

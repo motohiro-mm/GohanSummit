@@ -1,23 +1,32 @@
-<div>
-  <h1 class="font-bold text-4xl">献立表の共有</h1>
+<div class="mx-auto p-4 w-full">
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-2xl">献立表を共有する</h1>
+    <%= link_to meal_plans_path, class: 'inline-block flex items-center' do %>
+      <i class="fa-regular fa-rectangle-list text-xl"></i>
+      <span class="ml-2 text-md">献立表へ</span>
+    <% end %>
+  </div>
 
-  <div class="border border-stone-300 rounded-md p-4 my-5 text-stone-800">
-    <strong class="block font-bold text-lg">共有しているユーザー</strong>
+  <div class="my-5">
+    <div class="my-8">
+      <div class="my-4">
+        以下のURLからログインすることで、この献立表に参加することができます。<br>
+        URLをコピーして家族を献立表に招待しましょう。
+      </div>
+      <input id="copyTarget" type="text" value="<%= @family.invitation_url(request) %>" readonly autocomplete="off" class="block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50">
+      <div class="text-center">
+        <button class="rounded-full inline-block mt-4 py-3 px-4 bg-red-400 text-white" onclick="copyToClipboard()">共有URLをCopy</button>
+      </div>
+    </div>
+    <strong class="block font-bold text-lg">この献立表のユーザー</strong>
 
     <% @family.users.each do |user| %>
-      <p class="my-5 flex items-center">
+      <div class="my-5 flex items-center">
         <%= image_tag user.icon, class: 'icon' %>
         <span class="ml-2"><%= user.name %></span>
-      </p>
+      </div>
     <% end %>
-
-    <p class="my-5">
-      <input id="copyTarget" type="text" value="<%= @family.invitation_url(request) %>" readonly autocomplete="off">
-      <button class="rounded-lg py-3 px-5 bg-gray-600 text-white inline-block font-medium cursor-pointer" onclick="copyToClipboard()">共有URLをCopyする</button>
-    </p>
   </div>
-  <%= link_to '献立表へ戻る', meal_plans_path,
-              class: 'ml-2 rounded-lg py-3 px-5 text-stone-500 bg-stone-100 inline-block font-medium' %>
 
   <script>
     function copyToClipboard() {

@@ -1,35 +1,43 @@
 <div>
-  <div class="header flex justify-between items-center border-b p-4 bg-stone-100">
-    <span class="text-lg font-bold text-stone-700">
-      <time datetime="<%= start_date.strftime('%Y-%m') %>">
-        <%= l start_date, format: :year_month %>
-      </time>
-    </span>
+  <div class="flex justify-around p-2">
+    <div class="flex items-center">
+      <span class="font-bold">
+        <time datetime="<%= start_date.strftime('%Y-%m') %>">
+          <%= l start_date, format: :year_month %>
+        </time>
+      </span>
+    </div>
 
-    <nav class="space-x-4">
-      <%= link_to t('simple_calendar.month.previous'), calendar.url_for_previous_view,
-                  class: 'text-stone-500 hover:underline' %>
+    <nav class="flex items-center space-x-3">
+      <%= link_to '', calendar.url_for_previous_view,
+                  class: 'arrow_left hover:underline' %>
       <%= link_to t('simple_calendar.month.today'), calendar.url_for_today_view,
-                  class: 'text-stone-500 hover:underline' %>
-      <%= link_to t('simple_calendar.month.next'), calendar.url_for_next_view,
-                  class: 'text-stone-500 hover:underline' %>
+                  class: 'hover:underline' %>
+      <%= link_to '', calendar.url_for_next_view,
+                  class: 'arrow_right hover:underline' %>
     </nav>
+
+    <div class="flex mr-2">
+      <%= link_to meal_plans_path, data: { turbo_frame: '_top' }, class: 'flex items-center' do %>
+        <i class="fa-regular fa-rectangle-list text-2xl"></i>
+      <% end %>
+    </div>
   </div>
 
   <table class="w-full table-fixed border-collapse">
     <thead>
-    <tr class="bg-stone-200">
+    <tr class="bg-orange-50">
       <% date_range.slice(0, 7).each do |day| %>
-        <th class="py-2 text-center text-stone-600"><%= t('date.abbr_day_names')[day.wday] %></th>
+        <th class="py-2 text-center"><%= t('date.abbr_day_names')[day.wday] %></th>
       <% end %>
     </tr>
     </thead>
 
     <tbody>
     <% date_range.each_slice(7) do |week| %>
-      <tr class="border-t">
+      <tr class="border-t border-dashed border-orange-100">
         <% week.each do |day| %>
-          <%= content_tag :td, class: "px-4 py-2 text-center border hover:bg-stone-100 #{calendar.td_classes_for(day)}" do %>
+          <%= content_tag :td, class: "px-2 py-2 text-center border border-dashed border-orange-100 #{calendar.td_classes_for(day)}" do %>
             <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
           <% end %>
         <% end %>

@@ -1,0 +1,19 @@
+<%= form_with(model: meal_plan, url: meal_plan_path(meal_plan), method: 'patch') do |form| %>
+  <div class="my-6">
+    <%= form.hidden_field :meal_date %>
+    <%= form.fields_for :meals, meal do |meal_form| %>
+        <%= meal_form.hidden_field :id %>
+        <div class="checkbox-3 flex justify-around">
+          <% Meal.timings.keys.each do |timing| %>
+            <%= meal_form.radio_button :timing, timing, class: 'checkbox-3' %>
+            <%= meal_form.label "timing_#{timing}", Meal.human_attribute_name("timing.#{timing}") %>
+          <% end %>
+        </div>
+        <%= meal_form.hidden_field :name, value: meal_form.object.name %>
+        <%= meal_form.hidden_field :memo, value: '' %>
+    <% end %>
+  </div>
+  <div class="m-2 text-center">
+    <%= form.submit '登録', class: 'rounded-full py-3 px-7 bg-red-400 text-white' %>
+  </div>
+<% end %>

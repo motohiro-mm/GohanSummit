@@ -17,15 +17,15 @@ RSpec.describe 'MealPlans', type: :system do
     visit new_meal_plan_path(meal_date: Time.zone.today)
 
     within '#breakfast' do
-      fill_in '料理名', with: 'シリアル'
+      fill_in '料理', with: 'シリアル'
     end
     within '#lunch' do
-      fill_in '料理名', with: 'ハンバーガー'
+      fill_in '料理', with: 'ハンバーガー'
     end
     within '#dinner' do
-      fill_in '料理名', with: 'ステーキ'
+      fill_in '料理', with: 'ステーキ'
     end
-    click_on '登録する'
+    click_on '登録'
 
     expect(page).to have_content I18n.l(Time.zone.today, format: :long)
     expect(page).to have_content 'シリアル'
@@ -36,10 +36,10 @@ RSpec.describe 'MealPlans', type: :system do
   it '献立を詳細表示する' do
     visit meal_plans_path(start_date: meal_plan.meal_date)
     within ".#{css_class_day(meal_plan.meal_date)}" do
-      click_on '詳細 >'
+      find('.right_caret').click
     end
 
-    expect(page).to have_css 'h2', text: I18n.l(meal_plan.meal_date, format: :long)
+    expect(page).to have_css 'h1', text: I18n.l(meal_plan.meal_date, format: :long)
     expect(page).to have_content meal_breakfast.name
     expect(page).to have_content meal_lunch.name
     expect(page).to have_content meal_dinner.name
@@ -50,9 +50,9 @@ RSpec.describe 'MealPlans', type: :system do
     click_on '編集'
 
     within '#lunch' do
-      fill_in '料理名', with: 'EditName'
+      fill_in '料理', with: 'EditName'
     end
-    click_on '更新する'
+    click_on '更新'
 
     expect(page).to have_content 'EditName'
   end
