@@ -2,12 +2,12 @@
   <div class="flex justify-between items-center">
     <div class="flex justify-start items-center ml-2 my-3 font-bold text-wrap">
       <%= image_tag remark.user.icon, class: 'icon mr-2' %>
-      <%= "#{remark.content}" %>
+      <%= remark.content %>
     </div>
 
     <div class="mr-2 flex-shrink-0">
       <% if remark.editable?(current_user) %>
-        <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark), class: "mr-2" do %>
+        <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark), class: 'mr-2' do %>
           <i class="fa-solid fa-pen"></i>
         <% end %>
       <% end %>

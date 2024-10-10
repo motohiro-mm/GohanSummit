@@ -18,8 +18,8 @@
       <div class="flex flex-wrap gap-4 justify-between">
         <% User.icons.keys.each do |icon| %>
           <label class="icon_option">
-          <%= form.radio_button :icon, icon, class: "hidden_radio" %>
-          <%= image_tag icon, class: "icon_image" %>
+          <%= form.radio_button :icon, icon, class: 'hidden_radio' %>
+          <%= image_tag icon, class: 'icon_image' %>
           </label>
         <% end %>
       </div>
@@ -32,8 +32,8 @@
   <div class="my-8">
     アカウントを削除すると、献立表を共有しているユーザーがいない場合は献立表のデータも削除されます。<br>
     献立表を共有するユーザーが残っている場合、献立表は残ります。
-    <div class="flex justify-end">
-      <%= button_to 'アカウントを削除する', user_path, method: :delete, data: { turbo_confirm: '本当に削除して良いですか？' } , class: "mt-4 border-b-4 border-orange-950/10" %>
+    <div class="text-right">
+      <%= button_to 'アカウントを削除する', user_path, method: :delete, data: { turbo_confirm: '本当に削除して良いですか？' }, class: 'mt-4 border-b-4 border-orange-950/10' %>
     </div>
   </div>
 </div>

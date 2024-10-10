@@ -9,17 +9,16 @@
     </div>
 
     <nav class="flex items-center space-x-3">
-      <%= link_to "", calendar.url_for_previous_view,
+      <%= link_to '', calendar.url_for_previous_view,
                   class: 'arrow_left hover:underline' %>
       <%= link_to t('simple_calendar.month.today'), calendar.url_for_today_view,
                   class: 'hover:underline' %>
-      <%= link_to "", calendar.url_for_next_view,
+      <%= link_to '', calendar.url_for_next_view,
                   class: 'arrow_right hover:underline' %>
     </nav>
 
     <div class="flex mr-2">
-      <%= link_to meal_plans_path, data: { turbo_frame: '_top' },
-                  class: 'flex items-center' do %>
+      <%= link_to meal_plans_path, data: { turbo_frame: '_top' }, class: 'flex items-center' do %>
         <i class="fa-regular fa-rectangle-list text-2xl"></i>
       <% end %>
     </div>

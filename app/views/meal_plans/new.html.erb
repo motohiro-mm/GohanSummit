@@ -1,7 +1,6 @@
 <div class="mx-auto p-4 w-full">
   <div class="flex justify-center">
-    <%= link_to meal_plans_path(start_date: @meal_plan.meal_date),
-              class: 'inline-block flex items-center mr-4' do %>
+    <%= link_to meal_plans_path(start_date: @meal_plan.meal_date), class: 'inline-block flex items-center mr-4' do %>
       <i class="fa-regular fa-rectangle-list text-xl"></i>
       <span class="ml-2 text-l">献立表へ</span>
     <% end %>

@@ -10,7 +10,7 @@
               <i class="fa-regular fa-comments text-xl text-white"></i>
               <span class="ml-1 text-l text-white">会議へ</span>
             <% end %>
-            <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, class: "plus_icon" %>
+            <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, class: 'plus_icon' %>
           </div>
         <% else %>
           <div class="flex justify-around items-center">
@@ -22,7 +22,7 @@
                 </li>
               <% end %>
             </ul>
-            <%= link_to '', meal_plan, data: { turbo_frame: '_top' }, class: "right_caret inline-block" %>
+            <%= link_to '', meal_plan, data: { turbo_frame: '_top' }, class: 'right_caret inline-block' %>
           </div>
         <% end %>
       <% end %>

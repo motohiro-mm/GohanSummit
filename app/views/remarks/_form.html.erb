@@ -14,11 +14,11 @@
   <% end %>
   <div class="flex justify-around items-center">
     <% if remark.persisted? %>
-      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete,  class: 'inline-block text-2xl text-orange-950/70 cursor-pointer' do %>
+      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, class: 'inline-block text-2xl text-orange-950/70 cursor-pointer' do %>
         <i class="fa-solid fa-trash-can"></i>
       <% end %>
     <% end %>
-    <%= link_to meeting_room , class: 'inline-block text-2xl cursor-pointer text-orange-950/70' do %>
+    <%= link_to meeting_room, class: 'inline-block text-2xl cursor-pointer text-orange-950/70' do %>
       <i class="fa-solid fa-xmark"></i>
     <% end %>
   </div>

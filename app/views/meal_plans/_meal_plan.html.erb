@@ -14,12 +14,11 @@
     <% end %>
     <% if @meal_plan.meals.blank? %>
       <div class="text-center mt-4 p-4">
-        <%= link_to '', new_meal_plan_path(meal_date: @meal_plan.meal_date), data: { turbo_frame: '_top' }, class: "plus_icon" %>
+        <%= link_to '', new_meal_plan_path(meal_date: @meal_plan.meal_date), data: { turbo_frame: '_top' }, class: 'plus_icon' %>
       </div>
     <% else %>
-      <div class="flex justify-end">
-        <%= button_to 'この献立を削除する', @meal_plan, method: :delete,
-                      class: 'text-stone-500' %>
+      <div class="text-right">
+        <%= button_to 'この献立を削除する', @meal_plan, method: :delete, class: 'text-orange-950/70' %>
       </div>
     <% end %>
   </div>

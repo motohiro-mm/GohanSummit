@@ -11,10 +11,8 @@
 
   <div class="mb-6 mx-auto">
     <div class="flex justify-center">
-      <%= link_to '提案する', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal),
-                data: { turbo_frame: dom_id(Remark.new) },class: 'inline-block mx-2 my-4 rounded-full py-3 px-6 font-bold bg-orange-100/70' %>
-      <%= link_to 'コメントする', new_meeting_room_remark_path(@meeting_room, remark_type: :comment),
-                data: { turbo_frame: dom_id(Remark.new) }, class: 'inline-block mx-2 my-4 rounded-full py-3 px-3 font-bold bg-orange-100/70' %>
+      <%= link_to '提案する', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal), data: { turbo_frame: dom_id(Remark.new) }, class: 'inline-block mx-2 my-4 px-6 remark_button' %>
+      <%= link_to 'コメントする', new_meeting_room_remark_path(@meeting_room, remark_type: :comment), data: { turbo_frame: dom_id(Remark.new) }, class: 'inline-block mx-2 my-4 px-3 remark_button' %>
     </div>
     <%= turbo_frame_tag Remark.new %>
   </div>

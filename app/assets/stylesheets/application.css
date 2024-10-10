@@ -24,10 +24,19 @@ input:-webkit-autofill:focus {
     background-color: white !important;
 }
 
-.icon{
+.icon {
     width: 30px;
     height: 30px;
 }
+
+.remark_button {
+    border-radius: 9999px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-weight: 700;
+    background-color: rgba(255, 237, 213, 0.7);
+}
+
 
 .plus_icon {
     display: inline-block;
