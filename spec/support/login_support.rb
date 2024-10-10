@@ -12,6 +12,6 @@ module LoginSupport
                                })
     end
     visit root_path
-    click_on 'Googleでログイン'
+    click_on 'Googleでログイン', match: :first
   end
 end
