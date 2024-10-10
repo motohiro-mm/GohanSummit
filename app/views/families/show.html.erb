@@ -14,8 +14,8 @@
         URLをコピーして家族を献立表に招待しましょう。
       </div>
       <input id="copyTarget" type="text" value="<%= @family.invitation_url(request) %>" readonly autocomplete="off" class="block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50">
-      <div class="flex justify-center">
-        <button class="rounded-full inline-block text-center mt-4 py-3 px-4 bg-red-400 text-white" onclick="copyToClipboard()">共有URLをCopy</button>
+      <div class="text-center">
+        <button class="rounded-full inline-block mt-4 py-3 px-4 bg-red-400 text-white" onclick="copyToClipboard()">共有URLをCopy</button>
       </div>
     </div>
     <strong class="block font-bold text-lg">この献立表のユーザー</strong>
