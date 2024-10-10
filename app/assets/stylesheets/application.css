@@ -171,3 +171,25 @@ input:-webkit-autofill:focus {
 .box .inner{
     padding: 1.2em .5em .5em;
 }
+
+.checkbox-3 {
+    border: none;
+}
+
+.checkbox-3 label {
+    align-items: center;
+    padding: 0.75rem;
+    border: 0.1rem dashed #ff9142;
+    border-radius: 1.8rem;
+    cursor: pointer;
+}
+
+
+.checkbox-3 input {
+    display: none;
+}
+
+.checkbox-3 input[type='radio']:checked + label {
+    background-color: #ff9142;
+    color: #fff;
+}
