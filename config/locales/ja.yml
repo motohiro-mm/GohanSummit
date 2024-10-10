@@ -154,8 +154,8 @@ ja:
       prompt: 選択してください
     submit:
       create: 登録
-      submit: 保存
-      update: 保存
+      submit: 登録
+      update: 更新
   number:
     currency:
       format:

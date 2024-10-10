@@ -2,12 +2,12 @@
   <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal.timing}") %></strong>
 
   <div class="my-5">
-    <strong class="block font-medium mb-1"><%= Meal.human_attribute_name(:name) %></strong>
+    <strong class="block mb-1"><%= Meal.human_attribute_name(:name) %></strong>
     <span class="block rounded-md px-3 py-2"><%= meal.name %></span>
   </div>
 
   <div class="my-5">
-    <strong class="block font-medium mb-1"><%= Meal.human_attribute_name(:memo) %></strong>
+    <strong class="block mb-1"><%= Meal.human_attribute_name(:memo) %></strong>
     <span class="block rounded-md px-3 py-2"><%= format_line_break(meal.memo) %></span>
   </div>
 </div>

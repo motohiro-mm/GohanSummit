@@ -1,6 +1,6 @@
 <%= form_with(model: meal_plan, class: 'contents') do |form| %>
   <div class="my-5">
-    <h1 class="font-bold text-2xl items-center"><%= l meal_plan.meal_date, format: :long %></h1>
+    <h1 class="font-bold text-2xl"><%= l meal_plan.meal_date, format: :long %></h1>
     <%= form.hidden_field :meal_date %>
 
     <%= form.fields_for :meals, meal_plan.meals_sort_by_timing do |meal_form| %>
@@ -8,13 +8,13 @@
         <%= meal_form.hidden_field :timing, value: meal_timing(meal_form) %>
         <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal_timing(meal_form)}") %></strong>
         <div class="my-5">
-          <%= meal_form.label :name, class: 'block font-medium mb-1' %>
+          <%= meal_form.label :name, class: 'block mb-1' %>
           <%= meal_form.text_field :name,
                                    class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
         </div>
 
         <div class="my-5">
-          <%= meal_form.label :memo, class: 'block font-medium mb-1' %>
+          <%= meal_form.label :memo, class: 'block mb-1' %>
           <%= meal_form.text_area :memo, rows: 1,
                                          class: 'block  rounded-md border border-red-950/20 px-3 py-2 w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
         </div>

@@ -1,14 +1,12 @@
-<div class="mx-auto  w-full">
-  <div class="p-8 w-full ">
-    <div class="flex justify-around">
-      <%= link_to meal_plans_path(start_date: @meal_plan.meal_date),
-                class: 'inline-block mr-4 mb-4 rounded-full py-3 px-4 items-center' do %>
-        <i class="fa-regular fa-rectangle-list text-xl"></i>
-        <span class="ml-2 text-l">一覧へ</span>
-      <% end %>
-    </div>
-    <div class="mt-4">
-      <%= render 'form', meal_plan: @meal_plan %>
-    </div>
+<div class="mx-auto p-4 w-full">
+  <div class="flex justify-center items-center">
+    <%= link_to meal_plans_path(start_date: @meal_plan.meal_date),
+              class: 'inline-block mr-4' do %>
+      <i class="fa-regular fa-rectangle-list text-xl"></i>
+      <span class="ml-2 text-l">献立表へ</span>
+    <% end %>
+  </div>
+  <div>
+    <%= render 'form', meal_plan: @meal_plan %>
   </div>
 </div>
