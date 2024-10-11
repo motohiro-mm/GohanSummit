@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     user = User.find_or_new_from_auth_hash(request.env['omniauth.auth'])
     user.find_or_new_family(request.env['omniauth.params']['invitation_token']) if user.family_id.nil?
     if user.save
-      log_in user
+      session[:user_id] = user.id
       redirect_to meal_plans_path, notice: 'ログインに成功しました'
     else
       redirect_to root_path, notice: 'ログインに失敗しました'
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    reset_session
     redirect_to root_path, notice: 'ログアウトしました'
   end
 end
