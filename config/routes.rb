@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
-  resources :sessions, only: %i[create destroy]
+
   resource :user, only: %i[update destroy]
   get 'user', to: 'users#edit', as: 'edit_user'
   get 'family', to: 'families#show', as: 'family'
