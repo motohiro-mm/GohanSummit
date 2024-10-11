@@ -19,27 +19,9 @@
   </head>
 
   <body class="max-w-screen-sm mx-auto h-screen flex flex-col">
-    <header class="h-14 px-4 flex justify-between bg-orange-200 w-full z-10 max-w-screen-sm">
-      <div class="">
-        header
-        <%# if current_user %>
-          <%#= image_tag current_user.icon, class: '' %>
-          <%#= link_to "#{current_user.name}さん", edit_user_path, class: '' %>
-          <%#= link_to '共有ページへ', family_path, class: '' %>
-          <%#= link_to 'ログアウト', log_out_path, class: '' %>
-        <%# else %>
-<!--          <span class="">ゲストさん</span>-->
-        <%# end %>
-<!--      </div>-->
-<!--      <div>-->
-        <%#= link_to '< home', root_path, class: '' %>
-        <%# if current_user %>
-          <%#= link_to '使い方', about_path, class: '' %>
-        <%# end %>
-        <%#= link_to '利用規約', terms_path, class: '' %>
-        <%#= link_to 'プライバシーポリシー', privacy_path, class: '' %>
-      </div>
-    </header>
+    <% unless current_page?(root_path) %>
+        <%= render  'shared/header' %>
+    <% end %>
     <main class="flex-1 bg-white text-orange-950">
       <%= yield %>
     </main>
