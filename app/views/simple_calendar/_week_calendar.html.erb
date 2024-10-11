@@ -28,7 +28,7 @@
     <tbody>
     <% date_range.each do |day| %>
       <tr class="<%= css_class_day(day) %> border-t border-dashed border-orange-900/10">
-        <th class="w-1/4 items-center text-left p-3 font-semibold text-orange-900/70">
+        <th class="w-1/4 items-center text-left p-3 font-semibold text-orange-950/70">
           <span class="ml-3"><%= l day, format: :short %></span>
           <p class="flex ml-6">
             <%= t('date.abbr_day_names')[day.wday] %>
