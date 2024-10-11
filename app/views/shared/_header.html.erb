@@ -3,7 +3,7 @@
     <%= link_to image_tag('logo_small.png', class: 'h-11'), root_path %>
   </div>
   <div class="flex justify-between items-center">
-    <% if current_user %>
+    <% if logged_in? %>
       <%= link_to image_tag(current_user.icon, class: 'icon mx-2'), user_path %>
       <%= render 'shared/menu' %>
     <% end %>
