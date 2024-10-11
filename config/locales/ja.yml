@@ -182,9 +182,9 @@ ja:
           quadrillion: 千兆
           thousand: 千
           trillion: 兆
-          unit: ''
+          unit: ""
       format:
-        delimiter: ''
+        delimiter: ""
         precision: 3
         significant: true
         strip_insignificant_zeros: true
@@ -200,11 +200,11 @@ ja:
           tb: TB
     percentage:
       format:
-        delimiter: ''
+        delimiter: ""
         format: "%n%"
     precision:
       format:
-        delimiter: ''
+        delimiter: ""
   support:
     array:
       last_word_connector: "、"
@@ -215,7 +215,7 @@ ja:
     formats:
       default: "%_m月%-e日%-k時%M分"
       long: "%Y/%m/%d %H:%M"
-      medium: '%Y年%_m月%-e日'
+      medium: "%Y年%_m月%-e日"
       short: "%m/%d %H:%M"
       without_date: "%k:%M"
     pm: 午後
