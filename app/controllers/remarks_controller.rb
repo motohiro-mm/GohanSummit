@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RemarksController < ApplicationController
-  before_action :set_meeting_room, only: %i[new edit update destroy]
+  before_action :set_meeting_room, only: %i[new create edit update destroy]
   before_action :set_remark, only: %i[edit update destroy]
   def new
     @remark = Remark.build(remark_type: params[:remark_type])
@@ -12,7 +12,11 @@ class RemarksController < ApplicationController
   def create
     @remark = current_user.remarks.build(remark_params)
     if @remark.save
-      # flash.now.notice = 'Remark was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to meeting_room_remarks_path(@meeting_room), notice: "Date was successfully created." }
+        # format.turbo_stream { flash.now[:notice] = "Date was successfully created." }
+        format.turbo_stream
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -20,7 +24,11 @@ class RemarksController < ApplicationController
 
   def update
     if @remark.update(remark_params)
-      redirect_to meeting_room_url(@meeting_room), notice: 'Remark was successfully updated.', status: :see_other
+      respond_to do |format|
+        format.html { redirect_to meeting_room_remarks_path(@meeting_room), notice: "Item was successfully updated." }
+        # format.turbo_stream { flash.now[:notice] = "Item was successfully updated." }
+        format.turbo_stream
+      end
     else
       render :edit, status: :unprocessable_entity
     end
@@ -28,7 +36,12 @@ class RemarksController < ApplicationController
 
   def destroy
     @remark.destroy!
-    # flash.now.notice = 'Remark was successfully destroyed.', status: :see_other
+
+    respond_to do |format|
+      format.html { redirect_to meeting_room_remarks_path(@meeting_room), notice: "Item was successfully destroyed.", status: :see_other }
+      # format.turbo_stream { flash.now[:notice] = "Date was successfully destroyed." }
+      format.turbo_stream
+    end
   end
 
   private
