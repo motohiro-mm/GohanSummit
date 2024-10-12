@@ -22,9 +22,11 @@ class MealPlansController < ApplicationController
     @meal_plan = current_user.family.meal_plans.find_or_initialize_by(meal_date: meal_plan_params[:meal_date])
     @meal_plan.assign_attributes(meal_plan_params)
 
+
     if @meal_plan.save
       redirect_to @meal_plan, notice: '献立を作成しました。'
     else
+      @meal_plan.meals_build
       render :new, status: :unprocessable_entity
     end
   end
@@ -33,6 +35,7 @@ class MealPlansController < ApplicationController
     if @meal_plan.update_meal_plan(meal_plan_params)
       redirect_to @meal_plan
     else
+      @meal_plan.meals_build
       render :edit, status: :unprocessable_entity
     end
   end

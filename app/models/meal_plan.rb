@@ -6,18 +6,16 @@ class MealPlan < ApplicationRecord
   has_many :meals, dependent: :destroy
 
   validates :meal_date, presence: true, uniqueness: { scope: :family_id }
+  validate :has_at_least_a_meal
 
   accepts_nested_attributes_for :meals, allow_destroy: true, reject_if: :reject_timing
-
-  def reject_timing(attributes)
-    attributes.except(:timing).values.all?(&:blank?)
-  end
 
   def update_meal_plan(attributes)
     if attributes[:meals_attributes].keys.size == 1
       create_or_update_meals_by_proposal(attributes)
     else
-      update(attributes)
+      assign_attributes(attributes)
+      return unless save
       destroy_unnecessary_meals(attributes)
     end
   end
@@ -52,5 +50,16 @@ class MealPlan < ApplicationRecord
 
   def start_time
     meal_date
+  end
+  def has_at_least_a_meal
+    if meals.map{|meal|meal[:name]}.join.blank?
+      errors.add(:base, "料理名を最低1つ入力してください")
+    end
+  end
+
+  private
+
+  def reject_timing(attributes)
+    attributes.except(:timing).values.all?(&:blank?)
   end
 end
