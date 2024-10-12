@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :remarks, dependent: :nullify
 
   validates :name, presence: true
-  validates :name, length: {maximum: 20}
+  validates :name, length: { maximum: 20 }
 
   enum :icon, {
     'man.png': 0,

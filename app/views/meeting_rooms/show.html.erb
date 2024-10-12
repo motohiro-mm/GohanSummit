@@ -23,7 +23,7 @@
       </h2>
         <div id="proposals" class="inner">
           <% @remarks.filter(&:proposal?).each do |remark| %>
-            <%= turbo_frame_tag "proposal" do %>
+            <%= turbo_frame_tag 'proposal' do %>
               <%= render 'remarks/proposal', remark: %>
             <% end %>
           <% end %>
@@ -36,7 +36,7 @@
       </h2>
         <div id="comments" class="grid gap">
           <% @remarks.filter(&:comment?).each do |remark| %>
-            <%= turbo_frame_tag "comment" do %>
+            <%= turbo_frame_tag 'comment' do %>
               <%= render 'remarks/comment', remark: %>
             <% end %>
           <% end %>

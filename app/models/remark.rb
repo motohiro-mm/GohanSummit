@@ -7,7 +7,7 @@ class Remark < ApplicationRecord
   validates :remark_type, presence: true
   validates :content, presence: true
 
-  enum :remark_type, { proposal: 0, comment: 1 }, validate:true
+  enum :remark_type, { proposal: 0, comment: 1 }, validate: true
 
   def proposal?
     remark_type == 'proposal'
