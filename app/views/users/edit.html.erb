@@ -7,6 +7,15 @@
     <% end %>
   </div>
   <%= form_with(model: @user, class: 'contents') do |form| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <ul>
+          <% @user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="my-5">
       <%= form.label :name, class: 'block mb-1' %>
       <%= form.text_field :name,
