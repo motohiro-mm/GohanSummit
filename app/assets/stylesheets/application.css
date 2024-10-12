@@ -49,7 +49,6 @@ input:-webkit-autofill:focus {
   border-color: #ff9142;
   position: relative;
   border-radius: 9999px;
-  z-index: 10;
 }
 
 .plus_icon::before {

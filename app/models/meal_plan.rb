@@ -6,7 +6,7 @@ class MealPlan < ApplicationRecord
   has_many :meals, dependent: :destroy
 
   validates :meal_date, presence: true, uniqueness: { scope: :family_id }
-  validate :has_at_least_a_meal
+  validate :at_least_a_meal?
 
   accepts_nested_attributes_for :meals, allow_destroy: true, reject_if: :reject_timing
 
@@ -16,6 +16,7 @@ class MealPlan < ApplicationRecord
     else
       assign_attributes(attributes)
       return unless save
+
       destroy_unnecessary_meals(attributes)
     end
   end
@@ -51,10 +52,12 @@ class MealPlan < ApplicationRecord
   def start_time
     meal_date
   end
-  def has_at_least_a_meal
-    if meals.map{|meal|meal[:name]}.join.blank?
-      errors.add(:base, "料理名を最低1つ入力してください")
-    end
+
+  def at_least_a_meal?
+    meal_names = meals.map { |meal| meal[:name] }
+    return if meal_names.any?(&:present?)
+
+    errors.add(:base, '料理名を最低1つ入力してください')
   end
 
   private

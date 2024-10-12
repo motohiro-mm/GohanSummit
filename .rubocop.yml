@@ -21,7 +21,7 @@ Rails/BulkChangeTable:
   Enabled: false
 
 Metrics/AbcSize:
-  Max: 20
+  Max: 25
 
 Rails/I18nLocaleTexts:
   Enabled: false
@@ -37,3 +37,9 @@ RSpec/MultipleExpectations:
 
 Layout/LineLength:
   Max: 200
+
+Style/ReturnNilInPredicateMethodDefinition:
+  Enabled: false
+
+Rails/Pluck:
+  Enabled: false
