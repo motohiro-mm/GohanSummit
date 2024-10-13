@@ -1,10 +1,12 @@
 <div class="mx-auto p-4 w-full">
-  <%= turbo_frame_tag @meal_plan do %>
-    <div class="mt-4">
-      <%= render 'form', meal_plan: @meal_plan %>
-    </div>
-    <div class="text-center">
-      <%= link_to 'キャンセル', @meal_plan, class: 'rounded-full py-3 px-4 text-red-9500/50 bg-stone-100 inline-block' %>
-    </div>
-  <% end %>
+  <%= render 'header_button', meal_plan: @meal_plan %>
+  <div class="mt-4">
+    <%= render 'form', meal_plan: @meal_plan %>
+  </div>
+  <div class="text-center">
+    <%= link_to 'キャンセル', @meal_plan, class: 'rounded-full py-3 px-4 text-red-9500/50 bg-stone-100 inline-block' %>
+  </div>
+  <div class="text-right my-4">
+    <%= button_to 'この献立を削除する', @meal_plan, method: :delete, class: 'text-orange-950/70' %>
+  </div>
 </div>

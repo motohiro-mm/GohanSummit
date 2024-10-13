@@ -32,7 +32,7 @@ class MealPlansController < ApplicationController
 
   def update
     if @meal_plan.update_meal_plan(meal_plan_params)
-      redirect_to @meal_plan
+      redirect_to @meal_plan, notice: '更新しました'
     else
       @meal_plan.meals_build
       render :edit, status: :unprocessable_entity
@@ -41,7 +41,7 @@ class MealPlansController < ApplicationController
 
   def destroy
     @meal_plan.meals.each(&:destroy!)
-    redirect_to meal_plans_path(meal_date: @meal_plan.meal_date), status: :see_other
+    redirect_to meal_plans_path(meal_date: @meal_plan.meal_date), notice: '削除しました', status: :see_other
   end
 
   def calendar

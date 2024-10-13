@@ -1,0 +1,7 @@
+<% if @remark.proposal? %>
+  <%= turbo_stream.replace "proposal", partial: "remarks/proposal", locals: {remark: @remark} %>
+<% else %>
+  <%= turbo_stream.replace "comment", partial: "remarks/comment", locals: {remark: @remark} %>
+<% end %>
+
+<%= turbo_stream.prepend "flash", partial: "layouts/flash" %>
