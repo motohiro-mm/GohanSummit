@@ -22,6 +22,9 @@
     <% unless current_page?(root_path) %>
         <%= render 'shared/header' %>
     <% end %>
+    <div id="flash" class="flash">
+      <%= render "layouts/flash" %>
+    </div>
     <main class="flex-1 bg-white text-orange-950">
       <%= yield %>
     </main>
