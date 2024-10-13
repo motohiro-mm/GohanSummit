@@ -1,8 +1,9 @@
 <% flash.each do |flash_type, message| %>
-  <div class="flash__message font-bold">
-<!--    data-controller="removals"-->
-<!--    data-action="animationend->removals#remove"-->
-<!--  >-->
-    <%= message %>
+  <div data-controller="flash" data-flash-dismiss-after-value="5000" data-transition-enter="ease-in-out duration-500" data-transition-enter-from="translate-x-full opacity-0" data-transition-enter-to="translate-x-0 opacity-100" data-transition-leave="ease-in-out duration-500" data-transition-leave-from="translate-x-0 opacity-100" data-transition-leave-to="translate-x-full opacity-0" class="mb-4 rounded relative bg-orange-300/90 text-white translate-x-0 opacity-100">
+    <div class="flex items-center">
+      <p class="m-2 p-2 text-sm">
+        <%= message %>
+      </p>
+    </div>
   </div>
 <% end %>
