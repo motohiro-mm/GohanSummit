@@ -5,3 +5,4 @@
 <% end %>
 
 <%= turbo_stream.update Remark.new, "" %>
+<%= turbo_stream.prepend "flash", partial: "layouts/flash" %>

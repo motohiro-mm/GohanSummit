@@ -1,0 +1,11 @@
+<div class="flex justify-around">
+  <%= button_to meeting_rooms_path(meal_plan:, meal_date: meal_plan.meal_date), method: :post, class: 'rounded-full py-3 px-4 bg-red-400 inline-block' do %>
+    <i class="fa-regular fa-comments text-xl text-white"></i>
+    <span class="ml-1 text-white">会議へ</span>
+  <% end %>
+  <%= link_to meal_plans_path(start_date: meal_plan.meal_date),
+              class: 'inline-block flex items-center' do %>
+    <i class="fa-regular fa-rectangle-list text-xl"></i>
+    <span class="ml-2">献立表へ</span>
+  <% end %>
+</div>
