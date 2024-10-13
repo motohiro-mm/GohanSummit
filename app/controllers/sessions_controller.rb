@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user.find_or_new_family(request.env['omniauth.params']['invitation_token']) if user.family_id.nil?
     if user.save
       session[:user_id] = user.id
-      redirect_to meal_plans_path, notice: 'ログインに成功しました'
+      redirect_to meal_plans_path, notice: 'ログインしました'
     else
       redirect_to root_path, notice: 'ログインに失敗しました'
     end

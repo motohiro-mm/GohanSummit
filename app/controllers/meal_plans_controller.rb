@@ -23,7 +23,7 @@ class MealPlansController < ApplicationController
     @meal_plan.assign_attributes(meal_plan_params)
 
     if @meal_plan.save
-      redirect_to @meal_plan, notice: '献立を作成しました。'
+      redirect_to @meal_plan, notice: '献立を作成しました'
     else
       @meal_plan.meals_build
       render :new, status: :unprocessable_entity
