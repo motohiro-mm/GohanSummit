@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'MealPlans', type: :system do
   let(:user) { create(:user) }
-  let(:meal_plan) { create(:meal_plan, family: user.family) }
+  let(:meal_plan) { create(:meal_plan, :skip_validation, family: user.family) }
   let!(:meal_breakfast) { create(:meal, :breakfast, meal_plan:) }
   let!(:meal_lunch) { create(:meal, :lunch, meal_plan:) }
   let!(:meal_dinner) { create(:meal, :dinner, meal_plan:) }
