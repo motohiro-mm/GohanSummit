@@ -21,22 +21,26 @@
       <h2 class="font-bold text-xl">
         <span><i class="fa-solid fa-utensils mr-2"></i>候補</span>
       </h2>
-      <div id="proposals" class="inner">
-        <% @remarks.filter(&:proposal?).each do |remark| %>
-          <%= render 'remarks/proposal', remark: %>
-        <% end %>
-      </div>
+        <div id="proposals" class="inner">
+          <% @remarks.filter(&:proposal?).each do |remark| %>
+            <%= turbo_frame_tag 'proposal' do %>
+              <%= render 'remarks/proposal', remark: %>
+            <% end %>
+          <% end %>
+        </div>
     </div>
     <div class="mt-6">
       <h2 class="font-bold text-xl mb-4">
         <i class="fa-regular fa-comment fa-flip-horizontal"></i>
         <span>コメント</span>
       </h2>
-      <div id="comments" class="grid gap-y-2">
-        <% @remarks.filter(&:comment?).each do |remark| %>
-          <%= render 'remarks/comment', remark: %>
-        <% end %>
-      </div>
+        <div id="comments" class="grid gap">
+          <% @remarks.filter(&:comment?).each do |remark| %>
+            <%= turbo_frame_tag 'comment' do %>
+              <%= render 'remarks/comment', remark: %>
+            <% end %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>

@@ -4,7 +4,10 @@ class Remark < ApplicationRecord
   belongs_to :meeting_room
   belongs_to :user
 
-  enum :remark_type, { proposal: 0, comment: 1 }
+  validates :remark_type, presence: true
+  validates :content, presence: true
+
+  enum :remark_type, { proposal: 0, comment: 1 }, validate: true
 
   def proposal?
     remark_type == 'proposal'

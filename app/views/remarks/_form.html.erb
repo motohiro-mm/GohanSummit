@@ -1,5 +1,14 @@
 <%= turbo_frame_tag remark do %>
   <%= form_with model: [meeting_room, remark]  do |form| %>
+    <% if remark.errors.any? %>
+      <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+        <ul>
+          <% remark.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="flex justify-between">
       <%= form.hidden_field :remark_type %>
       <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>

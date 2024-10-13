@@ -4,6 +4,9 @@ class User < ApplicationRecord
   belongs_to :family
   has_many :remarks, dependent: :nullify
 
+  validates :name, presence: true
+  validates :name, length: { maximum: 20 }
+
   enum :icon, {
     'man.png': 0,
     'king.png': 1,
@@ -14,7 +17,7 @@ class User < ApplicationRecord
     'eagle.png': 6,
     'apple.png': 7,
     'chimpanzee.png': 8
-  }
+  }, validate: true
 
   ICON = {
     man: 'man.png',
