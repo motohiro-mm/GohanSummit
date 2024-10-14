@@ -12,7 +12,7 @@
     以下のボタンからログインすると、献立表の情報を共有できます。
   </p>
   <div class="m-4">
-    <%= button_to 'Googleでログイン', google_oauth2_path, method: :post, data: { turbo: false }, class: 'rounded-full py-3 px-4 bg-red-400 inline-block text-white' %>
+    <%= button_to 'Googleでログイン', google_oauth2_path(@invitation_token), method: :post, data: { turbo: false }, class: 'rounded-full py-3 px-4 bg-red-400 inline-block text-white' %>
   </div>
   <div class="mb-8">
     <span>
