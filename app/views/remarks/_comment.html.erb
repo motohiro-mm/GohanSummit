@@ -1,5 +1,6 @@
+<%= turbo_stream_from remark.meeting_room, 'comment' %>
 <%= turbo_frame_tag remark do %>
-  <div class="my-1 border-b border-dashed border-orange-950/10 pb-4">
+  <div id="remark_<%= remark.id %>" class="my-1 border-b border-dashed border-orange-950/10 pb-4">
     <div class="flex justify-between my-3">
       <div class="flex items-center">
         <%= image_tag remark.user.icon, class: 'icon mr-2' %>

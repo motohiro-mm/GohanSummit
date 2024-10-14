@@ -1,5 +1,6 @@
+<%= turbo_stream_from remark.meeting_room, 'proposal' %>
 <%= turbo_frame_tag remark do %>
-  <div class="flex justify-between items-center">
+  <div id="remark_<%= remark.id %>" class="flex justify-between items-center">
     <div class="flex justify-start items-center ml-2 my-3 font-bold text-wrap">
       <%= image_tag remark.user.icon, class: 'icon mr-2' %>
       <%= remark.content %>
