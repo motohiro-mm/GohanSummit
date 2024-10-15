@@ -1,15 +1,15 @@
 <div class="mx-auto p-4 w-full text-center">
-  <div class="m-4">
-    ロゴ!おきかえる
-  </div>
-  <p class="mx-4 my-8">
+  <p class="m-4">
     ごはんサミットへようこそ！<br>
     ごはんサミットは、<br>
     献立の相談と献立表の共有ができるアプリです。
   </p>
-  <p class="mx-4 my-8 font-bold">
+  <div class="w-2/3 mx-auto mb-8">
+    <%= image_tag('home/logo_large.png', class: 'text-center') %>
+  </div>
+  <p class="mx-4 font-bold">
     家族から招待されています！<br>
-    以下のボタンからログインすると、献立表の情報を共有できます。
+    以下のボタンからログインすると献立表を共有できます。
   </p>
   <div class="m-4">
     <%= button_to 'Googleでログイン', google_oauth2_path(@invitation_token), method: :post, data: { turbo: false }, class: 'rounded-full py-3 px-4 bg-red-400 inline-block text-white' %>
