@@ -29,6 +29,11 @@ input:-webkit-autofill:focus {
   height: 30px;
 }
 
+.page-icon {
+  width: 24px;
+  height: 24px;
+}
+
 .meal-icon {
   width: 22px;
   height: 22px;
