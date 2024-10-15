@@ -10,7 +10,7 @@ class MealPlansController < ApplicationController
   def show; end
 
   def new
-    @meal_plan = MealPlan.build(meal_date: params[:meal_date])
+    @meal_plan = current_user.family.meal_plans.find_or_initialize_by(meal_date: params[:meal_date])
     @meal_plan.meals_build
   end
 

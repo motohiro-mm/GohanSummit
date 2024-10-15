@@ -8,17 +8,19 @@
             <%= date.day %>
           </p>
 
-          <div class="block">
+          <div class="block mt-4">
             <% if meal_plan.blank? || meal_plan.meals.blank? %>
-              <%= '未定' %>
+              <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, class: 'plus_icon relative mt-2 opacity-50' %>
             <% else %>
-              <ul>
-                <% meal_plan.meals_sort_by_timing.each do |meal| %>
-                  <li class="truncate">
-                    <%= meal.name %>
-                  </li>
-                <% end %>
-              </ul>
+              <%= link_to meal_plan, data: { turbo_frame: '_top' } do %>
+                <ul>
+                  <% meal_plan.meals_sort_by_timing.each do |meal| %>
+                    <li class="truncate text-left">
+                      <%= meal.name %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
             <% end %>
           </div>
         </div>
