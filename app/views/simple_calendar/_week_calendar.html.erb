@@ -1,7 +1,7 @@
 <div>
   <div class="flex justify-around p-2">
     <div class="flex items-center">
-      <span class="font-bold">
+      <span class="font-semibold">
         <time datetime="<%= start_date.strftime('%Y-%m') %>">
           <%= "#{start_date.year}年" %>
         </time>
@@ -19,7 +19,7 @@
 
     <div class="flex mr-2">
       <%= link_to meal_plans_calendar_path, data: { turbo_frame: '_top' }, class: 'flex items-center' do %>
-        <i class="fa-regular fa-calendar-days text-2xl "></i>
+        <%= image_tag('pages/calendar', class: 'icon text-center') %>
       <% end %>
     </div>
   </div>
@@ -28,14 +28,14 @@
     <tbody>
     <% date_range.each do |day| %>
       <tr class="<%= css_class_day(day) %> border-t border-dashed border-orange-900/10">
-        <th class="w-1/4 items-center text-left p-3 font-semibold text-orange-950/70">
+        <th class="w-1/5 items-center text-left p-3 text-orange-950/70">
           <span class="ml-3"><%= l day, format: :short %></span>
           <p class="flex ml-6">
             <%= t('date.abbr_day_names')[day.wday] %>
           </p>
         </th>
 
-        <td class="w-3/4 p-3">
+        <td class="w-5/6 p-3">
           <%= content_tag :div, class: calendar.td_classes_for(day) do %>
             <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
           <% end %>
