@@ -1,6 +1,6 @@
 <div>
-  <div class="flex justify-around p-2">
-    <div class="flex items-center">
+  <div class="relative ml-6 my-2 min-h-10 flex items-center">
+    <div class="absolute left-0 w-1/4 flex">
       <span class="font-bold">
         <time datetime="<%= start_date.strftime('%Y-%m') %>">
           <%= l start_date, format: :year_month %>
@@ -8,7 +8,7 @@
       </span>
     </div>
 
-    <nav class="flex items-center space-x-3">
+    <nav class="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-3">
       <%= link_to '', calendar.url_for_previous_view,
                   class: 'arrow_left hover:underline' %>
       <%= link_to t('simple_calendar.month.today'), calendar.url_for_today_view,
@@ -16,12 +16,6 @@
       <%= link_to '', calendar.url_for_next_view,
                   class: 'arrow_right hover:underline' %>
     </nav>
-
-    <div class="flex mr-2">
-      <%= link_to meal_plans_path, data: { turbo_frame: '_top' }, class: 'flex items-center' do %>
-        <i class="fa-regular fa-rectangle-list text-2xl"></i>
-      <% end %>
-    </div>
   </div>
 
   <table class="w-full table-fixed border-collapse">

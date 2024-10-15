@@ -35,14 +35,12 @@ RSpec.describe 'MealPlans', type: :system do
 
   it '献立を詳細表示する' do
     visit meal_plans_path(start_date: meal_plan.meal_date)
-    within ".#{css_class_day(meal_plan.meal_date)}" do
-      find('.right_caret').click
-    end
+    click_on meal_breakfast.name
 
-    expect(page).to have_css 'h1', text: I18n.l(meal_plan.meal_date, format: :long)
-    expect(page).to have_content meal_breakfast.name
-    expect(page).to have_content meal_lunch.name
-    expect(page).to have_content meal_dinner.name
+    expect(page).to have_text I18n.l(meal_plan.meal_date, format: :long)
+    expect(page).to have_content meal_breakfast.memo
+    expect(page).to have_content meal_lunch.memo
+    expect(page).to have_content meal_dinner.memo
   end
 
   it '献立を編集する' do
