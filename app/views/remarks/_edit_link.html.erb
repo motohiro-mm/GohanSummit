@@ -1,0 +1,8 @@
+<span id="remark-<%= remark.id %>-edit-link">
+<%= turbo_stream_from current_user, 'edit_link' %>
+<% if remark.editable?(current_user) %>
+  <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark) do %>
+    <i class="fa-solid fa-pen"></i>
+  <% end %>
+<% end %>
+</span>
