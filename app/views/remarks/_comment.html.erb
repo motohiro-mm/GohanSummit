@@ -6,11 +6,7 @@
         <%= image_tag remark.user.icon, class: 'icon mr-2' %>
         <%= l remark.created_at, format: :long %>
       </div>
-      <% if remark.editable?(current_user) %>
-        <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark), class: 'mr-2' do %>
-          <i class="fa-solid fa-pen"></i>
-        <% end %>
-      <% end %>
+      <%= render 'remarks/edit_link', remark: %>
     </div>
     <div class="mx-auto ml-6 md:w-3/4 break-all font-medium">
       <%= format_line_break(remark.content) %>

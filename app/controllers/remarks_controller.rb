@@ -12,6 +12,7 @@ class RemarksController < ApplicationController
   def create
     @remark = current_user.remarks.build(remark_params)
     if @remark.save
+      @remark.broadcast_of_create(current_user)
       respond_to do |format|
         format.html { redirect_to meeting_room_path(@meeting_room), notice: '投稿しました' }
         format.turbo_stream { flash.now[:notice] = '投稿しました' }
@@ -23,6 +24,7 @@ class RemarksController < ApplicationController
 
   def update
     if @remark.update(remark_params)
+      @remark.broadcast_of_update(current_user)
       respond_to do |format|
         format.html { redirect_to meeting_room_path(@meeting_room), notice: '更新しました' }
         format.turbo_stream { flash.now[:notice] = '更新しました' }
