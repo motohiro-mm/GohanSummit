@@ -8,26 +8,33 @@ class User < ApplicationRecord
   validates :name, length: { maximum: 20 }
 
   enum :icon, {
-    'man.png': 0,
-    'king.png': 1,
-    'girl.png': 2,
-    'clown.png': 3,
-    'fighter.png': 4,
-    'fish.png': 5,
-    'eagle.png': 6,
-    'apple.png': 7,
-    'chimpanzee.png': 8
+    'monkey.png': 0,
+    'dog.png': 1,
+    'cat.png': 2,
+    'pig.png': 3,
+    'rabbit.png': 4,
+    'panda.png': 5,
+    'lion.png': 6,
+    'cheetah.png': 7,
+    'sheep.png': 8,
+    'raccoon.png': 9,
+    'penguin.png': 10,
+    'crocodile.png': 11
   }, validate: true
 
   ICON = {
-    man: 'man.png',
-    king: 'king.png',
-    girl: 'girl.png',
-    clown: 'clown.png',
-    fighter: 'fighter.png',
-    eagle: 'eagle.png',
-    apple: 'apple.png',
-    chimpanzee: 'chimpanzee.png'
+    monkey: 'monkey.png',
+    dog: 'dog.png',
+    cat: 'cat.png',
+    pig: 'pig.png',
+    rabbit: 'rabbit.png',
+    panda: 'panda.png',
+    lion: 'lion.png',
+    cheetah: 'cheetah.png',
+    sheep: 'sheep.png',
+    raccoon: 'raccoon.png',
+    penguin: 'penguin.png',
+    crocodile: 'crocodile.png'
   }.freeze
 
   def self.find_or_new_from_auth_hash(auth_hash)
