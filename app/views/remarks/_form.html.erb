@@ -17,18 +17,18 @@
                                      class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
       </div>
       <%= form.button type: :submit, class: 'inline-block mx-auto cursor-pointer' do %>
-        <%= image_tag("pages/check", class: 'page-icon-big text-center') %>
+        <%= image_tag('pages/check', class: 'page-icon-big text-center') %>
       <% end %>
     </div>
   <% end %>
   <div class="flex justify-around items-center">
     <% if remark.persisted? %>
       <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, class: 'flex items-center inline-block cursor-pointer' do %>
-        <%= image_tag("pages/trash", class: 'icon text-center') %>
+        <%= image_tag('pages/trash', class: 'icon text-center') %>
       <% end %>
     <% end %>
     <%= link_to meeting_room, class: 'inline-block cursor-pointer' do %>
-      <%= image_tag("pages/cross_mark", class: 'page-icon-big hover_bg text-center') %>
+      <%= image_tag('pages/cross_mark', class: 'page-icon-big hover_bg text-center') %>
     <% end %>
   </div>
 <% end %>
