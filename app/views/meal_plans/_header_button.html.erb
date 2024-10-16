@@ -1,6 +1,6 @@
 <div class="flex justify-around my-1">
   <%= button_to meeting_rooms_path(meal_plan:, meal_date: meal_plan.meal_date), method: :post, class: 'meeting_room_button' do %>
-    <%= image_tag('pages/chat', class: 'meal-icon') %>
+    <%= image_tag('pages/chat_double.svg', class: 'meal-icon') %>
     <span class="ml-1 text-white">会議へ</span>
   <% end %>
   <%= link_to '献立表へ', meal_plans_path(start_date: meal_plan.meal_date), class: 'inline-block flex items-center mr-2' %>

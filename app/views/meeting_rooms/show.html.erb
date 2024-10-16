@@ -3,11 +3,8 @@
   <% content_for :title, '会議室' %>
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-2xl"><%= l @meeting_room.meal_plan.meal_date, format: :long %></h1>
-    <%= link_to meal_plans_path(start_date: @meeting_room.meal_plan.meal_date),
-                class: 'inline-block my-4 rounded-full flex items-center' do %>
-      <i class="fa-regular fa-rectangle-list text-xl"></i>
-      <span class="ml-2 text-md">献立表へ</span>
-    <% end %>
+    <%= link_to '献立表へ', meal_plans_path(start_date: @meeting_room.meal_plan.meal_date),
+                class: 'inline-block my-4 rounded-full flex items-center' %>
   </div>
 
   <div class="mb-6 mx-auto">
@@ -19,8 +16,8 @@
   </div>
   <div id="remarks">
     <div class="box border border-orange-950/50">
-      <h2 class="font-bold text-xl">
-        <span><i class="fa-solid fa-utensils mr-2"></i>候補</span>
+      <h2>
+        <span class="flex items-center justify-around text-xl w-24"><%= image_tag("pages/meal", class: 'page-icon text-center') %>候補</span>
       </h2>
         <div id="proposals" class="inner">
           <% @remarks.filter(&:proposal?).each do |remark| %>
@@ -31,8 +28,8 @@
         </div>
     </div>
     <div class="mt-6">
-      <h2 class="font-bold text-xl mb-4">
-        <i class="fa-regular fa-comment fa-flip-horizontal"></i>
+      <h2 class="flex items-center text-xl mb-2">
+        <%= image_tag("pages/chat_single", class: 'icon text-center') %>
         <span>コメント</span>
       </h2>
         <div id="comments" class="grid gap">
