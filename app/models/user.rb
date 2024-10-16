@@ -8,31 +8,31 @@ class User < ApplicationRecord
   validates :name, length: { maximum: 20 }
 
   enum :icon, {
-    'monkey.png': 0,
+    'chimpanzee.png': 0,
     'dog.png': 1,
     'cat.png': 2,
     'pig.png': 3,
     'rabbit.png': 4,
     'panda.png': 5,
-    'lion.png': 6,
-    'cheetah.png': 7,
-    'sheep.png': 8,
-    'raccoon.png': 9,
+    'tiger.png': 6,
+    'cow.png': 7,
+    'raccoon.png': 8,
+    'fox.png': 9,
     'penguin.png': 10,
     'crocodile.png': 11
   }, validate: true
 
   ICON = {
-    monkey: 'monkey.png',
+    chimpanzee: 'chimpanzee.png',
     dog: 'dog.png',
     cat: 'cat.png',
     pig: 'pig.png',
     rabbit: 'rabbit.png',
     panda: 'panda.png',
-    lion: 'lion.png',
-    cheetah: 'cheetah.png',
-    sheep: 'sheep.png',
+    tiger: 'tiger.png',
+    cow: 'cow.png',
     raccoon: 'raccoon.png',
+    fox: 'fox.png',
     penguin: 'penguin.png',
     crocodile: 'crocodile.png'
   }.freeze
