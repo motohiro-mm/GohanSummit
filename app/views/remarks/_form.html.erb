@@ -23,8 +23,8 @@
   <% end %>
   <div class="flex justify-around items-center">
     <% if remark.persisted? %>
-      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, class: 'flex items-center inline-block cursor-pointer' do %>
-        <%= image_tag('pages/trash', class: 'icon text-center') %>
+      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, class: 'flex items-center p-2 inline-block cursor-pointer' do %>
+        <%= image_tag('pages/trash', class: 'page-icon text-center') %>
       <% end %>
     <% end %>
     <%= link_to meeting_room, class: 'inline-block cursor-pointer' do %>

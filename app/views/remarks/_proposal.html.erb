@@ -2,7 +2,7 @@
 <%= turbo_frame_tag remark do %>
   <div id="remark_<%= remark.id %>" class="flex justify-between items-center">
     <div class="flex justify-start items-center ml-2 my-3 font-bold text-wrap">
-      <%= image_tag remark.user.icon, class: 'icon mr-2' %>
+      <%= image_tag "user_icons/#{remark.user.icon}", class: 'icon mr-2' %>
       <%= remark.content %>
     </div>
     <div class="mr-2 flex items-center flex-shrink-0 ">

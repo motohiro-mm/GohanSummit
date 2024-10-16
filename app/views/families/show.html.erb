@@ -18,7 +18,7 @@
 
     <% @family.users.each do |user| %>
       <div class="my-5 flex items-center">
-        <%= image_tag user.icon, class: 'icon' %>
+        <%= image_tag "user_icons/#{user.icon}", class: 'icon' %>
         <span class="ml-2"><%= user.name %></span>
       </div>
     <% end %>

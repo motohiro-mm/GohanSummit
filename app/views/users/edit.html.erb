@@ -22,7 +22,7 @@
         <% User.icons.keys.each do |icon| %>
           <label class="icon_option">
           <%= form.radio_button :icon, icon, class: 'hidden_radio' %>
-          <%= image_tag icon, class: 'icon_image' %>
+          <%= image_tag "user_icons/#{icon}", class: 'icon_image' %>
           </label>
         <% end %>
       </div>
