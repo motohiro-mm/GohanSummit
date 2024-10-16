@@ -5,7 +5,7 @@
       <%= image_tag remark.user.icon, class: 'icon mr-2' %>
       <%= remark.content %>
     </div>
-    <div class="mr-2 flex-shrink-0 ">
+    <div class="mr-2 flex items-center flex-shrink-0 ">
       <%= render 'remarks/edit_link', remark: %>
       <%= link_to '登録', new_meal_plan_meal_path(remark.meeting_room.meal_plan, remark:), data: { turbo_frame: '_top' }, class: 'rounded-full py-2 px-3 text-white bg-red-400 inline-block' %>
     </div>

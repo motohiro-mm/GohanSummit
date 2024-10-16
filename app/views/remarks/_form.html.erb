@@ -12,23 +12,23 @@
     <div class="flex justify-between">
       <%= form.hidden_field :remark_type %>
       <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>
-      <div class="my-5 w-full mx-auto md:w-3/4 ">
+      <div class="my-4 w-full mx-auto md:w-3/4 ">
         <%= form.text_area :content, rows: 1,
                                      class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
       </div>
-      <%= form.button type: :submit, class: 'inline-block mx-auto text-3xl text-red-400 cursor-pointer' do %>
-        <i class="fa-solid fa-circle-check"></i>
+      <%= form.button type: :submit, class: 'inline-block mx-auto cursor-pointer' do %>
+        <%= image_tag('pages/check', class: 'page-icon-big text-center') %>
       <% end %>
     </div>
   <% end %>
   <div class="flex justify-around items-center">
     <% if remark.persisted? %>
-      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, class: 'inline-block text-2xl text-orange-950/70 cursor-pointer' do %>
-        <i class="fa-solid fa-trash-can"></i>
+      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, class: 'flex items-center inline-block cursor-pointer' do %>
+        <%= image_tag('pages/trash', class: 'icon text-center') %>
       <% end %>
     <% end %>
-    <%= link_to meeting_room, class: 'inline-block text-2xl cursor-pointer text-orange-950/70' do %>
-      <i class="fa-solid fa-xmark"></i>
+    <%= link_to meeting_room, class: 'inline-block cursor-pointer' do %>
+      <%= image_tag('pages/cross_mark', class: 'page-icon-big hover_bg text-center') %>
     <% end %>
   </div>
 <% end %>

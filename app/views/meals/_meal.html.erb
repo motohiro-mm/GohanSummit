@@ -1,5 +1,8 @@
 <div id="<%= dom_id meal %>" class="border border-dashed border-red-900/10 rounded-lg p-4 my-5">
-  <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal.timing}") %></strong>
+  <div class="flex items-center">
+    <%= image_tag("meals/#{meal.timing}", class: 'page-icon text-center mr-2') %>
+    <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal.timing}") %></strong>
+  </div>
 
   <div class="my-5">
     <strong class="block mb-1"><%= Meal.human_attribute_name(:name) %></strong>
