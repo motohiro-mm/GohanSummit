@@ -1,5 +1,4 @@
 <div class="w-full">
-  <% content_for :title, '献立カレンダー' %>
   <%= turbo_frame_tag 'meal_plan_list' do %>
     <div>
       <%= month_calendar events: @meal_plans do |date, meal_plan| %>

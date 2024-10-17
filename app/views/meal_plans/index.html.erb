@@ -1,6 +1,4 @@
 <div class="w-full">
-  <% content_for :title, '献立表' %>
-
   <%= turbo_frame_tag 'meal_plan_list', data: { turbo_action: :advance } do %>
     <div>
       <%= week_calendar events: @meal_plans do |date, meal_plan| %>
