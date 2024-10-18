@@ -71,4 +71,4 @@ gem 'omniauth-rails_csrf_protection'
 
 gem 'simple_calendar'
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
+gem 'dockerfile-rails', '>= 1.6', group: :development
