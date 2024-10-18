@@ -17,7 +17,7 @@
               <ul class="w-4/5 mx-auto pl-4 inline-block">
                 <% meal_plan.meals_sort_by_timing.each do |meal| %>
                   <li class="flex justify-start items-center my-1">
-                    <%= image_tag("meals/#{meal.timing}", class: 'meal-icon text-center mr-2') %>
+                    <%= image_tag("meals/#{meal.timing}.svg", class: 'meal-icon text-center mr-2') %>
                     <%= meal.name %>
                   </li>
                 <% end %>

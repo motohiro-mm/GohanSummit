@@ -2,7 +2,7 @@
 <%= turbo_stream_from current_user, 'edit_link' %>
 <% if remark.editable?(current_user) %>
   <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark) do %>
-    <%= image_tag('pages/pen', class: 'page-icon text-center') %>
+    <%= image_tag('pages/pen.svg', class: 'page-icon text-center') %>
   <% end %>
 <% end %>
 </span>
