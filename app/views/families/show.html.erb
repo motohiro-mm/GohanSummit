@@ -11,7 +11,8 @@
       </div>
       <input id="copyTarget" type="text" value="<%= @family.invitation_url(request) %>" readonly autocomplete="off" class="block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50">
       <div class="text-center">
-        <%= button_tag '共有URLをコピーする', data: { controller: 'clipboard', action: 'clipboard#copy', clipboard_url_value: @family.invitation_url(request) }, class: "rounded-full inline-block mt-4 py-3 px-4 bg-red-400 text-white" %>
+        <%= button_tag '共有URLをコピーする', data: { controller: 'clipboard', action: 'clipboard#copy', clipboard_url_value: @family.invitation_url(request) },
+                                      class: 'rounded-full inline-block mt-4 py-3 px-4 bg-red-400 text-white' %>
       </div>
     </div>
     <strong class="block font-bold text-lg">この献立表のユーザー</strong>
