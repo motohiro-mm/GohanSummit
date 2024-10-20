@@ -2,7 +2,7 @@
   <%= turbo_frame_tag 'meal_plan_list' do %>
     <div>
       <%= month_calendar events: @meal_plans do |date, meal_plan| %>
-        <div>
+        <div class="hover:bg-orange-50/50 rounded-lg">
           <p>
             <%= date.day %>
           </p>
@@ -14,7 +14,7 @@
               <%= link_to meal_plan, data: { turbo_frame: '_top' } do %>
                 <ul>
                   <% meal_plan.meals_sort_by_timing.each do |meal| %>
-                    <li class="truncate text-left">
+                    <li class="truncate text-left text-xs">
                       <%= meal.name %>
                     </li>
                   <% end %>
