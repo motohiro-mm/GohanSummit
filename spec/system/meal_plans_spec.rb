@@ -45,7 +45,7 @@ RSpec.describe 'MealPlans', type: :system do
 
   it '献立を編集する' do
     visit meal_plan_path(meal_plan)
-    click_on '編集'
+    click_on 'edit_pen'
 
     within '#lunch' do
       fill_in '料理', with: 'EditName'

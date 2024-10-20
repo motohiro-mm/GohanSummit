@@ -1,17 +1,17 @@
-<%= turbo_stream_from remark.meeting_room, 'comment' %>
 <%= turbo_frame_tag remark do %>
-  <div id="remark_<%= remark.id %>" class="my-1 border-b border-dashed border-orange-950/10 pb-4">
-    <div class="flex justify-between my-3">
-      <div class="flex">
-        <%= image_tag "user_icons/#{remark.user.icon}", class: 'icon mr-2' %>
-        <span class="text-sm">
-          <%= l remark.created_at, format: :long %>
-        </span>
-      </div>
-      <%= render 'remarks/edit_link', remark: %>
+  <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark) do %>
+    <div id="remark_<%= remark.id %>" class="w-full my-1 border-b border-dashed border-orange-950/10 pb-4 hover:bg-orange-50/50 rounded-lg">
+        <div class="flex justify-between my-3">
+          <div class="flex">
+            <%= image_tag "user_icons/#{remark.user.icon}", class: 'icon mr-2' %>
+            <span class="text-sm">
+              <%= l remark.created_at, format: :long %>
+            </span>
+          </div>
+        </div>
+        <div class="mx-auto ml-7 px-3 break-all font-medium">
+          <%= format_line_break(remark.content) %>
+        </div>
     </div>
-    <div class="mx-auto ml-6 px-3 break-all font-medium">
-      <%= format_line_break(remark.content) %>
-    </div>
-  </div>
+  <% end %>
 <% end %>

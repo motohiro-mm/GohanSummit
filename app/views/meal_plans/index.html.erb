@@ -13,7 +13,7 @@
           </div>
         <% else %>
           <%= link_to meal_plan, data: { turbo_frame: '_top' } do %>
-            <div class=" text-left flex items-center h-full min-h-14 w-full">
+            <div class="text-left flex items-center h-full min-h-14 w-full hover:bg-orange-50/50 rounded-lg">
               <ul class="w-4/5 mx-auto pl-4 inline-block">
                 <% meal_plan.meals_sort_by_timing.each do |meal| %>
                   <li class="flex justify-start items-center my-1">
