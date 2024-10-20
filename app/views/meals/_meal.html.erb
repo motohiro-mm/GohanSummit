@@ -1,16 +1,18 @@
-<div id="<%= dom_id meal %>" class="border border-dashed border-red-900/10 rounded-lg p-4 my-5">
+<div id="<%= dom_id meal %>" class="border border-dashed border-red-900/10 rounded-lg p-4 my-4">
   <div class="flex items-center">
     <%= image_tag("meals/#{meal.timing}.svg", class: 'page-icon text-center mr-2') %>
     <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal.timing}") %></strong>
   </div>
 
-  <div class="my-5">
+  <div class="my-3">
     <strong class="block mb-1"><%= Meal.human_attribute_name(:name) %></strong>
     <span class="block rounded-md px-3 py-2"><%= meal.name %></span>
   </div>
 
-  <div class="my-5">
-    <strong class="block mb-1"><%= Meal.human_attribute_name(:memo) %></strong>
-    <span class="block rounded-md px-3 py-2"><%= format_line_break(meal.memo) %></span>
-  </div>
+  <% if meal.memo.present? %>
+    <div class="my-2">
+      <strong class="block mb-1"><%= Meal.human_attribute_name(:memo) %></strong>
+      <span class="block rounded-md px-3 py-2"><%= format_line_break(meal.memo) %></span>
+    </div>
+  <% end %>
 </div>
