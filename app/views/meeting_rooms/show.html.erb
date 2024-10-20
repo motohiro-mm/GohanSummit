@@ -27,25 +27,17 @@
       <h2>
         <span class="flex items-center justify-around text-xl w-24"><%= image_tag('pages/meal.svg', class: 'page-icon text-center') %>候補</span>
       </h2>
-        <div id="proposals" class="inner">
-          <% @remarks.filter(&:proposal?).each do |remark| %>
-            <%= turbo_frame_tag 'proposal' do %>
-              <%= render 'remarks/proposal', remark: %>
-            <% end %>
-          <% end %>
-        </div>
+      <div class="inner">
+        <%= render 'remarks/proposals', meeting_room: @meeting_room, proposals: @proposals%>
+      </div>
     </div>
     <div class="mt-6">
       <h2 class="flex items-center text-xl mb-2">
         <%= image_tag('pages/chat_single.svg', class: 'icon text-center') %>
         <span>コメント</span>
       </h2>
-        <div id="comments" class="grid gap">
-          <% @remarks.filter(&:comment?).each do |remark| %>
-            <%= turbo_frame_tag 'comment' do %>
-              <%= render 'remarks/comment', remark: %>
-            <% end %>
-          <% end %>
+        <div class="grid gap">
+          <%= render 'remarks/comments', meeting_room: @meeting_room, comments: @comments %>
         </div>
     </div>
   </div>

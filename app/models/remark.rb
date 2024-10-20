@@ -9,6 +9,9 @@ class Remark < ApplicationRecord
 
   enum :remark_type, { proposal: 0, comment: 1 }, validate: true
 
+  scope :proposals, -> { where(remark_type: 'proposal') }
+  scope :comments, -> { where(remark_type: 'comment') }
+
   after_destroy_commit -> { broadcast_remove_to [meeting_room, 'remarks'] }
 
   def proposal?
@@ -19,17 +22,14 @@ class Remark < ApplicationRecord
     remark_type == 'comment'
   end
 
-  def editable?(target_user)
-    user == target_user
-  end
 
   def broadcast_of_create(current_user)
+    broadcast_remove_empty_message(remark_type)
     if proposal?
       broadcast_prepend('proposal')
     else
       broadcast_prepend('comment')
     end
-    broadcast_of_edit_link(current_user)
   end
 
   def broadcast_of_update(current_user)
@@ -38,20 +38,19 @@ class Remark < ApplicationRecord
     else
       broadcast_replace('comment')
     end
-    broadcast_of_edit_link(current_user)
   end
 
   private
 
+  def broadcast_remove_empty_message(type)
+    broadcast_remove_to [meeting_room, "#{type}s"], target: "#{type}_empty_message"
+  end
+
   def broadcast_prepend(type)
-    broadcast_prepend_to [meeting_room, type], partial: "remarks/#{type}", locals: { remark: self }, target: "#{type}s"
+    broadcast_prepend_later_to [meeting_room, "#{type}s"], partial: "remarks/#{type}", locals: { remark: self }, target: "#{type}s"
   end
 
   def broadcast_replace(type)
-    broadcast_replace_to [meeting_room, type], partial: "remarks/#{type}", locals: { remark: self }, target: "remark_#{id}"
-  end
-
-  def broadcast_of_edit_link(current_user)
-    broadcast_replace_to([current_user, 'edit_link'], partial: 'remarks/edit_link', locals: { remark: self, current_user: }, target: "remark-#{id}-edit-link")
+    broadcast_replace_later_to [meeting_room, "#{type}s"], partial: "remarks/#{type}", locals: { remark: self }, target: "remark_#{id}"
   end
 end

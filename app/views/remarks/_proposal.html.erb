@@ -1,11 +1,10 @@
-<%= turbo_stream_from remark.meeting_room, 'proposal' %>
 <%= turbo_frame_tag remark do %>
   <div id="remark_<%= remark.id %>" class="flex justify-between items-center">
     <div class="flex justify-start items-center ml-2 my-3 font-bold text-wrap">
       <%= image_tag "user_icons/#{remark.user.icon}", class: 'icon mr-2' %>
       <%= remark.content %>
     </div>
-    <div class="mr-2 flex items-center flex-shrink-0 ">
+    <div class="mr-2 flex items-center flex-shrink-0">
       <%= render 'remarks/edit_link', remark: %>
       <%= link_to '登録', new_meal_plan_meal_path(remark.meeting_room.meal_plan, remark:), data: { turbo_frame: '_top' }, class: 'rounded-full py-2 px-3 text-white bg-red-400 inline-block' %>
     </div>
