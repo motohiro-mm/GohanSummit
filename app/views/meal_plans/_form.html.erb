@@ -9,7 +9,7 @@
     </div>
   <% end %>
   <div class="my-5">
-    <h1 class="font-bold text-2xl"><%= l meal_plan.meal_date, format: :long %></h1>
+    <%= render 'shared/title_meal_date', meal_date: meal_plan.meal_date %>
     <%= form.hidden_field :meal_date %>
 
     <%= form.fields_for :meals, meal_plan.meals_sort_by_timing do |meal_form| %>
@@ -19,13 +19,13 @@
           <%= image_tag("meals/#{meal_timing(meal_form)}.svg", class: 'page-icon text-center mr-2') %>
           <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal_timing(meal_form)}") %></strong>
         </div>
-        <div class="my-5">
+        <div class="my-3">
           <%= meal_form.label :name, class: 'block mb-1' %>
           <%= meal_form.text_field :name,
                                    class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
         </div>
 
-        <div class="my-5">
+        <div class="my-2">
           <%= meal_form.label :memo, class: 'block mb-1' %>
           <%= meal_form.text_area :memo, rows: 1,
                                          class: 'block  rounded-md border border-red-950/20 px-3 py-2 w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>

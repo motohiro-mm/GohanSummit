@@ -1,12 +1,21 @@
 <%= turbo_stream_from @meeting_room, 'remarks' %>
 <div class="mx-auto p-4 w-full">
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-2xl"><%= l @meeting_room.meal_plan.meal_date, format: :long %></h1>
-    <%= link_to '献立表へ', meal_plans_path(start_date: @meeting_room.meal_plan.meal_date),
-                class: 'inline-block my-4 rounded-full flex items-center' %>
+    <%= render 'shared/title_meal_date', meal_date: @meeting_room.meal_plan.meal_date %>
+    <div data-controller="modal" class="text-right">
+      <dialog data-modal-target="dialog" class="w-1/4 min-w-60 p-4 rounded-lg backdrop:bg-black/70">
+        <button autofocus data-action="modal#close" class="px-1 py-1 rounded-full bg-orange-100 text-right">
+          <%= image_tag('pages/cross_mark.svg', class: 'page-icon text-center') %>
+        </button>
+        <div class="mb-2 text-left">
+          <%= render 'meals/registered_meals', meal_plan: @meeting_room.meal_plan %>
+        </div>
+      </dialog>
+      <button data-action="modal#open" class="text-xs py-1 px-2.5 rounded-full border-4 border-orange-100">今日の<br>献立</button>
+    </div>
   </div>
 
-  <div class="mb-6 mx-auto">
+  <div class="mb-4 mx-auto">
     <div class="flex justify-center">
       <%= link_to '提案する', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal), data: { turbo_frame: dom_id(Remark.new) }, class: 'inline-block mx-2 my-4 px-6 remark_button' %>
       <%= link_to 'コメントする', new_meeting_room_remark_path(@meeting_room, remark_type: :comment), data: { turbo_frame: dom_id(Remark.new) }, class: 'inline-block mx-2 my-4 px-3 remark_button' %>

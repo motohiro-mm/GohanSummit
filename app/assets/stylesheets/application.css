@@ -106,9 +106,8 @@ input:-webkit-autofill:focus {
 
 .arrow_left {
   display: inline-block;
-  width: 2rem;
+  width: 1rem;
   height: 2rem;
-  padding: 0.5rem;
   position: relative;
 }
 
@@ -120,7 +119,6 @@ input:-webkit-autofill:focus {
   border-top: 0.1rem solid rgb(67 20 7);
   border-right: 0.1rem solid rgb(67 20 7);
   border-radius: 0.1rem;
-  right: 0.5rem;
   top: 50%;
   transform: translateY(-50%) rotate(225deg);
   cursor: pointer;
@@ -128,9 +126,8 @@ input:-webkit-autofill:focus {
 
 .arrow_right {
   display: inline-block;
-  width: 2rem;
+  width: 1rem;
   height: 2rem;
-  padding: 0.5rem;
   position: relative;
 }
 
@@ -142,7 +139,6 @@ input:-webkit-autofill:focus {
   border-top: 0.1rem solid rgb(67 20 7);
   border-right: 0.1rem solid rgb(67 20 7);
   border-radius: 0.1rem;
-  left: 0.5rem;
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
   cursor: pointer;

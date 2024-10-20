@@ -10,11 +10,11 @@
 
     <nav class="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-3">
       <%= link_to '', calendar.url_for_previous_view,
-                  class: 'arrow_left hover:underline' %>
+                  class: 'arrow_left' %>
       <%= link_to t('simple_calendar.month.today'), calendar.url_for_today_view,
-                  class: 'hover:underline' %>
+                  class: 'hover:underline pr-1' %>
       <%= link_to '', calendar.url_for_next_view,
-                  class: 'arrow_right hover:underline' %>
+                  class: 'arrow_right' %>
     </nav>
   </div>
 
