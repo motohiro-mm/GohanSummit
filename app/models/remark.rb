@@ -12,7 +12,7 @@ class Remark < ApplicationRecord
   scope :proposals, -> { where(remark_type: 'proposal') }
   scope :comments, -> { where(remark_type: 'comment') }
 
-  after_create_commit -> {
+  after_create_commit lambda {
     broadcast_remove_to [meeting_room, "#{remark_type}s"], target: "#{remark_type}_empty_message"
     broadcast_prepend_later_to [meeting_room, "#{remark_type}s"], partial: "remarks/#{remark_type}", locals: { remark: self }, target: "#{remark_type}s"
   }
