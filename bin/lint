@@ -2,5 +2,5 @@
 
 set -e
 bundle exec rubocop -a
-bundle exec erblint --lint-all -a
+bundle exec erb_lint --lint-all -a
 npm run -s lint
