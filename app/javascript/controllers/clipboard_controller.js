@@ -8,7 +8,7 @@ export default class extends Controller {
   copy() {
     navigator.clipboard.writeText(this.urlValue).then(
       () => {
-        alert("共有用URLをクリップボードにコピーしました");
+        alert("共有用URLをコピーしました！");
       },
       () => {
         alert("コピーに失敗しました");
