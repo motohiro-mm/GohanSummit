@@ -3,7 +3,9 @@
 class MeetingRoomsController < ApplicationController
   def show
     @meeting_room = current_user.family.meeting_rooms.find(params[:id])
-    @remarks = @meeting_room.remarks.order(created_at: :desc)
+    remarks = @meeting_room.remarks
+    @proposals = remarks.proposals.order(created_at: :desc)
+    @comments = remarks.comments.order(created_at: :desc)
   end
 
   def create

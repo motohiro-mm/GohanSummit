@@ -1,0 +1,16 @@
+<%= turbo_stream_from meeting_room, 'comments' %>
+<div id="comment_empty_message">
+  <% if comments.empty? %>
+    <div class="font-bold text-center">
+      食べたいものが決まっていないときは<br>
+      自由にコメントして相談しましょう
+    </div>
+  <% end %>
+</div>
+<div id="comments">
+  <%= turbo_frame_tag 'comments' do %>
+    <% comments.each do |remark| %>
+      <%= render 'remarks/comment', remark: %>
+    <% end %>
+  <% end %>
+</div>
