@@ -24,7 +24,6 @@
           <%= meal_form.text_field :name,
                                    class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
         </div>
-
         <div class="my-2">
           <%= meal_form.label :memo, class: 'block mb-1' %>
           <%= meal_form.text_area :memo, rows: 1,
@@ -34,7 +33,7 @@
     <% end %>
 
     <div class="text-center">
-      <%= form.submit class: 'rounded-full mt-2 py-3 px-9 bg-red-400 text-white font-bold text-lg inline-block cursor-pointer' %>
+      <%= form.submit button_display, class: 'rounded-full mt-2 py-3 px-9 bg-red-400 text-white font-bold text-lg inline-block cursor-pointer' %>
     </div>
   </div>
 <% end %>
