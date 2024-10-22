@@ -9,15 +9,15 @@
         </ul>
       </div>
     <% end %>
-    <div class="flex justify-between">
+    <div class="flex">
       <%= form.hidden_field :remark_type %>
       <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>
-      <div class="my-4 w-full mx-auto md:w-3/4 ">
+      <div class="my-4 w-full mx-auto">
         <%= form.text_area :content, rows: 1,
                                      class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
       </div>
       <%= form.button type: :submit, class: 'inline-block mx-auto cursor-pointer' do %>
-        <%= image_tag('pages/check.svg', class: 'page-icon-big text-center') %>
+        <%= image_tag('pages/check.svg', class: 'page-icon-big text-center ml-2') %>
       <% end %>
     </div>
   <% end %>
