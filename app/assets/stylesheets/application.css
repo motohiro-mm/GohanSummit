@@ -62,6 +62,10 @@ input:-webkit-autofill:focus {
   background-color: rgba(255, 237, 213, 0.7);
 }
 
+.remark_button:hover {
+  background-color: #fdba74;
+}
+
 .plus_icon {
   display: inline-block;
   color: #ff9142;
