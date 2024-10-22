@@ -7,9 +7,9 @@ module MealPlansHelper
 
   def button_display
     if action_name == 'new'
-      '登録'
+      I18n.t 'helpers.submit.create'
     elsif action_name == 'edit'
-      '更新'
+      I18n.t 'helpers.submit.update'
     end
   end
 end
