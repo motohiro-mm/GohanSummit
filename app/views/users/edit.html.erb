@@ -29,14 +29,14 @@
     </div>
 
     <div class="m-2 text-center">
-      <%= form.submit class: 'rounded-full py-3 px-7 bg-red-400 text-white' %>
+      <%= form.submit class: 'rounded-full py-3 px-7 bg-red-400 text-white hover:bg-red-600' %>
     </div>
   <% end %>
   <div class="my-8">
     アカウントを削除すると、献立表を共有しているユーザーがいない場合は献立表のデータも削除されます。<br>
     献立表を共有するユーザーが残っている場合、献立表は残ります。
     <div class="text-right">
-      <%= button_to 'アカウントを削除する', user_path, method: :delete, data: { turbo_confirm: '本当に削除して良いですか？' }, class: 'mt-4 border-b-4 border-orange-950/10' %>
+      <%= button_to 'アカウントを削除する', user_path, method: :delete, data: { turbo_confirm: '本当に削除して良いですか？' }, class: 'mt-4 border-b-4 border-orange-950/10 px-2 pt-2 pb-1 rounded hover:bg-orange-950/10' %>
     </div>
   </div>
 </div>

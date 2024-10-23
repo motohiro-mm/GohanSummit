@@ -2,11 +2,11 @@
   data-controller="dropdown"
   data-action="click@window->dropdown#hide touchstart@window->dropdown#hide keydown.esc->dropdown#hide"
   class="inline-block relative">
-  <button data-action="click->dropdown#show click@window->dropdown#hide" class="px-2.5 text-orange-950/70 rounded flex items-center">
+  <button data-action="click->dropdown#show click@window->dropdown#hide" class="p-2 text-orange-950 rounded-full flex items-center hover:bg-orange-100">
     <%= image_tag('pages/menu.svg', class: 'icon') %>
   </button>
-  <div data-dropdown-target="menu" class="hidden absolute top-4 right-0 z-10 mt-5 flex w-screen max-w-max text-orange-950">
-    <div class="text-s bg-white rounded border-2 border-orange-100 overflow-hidden w-52">
+  <div data-dropdown-target="menu" class="hidden absolute top-4 right-0 mt-8 flex w-screen max-w-max text-orange-950">
+    <div class="text-s bg-white rounded-lg border-2 border-orange-100 overflow-hidden w-52 z-30">
       <%= link_to 'カレンダー表示する', meal_plans_calendar_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
       <%= link_to '家族で共有する', family_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
       <%= link_to '使い方', about_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>

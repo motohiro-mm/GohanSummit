@@ -18,7 +18,7 @@
   </head>
 
   <body class="max-w-screen-sm mx-auto h-screen flex flex-col">
-    <% unless current_page?(root_path) %>
+    <% unless current_page?(root_path) || current_page?(welcome_path) %>
         <%= render 'shared/header' %>
     <% end %>
     <main class="flex-1 bg-white text-orange-950">

@@ -2,7 +2,7 @@
   <div class="flex justify-between">
     <%= render 'shared/title_meal_date', meal_date: meal_plan.meal_date %>
     <div class="flex items-center inline-block">
-      <%= link_to edit_meal_plan_path(meal_plan) do %>
+      <%= link_to edit_meal_plan_path(meal_plan), class: 'rounded-full p-2 hover:bg-orange-400/70' do %>
         <%= image_tag('pages/pen.svg', alt: 'edit_pen', class: 'w-7 h-7 text-center') %>
       <% end %>
     </div>

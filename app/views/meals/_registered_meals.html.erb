@@ -1,8 +1,8 @@
 <% if meal_plan.meals.present? %>
-  <h3 class="font-bold">現在登録されている献立</h3>
+  <h3 class="font-bold">この日に登録されている献立</h3>
   <% meal_plan.meals_sort_by_timing.each do |meal| %>
     <%= render meal %>
   <% end %>
 <% else %>
-  <h2 class="font-bold">現在登録されている献立はありません。</h2>
+  <h2 class="font-bold">この日に登録されている献立はありません。</h2>
 <% end %>
