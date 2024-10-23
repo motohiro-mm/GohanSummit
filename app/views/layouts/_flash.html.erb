@@ -1,10 +1,10 @@
 <div id='flash'>
   <% flash.each do |flash_type, message| %>
       <% if flash_type == 'notice' %>
-        <div class="fixed inset-x-0 top-0 max-w-screen-sm mx-auto md:w-2/3 flex items-center justify-end p-4 z-50 pointer-events-none">
+        <div class="fixed inset-x-0 top-0 mt-12 max-w-screen-sm mx-auto md:w-2/3 flex items-center justify-end p-4 z-50 pointer-events-none">
           <div data-controller="flash" data-flash-dismiss-after-value="3000" data-transition-enter="ease-in-out duration-500" data-transition-enter-from="translate-x-full opacity-0" data-transition-enter-to="translate-x-0 opacity-100" data-transition-leave="ease-in-out duration-500" data-transition-leave-from="translate-x-0 opacity-100" data-transition-leave-to="translate-x-full opacity-0" class="mb-4 rounded relative bg-orange-300 text-white translate-x-0 opacity-100">
             <div class="flex items-center">
-              <p class="m-2 p-2 text-sm">
+              <p class="m-2 p-2 text-sm font-bold">
                 <%= message %>
               </p>
             </div>
@@ -14,7 +14,7 @@
         <div data-controller="flash" class="max-w-screen-sm mx-auto md:w-2/3 m-4 flex items-center p-4 z-50 w-full rounded px-4 py-3 bg-red-400 text-white pointer-events-auto">
           <div class="flex p-2 w-full">
             <div class="ml-3 flex-1 pt-0.5">
-              <p class="text-sm leading-5 font-medium">
+              <p class="text-sm leading-5 font-bold">
                 <%= message %>
               </p>
             </div>
