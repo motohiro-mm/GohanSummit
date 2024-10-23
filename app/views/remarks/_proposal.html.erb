@@ -6,7 +6,7 @@
         <%= remark.content %>
       </div>
       <div class="text-center flex-shrink-0">
-        <%= link_to '登録', new_meal_plan_meal_path(remark.meeting_room.meal_plan, remark:), data: { turbo_frame: '_top' }, class: 'rounded-full py-2 px-3 text-white bg-red-400 inline-block z-10' %>
+        <%= link_to '登録', new_meal_plan_meal_path(remark.meeting_room.meal_plan, remark:), data: { turbo_frame: '_top' }, class: 'rounded-full py-2 px-3 text-white bg-red-400 inline-block z-10 hover:bg-red-600' %>
       </div>
     <% end %>
   </div>
