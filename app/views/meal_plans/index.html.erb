@@ -5,9 +5,9 @@
         <% if meal_plan&.meals.blank? %>
           <div class="flex items-center h-14">
             <%= button_to meeting_rooms_path(meal_plan:, meal_date: date), method: :post, data: { turbo_frame: '_top' },
-                                                                           class: 'absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 ml-2 meeting_room_button' do %>
+                                                                           class: 'absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 ml-2 meeting_room_button font-medium' do %>
               <%= image_tag('pages/chat_double.svg', class: 'meal-icon') %>
-              <span class="ml-1 text-l text-white">会議へ</span>
+              <span class="ml-1 text-l">会議へ</span>
             <% end %>
             <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, class: 'plus_icon right-15' %>
           </div>

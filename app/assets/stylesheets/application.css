@@ -52,7 +52,12 @@ input:-webkit-autofill:focus {
   padding-bottom: 0.5rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: #f56565;
+  color: white;
+  background-color: #f87171;
+}
+
+.meeting_room_button:hover {
+  background-color: #dc2626;
 }
 
 .remark_button {
@@ -68,14 +73,14 @@ input:-webkit-autofill:focus {
 
 .plus_icon {
   display: inline-block;
-  color: #ff9142;
+  color: #fb923c;
   font-size: 1rem;
   font-weight: bold;
   width: 2rem;
   height: 2rem;
   padding: 0.5rem;
   border: 0.15rem dashed;
-  border-color: #ff9142;
+  border-color: #fb923c;
   border-radius: 9999px;
 }
 
@@ -87,7 +92,7 @@ input:-webkit-autofill:focus {
 .plus_icon::before {
   content: "";
   position: absolute;
-  background: #ff9142;
+  background: #fb923c;
   width: 1rem;
   height: 0.15rem;
   border-radius: 0.25rem;
@@ -99,13 +104,25 @@ input:-webkit-autofill:focus {
 .plus_icon::after {
   content: "";
   position: absolute;
-  background: #ff9142;
+  background: #fb923c;
   width: 0.15rem;
   height: 1rem;
   border-radius: 0.15rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.plus_icon:hover {
+  background-color: #fb923c;
+}
+
+.plus_icon:hover::before {
+  background: white;
+}
+
+.plus_icon:hover::after {
+  background: white;
 }
 
 .arrow_left {
@@ -128,6 +145,11 @@ input:-webkit-autofill:focus {
   cursor: pointer;
 }
 
+.arrow_left:hover::before {
+  border-top: 0.2rem solid rgb(67 20 7);
+  border-right: 0.2rem solid rgb(67 20 7);
+}
+
 .arrow_right {
   display: inline-block;
   width: 1rem;
@@ -146,6 +168,11 @@ input:-webkit-autofill:focus {
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
   cursor: pointer;
+}
+
+.arrow_right:hover::before {
+  border-top: 0.2rem solid rgb(67 20 7);
+  border-right: 0.2rem solid rgb(67 20 7);
 }
 
 .box {
