@@ -3,7 +3,7 @@
     <div class="border-b border-dashed border-orange-950/10">
       <div id="remark_<%= remark.id %>" class="w-full mt-1 mb-2 pb-3 hover:bg-orange-100 rounded-lg">
         <div class="flex items-center my-2 pt-2">
-          <%= image_tag "user_icons/#{remark.user.icon}", class: 'icon mr-2' %>
+          <%= render 'remarks/user_icon', remark: %>
           <span class="text-sm">
             <%= l remark.created_at, format: :long %>
           </span>
