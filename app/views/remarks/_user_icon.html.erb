@@ -1,0 +1,5 @@
+<% if remark.user.nil? %>
+  <%= image_tag 'user_icons/user_nil.svg', class: 'icon mr-2' %>
+<% else %>
+  <%= image_tag "user_icons/#{remark.user.icon}", class: 'icon mr-2' %>
+<% end %>

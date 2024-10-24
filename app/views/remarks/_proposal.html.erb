@@ -2,7 +2,7 @@
   <div id="remark_<%= remark.id %>" class="w-full flex justify-between items-center hover:bg-orange-100 rounded-lg">
     <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark), class: 'w-5/6 z-0' do %>
       <div class="flex justify-start items-center ml-2 my-3 font-bold text-wrap">
-        <%= image_tag "user_icons/#{remark.user.icon}", class: 'icon mr-2' %>
+        <%= render 'remarks/user_icon', remark: %>
         <%= remark.content %>
       </div>
       <div class="text-center flex-shrink-0">
