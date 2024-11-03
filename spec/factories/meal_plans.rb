@@ -5,8 +5,10 @@ FactoryBot.define do
     sequence(:meal_date) { |n| Time.zone.today.days_since(n) }
     family
 
-    trait :skip_validation do
-      to_create { |meal_plan| meal_plan.save(validate: false) }
+    after(:build) do |meal_plan|
+      meal_plan.meals << build(:meal, :breakfast, meal_plan:)
+      meal_plan.meals << build(:meal, :lunch, meal_plan:)
+      meal_plan.meals << build(:meal, :dinner, meal_plan:)
     end
   end
 end

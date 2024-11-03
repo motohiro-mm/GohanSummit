@@ -4,10 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'MealPlans', type: :system do
   let(:user) { create(:user) }
-  let(:meal_plan) { create(:meal_plan, :skip_validation, family: user.family) }
-  let!(:meal_breakfast) { create(:meal, :breakfast, meal_plan:) }
-  let!(:meal_lunch) { create(:meal, :lunch, meal_plan:) }
-  let!(:meal_dinner) { create(:meal, :dinner, meal_plan:) }
+  let(:meal_plan) { create(:meal_plan, family: user.family) }
 
   before do
     log_in_as user
@@ -35,12 +32,12 @@ RSpec.describe 'MealPlans', type: :system do
 
   it '献立を詳細表示する' do
     visit meal_plans_path(start_date: meal_plan.meal_date)
-    click_on meal_breakfast.name
+    click_on 'TestMeal1'
 
     expect(page).to have_text I18n.l(meal_plan.meal_date, format: :long)
-    expect(page).to have_content meal_breakfast.memo
-    expect(page).to have_content meal_lunch.memo
-    expect(page).to have_content meal_dinner.memo
+    expect(page).to have_content 'TestMemo1'
+    expect(page).to have_content 'TestMemo2'
+    expect(page).to have_content 'TestMemo3'
   end
 
   it '献立を編集する' do
