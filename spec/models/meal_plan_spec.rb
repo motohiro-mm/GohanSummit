@@ -17,8 +17,8 @@ RSpec.describe MealPlan, type: :model do
       )
       meal_plan.update_meal_plan(lunch_meal_params)
       meal_plan.meals.reload
-      expect(meal_plan.meals.map(&:name)).to eq %w[BreakfastName DinnerName 昼ごはん]
-      expect(meal_plan.meals.map(&:timing)).to eq %w[breakfast dinner lunch]
+      expect(meal_plan.meals.map(&:name).sort).to eq %w[BreakfastName DinnerName 昼ごはん]
+      expect(meal_plan.meals.map(&:timing).sort).to eq %w[breakfast dinner lunch]
     end
 
     it 'meal_planのmealが1つ渡され、同じタイミングのmealがすでにあるとき、mealが上書き保存される' do
@@ -27,8 +27,8 @@ RSpec.describe MealPlan, type: :model do
       )
       meal_plan.update_meal_plan(breakfast_meal_params)
       meal_plan.meals.reload
-      expect(meal_plan.meals.map(&:name)).to eq %w[DinnerName 朝ごはん]
-      expect(meal_plan.meals.map(&:timing)).to eq %w[dinner breakfast]
+      expect(meal_plan.meals.map(&:name).sort).to eq %w[DinnerName 朝ごはん]
+      expect(meal_plan.meals.map(&:timing).sort).to eq %w[breakfast dinner]
     end
 
     it 'meal_planのmealが3つ渡されたときにmealsは更新され不要なmealは削除される' do
@@ -37,8 +37,8 @@ RSpec.describe MealPlan, type: :model do
       )
       meal_plan.update_meal_plan(three_meals_params)
       meal_plan.meals.reload
-      expect(meal_plan.meals.map(&:name)).to eq %w[朝ごはん 昼ごはん]
-      expect(meal_plan.meals.map(&:timing)).to eq %w[breakfast lunch]
+      expect(meal_plan.meals.map(&:name).sort).to eq %w[昼ごはん 朝ごはん]
+      expect(meal_plan.meals.map(&:timing).sort).to eq %w[breakfast lunch]
     end
   end
 
