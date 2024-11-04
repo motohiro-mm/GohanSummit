@@ -21,6 +21,26 @@ class MealPlan < ApplicationRecord
     end
   end
 
+  def meals_build
+    required_timings = Meal.timings.keys - meals.pluck(:timing)
+    required_timings.each do |required_timing|
+      meals.build(timing: required_timing)
+    end
+  end
+
+  def start_time
+    meal_date
+  end
+
+  private
+
+  def at_least_a_meal?
+    meal_names = meals.map { |meal| meal[:name] }
+    return if meal_names.any?(&:present?)
+
+    errors.add(:base, '料理名を最低1つ入力してください')
+  end
+
   def create_or_update_meals_by_proposal(attributes)
     new_meal_params = attributes[:meals_attributes]['0']
     same_timing_meal = meals.find_by(timing: new_meal_params[:timing])
@@ -37,30 +57,6 @@ class MealPlan < ApplicationRecord
       meals.find(update_meal[:id]).destroy if update_meal[:id].present? && update_meal.except(:id, :timing).values.all?(&:blank?)
     end
   end
-
-  def meals_build
-    required_timings = Meal.timings.keys - meals.pluck(:timing)
-    required_timings.each do |required_timing|
-      meals.build(timing: required_timing)
-    end
-  end
-
-  def meals_sort_by_timing
-    meals.sort_by { |meal| Meal.timings[meal.timing] }
-  end
-
-  def start_time
-    meal_date
-  end
-
-  def at_least_a_meal?
-    meal_names = meals.map { |meal| meal[:name] }
-    return if meal_names.any?(&:present?)
-
-    errors.add(:base, '料理名を最低1つ入力してください')
-  end
-
-  private
 
   def reject_timing(attributes)
     attributes.except(:timing).values.all?(&:blank?)

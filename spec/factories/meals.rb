@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :meal do
-    sequence(:name) { |n| "TestMeal#{n}" }
-    sequence(:memo) { |n| "TestMemo#{n}" }
+    name { 'TestMeal' }
+    memo { 'TestMemo' }
     meal_plan
   end
 end

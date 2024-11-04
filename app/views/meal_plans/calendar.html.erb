@@ -13,7 +13,7 @@
             <% else %>
               <%= link_to meal_plan, data: { turbo_frame: '_top' } do %>
                 <ul>
-                  <% meal_plan.meals_sort_by_timing.each do |meal| %>
+                  <% meals_sort_by_timing(meal_plan).each do |meal| %>
                     <li class="text-clip text-left text-[8px] sm:text-xs">
                       <%= meal.name %>
                     </li>
