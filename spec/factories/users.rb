@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :user do
-    name { 'test_name' }
-    sequence(:uid) { |n| "test_user_#{n}" }
+    name { 'TestUserName' }
+    sequence(:uid) { |n| "TestUser#{n}" }
     provider { 'google_oauth2' }
     icon { 0 }
     family
