@@ -1,26 +1,23 @@
-<%= form_with(model: meal_plan, url: meal_plan_path(meal_plan), method: 'patch') do |form| %>
-  <% if meal_plan.errors.any? %>
+<%= form_with(model: [meal_plan, meal]) do |form| %>
+  <% if meal.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <ul>
-        <% meal_plan.errors.each do |error| %>
+        <% meal.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
   <div class="my-6">
-    <%= form.hidden_field :meal_date %>
-    <%= form.fields_for :meals, meal do |meal_form| %>
-        <%= meal_form.hidden_field :id %>
-        <div class="checkbox-3 flex justify-around">
-          <% Meal.timings.keys.each do |timing| %>
-            <%= meal_form.radio_button :timing, timing, checked: (timing == 'lunch'), class: 'checkbox-3' %>
-            <%= meal_form.label "timing_#{timing}", Meal.human_attribute_name("timing.#{timing}") %>
-          <% end %>
-        </div>
-        <%= meal_form.hidden_field :name, value: meal_form.object.name %>
-        <%= meal_form.hidden_field :memo, value: '' %>
-    <% end %>
+    <%= form.hidden_field :id %>
+    <div id="timing_checkbox" class="checkbox-3 flex justify-around">
+      <% Meal.timings.keys.each do |timing| %>
+        <%= form.radio_button :timing, timing, checked: (timing == 'lunch'), class: 'checkbox-3' %>
+        <%= form.label "timing_#{timing}", Meal.human_attribute_name("timing.#{timing}") %>
+      <% end %>
+    </div>
+    <%= form.hidden_field :name, value: form.object.name %>
+    <%= form.hidden_field :memo, value: '' %>
   </div>
   <div class="m-2 text-center">
     <%= form.submit '登録', class: 'rounded-full py-3 px-7 bg-red-400 text-white' %>
