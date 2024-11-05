@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :meal_plan do
-    sequence(:meal_date) { |n| Time.zone.today.days_since(n) }
+    meal_date { Time.zone.today }
     family
 
     trait :with_3_meals do

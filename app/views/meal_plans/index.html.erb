@@ -9,7 +9,7 @@
               <%= image_tag('pages/chat_double.svg', class: 'meal-icon') %>
               <span class="ml-1 text-l">会議へ</span>
             <% end %>
-            <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, class: 'plus_icon right-15' %>
+            <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, id: 'plus_icon', class: 'plus_icon right-15' %>
           </div>
         <% else %>
           <%= link_to meal_plan, data: { turbo_frame: '_top' } do %>

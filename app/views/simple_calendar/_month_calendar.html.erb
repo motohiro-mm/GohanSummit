@@ -31,7 +31,7 @@
     <% date_range.each_slice(7) do |week| %>
       <tr class="border-t border-dashed border-orange-100">
         <% week.each do |day| %>
-          <%= content_tag :td, class: "px-2 py-2 text-center border border-dashed border-orange-100 #{calendar.td_classes_for(day)}" do %>
+          <%= content_tag :td, id: cell_day(day), class: "px-2 py-2 text-center border border-dashed border-orange-100 #{calendar.td_classes_for(day)}" do %>
             <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
           <% end %>
         <% end %>
