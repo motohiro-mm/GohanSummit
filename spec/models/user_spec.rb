@@ -6,16 +6,13 @@ RSpec.describe User, type: :model do
   let(:user) { create(:user, family: create(:family)) }
 
   describe '.find_or_new_from_auth_hash' do
-    let(:auth_struct) { Struct.new(:info, :uid, :provider) }
-    let(:info_name) { Struct.new(:name) }
-
     it 'ユーザーが存在する場合に保存されているユーザーを返す' do
-      auth_hash = auth_struct.new(info: info_name.new(name: user.name), uid: user.uid, provider: user.provider)
+      auth_hash = { info: { name: user.name }, uid: user.uid, provider: user.provider }
       expect(User.find_or_new_from_auth_hash(auth_hash)).to eq user
     end
 
     it 'ユーザーが存在しない場合に新しいユーザーを作成して保存せずに返す' do
-      new_auth_hash = auth_struct.new(info: info_name.new(name: 'new_test_name'), uid: 'new1234', provider: 'x')
+      new_auth_hash = { info: { name: 'NewTestUser' }, uid: 'New1234', provider: 'x' }
       new_user = User.find_or_new_from_auth_hash(new_auth_hash)
       expect(new_user).to be_a_new(User)
     end
