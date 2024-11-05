@@ -50,10 +50,11 @@ RSpec.describe 'MealPlans', type: :system do
     expect(page).to have_content 'EditName'
   end
 
-  it '献立を削除する' do
+  it '献立を削除する', :js do
     visit meal_plan_path(meal_plan)
-    click_on 'この献立を削除する'
-
+    page.accept_confirm '本当に削除して良いですか？' do
+      click_on 'この献立を削除する'
+    end
     expect(page).to have_content '削除しました'
   end
 end
