@@ -64,6 +64,7 @@ end
 group :test do
   gem 'capybara', require: false
   gem 'selenium-webdriver', require: false
+  gem 'simplecov', require: false
 end
 
 gem 'omniauth-google-oauth2'
