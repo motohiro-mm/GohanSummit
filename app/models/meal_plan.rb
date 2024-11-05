@@ -11,14 +11,10 @@ class MealPlan < ApplicationRecord
   accepts_nested_attributes_for :meals, allow_destroy: true, reject_if: :reject_timing
 
   def update_meal_plan(attributes)
-    if attributes[:meals_attributes].keys.size == 1
-      create_or_update_meals_by_proposal(attributes)
-    else
-      assign_attributes(attributes)
-      return unless save
+    assign_attributes(attributes)
+    return unless save
 
-      destroy_unnecessary_meals(attributes)
-    end
+    destroy_unnecessary_meals(attributes)
   end
 
   def meals_build
@@ -39,17 +35,6 @@ class MealPlan < ApplicationRecord
     return if meal_names.any?(&:present?)
 
     errors.add(:base, '料理名を最低1つ入力してください')
-  end
-
-  def create_or_update_meals_by_proposal(attributes)
-    new_meal_params = attributes[:meals_attributes]['0']
-    same_timing_meal = meals.find_by(timing: new_meal_params[:timing])
-    if same_timing_meal.nil?
-      meals.create(new_meal_params)
-    else
-      same_timing_meal.name = new_meal_params[:name]
-      same_timing_meal.save
-    end
   end
 
   def destroy_unnecessary_meals(attributes)
