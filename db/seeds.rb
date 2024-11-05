@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-DISHES = %w[からあげ やきそば おこのみやき ビビンバ カレー ラーメン 焼き鳥 餃子 ハンバーグ おすし オムライス キムチ鍋 生姜焼き うどん ハンバーガー].freeze
+DISHES = %w[からあげ やきそば おこのみやき ビビンバ カレー ラーメン 焼き鳥 餃子 ハンバーグ おすし オムライス キムチ鍋 生姜焼き うどん ハンバーガー そば おでん プロテイン].freeze
 
 COMMENTS = %w[たくさん食べたいな あっさりの気分 時間ないよね なんでもいいな〜 がっつりしたものが食べたい 一から作ってもいいよね 寒そうだからあったかいものが食べたい 何食べたい気分？ 最近肉料理多いよね 簡単に作れるものがいいな].freeze
 
@@ -21,15 +21,15 @@ user2 = User.find_or_create_by!(uid: '50288419716939937510') do |u|
 end
 
 [0, 2, 4, 6].each do |n|
-  local_meal_plan = MealPlan.find_or_create_by!(meal_date: Time.zone.today.days_since(n)) do |meal_plan|
+  local_meal_plan = MealPlan.find_or_initialize_by(meal_date: Time.zone.today.days_since(n)) do |meal_plan|
     meal_plan.family = local_family
-    (0..2).each do |timing_n|
-      meal_plan.meals.build(
-        name: DISHES.sample,
-        timing: timing_n
-      )
+  end
+  (0..2).each do |timing_n|
+    local_meal_plan.meals.find_or_initialize_by(timing: timing_n) do |meal|
+      meal.name = DISHES.sample
     end
   end
+  local_meal_plan.save!
 
   local_meeting_room = MeetingRoom.find_or_create_by!(meal_plan: local_meal_plan, family: local_family)
 
