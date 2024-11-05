@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'family', to: 'families#show', as: 'family'
   get 'meal_plans/calendar', to: 'meal_plans#calendar'
   resources :meal_plans do
-    resources :meals, only: %i[new]
+    resources :meals, only: %i[new create]
   end
   resources :meeting_rooms, only: %i[show create] do
     resources :remarks, only: %i[new create edit update destroy]
