@@ -16,7 +16,7 @@
         <%= form.text_area :content, rows: 1, placeholder: remark_placeholder(remark.remark_type), autofocus: true,
                                      class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
       </div>
-      <%= form.button type: :submit, class: 'inline-block mx-auto cursor-pointer text-red-400 page-icon-big text-center ml-2 hover:text-red-600' do %>
+      <%= form.button type: :submit, id: 'submit_button', class: 'inline-block mx-auto cursor-pointer text-red-400 page-icon-big text-center ml-2 hover:text-red-600' do %>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
           <title>840_ch_f</title>
           <rect width="48" height="48" fill="none" />
@@ -28,11 +28,11 @@
   <% end %>
   <div class="flex justify-around items-center">
     <% if remark.persisted? %>
-      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, class: 'flex items-center p-2 inline-block cursor-pointer' do %>
+      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, id: 'trash_button', class: 'flex items-center p-2 inline-block cursor-pointer' do %>
         <%= image_tag('pages/trash.svg', class: 'page-icon-big p-1 text-center rounded-full hover:bg-orange-200') %>
       <% end %>
     <% end %>
-    <%= link_to meeting_room, class: 'inline-block cursor-pointer' do %>
+    <%= link_to meeting_room, class: 'inline-block cursor-pointer', id: 'cancel_button' do %>
       <%= image_tag('pages/cross_mark.svg', class: 'page-icon-big text-center rounded-full hover:bg-orange-200') %>
     <% end %>
   </div>
