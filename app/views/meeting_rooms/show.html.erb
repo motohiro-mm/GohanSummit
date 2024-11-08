@@ -1,3 +1,4 @@
+<%= action_cable_meta_tag %>
 <%= turbo_stream_from @meeting_room, 'remarks' %>
 <div class="mx-auto p-4 w-full">
   <div class="flex justify-between items-center">
@@ -14,31 +15,30 @@
       <button data-action="modal#open" class="text-xs py-1 px-2.5 rounded-full border-4 border-orange-100 hover:bg-orange-100">この日の<br>献立</button>
     </div>
   </div>
-
-  <div class="mb-4 mx-auto">
-    <div class="flex justify-center">
+  <div data-controller="cable-connection" data-target="appearance.status" data-cable-connection-target="status" class="hidden">
+    <div class="mb-4 mx-auto flex justify-center">
       <%= link_to '提案する', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal), data: { turbo_frame: dom_id(Remark.new) }, class: 'inline-block mx-2 my-4 px-6 remark_button' %>
       <%= link_to 'コメントする', new_meeting_room_remark_path(@meeting_room, remark_type: :comment), data: { turbo_frame: dom_id(Remark.new) }, class: 'inline-block mx-2 my-4 px-3 remark_button' %>
     </div>
     <%= turbo_frame_tag Remark.new %>
-  </div>
-  <div id="remarks">
-    <div class="box border border-orange-950/50">
-      <h2>
-        <span class="flex items-center justify-around text-xl w-24"><%= image_tag('pages/meal.svg', class: 'page-icon text-center') %>候補</span>
-      </h2>
-      <div class="inner">
-        <%= render 'remarks/proposals', meeting_room: @meeting_room, proposals: @proposals %>
-      </div>
-    </div>
-    <div class="mt-6">
-      <h2 class="flex items-center text-xl mb-2">
-        <%= image_tag('pages/chat_single.svg', class: 'icon text-center') %>
-        <span>コメント</span>
-      </h2>
-        <div class="grid gap">
-          <%= render 'remarks/comments', meeting_room: @meeting_room, comments: @comments %>
+    <div id="remarks">
+      <div class="box border border-orange-950/50">
+        <h2>
+          <span class="flex items-center justify-around text-xl w-24"><%= image_tag('pages/meal.svg', class: 'page-icon text-center') %>候補</span>
+        </h2>
+        <div class="inner">
+          <%= render 'remarks/proposals', meeting_room: @meeting_room, proposals: @proposals %>
         </div>
+      </div>
+      <div class="mt-6">
+        <h2 class="flex items-center text-xl mb-2">
+          <%= image_tag('pages/chat_single.svg', class: 'icon text-center') %>
+          <span>コメント</span>
+        </h2>
+          <div class="grid gap">
+            <%= render 'remarks/comments', meeting_room: @meeting_room, comments: @comments %>
+          </div>
+      </div>
     </div>
   </div>
 </div>
