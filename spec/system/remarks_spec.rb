@@ -14,31 +14,10 @@ RSpec.describe 'Remarks', type: :system do
 
   describe '提案' do
     it '新規作成する', :js do
-      # visit meeting_room_path(meeting_room)
-      # click_on '提案する'
-      #
-      # fill_in 'remark_content', with: 'やきにく'
-      # find_by_id('submit_button').click
-      #
-      # expect(page).to have_content '投稿しました'
-      # within '#proposals' do
-      #   expect(page).to have_content 'やきにく'
-      #   expect(page).to have_content '登録'
-      # end
-
-      # ファイル単位では問題なくテストが通りますが全体で実行するとテストが落ちやすいので、意図的にexpectを増やしています
       visit meeting_room_path(meeting_room)
-      expect(page).to have_content I18n.l(meal_plan.meal_date, format: :long)
-      expect(page).to have_content "この日の\n献立"
-      expect(page).to have_link '提案する'
-      expect(page).to have_link 'コメントする'
       expect(page).to have_css 'h2', text: '候補'
-      expect(page).to have_content "食べたいものを提案しましょう！\n提案した料理はそのまま献立表に\n登録ができます"
       click_on '提案する'
 
-      expect(page).to have_css 'textarea'
-      expect(page).to have_button(id: 'submit_button')
-      expect(page).to have_link nil, href: meeting_room_path(meeting_room)
       fill_in 'remark_content', with: 'やきにく'
       find_by_id('submit_button').click
 
@@ -47,7 +26,6 @@ RSpec.describe 'Remarks', type: :system do
         expect(page).to have_content 'やきにく'
         expect(page).to have_content '登録'
       end
-
     end
 
     it '新規作成時に未入力のままチェックボタンを押すとエラーが出る', :js do

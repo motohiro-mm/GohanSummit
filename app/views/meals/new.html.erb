@@ -1,8 +1,8 @@
 <div class="mx-auto p-4 w-full">
   <div class="mb-8">
     <div class="flex justify-start items-center mb-8 mt-2">
-      <%= link_to '', meeting_room_path(@meal_plan.meeting_room),
-                  class: 'inline-block font-bold arrow_left' %>
+      <%= link_to '', meeting_room_path(@meal_plan.meeting_room), data: { turbo: false },
+                                                                  class: 'inline-block font-bold arrow_left' %>
       <h1 class="font-bold text-2xl"><%= l @meal_plan.meal_date, format: :long %></h1>
     </div>
     以下の料理を献立に登録します。
