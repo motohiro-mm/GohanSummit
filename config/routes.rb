@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'auth/:provider/callback', to: 'sessions#create'
-  get 'auth/failure', to: redirect('/')
+  get 'auth/failure', to: 'sessions#auth_failure'
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
 
   resource :user, only: %i[update destroy]
