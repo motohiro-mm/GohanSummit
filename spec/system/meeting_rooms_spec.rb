@@ -16,7 +16,7 @@ RSpec.describe 'MeetingRooms', type: :system do
       click_on '会議へ'
     end
 
-    expect(page).to have_content I18n.l(Time.zone.today, format: :long)
+    expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
     expect(page).to have_content '提案する'
     expect(page).to have_content 'コメントする'
   end
@@ -25,7 +25,7 @@ RSpec.describe 'MeetingRooms', type: :system do
     visit meal_plan_path(meal_plan)
     click_on '会議へ'
 
-    expect(page).to have_content I18n.l(Time.zone.today, format: :long)
+    expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
     expect(page).to have_content '提案する'
     expect(page).to have_content 'コメントする'
   end
