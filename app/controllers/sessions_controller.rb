@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  skip_before_action :authenticate, only: :create
+  skip_before_action :authenticate, only: %i[create auth_failure]
 
   def create
     user = User.find_or_new_from_auth_hash(request.env['omniauth.auth'])
@@ -10,12 +10,16 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to meal_plans_path, notice: 'ログインしました'
     else
-      redirect_to root_path, notice: 'ログインに失敗しました'
+      redirect_to root_path, alert: 'ログインに失敗しました'
     end
   end
 
   def destroy
     reset_session
     redirect_to root_path, notice: 'ログアウトしました'
+  end
+
+  def auth_failure
+    redirect_to root_path, alert: 'Googleログインがキャンセルされました'
   end
 end
