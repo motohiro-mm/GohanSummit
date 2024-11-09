@@ -24,7 +24,7 @@ RSpec.describe 'MealPlans', type: :system do
       find_by_id('plus_icon').click
     end
 
-    expect(page).to have_content I18n.l(Time.zone.today, format: :long)
+    expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
     within '#breakfast' do
       fill_in '料理', with: 'シリアル'
     end
@@ -48,7 +48,7 @@ RSpec.describe 'MealPlans', type: :system do
       find_by_id('plus_icon').click
     end
 
-    expect(page).to have_content I18n.l(Time.zone.today, format: :long)
+    expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
     click_on '登録'
 
     expect(page).to have_content '料理名を最低1つ入力してください'
@@ -59,7 +59,7 @@ RSpec.describe 'MealPlans', type: :system do
     visit meal_plans_path(start_date: meal_plan.meal_date)
     click_on 'BreakfastName'
 
-    expect(page).to have_text I18n.l(meal_plan.meal_date, format: :long)
+    expect(page).to have_text I18n.l(meal_plan.meal_date, format: :medium)
     expect(page).to have_content 'TestMemo'
   end
 
