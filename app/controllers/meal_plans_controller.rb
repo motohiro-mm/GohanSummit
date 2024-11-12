@@ -4,7 +4,7 @@ class MealPlansController < ApplicationController
   before_action :set_meal_plan, only: %i[show edit update destroy]
 
   def index
-    @meal_plans = current_user.family.meal_plans
+    @meal_plans = current_user.family.meal_plans.includes([:meals])
   end
 
   def show; end
@@ -45,7 +45,7 @@ class MealPlansController < ApplicationController
   end
 
   def calendar
-    @meal_plans = current_user.family.meal_plans
+    @meal_plans = current_user.family.meal_plans.includes([:meals])
   end
 
   private
