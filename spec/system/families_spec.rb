@@ -11,12 +11,12 @@ RSpec.describe 'Families', type: :system do
     log_in_as user
   end
 
-  it '共有用URLをコピーする', :js do
+  it '招待用URLをコピーする', :js do
     visit family_path
 
-    click_on '共有用URLをコピー'
+    click_on '招待用URLをコピー'
 
-    expect(page.driver.browser.switch_to.alert.text).to eq '共有用URLをコピーしました！'
+    expect(page.driver.browser.switch_to.alert.text).to eq '招待用URLをコピーしました！'
   end
 
   it '共有しているユーザーを表示する' do
