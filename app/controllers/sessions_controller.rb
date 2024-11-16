@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_or_new_from_auth_hash(request.env['omniauth.auth'])
     user.find_or_new_family(request.env['omniauth.params']['invitation_token']) if user.family_id.nil?
+    session[:welcome_modal] = true if user.new_record?
     if user.save
       session[:user_id] = user.id
       redirect_to meal_plans_path, notice: 'ログインしました'

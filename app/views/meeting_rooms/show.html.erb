@@ -4,7 +4,7 @@
   <div class="flex justify-between items-center">
     <%= render 'shared/title_meal_date', meal_date: @meeting_room.meal_plan.meal_date %>
     <div data-controller="modal" class="text-right">
-      <dialog data-modal-target="dialog" class="w-1/3 min-w-60 p-4 rounded-lg backdrop:bg-black/20">
+      <dialog data-modal-target="dialog" class="w-4/5 sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 rounded-lg backdrop:bg-black/20">
         <button data-action="modal#close" class="px-1 py-1 rounded-full bg-orange-100 text-right">
           <%= image_tag('pages/cross_mark.svg', class: 'page-icon text-center') %>
         </button>

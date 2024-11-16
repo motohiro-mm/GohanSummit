@@ -3,4 +3,11 @@ import { Modal } from "tailwindcss-stimulus-components";
 
 const application = Application.start();
 application.register("modal", Modal);
-export default class extends Modal {}
+export default class extends Modal {
+  connect() {
+    super.connect();
+    if (this.dialogTarget.id === "welcome-modal") {
+      this.open();
+    }
+  }
+}
