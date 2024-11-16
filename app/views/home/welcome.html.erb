@@ -1,73 +1,23 @@
 <div class="mx-auto p-4 w-full text-center">
   <p class="m-4">
-    ごはんサミットへようこそ！<br>
+    <strong class="text-xl">ごはんサミットへようこそ！</strong><br>
     ごはんサミットは、<br>
     献立の相談と献立表の共有ができるアプリです。
   </p>
-  <div class="w-2/3 mx-auto mb-8">
+  <div class="w-2/3 mx-auto">
     <%= image_tag('home/logo_large.png', class: 'text-center') %>
   </div>
-  <p class="mx-4 font-bold">
+  <div class="w-1/2 mx-auto text-center">
+    <%= image_tag('home/welcome.png') %>
+  </div>
+  <p class="mx-4 mb-8 font-bold text-balance">
     家族から招待されています！<br>
-    以下のボタンからログインすると献立表を共有できます。
+    以下のボタンから初回ログインをすると献立表に参加できます。
   </p>
-  <div class="m-4">
-    <%= button_to 'Googleでログイン', google_oauth2_path(@invitation_token), method: :post, data: { turbo: false }, class: 'rounded-full py-3 px-4 bg-red-400 inline-block text-white' %>
-  </div>
-  <div class="mb-8">
-    <span>
-      <%= link_to '利用規約', terms_path, class: 'hover:underline' %>
-      ・
-      <%= link_to 'プライバシーポリシー', terms_path, class: 'hover:underline' %>
-      に<br>同意した上でログインしてください。
-    </span>
-  </div>
-  <div class="my-8">
-    <h2 class="m-4 text-xl">家族で献立を相談しよう</h2>
-    <div class="flex justify-between items-center m-4">
-      <p class="w-2/3 mr-6 text-left">
-        食べたいものを提案しましょう。食べたいものが決まってなくても、その日の気分や希望をコメントできます。相談して献立を決めていきましょう。
-      </p>
-      <div class="w-1/3 mx-auto">
-        <%#= image_tag('home/chat.png') %>
-        画像をはる
-      </div>
-    </div>
-  </div>
-  <div class="my-8">
-    <h2 class="m-4 text-xl">献立表に登録しよう</h2>
-    <div class="flex justify-between items-center m-4">
-      <p class="w-2/3 mr-6 text-left">
-        食べたいものが決まったら献立表に登録しましょう。会議で提案した料理をそのまま献立表に登録することができます。会議をせずに献立を登録することもできます。
-      </p>
-      <div class="w-1/3 mx-auto">
-        <%#= image_tag('home/chat.png') %>
-        画像をはる
-      </div>
-    </div>
-  </div>
-  <div class="my-8">
-    <h2 class="m-4 text-xl">献立表を共有しよう</h2>
-    <div class="flex justify-between items-center m-4">
-      <p class="w-2/3 mr-6 text-left">
-        登録した献立は一覧で見ることができます。献立表は家族で共有していつでも確認できます。
-      </p>
-      <div class="w-1/3 mx-auto">
-        <%#= image_tag('home/chat.png') %>
-        画像をはる
-      </div>
-    </div>
-  </div>
-
-  <div class="mt-8 m-4">
-    <%= button_to 'Googleでログイン', google_oauth2_path, method: :post, data: { turbo: false }, class: 'rounded-full py-3 px-4 bg-red-400 inline-block text-white' %>
-  </div>
-  <div class="mb-8">
-    <span>
-      <%= link_to '利用規約', terms_path, class: 'hover:underline' %>
-      ・
-      <%= link_to 'プライバシーポリシー', terms_path, class: 'hover:underline' %>
-      に<br>同意した上でログインしてください。
-    </span>
-  </div>
+  <%= render 'login_block' %>
+  <%= render 'over_view' %>
+  <p class="my-16 mx-2">
+    <strong class="text-xl">家族で献立の相談・共有をしよう！</strong>
+  </p>
+  <%= render 'login_block' %>
 </div>
