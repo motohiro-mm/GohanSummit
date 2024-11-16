@@ -1,30 +1,86 @@
 <!DOCTYPE html>
-<html class="bg-amber-50">
-  <head>
-    <title>ページが表示できません</title>
-    <meta content="utf-8" name="charset" />
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" href="/logo_icon.png" type="image/png">
-    <link rel="stylesheet" href="/assets/tailwind.css" data-turbo-track="reload">
-    <link rel="stylesheet" href="/assets/inter-font.css" data-turbo-track="reload">
-    <link rel="stylesheet" href="/assets/application.css" data-turbo-track="reload">
-  </head>
-  <body class="max-w-screen-sm mx-auto h-screen flex flex-col">
-    <div class="flex-1 text-center bg-white text-orange-950">
-      <div class="my-4">
-        <img src="/images/logo_small.png" class="inline-block w-2/3 h-auto object-contain">
-      </div>
-      <div class="my-2">
-        <h1 class="my-8 text-2xl sm:text-base md:text-2xl lg:text-3xl xl:text-4xl font-bold">500 : Internal Server Error</h1>
-        <p class="my-4 text-l sm:text-base md:text-xl font-semibold">ページが表示できません。</p>
-        <p class="m-4 text-l sm:text-base md:text-xl font-semibold text-balance leading-loose">もう一度お試しいただくか、しばらく経ってからアクセスしてください。</p>
-      </div>
-      <div class="my-4">
-        <img src="/images/panda500.png" class="inline-block w-1/2 h-auto object-contain">
-      </div>
-      <div class="my-8">
-        <a class="text-l sm:text-base md:text-xl font-medium hover:underline" href="/">トップページに戻る</a>
-      </div>
-    </div>
-  </body>
+<html style="background-color: #FFFBEB;">
+<head>
+  <title>ページが表示できません</title>
+  <meta content="utf-8" name="charset" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="/logo_icon.png" type="image/png">
+  <style>
+    body {
+      max-width: 640px;
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container {
+      flex: 1;
+      text-align: center;
+      background-color: #FFFFFF;
+      color: #431407;
+    }
+    .logo {
+      margin: 1rem auto;
+      width: 66.6667%;
+      height: auto;
+      object-fit: contain;
+    }
+    .title {
+      margin: 2rem auto;
+      font-size: 1.875rem;
+      font-weight: bold;
+    }
+    @media (min-width: 640px) {
+      .title { font-size: 1rem; }
+    }
+    @media (min-width: 768px) {
+      .title { font-size: 1.875rem; }
+    }
+    @media (min-width: 1024px) {
+      .title { font-size: 2.25rem; }
+    }
+    .message {
+      margin: 1rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+    @media (min-width: 768px) {
+      .message { font-size: 1.25rem; }
+    }
+    .picture {
+      margin: 1rem auto;
+      width: 50%;
+      height: auto;
+      object-fit: contain;
+    }
+    .link {
+      margin: 2rem;
+      font-size: 1.125rem;
+      font-weight: 500;
+      text-decoration: none;
+      color: inherit;
+    }
+    .link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div>
+    <img src="/images/logo_small.png" class="logo">
+  </div>
+  <div>
+    <h1 class="title">500 : Internal Server Error</h1>
+    <p class="message">ページが表示できません。</p>
+    <p class="message">もう一度お試しいただくか、しばらく経ってからアクセスしてください。</p>
+  </div>
+  <div>
+    <img src="/images/chick500.png" class="picture">
+  </div>
+  <div>
+    <a href="/" class="link">トップページに戻る</a>
+  </div>
+</div>
+</body>
 </html>

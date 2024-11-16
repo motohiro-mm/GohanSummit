@@ -1,0 +1,12 @@
+<div class="m-4">
+  <%= button_to 'Googleでログイン', google_oauth2_path(@invitation_token), method: :post, data: { turbo: false }, class: 'rounded-full py-3 px-4 bg-red-400 inline-block text-white' %>
+</div>
+<div class="mb-8 text-sm">
+    <span>
+      <%= link_to '利用規約', terms_path, class: 'hover:underline' %>
+      ・
+      <%= link_to 'プライバシーポリシー', privacy_path, class: 'hover:underline' %>
+      に<br>
+      同意した上でログインしてください。
+    </span>
+</div>
