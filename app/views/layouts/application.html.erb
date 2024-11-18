@@ -6,6 +6,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= display_meta_tags(default_meta_tags) %>
 
     <%= yield :head %>
 
@@ -15,7 +16,6 @@
     <%= stylesheet_link_tag 'tailwind', 'inter-font', 'data-turbo-track': 'reload' %>
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
-    <%= display_meta_tags(default_meta_tags) %>
   </head>
 
   <body class="max-w-screen-sm mx-auto h-screen flex flex-col">
