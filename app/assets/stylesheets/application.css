@@ -28,6 +28,16 @@ input:-webkit-autofill:focus {
   background-color: white !important;
 }
 
+input::placeholder {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+textarea::placeholder {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
 .icon {
   width: 34px;
   height: 34px;
