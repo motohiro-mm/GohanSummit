@@ -15,7 +15,6 @@
       <%= form.text_field :name,
                           class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
     </div>
-
     <div class="my-5">
       <div class="my-4">アイコン画像</div>
       <div class="flex flex-wrap gap-4 justify-between">
@@ -27,16 +26,17 @@
         <% end %>
       </div>
     </div>
-
     <div class="m-2 text-center">
       <%= form.submit class: 'rounded-full py-3 px-7 bg-red-400 text-white hover:bg-red-600' %>
     </div>
   <% end %>
-  <div class="my-8">
-    アカウントを削除すると、献立表を共有しているユーザーがいない場合は献立表のデータも削除されます。<br>
+  <%= render 'families/family', family: @user.family %>
+  <div class="my-8 pt-8 border-t-4 border-dashed border-orange-50">
+    <h2 class="mb-2 text-lg">ユーザーの削除</h2>
+    ユーザーを削除すると、献立表を共有しているユーザーがいない場合は献立表のデータも削除されます。<br>
     献立表を共有するユーザーが残っている場合、献立表は残ります。
     <div class="text-right">
-      <%= button_to 'アカウントを削除する', user_path, method: :delete, data: { turbo_confirm: '本当に削除して良いですか？' }, class: 'mt-4 border-b-4 border-orange-950/10 px-2 pt-2 pb-1 rounded hover:bg-orange-950/10' %>
+      <%= button_to 'ユーザーを削除する', user_path, method: :delete, data: { turbo_confirm: '本当に削除して良いですか？' }, class: 'mt-4 border-b-4 border-orange-950/10 px-2 pt-2 pb-1 rounded hover:bg-orange-950/10' %>
     </div>
   </div>
 </div>
