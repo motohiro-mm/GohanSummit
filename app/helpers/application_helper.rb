@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 module ApplicationHelper
-
   def cell_day(day)
     day.strftime('cell%Y%m%d')
   end
@@ -26,7 +25,6 @@ module ApplicationHelper
         type: 'website',
         site_name: 'ごはんサミット',
         description: :description,
-        separator: '|',
         image: image_url('ogp.png'),
         url: 'https://gohansummit.com',
         local: 'ja-JP'

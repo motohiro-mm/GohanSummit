@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'bootsnap'
 gem 'importmap-rails'
+gem 'meta-tags'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'pg', '~> 1.1'
@@ -16,7 +17,6 @@ gem 'stimulus-rails'
 gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
-gem 'meta-tags'
 
 group :development, :test do
   gem 'brakeman'
