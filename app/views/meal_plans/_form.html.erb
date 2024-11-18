@@ -21,12 +21,12 @@
         </div>
         <div class="my-3">
           <%= meal_form.label :name, class: 'block mb-1' %>
-          <%= meal_form.text_field :name,
-                                   class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
+          <%= meal_form.text_field :name, placeholder: meal_name_placeholder(meal_form.index),
+                                          class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
         </div>
         <div class="my-2">
           <%= meal_form.label :memo, class: 'block mb-1' %>
-          <%= meal_form.text_area :memo, rows: 1,
+          <%= meal_form.text_area :memo, rows: 1, placeholder: meal_memo_placeholder(meal_form.index),
                                          class: 'block  rounded-md border border-red-950/20 px-3 py-2 w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
         </div>
       </div>

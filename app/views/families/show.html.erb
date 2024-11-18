@@ -14,16 +14,9 @@
                                                                            class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
       <div class="text-center">
         <%= button_tag '招待用URLをコピー', data: { controller: 'clipboard', action: 'clipboard#copy', clipboard_url_value: @family.invitation_url(request) },
-                                     class: 'rounded-full inline-block mt-4 py-3 px-4 bg-red-400 text-white' %>
+                                     class: 'rounded-full inline-block mt-4 py-3 px-4 bg-red-400 text-white hover:bg-red-600' %>
       </div>
     </div>
-    <strong class="block font-bold text-lg">この献立表のユーザー</strong>
-
-    <% @family.users.each do |user| %>
-      <div class="my-5 flex items-center">
-        <%= image_tag "user_icons/#{user.icon}", class: 'icon' %>
-        <span class="ml-2"><%= user.name %></span>
-      </div>
-    <% end %>
+    <%= render 'family', family: @family %>
   </div>
 </div>

@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 module MealPlansHelper
-  def meal_timing(meal_form)
-    Meal.timings.key(meal_form.index)
-  end
-
   def meals_sort_by_timing(meal_plan)
     meal_plan.meals.sort_by { |meal| Meal.timings[meal.timing] }
   end
