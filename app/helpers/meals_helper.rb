@@ -27,14 +27,12 @@ module MealsHelper
     end
   end
 
+  ALT_MEAL_TIMING = {
+    breakfast: '朝ごはんを表す朝日のマーク',
+    lunch: '昼ごはんを表す太陽のマーク',
+    dinner: '夜ごはんを表す月のマーク'
+  }.freeze
   def alt_meal_timing(meal_timing)
-    case meal_timing
-    when 'breakfast'
-      '朝ごはんを表す朝日のマーク'
-    when 'lunch'
-      '昼ごはんを表す太陽のマーク'
-    when 'dinner'
-      '夜ごはんを表す月のマーク'
-    end
+    ALT_MEAL_TIMING[meal_timing.to_sym]
   end
 end
