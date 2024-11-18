@@ -23,18 +23,18 @@ class User < ApplicationRecord
   }, validate: true
 
   ICON = {
-    chimpanzee: 'chimpanzee.png',
-    dog: 'dog.png',
-    cat: 'cat.png',
-    pig: 'pig.png',
-    rabbit: 'rabbit.png',
-    panda: 'panda.png',
-    tiger: 'tiger.png',
-    cow: 'cow.png',
-    raccoon: 'raccoon.png',
-    fox: 'fox.png',
-    penguin: 'penguin.png',
-    crocodile: 'crocodile.png'
+    'chimpanzee.png': 'チンパンジー',
+    'dog.png': 'イヌ',
+    'cat.png': 'ネコ',
+    'pig.png': 'ブタ',
+    'rabbit.png': 'ウサギ',
+    'panda.png': 'パンダ',
+    'tiger.png': 'トラ',
+    'cow.png': 'ウシ',
+    'raccoon.png': 'アライグマ',
+    'fox.png': 'キツネ',
+    'penguin.png': 'ペンギン',
+    'crocodile.png': 'ワニ'
   }.freeze
 
   def self.find_or_new_from_auth_hash(auth_hash)

@@ -2,7 +2,7 @@
   <strong class="block font-bold text-lg">この献立表の家族</strong>
   <% family.users.each do |user| %>
     <div class="my-5 flex items-center">
-      <%= image_tag "user_icons/#{user.icon}", class: 'icon' %>
+      <%= image_tag "user_icons/#{user.icon}", class: 'icon', alt: "ユーザーアイコンの#{User::ICON[user.icon.to_sym]}のイラスト" %>
       <span class="ml-2"><%= user.name %></span>
     </div>
   <% end %>
