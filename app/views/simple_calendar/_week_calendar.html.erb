@@ -21,7 +21,7 @@
   <table class="w-full table-fixed border-collapse">
     <tbody>
     <% date_range.each do |day| %>
-      <tr id="<%= row_day(day) %>" class="relative border-t border-dashed border-orange-900/10">
+      <tr id="<%= day.strftime('row%Y%m%d') %>" class="relative border-t border-dashed border-orange-900/10">
         <th class="w-1/4 items-center text-left p-3 text-orange-950/70">
           <p class="text-center"><%= l day, format: :short %></p>
           <p class="text-center">
