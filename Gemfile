@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'bootsnap'
 gem 'importmap-rails'
+gem 'meta-tags'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'pg', '~> 1.1'

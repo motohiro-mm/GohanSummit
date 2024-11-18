@@ -1,3 +1,5 @@
+<% set_meta_tags title: '会議室' %>
+<% set_meta_tags description: '献立の相談を行う会議室です。ここでは献立の提案とコメントを自由に行うことができます。' %>
 <%= action_cable_meta_tag %>
 <%= turbo_stream_from @meeting_room, 'remarks' %>
 <div class="mx-auto p-4 w-full">
