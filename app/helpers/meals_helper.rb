@@ -26,4 +26,15 @@ module MealsHelper
       '給料日なので外食！'
     end
   end
+
+  def alt_meal_timing(meal_timing)
+    case meal_timing
+    when 'breakfast'
+      '朝ごはんを表す朝日のマーク'
+    when 'lunch'
+      '昼ごはんを表す太陽のマーク'
+    when 'dinner'
+      '夜ごはんを表す月のマーク'
+    end
+  end
 end

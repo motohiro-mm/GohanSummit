@@ -1,5 +1,5 @@
 <% if remark.user.nil? %>
-  <%= image_tag 'user_icons/user_nil.svg', class: 'icon mr-2' %>
+  <%= image_tag 'user_icons/user_nil.svg', class: 'icon mr-2', alt: '削除されたユーザーアイコンのイラスト' %>
 <% else %>
-  <%= image_tag "user_icons/#{remark.user.icon}", class: 'icon mr-2' %>
+  <%= image_tag "user_icons/#{remark.user.icon}", class: 'icon mr-2', alt: "ユーザーアイコンの#{User::ICON[remark.user.icon.to_sym]}のイラスト" %>
 <% end %>
