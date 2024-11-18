@@ -6,21 +6,23 @@ module MealsHelper
   end
 
   def meal_name_placeholder(meal_form_index)
-    if meal_form_index == 0
+    case meal_form_index
+    when 0
       'トースト、納豆ごはん'
-    elsif meal_form_index == 1
+    when 1
       'パスタ、ラーメン'
-    elsif meal_form_index == 2
+    when 2
       'やきにく、おすし'
     end
   end
 
   def meal_memo_placeholder(meal_form_index)
-    if meal_form_index == 0
+    case meal_form_index
+    when 0
       'おすすめされたトーストを作ってみよう'
-    elsif meal_form_index == 1
+    when 1
       '会社の近くでさっと食べられるもの'
-    elsif meal_form_index == 2
+    when 2
       '給料日なので外食！'
     end
   end
