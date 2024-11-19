@@ -12,7 +12,7 @@
       <%= link_to '使い方', about_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
       <%= link_to '利用規約', terms_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
       <%= link_to 'プライバシーポリシー', privacy_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
-      <%= link_to 'ログアウト', log_out_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
+      <%= link_to 'ログアウト', log_out_path, data: { dropdown_target: 'menuItem', turbo_prefetch: false }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
     </div>
   </div>
 </div>
