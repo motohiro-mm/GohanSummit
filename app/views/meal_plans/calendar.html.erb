@@ -1,31 +1,29 @@
 <% set_meta_tags title: '献立表（月毎）' %>
 <% set_meta_tags description: '月毎の献立表のページです。' %>
 <div class="w-full">
-  <%= turbo_frame_tag 'meal_plan_list' do %>
-    <div>
-      <%= month_calendar events: @meal_plans do |date, meal_plan| %>
-        <div class="hover:bg-orange-100 rounded-lg">
-          <p>
-            <%= date.day %>
-          </p>
+  <div>
+    <%= month_calendar events: @meal_plans do |date, meal_plan| %>
+      <div class="hover:bg-orange-100 rounded-lg">
+        <p>
+          <%= date.day %>
+        </p>
 
-          <div class="block mt-4">
-            <% if meal_plan.blank? || meal_plan.meals.blank? %>
-              <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, class: 'plus_icon relative mt-2 opacity-70' %>
-            <% else %>
-              <%= link_to meal_plan, data: { turbo_frame: '_top' } do %>
-                <ul>
-                  <% meals_sort_by_timing(meal_plan).each do |meal| %>
-                    <li class="text-clip text-left text-[8px] sm:text-xs">
-                      <%= meal.name %>
-                    </li>
-                  <% end %>
-                </ul>
-              <% end %>
+        <div class="block mt-4">
+          <% if meal_plan.blank? || meal_plan.meals.blank? %>
+            <%= link_to '', new_meal_plan_path(meal_date: date), class: 'plus_icon relative mt-2 opacity-70' %>
+          <% else %>
+            <%= link_to meal_plan do %>
+              <ul>
+                <% meals_sort_by_timing(meal_plan).each do |meal| %>
+                  <li class="text-clip text-left text-[8px] sm:text-xs">
+                    <%= meal.name %>
+                  </li>
+                <% end %>
+              </ul>
             <% end %>
-          </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
