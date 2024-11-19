@@ -1,35 +1,33 @@
 <% set_meta_tags title: '献立表' %>
 <% set_meta_tags description: '献立表のページです。' %>
 <div class="w-full">
-  <%= turbo_frame_tag 'meal_plan_list', data: { turbo_action: :advance } do %>
-    <div>
-      <%= week_calendar events: @meal_plans do |date, meal_plan| %>
-        <% if meal_plan&.meals.blank? %>
-          <div class="flex items-center h-14">
-            <%= button_to meeting_rooms_path(meal_plan:, meal_date: date), method: :post, data: { turbo_frame: '_top' },
-                                                                           class: 'absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 ml-2 meeting_room_button font-medium' do %>
-              <%= image_tag('pages/chat_double.svg', class: 'meal-icon', alt: 'チャットのマーク') %>
-              <span class="ml-1">会議へ</span>
-            <% end %>
-            <%= link_to '', new_meal_plan_path(meal_date: date), data: { turbo_frame: '_top' }, id: 'plus_icon', class: 'plus_icon right-15' %>
-          </div>
-        <% else %>
-          <%= link_to meal_plan, data: { turbo_frame: '_top' } do %>
-            <div class="text-left flex items-center h-full min-h-14 w-full hover:bg-orange-100 rounded-lg">
-              <ul class="w-4/5 mx-auto pl-4 inline-block">
-                <% meals_sort_by_timing(meal_plan).each do |meal| %>
-                  <li class="flex justify-start items-center my-1">
-                    <%= image_tag("meals/#{meal.timing}.svg", class: 'meal-icon text-center mr-2', alt: alt_meal_timing(meal.timing)) %>
-                    <%= meal.name %>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
+  <div>
+    <%= week_calendar events: @meal_plans do |date, meal_plan| %>
+      <% if meal_plan&.meals.blank? %>
+        <div class="flex items-center h-14">
+          <%= button_to meeting_rooms_path(meal_plan:, meal_date: date), method: :post,
+                                                                         class: 'absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 ml-2 meeting_room_button font-medium' do %>
+            <%= image_tag('pages/chat_double.svg', class: 'meal-icon', alt: 'チャットのマーク') %>
+            <span class="ml-1">会議へ</span>
           <% end %>
+          <%= link_to '', new_meal_plan_path(meal_date: date), id: 'plus_icon', class: 'plus_icon right-15' %>
+        </div>
+      <% else %>
+        <%= link_to meal_plan do %>
+          <div class="text-left flex items-center h-full min-h-14 w-full hover:bg-orange-100 rounded-lg">
+            <ul class="w-4/5 mx-auto pl-4 inline-block">
+              <% meals_sort_by_timing(meal_plan).each do |meal| %>
+                <li class="flex justify-start items-center my-1">
+                  <%= image_tag("meals/#{meal.timing}.svg", class: 'meal-icon text-center mr-2', alt: alt_meal_timing(meal.timing)) %>
+                  <%= meal.name %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 <% if session[:welcome_modal] %>
   <div data-controller="modal" class="text-right">
