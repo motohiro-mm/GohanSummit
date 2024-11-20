@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to meal_plans_path, notice: '更新しました'
+      redirect_to meal_plans_path, notice: 'ユーザーを更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     current_user.destroy!
     current_user.family.destroy_family_having_no_user
     reset_session
-    redirect_to root_path, notice: '削除しました', status: :see_other
+    redirect_to root_path, notice: 'ユーザーを削除しました', status: :see_other
   end
 
   private

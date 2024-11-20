@@ -1,0 +1,11 @@
+<div data-controller="modal" class="text-right">
+  <dialog data-modal-target="dialog" class="w-4/5 sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 rounded-lg backdrop:bg-black/20">
+    <button data-action="modal#close" class="px-1 py-1 rounded-full bg-orange-100 text-right">
+      <%= image_tag('pages/cross_mark.svg', class: 'page-icon text-center', alt: 'モーダルを閉じるバツマーク') %>
+    </button>
+    <div class="mb-2 text-left">
+      <%= render 'meals/registered_meals', meal_plan: meal_plan %>
+    </div>
+  </dialog>
+  <button data-action="modal#open" class="text-xs py-1 px-2.5 rounded-full border-4 border-orange-100 hover:bg-orange-100">この日の<br>献立</button>
+</div>

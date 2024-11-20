@@ -1,15 +1,7 @@
 <%= form_with(model: meal_plan, class: 'contents') do |form| %>
-  <% if meal_plan.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <ul>
-        <% meal_plan.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'layouts/error_messages', model: meal_plan %>
   <div class="my-5">
-    <%= render 'shared/title_meal_date', meal_date: meal_plan.meal_date %>
+    <%= render 'layouts/title_meal_date', meal_date: meal_plan.meal_date %>
     <%= form.hidden_field :meal_date %>
 
     <%= form.fields_for :meals, meals_sort_by_timing(meal_plan) do |meal_form| %>

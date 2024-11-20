@@ -1,0 +1,19 @@
+<div data-controller="modal" class="text-right">
+  <dialog data-modal-target="dialog" class="w-4/5 sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 rounded-lg backdrop:bg-black/20" id="welcome-modal">
+    <button data-action="modal#close" class="px-1 py-1 rounded-full bg-orange-100 text-right">
+      <%= image_tag('pages/cross_mark.svg', class: 'page-icon text-center', alt: 'モーダルを閉じるバツマーク') %>
+    </button>
+    <div class="text-center leading-loose">
+      <p class="text-lg font-bold my-2">
+        ごはんサミットへようこそ！
+      </p>
+      <%= image_tag('home/welcome_modal.png', class: 'w-1/2 mx-auto', alt: 'ひよこが食べ物を思い浮かべているイラスト') %>
+      <p class="text-balance my-2">
+        初めて使う人は使い方を確認してください。
+      </p>
+      <div class="my-2">
+        <%= link_to '使い方はこちら', about_path, class: 'text-lg underline hover:no-underline', data: { action: 'modal#close', turbo_frame: '_top' } %>
+      </div>
+    </div>
+  </dialog>
+</div>
