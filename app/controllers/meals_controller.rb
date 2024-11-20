@@ -10,7 +10,7 @@ class MealsController < ApplicationController
     @meal = Meal.build(meal_params)
     @meal_plan = current_user.family.meal_plans.find(meal_plan_id)
     if @meal.create_or_update_meal_name(@meal_plan)
-      redirect_to @meal_plan, notice: '登録しました'
+      redirect_to @meal_plan, notice: '献立を登録しました'
     else
       render :new, status: :unprocessable_entity
     end
