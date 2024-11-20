@@ -9,10 +9,8 @@ class MeetingRoomsController < ApplicationController
   end
 
   def create
-    meal_plan = current_user.family.meal_plans.find_by(id: params[:meal_plan])
-    if meal_plan.nil?
-      meal_plan = current_user.family.meal_plans.new(meal_date: params[:meal_date])
-      meal_plan.save(validate: false)
+    meal_plan = current_user.family.meal_plans.find_or_create_by(meal_date: params[:meal_date]) do |mp|
+      mp.save(validate: false)
     end
     meeting_room = current_user.family.meeting_rooms.find_or_create_by(meal_plan:)
     redirect_to meeting_room_path(meeting_room)
