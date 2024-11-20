@@ -9,7 +9,7 @@
     </div>
   <% end %>
   <div class="my-5">
-    <%= render 'shared/title_meal_date', meal_date: meal_plan.meal_date %>
+    <%= render 'layouts/title_meal_date', meal_date: meal_plan.meal_date %>
     <%= form.hidden_field :meal_date %>
 
     <%= form.fields_for :meals, meals_sort_by_timing(meal_plan) do |meal_form| %>

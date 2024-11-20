@@ -4,18 +4,8 @@
 <%= turbo_stream_from @meeting_room, 'remarks' %>
 <div class="mx-auto p-4 w-full">
   <div class="flex justify-between items-center">
-    <%= render 'shared/title_meal_date', meal_date: @meeting_room.meal_plan.meal_date %>
-    <div data-controller="modal" class="text-right">
-      <dialog data-modal-target="dialog" class="w-4/5 sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 rounded-lg backdrop:bg-black/20">
-        <button data-action="modal#close" class="px-1 py-1 rounded-full bg-orange-100 text-right">
-          <%= image_tag('pages/cross_mark.svg', class: 'page-icon text-center', alt: 'モーダルを閉じるバツマーク') %>
-        </button>
-        <div class="mb-2 text-left">
-          <%= render 'meals/registered_meals', meal_plan: @meeting_room.meal_plan %>
-        </div>
-      </dialog>
-      <button data-action="modal#open" class="text-xs py-1 px-2.5 rounded-full border-4 border-orange-100 hover:bg-orange-100">この日の<br>献立</button>
-    </div>
+    <%= render 'layouts/title_meal_date', meal_date: @meeting_room.meal_plan.meal_date %>
+    <%= render 'meals_modal', meal_plan: @meeting_room.meal_plan %>
   </div>
   <div data-controller="cable-connection" data-target="appearance.status" data-cable-connection-target="status" class="hidden">
     <div class="mb-4 mx-auto flex justify-center">

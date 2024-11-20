@@ -5,7 +5,7 @@
   <div class="flex justify-between items-center">
     <% if logged_in? %>
       <%= link_to image_tag("user_icons/#{current_user.icon}", class: 'icon mx-2', alt: 'ユーザーがアイコンに設定している動物のイラスト'), user_path %>
-      <%= render 'shared/menu' %>
+      <%= render 'layouts/menu' %>
     <% end %>
   </div>
 </header>
