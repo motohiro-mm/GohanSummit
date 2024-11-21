@@ -9,7 +9,7 @@
           </span>
         </div>
         <div class="mx-auto ml-7 px-3 break-all font-medium">
-          <%= format_line_break(remark.content) %>
+          <%= safe_join(remark.content.split("\n"), tag.br) %>
         </div>
       </div>
     </div>

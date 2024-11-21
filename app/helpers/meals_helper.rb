@@ -19,9 +19,9 @@ module MealsHelper
   def meal_memo_placeholder(meal_form_index)
     case meal_form_index
     when 0
-      'おすすめされたトーストを作ってみよう'
+      'おすすめを作ってみよう'
     when 1
-      '会社の近くでさっと食べられるもの'
+      '時間がないからささっと'
     when 2
       '給料日なので外食！'
     end
