@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 module MealsHelper
-  def meal_timing(meal_form)
-    Meal.timings.key(meal_form.index)
-  end
-
   def meal_name_placeholder(meal_form_index)
     case meal_form_index
     when 0
