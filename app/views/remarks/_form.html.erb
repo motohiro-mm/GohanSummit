@@ -5,8 +5,7 @@
       <%= form.hidden_field :remark_type %>
       <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>
       <div class="my-4 w-full mx-auto">
-        <%= form.text_area :content, rows: 1, placeholder: remark_placeholder(remark.remark_type), autofocus: true,
-                                     class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
+        <%= remark_input_field(form, remark, :content) %>
       </div>
       <%= form.button type: :submit, id: 'submit_button', class: 'inline-block mx-auto cursor-pointer text-red-400 page-icon-big text-center ml-2 hover:text-red-600' do %>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="決定のチェックマーク">
