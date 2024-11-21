@@ -14,7 +14,7 @@
           <% else %>
             <%= link_to meal_plan do %>
               <ul>
-                <% meals_sort_by_timing(meal_plan).each do |meal| %>
+                <% meal_plan.meals.sort_by_timing.each do |meal| %>
                   <li class="text-clip text-left text-[8px] sm:text-xs">
                     <%= meal.name %>
                   </li>

@@ -1,6 +1,6 @@
 <% if meal_plan.meals.present? %>
   <h3 class="font-bold">この日に登録されている献立</h3>
-  <% meals_sort_by_timing(meal_plan).each do |meal| %>
+  <% meal_plan.meals.sort_by_timing.each do |meal| %>
     <%= render meal %>
   <% end %>
 <% else %>

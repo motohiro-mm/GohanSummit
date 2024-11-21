@@ -6,6 +6,12 @@ RSpec.describe Meal, type: :model do
   let(:user) { create(:user) }
   let(:meal_plan) { create(:meal_plan, :with_breakfast_and_dinner, family: user.family) }
 
+  describe '#sort_by_timing' do
+    it '食事タイミングでソートされる' do
+      expect(meal_plan.meals.sort_by_timing.map(&:name)).to eq %w[BreakfastName DinnerName]
+    end
+  end
+
   describe '#create_or_udpate_meal_name' do
     it 'meal_planに同じタイミングのmealがないとき、mealが新規保存される' do
       meal = build(:meal, name: '昼ごはん', timing: 'lunch')

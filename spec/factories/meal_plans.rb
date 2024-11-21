@@ -15,8 +15,8 @@ FactoryBot.define do
 
     trait :with_breakfast_and_dinner do
       after(:build) do |meal_plan|
-        meal_plan.meals << build(:meal, :breakfast, meal_plan:, name: 'BreakfastName')
         meal_plan.meals << build(:meal, :dinner, meal_plan:, name: 'DinnerName')
+        meal_plan.meals << build(:meal, :breakfast, meal_plan:, name: 'BreakfastName')
       end
     end
   end
