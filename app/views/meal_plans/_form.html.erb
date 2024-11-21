@@ -4,11 +4,11 @@
     <%= render 'layouts/title_meal_date', meal_date: meal_plan.meal_date %>
     <%= form.hidden_field :meal_date %>
 
-    <%= form.fields_for :meals, meal_plan.meals.sort_by { |meal| Meal.timings[meal.timing] } do |meal_form| %>
+    <%= form.fields_for(:meals, meal_plan.meals.sort_by { |meal| Meal.timings[meal.timing] }) do |meal_form| %>
       <div id="<%= meal_form.object.timing %>" class="border border-dashed border-red-900/10 rounded-lg p-4 my-5">
         <%= meal_form.hidden_field :timing, value: meal_form.object.timing %>
         <div class="flex items-center">
-          <%= image_tag("meals/#{meal_form.object.timing}.svg", class: 'page-icon text-center mr-2', alt: alt_meal_timing(meal_form.object.timing)) %>
+          <%= image_tag("meals/#{meal_form.object.timing}.svg", class: 'page-icon text-center mr-2', alt: alt_meal_timing(meal_form.index)) %>
           <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal_form.object.timing}") %></strong>
         </div>
         <div class="my-3">
