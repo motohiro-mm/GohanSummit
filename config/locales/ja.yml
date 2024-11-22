@@ -44,6 +44,15 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
         restrict_multiple_creation: "%{model}は1つしか作成できません"
+      models:
+        remark:
+          format: "%{message}"
+          attributes:
+            content:
+              too_long_proposal: "提案は%{count}文字以内で入力してください"
+              blank_proposal: "提案を入力してください"
+              too_long_comment: "コメントは%{count}文字以内で入力してください"
+              blank_comment: "コメントを入力してください"
   date:
     abbr_day_names:
       - 日

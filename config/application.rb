@@ -41,6 +41,7 @@ module GohanSummit
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.i18n.default_locale = :ja
+    config.active_model.i18n_customize_full_message = true
 
     # Don't generate system test files.
     config.generators.system_tests = nil
