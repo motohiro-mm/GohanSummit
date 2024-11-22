@@ -34,7 +34,16 @@ RSpec.describe 'Remarks', type: :system do
       click_on '提案する'
 
       find_by_id('submit_button').click
-      expect(page).to have_content '内容を入力してください'
+      expect(page).to have_content '提案を入力してください'
+    end
+
+    it '新規作成時に20文字以上入力してチェックボタンを押すとエラーが出る', :js do
+      visit meeting_room_path(meeting_room)
+      click_on '提案する'
+
+      fill_in 'remark_content', with: '0' * 21
+      find_by_id('submit_button').click
+      expect(page).to have_content '提案は20文字以内で入力してください'
     end
 
     it '編集する', :js do
@@ -57,7 +66,17 @@ RSpec.describe 'Remarks', type: :system do
 
       fill_in 'remark_content', with: ''
       find_by_id('submit_button').click
-      expect(page).to have_content '内容を入力してください'
+      expect(page).to have_content '提案を入力してください'
+    end
+
+    it '編集時に20文字以上入力してチェックボタンを押すとエラーが出る', :js do
+      proposal
+      visit meeting_room_path(meeting_room)
+      click_on 'カレー'
+
+      fill_in 'remark_content', with: '0' * 21
+      find_by_id('submit_button').click
+      expect(page).to have_content '提案は20文字以内で入力してください'
     end
 
     it '削除する', :js do
@@ -91,7 +110,16 @@ RSpec.describe 'Remarks', type: :system do
       click_on 'コメントする'
 
       find_by_id('submit_button').click
-      expect(page).to have_content '内容を入力してください'
+      expect(page).to have_content 'コメントを入力してください'
+    end
+
+    it '新規作成時に50文字以上入力してチェックボタンを押すとエラーが出る', :js do
+      visit meeting_room_path(meeting_room)
+      click_on 'コメントする'
+
+      fill_in 'remark_content', with: '0' * 51
+      find_by_id('submit_button').click
+      expect(page).to have_content 'コメントは50文字以内で入力してください'
     end
 
     it '編集する', :js do
@@ -114,7 +142,17 @@ RSpec.describe 'Remarks', type: :system do
 
       fill_in 'remark_content', with: ''
       find_by_id('submit_button').click
-      expect(page).to have_content '内容を入力してください'
+      expect(page).to have_content 'コメントを入力してください'
+    end
+
+    it '編集時に50文字以上入力してチェックボタンを押すとエラーが出る', :js do
+      comment
+      visit meeting_room_path(meeting_room)
+      click_on '簡単に作れるものにしよう'
+
+      fill_in 'remark_content', with: '0' * 51
+      find_by_id('submit_button').click
+      expect(page).to have_content 'コメントは50文字以内で入力してください'
     end
 
     it '削除する', :js do
