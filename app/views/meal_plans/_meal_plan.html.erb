@@ -7,7 +7,7 @@
       <% end %>
     </div>
   </div>
-  <% meals_sort_by_timing(meal_plan).each do |meal| %>
+  <% meal_plan.meals.sort_by_timing.each do |meal| %>
     <%= render 'meals/meal', meal: %>
   <% end %>
 </div>

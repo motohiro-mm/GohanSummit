@@ -16,7 +16,7 @@
         <%= link_to meal_plan do %>
           <div class="text-left flex items-center h-full min-h-14 w-full hover:bg-orange-100 rounded-lg">
             <ul class="w-4/5 mx-auto pl-4 inline-block">
-              <% meals_sort_by_timing(meal_plan).each do |meal| %>
+              <% meal_plan.meals.sort_by_timing.each do |meal| %>
                 <li class="flex justify-start items-center my-1">
                   <%= image_tag("meals/#{meal.timing}.svg", class: 'meal-icon text-center mr-2', alt: alt_meal_timing(meal.timing)) %>
                   <%= meal.name %>

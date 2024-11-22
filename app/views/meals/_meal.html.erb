@@ -12,7 +12,7 @@
   <% if meal.memo.present? %>
     <div class="my-2">
       <strong class="block mb-1"><%= Meal.human_attribute_name(:memo) %></strong>
-      <span class="block rounded-md px-3 py-2"><%= format_line_break(meal.memo) %></span>
+      <span class="block rounded-md px-3 py-2"><%= safe_join(meal.memo.split("\n"), tag.br) %></span>
     </div>
   <% end %>
 </div>

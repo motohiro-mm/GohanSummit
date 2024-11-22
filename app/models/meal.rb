@@ -7,6 +7,8 @@ class Meal < ApplicationRecord
 
   validates :timing, presence: true, uniqueness: { scope: :meal_plan_id }
 
+  scope :sort_by_timing, -> { order(:timing) }
+
   def create_or_update_meal_name(meal_plan)
     same_timing_meal = meal_plan.meals.find_by(timing: self[:timing])
     if same_timing_meal.nil?
