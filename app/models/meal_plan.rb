@@ -18,7 +18,7 @@ class MealPlan < ApplicationRecord
   end
 
   def meals_build
-    required_timings = Meal.timings.keys - meals.pluck(:timing)
+    required_timings = Meal.timings.keys - meals.map(&:timing)
     required_timings.each do |required_timing|
       meals.build(timing: required_timing)
     end
