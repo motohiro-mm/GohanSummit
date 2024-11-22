@@ -4,10 +4,11 @@ class Remark < ApplicationRecord
   belongs_to :meeting_room
   belongs_to :user
 
-  validates :remark_type, presence: true
-  validates :content, presence: true
-
   enum :remark_type, { proposal: 0, comment: 1 }, validate: true
+
+  validates :remark_type, presence: true
+  validates :content, length: { maximum: 20, too_long: :too_long_proposal }, presence: { message: :blank_proposal }, if: :proposal?
+  validates :content, length: { maximum: 50, too_long: :too_long_comment }, presence: { message: :blank_comment }, if: :comment?
 
   scope :proposals, -> { where(remark_type: 'proposal') }
   scope :comments, -> { where(remark_type: 'comment') }

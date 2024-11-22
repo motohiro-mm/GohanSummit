@@ -26,13 +26,13 @@ RSpec.describe 'MealPlans', type: :system do
 
     expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
     within '#breakfast' do
-      fill_in '料理', with: 'シリアル'
+      fill_in '料理名', with: 'シリアル'
     end
     within '#lunch' do
-      fill_in '料理', with: 'ハンバーガー'
+      fill_in '料理名', with: 'ハンバーガー'
     end
     within '#dinner' do
-      fill_in '料理', with: 'ステーキ'
+      fill_in '料理名', with: 'ステーキ'
     end
     click_on '登録'
 
@@ -55,6 +55,24 @@ RSpec.describe 'MealPlans', type: :system do
     expect(page).to have_button('登録', visible: :all)
   end
 
+  it '料理名を20文字以上、メモを200文字以上入力して登録しようとしてバリデーションエラーが出る' do
+    visit meal_plans_path(start_date: Time.zone.today)
+    within "##{cell_day(Time.zone.today)}" do
+      find_by_id('plus_icon').click
+    end
+
+    expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
+    within '#breakfast' do
+      fill_in '料理名', with: '0' * 21
+      fill_in 'メモ', with: '0' * 201
+    end
+    click_on '登録'
+
+    expect(page).to have_content '料理名は20文字以内で入力してください'
+    expect(page).to have_content 'メモは200文字以内で入力してください'
+    expect(page).to have_button('登録', visible: :all)
+  end
+
   it '献立を詳細表示する' do
     visit meal_plans_path(start_date: meal_plan.meal_date)
     click_on 'BreakfastName'
@@ -68,7 +86,7 @@ RSpec.describe 'MealPlans', type: :system do
     click_on '編集リンクのペンマーク'
 
     within '#lunch' do
-      fill_in '料理', with: 'EditName'
+      fill_in '料理名', with: 'EditName'
     end
     click_on '更新'
 
@@ -81,17 +99,32 @@ RSpec.describe 'MealPlans', type: :system do
     click_on '編集リンクのペンマーク'
 
     within '#breakfast' do
-      fill_in '料理', with: ''
+      fill_in '料理名', with: ''
     end
     within '#lunch' do
-      fill_in '料理', with: ''
+      fill_in '料理名', with: ''
     end
     within '#dinner' do
-      fill_in '料理', with: ''
+      fill_in '料理名', with: ''
     end
     click_on '更新'
 
     expect(page).to have_content '料理名を最低1つ入力してください'
+    expect(page).to have_button('更新', visible: :all)
+  end
+
+  it '編集中の料理名を20文字以上、メモを200文字以上入力して更新しようとしてバリデーションエラーが出る' do
+    visit meal_plan_path(meal_plan)
+    click_on '編集リンクのペンマーク'
+
+    within '#breakfast' do
+      fill_in '料理名', with: '0' * 21
+      fill_in 'メモ', with: '0' * 201
+    end
+    click_on '更新'
+
+    expect(page).to have_content '料理名は20文字以内で入力してください'
+    expect(page).to have_content 'メモは200文字以内で入力してください'
     expect(page).to have_button('更新', visible: :all)
   end
 

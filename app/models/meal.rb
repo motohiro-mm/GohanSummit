@@ -6,6 +6,8 @@ class Meal < ApplicationRecord
   enum :timing, { breakfast: 0, lunch: 1, dinner: 2 }, validate: true
 
   validates :timing, presence: true, uniqueness: { scope: :meal_plan_id }
+  validates :name, length: { maximum: 20 }
+  validates :memo, length: { maximum: 200 }
 
   scope :sort_by_timing, -> { order(:timing) }
 
