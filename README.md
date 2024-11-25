@@ -75,8 +75,13 @@ $ bin/setup
 - 起動
 ```angular2html
 $ bin/dev
-$ open http://localhost:3000/
 ```
+- 起動後
+  - 通常ログイン：下記URLからログインします<br>
+http://localhost:3000/
+
+  - seedデータが入っている献立表：下記URLから初回ログインしてください<br>
+http://localhost:3000/welcome?invitation_token=gohan20240915seed
 
 ### Lint、Test
 - Lint
