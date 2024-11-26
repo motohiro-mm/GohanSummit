@@ -12,14 +12,17 @@ class Meal < ApplicationRecord
   scope :sort_by_timing, -> { order(:timing) }
 
   def create_or_update_meal_name(meal_plan)
+    if self[:name].blank?
+      errors.add(:name, 'を入力してください')
+      return false
+    end
+
     same_timing_meal = meal_plan.meals.find_by(timing: self[:timing])
-    if same_timing_meal.nil?
+    if same_timing_meal
+      same_timing_meal.update(name: self[:name], memo: '')
+    else
       self.meal_plan = meal_plan
       save
-    else
-      same_timing_meal.name = self[:name]
-      same_timing_meal.memo = ''
-      same_timing_meal.save
     end
   end
 end
