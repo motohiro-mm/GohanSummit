@@ -27,7 +27,7 @@ RSpec.describe 'Meals', type: :system do
     expect(page).to have_content 'カレー'
   end
 
-  it '不適切な提案がきたらエラーを返す', :js do
+  it 'タイミングがない提案がきたらエラーを返す', :js do
     visit new_meal_plan_meal_path(meal_plan, remark: proposal)
 
     expect(page).to have_content '以下の料理を献立に登録します。'
@@ -35,5 +35,15 @@ RSpec.describe 'Meals', type: :system do
     click_on '登録'
 
     expect(page).to have_content '食事タイミングを入力してください'
+  end
+
+  it '料理名がない提案がきたらエラーを返す', :js do
+    visit new_meal_plan_meal_path(meal_plan, remark: proposal)
+
+    expect(page).to have_content '以下の料理を献立に登録します。'
+    page.execute_script("document.querySelector('input[name=\"meal[name]\"]').value = ''")
+    click_on '登録'
+
+    expect(page).to have_content '料理名を入力してください'
   end
 end
