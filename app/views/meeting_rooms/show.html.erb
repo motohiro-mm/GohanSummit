@@ -13,7 +13,7 @@
     <div id="remarks">
       <div class="rounded-lg border-2 border-orange-950/40">
         <h2 class="w-full rounded-t-lg pl-4 py-1.5 border-b-2 border-orange-950/40 bg-orange-50">
-          <span class="flex items-center text-lg w-20"><%= image_tag('pages/meal.svg', class: 'w-5 text-center mr-1', alt: '食事のマーク') %>提案</span>
+          <span class="flex items-center text-lg"><%= image_tag('pages/meal.svg', class: 'w-5 text-center mr-1', alt: '食事のマーク') %>献立の提案</span>
         </h2>
         <div class="px-2">
           <%= render 'remarks/proposals', meeting_room: @meeting_room, proposals: @proposals %>
