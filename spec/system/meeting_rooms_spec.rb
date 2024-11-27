@@ -17,8 +17,8 @@ RSpec.describe 'MeetingRooms', type: :system do
     end
 
     expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
-    expect(page).to have_content '提案する'
-    expect(page).to have_content 'コメントする'
+    expect(page).to have_content '提案を登録する'
+    expect(page).to have_content 'コメントを投稿する'
   end
 
   it '献立表詳細画面から会議室へ遷移する' do
@@ -26,7 +26,7 @@ RSpec.describe 'MeetingRooms', type: :system do
     click_on '会議へ'
 
     expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
-    expect(page).to have_content '提案する'
-    expect(page).to have_content 'コメントする'
+    expect(page).to have_content '提案を登録する'
+    expect(page).to have_content 'コメントを投稿する'
   end
 end

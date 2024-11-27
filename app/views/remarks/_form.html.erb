@@ -1,10 +1,10 @@
-<%= turbo_frame_tag remark do %>
+<%= turbo_frame_tag form_remark(remark, new_remark_type) do %>
   <%= form_with model: [meeting_room, remark]  do |form| %>
     <%= render 'layouts/error_messages', model: remark %>
-    <div class="flex items-center">
+    <div class="flex items-center mt-1">
       <%= form.hidden_field :remark_type %>
       <%= form.hidden_field :meeting_room_id, value: meeting_room.id %>
-      <div class="my-4 w-full mx-auto">
+      <div class="my-1 w-full mx-auto">
         <%= remark_input_field(form, remark, :content) %>
       </div>
       <%= form.button type: :submit, id: 'submit_button', class: 'inline-block mx-auto cursor-pointer text-red-400 page-icon-big text-center ml-2 hover:text-red-600' do %>
@@ -19,12 +19,12 @@
   <% end %>
   <div class="flex justify-around items-center">
     <% if remark.persisted? %>
-      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, id: 'trash_button', class: 'flex items-center p-2 inline-block cursor-pointer' do %>
-        <%= image_tag('pages/trash.svg', class: 'page-icon-big p-1 text-center rounded-full hover:bg-orange-200', alt: '削除のゴミ箱マーク') %>
+      <%= button_to meeting_room_remark_path(remark.meeting_room, remark), method: :delete, id: 'trash_button', class: 'flex items-center inline-block cursor-pointer' do %>
+        <%= image_tag('pages/trash.svg', class: 'icon p-1 text-center rounded-full hover:bg-orange-200', alt: '削除のゴミ箱マーク') %>
       <% end %>
     <% end %>
     <%= link_to meeting_room, class: 'inline-block cursor-pointer', id: 'cancel_button' do %>
-      <%= image_tag('pages/cross_mark.svg', class: 'page-icon-big text-center rounded-full hover:bg-orange-200', alt: 'キャンセルのバツマーク') %>
+      <%= image_tag('pages/cross_mark.svg', class: 'icon text-center rounded-full hover:bg-orange-200', alt: 'キャンセルのバツマーク') %>
     <% end %>
   </div>
 <% end %>

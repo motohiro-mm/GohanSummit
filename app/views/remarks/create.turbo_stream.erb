@@ -1,2 +1,2 @@
-<%= turbo_stream.update Remark.new, "" %>
+<%= turbo_stream.replace dom_id(Remark.new, @remark.remark_type), partial: 'new_button', locals: { meeting_room: @meeting_room, new_remark_type: @remark.remark_type } %>
 <%= turbo_stream.prepend "flash", partial: "layouts/flash" %>

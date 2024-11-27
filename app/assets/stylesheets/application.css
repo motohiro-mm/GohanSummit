@@ -39,8 +39,8 @@ textarea::placeholder {
 }
 
 .icon {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
 }
 
 .page-icon-big {
@@ -72,17 +72,6 @@ textarea::placeholder {
 
 .meeting_room_button:hover {
   background-color: #dc2626;
-}
-
-.remark_button {
-  border-radius: 9999px;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  background-color: #ffedd5;
-}
-
-.remark_button:hover {
-  background-color: #fdba74;
 }
 
 .plus_icon {
@@ -187,27 +176,6 @@ textarea::placeholder {
 .arrow_right:hover::before {
   border-top: 0.2rem solid rgb(67 20 7);
   border-right: 0.2rem solid rgb(67 20 7);
-}
-
-.box {
-  border: 0.2rem double rgba(67, 20, 7, 0.5);
-  border-radius: 12px;
-  position: relative;
-  margin-top: 1em;
-}
-.box h2 {
-  text-align: left;
-  position: absolute;
-  left: 0.8rem;
-  top: -1.5rem;
-}
-.box span {
-  padding: 0.5rem;
-  background: #fff;
-  color: rgb(67 20 7);
-}
-.box .inner {
-  padding: 1.2em 0.5em 0.5em;
 }
 
 .checkbox-3 {

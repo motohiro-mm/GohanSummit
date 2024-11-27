@@ -2,34 +2,33 @@
 <% set_meta_tags description: '献立の相談を行う会議室です。ここでは献立の提案とコメントを自由に行うことができます。' %>
 <%= action_cable_meta_tag %>
 <%= turbo_stream_from @meeting_room, 'remarks' %>
-<div class="mx-auto p-4 w-full">
+<div class="text-sm md:text-base mx-auto p-4 w-full">
   <div class="flex justify-between items-center">
     <%= render 'layouts/title_meal_date', meal_date: @meeting_room.meal_plan.meal_date %>
     <%= render 'meals_modal', meal_plan: @meeting_room.meal_plan %>
   </div>
   <div data-controller="cable-connection" data-target="appearance.status" data-cable-connection-target="status" class="hidden">
     <div class="mb-4 mx-auto flex justify-center">
-      <%= link_to '提案する', new_meeting_room_remark_path(@meeting_room, remark_type: :proposal), data: { turbo_frame: dom_id(Remark.new) }, class: 'inline-block mx-2 my-4 px-6 remark_button' %>
-      <%= link_to 'コメントする', new_meeting_room_remark_path(@meeting_room, remark_type: :comment), data: { turbo_frame: dom_id(Remark.new) }, class: 'inline-block mx-2 my-4 px-3 remark_button' %>
     </div>
-    <%= turbo_frame_tag Remark.new %>
     <div id="remarks">
-      <div class="box border border-orange-950/50">
-        <h2>
-          <span class="flex items-center justify-around text-xl w-24"><%= image_tag('pages/meal.svg', class: 'page-icon text-center', alt: '食事のマーク') %>提案</span>
+      <div class="rounded-lg border-2 border-orange-950/40">
+        <h2 class="w-full rounded-t-lg pl-4 py-1.5 border-b-2 border-orange-950/40 bg-orange-50">
+          <span class="flex items-center text-lg w-20"><%= image_tag('pages/meal.svg', class: 'w-5 text-center mr-1', alt: '食事のマーク') %>提案</span>
         </h2>
-        <div class="inner">
+        <div class="px-2">
           <%= render 'remarks/proposals', meeting_room: @meeting_room, proposals: @proposals %>
+          <%= render 'remarks/new_button', meeting_room: @meeting_room, new_remark_type: 'proposal' %>
         </div>
       </div>
-      <div class="mt-6">
-        <h2 class="flex items-center text-xl mb-2">
-          <%= image_tag('pages/chat_single.svg', class: 'icon text-center', alt: 'コメントのマーク') %>
+      <div class="mt-4">
+        <h2 class="mb-2 flex items-center text-lg">
+          <%= image_tag('pages/chat_single.svg', class: 'w-7 text-center', alt: 'コメントのマーク') %>
           <span>コメント</span>
         </h2>
-          <div class="grid gap">
-            <%= render 'remarks/comments', meeting_room: @meeting_room, comments: @comments %>
-          </div>
+        <div class="grid gap border-b border-dashed border-orange-700/10">
+          <%= render 'remarks/comments', meeting_room: @meeting_room, comments: @comments %>
+        </div>
+        <%= render 'remarks/new_button', meeting_room: @meeting_room, new_remark_type: 'comment' %>
       </div>
     </div>
   </div>

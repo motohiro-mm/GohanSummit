@@ -1,0 +1,11 @@
+<%= turbo_frame_tag dom_id(Remark, new_remark_type) do %>
+  <div class="mx-auto my-4 flex justify-center">
+    <%= link_to new_meeting_room_remark_path(meeting_room, remark_type: new_remark_type.to_sym), data: { turbo_frame: dom_id(Remark, new_remark_type) },
+                                                                                                 class: 'w-2/3 md:w-1/2 p-2 flex justify-between rounded-full border-2 border-orange-950/50 hover:bg-orange-200' do %>
+      <span class="pl-2 text-left">＋</span>
+      <span class="mx-auto pr-2 text-center">
+        <%= new_button_content(new_remark_type) %>
+      </span>
+    <% end %>
+  </div>
+<% end %>

@@ -1,14 +1,14 @@
 <%= turbo_stream_from meeting_room, 'proposals' %>
 <div id="proposal_empty_message">
   <% if proposals.empty? %>
-    <div class="font-bold text-center">
+    <div class="text-center">
       食べたいものを提案しましょう！<br>
       提案した料理はそのまま献立表に<br>
       登録ができます
     </div>
   <% end %>
 </div>
-<div id="proposals">
+<div id="proposals" class="pt-4">
   <%= turbo_frame_tag 'proposals' do %>
     <% proposals.each do |remark| %>
       <%= render 'remarks/proposal', remark: %>
