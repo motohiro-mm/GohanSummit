@@ -2,7 +2,7 @@
   data-controller="dropdown"
   data-action="click@window->dropdown#hide touchstart@window->dropdown#hide keydown.esc->dropdown#hide"
   class="inline-block relative">
-  <button id='menu-close' data-action="click->dropdown#show click@window->dropdown#hide" class="p-2 text-orange-950 rounded-full flex items-center hover:bg-orange-100">
+  <button id='menu-close' data-action="dropdown#toggle:stop" class="p-2 text-orange-950 rounded-full flex items-center hover:bg-orange-100">
     <%= image_tag('pages/menu.svg', class: 'icon', alt: 'メニューボタンの３本線マーク') %>
   </button>
   <div id="menu-open" data-dropdown-target="menu" class="hidden absolute top-4 right-0 mt-8 flex w-screen max-w-max text-orange-950">
