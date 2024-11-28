@@ -3,10 +3,8 @@
 <%= action_cable_meta_tag %>
 <%= turbo_stream_from @meeting_room, 'remarks' %>
 <div class="text-sm md:text-base mx-auto w-full overflow-hidden">
-  <div class="flex justify-between items-center">
     <%= render 'layouts/title_meal_date', meal_date: @meeting_room.meal_plan.meal_date %>
     <%= render 'meals_modal', meal_plan: @meeting_room.meal_plan %>
-  </div>
   <div data-controller="cable-connection" data-target="appearance.status" data-cable-connection-target="status" class="hidden">
     <div id="remarks">
       <div class="mx-4 rounded-lg border-2 border-orange-950/40">
