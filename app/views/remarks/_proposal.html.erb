@@ -1,5 +1,5 @@
 <%= turbo_frame_tag remark do %>
-  <div id="remark_<%= remark.id %>" class="w-full flex justify-between items-center hover:bg-orange-100 rounded-lg">
+  <div id="remark_<%= remark.id %>" class="w-full flex justify-between items-center hover:bg-orange-100 rounded-lg h-10">
     <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark), class: 'w-full z-0' do %>
       <div class="flex justify-start items-center ml-2 my-1 text-wrap">
         <%= render 'remarks/user_icon', remark: %>
