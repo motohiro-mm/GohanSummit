@@ -1,11 +1,15 @@
-<div data-controller="modal" class="text-right">
-  <dialog data-modal-target="dialog" class="w-4/5 sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 rounded-lg backdrop:bg-black/20">
-    <button data-action="modal#close" class="px-1 py-1 rounded-full bg-orange-100 text-right">
+<div data-controller="modal" class="my-4">
+  <dialog data-modal-target="dialog" class="w-4/5 sm:w-1/2 lg:w-1/3 xl:w-1/4 p-4 rounded-lg backdrop:bg-black/20 relative">
+    <button data-action="modal#close" class="px-0.5 py-0.5 rounded-full bg-orange-100 absolute top-2 right-2">
       <%= image_tag('pages/cross_mark.svg', class: 'page-icon text-center', alt: 'モーダルを閉じるバツマーク') %>
     </button>
-    <div class="mb-2 text-left">
+    <div class="my-2 text-left text-orange-950">
       <%= render 'meals/registered_meals', meal_plan: meal_plan %>
     </div>
   </dialog>
-  <button data-action="modal#open" class="text-xs py-1 px-2.5 rounded-full border-4 border-orange-100 hover:bg-orange-100">この日の<br>献立</button>
+  <button data-action="modal#open" class="w-2/3 md:w-1/2 py-2 mx-auto flex items-center justify-around rounded-full border-2 border-orange-950/30 bg-orange-100">
+    <%= image_tag('pages/meal.svg', class: 'w-5', alt: '献立のマーク') %>
+    <span class=" text-center">確定した献立を確認する</span>
+    <span class="font-semibold"><%= meal_plan.meals.length %>/3</span>
+  </button>
 </div>
