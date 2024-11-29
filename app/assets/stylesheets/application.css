@@ -219,3 +219,13 @@ textarea::placeholder {
   border-radius: 100%;
   border-color: #fdba74;
 }
+
+.comment-max-height {
+  max-height: calc(100vh - 452px);
+}
+
+@media (min-width: 768px) {
+  .comment-max-height {
+    max-height: calc(100vh - 508px);
+  }
+}

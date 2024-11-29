@@ -3,30 +3,48 @@
 <%= action_cable_meta_tag %>
 <%= turbo_stream_from @meeting_room, 'remarks' %>
 <div class="text-sm md:text-base mx-auto w-full overflow-hidden">
-    <%= render 'layouts/title_meal_date', meal_date: @meeting_room.meal_plan.meal_date %>
-    <%= render 'meals_modal', meal_plan: @meeting_room.meal_plan %>
+  <%= render 'layouts/title_meal_date', meal_date: @meeting_room.meal_plan.meal_date %>
+  <%= render 'meals_modal', meal_plan: @meeting_room.meal_plan %>
   <div data-controller="cable-connection" data-target="appearance.status" data-cable-connection-target="status" class="hidden">
     <div id="remarks">
       <div class="mx-4 rounded-lg border-2 border-orange-950/40">
-        <h2 class="w-full items-center rounded-t-lg pl-4 py-1.5 border-b-2 border-orange-950/40 bg-orange-50">
-          <span class="flex text-lg"><%= image_tag('pages/light.svg', class: 'w-5 text-center mr-1', alt: '提案のマーク') %>献立の提案</span>
-        </h2>
-        <div class="my-1 px-2 max-h-[7.5rem] overflow-y-auto">
-          <%= render 'remarks/proposals', meeting_room: @meeting_room, proposals: @proposals %>
+        <div class="w-full flex justify-between items-center rounded-t-lg pl-4 py-1.5 border-b-2 border-orange-950/40 bg-orange-50">
+          <h2>
+            <span class="flex text-lg"><%= image_tag('pages/light.svg', class: 'w-5 text-center mr-1', alt: '提案のマーク') %>献立の提案</span>
+          </h2>
+          <div class="w-1/2 flex justify-end mr-4">
+            <%= link_to new_meeting_room_remark_path(@meeting_room, remark_type: :proposal), data: { turbo_frame: dom_id(Remark, 'proposal') },
+                                                                                             class: 'p-1.5 rounded-full border-2 border-orange-950/50 bg-white hover:bg-orange-200' do %>
+              <span class="pl-2 text-left">＋</span>
+              <span class="mx-auto pr-2 text-center">提案する</span>
+            <% end %>
+          </div>
         </div>
-        <%= render 'remarks/new_button', meeting_room: @meeting_room, new_remark_type: 'proposal' %>
+        <div class="my-2 px-2">
+          <%= turbo_frame_tag dom_id(Remark, 'proposal') %>
+          <div class="max-h-[7.5rem] overflow-y-auto">
+            <%= render 'remarks/proposals', meeting_room: @meeting_room, proposals: @proposals %>
+          </div>
+        </div>
       </div>
       <div class="mt-4 px-4">
-        <h2 class="mb-2 flex items-center text-lg">
-          <%= image_tag('pages/chat_single.svg', class: 'w-7 text-center', alt: 'コメントのマーク') %>
-          <span>コメント</span>
-        </h2>
-        <div class="max-h-[30vh] overflow-y-auto grid gap border-b border-dashed border-orange-700/10">
+        <div class="flex justify-between items-center mb-2">
+          <h2 class="flex items-center text-lg">
+            <%= image_tag('pages/chat_single.svg', class: 'w-7 text-center', alt: 'コメントのマーク') %>
+            <span>コメント</span>
+          </h2>
+          <div class="flex justify-end mr-4">
+            <%= link_to new_meeting_room_remark_path(@meeting_room, remark_type: :comment), data: { turbo_frame: dom_id(Remark, 'comment') },
+                                                                                            class: 'p-1.5 rounded-full border-2 border-orange-950/50 bg-white hover:bg-orange-200' do %>
+              <span class="pl-2 text-left">＋</span>
+              <span class="mx-auto pr-2 text-center">コメントする</span>
+            <% end %>
+          </div>
+        </div>
+        <%= turbo_frame_tag dom_id(Remark, 'comment') %>
+        <div class="comment-max-height overflow-y-auto grid gap border-dashed border-orange-700">
           <%= render 'remarks/comments', meeting_room: @meeting_room, comments: @comments %>
         </div>
-      </div>
-      <div class="fixed bottom-0 text-center max-w-screen-sm w-full mx-auto px-4 bg-white">
-        <%= render 'remarks/new_button', meeting_room: @meeting_room, new_remark_type: 'comment' %>
       </div>
     </div>
   </div>

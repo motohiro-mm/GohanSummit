@@ -17,7 +17,7 @@ RSpec.describe 'Remarks', type: :system do
     it '新規作成する', :js do
       visit meeting_room_path(meeting_room)
       expect(page).to have_css 'h2', text: '献立の提案'
-      click_on '提案を登録する'
+      click_on '提案する'
 
       fill_in 'remark_content', with: 'やきにく'
       find_by_id('submit_button').click
@@ -31,7 +31,7 @@ RSpec.describe 'Remarks', type: :system do
 
     it '新規作成時に未入力のままチェックボタンを押すとエラーが出る', :js do
       visit meeting_room_path(meeting_room)
-      click_on '提案を登録する'
+      click_on '提案する'
 
       find_by_id('submit_button').click
       expect(page).to have_content '提案を入力してください'
@@ -39,7 +39,7 @@ RSpec.describe 'Remarks', type: :system do
 
     it '新規作成時に20文字以上入力してチェックボタンを押すとエラーが出る', :js do
       visit meeting_room_path(meeting_room)
-      click_on '提案を登録する'
+      click_on '提案する'
 
       fill_in 'remark_content', with: '0' * 21
       find_by_id('submit_button').click
@@ -94,7 +94,7 @@ RSpec.describe 'Remarks', type: :system do
     it '新規作成する', :js do
       visit meeting_room_path(meeting_room)
       expect(page).to have_css 'h2', text: '献立の提案'
-      click_on 'コメントを投稿する'
+      click_on 'コメントする'
 
       fill_in 'remark_content', with: 'たくさん食べたい'
       find_by_id('submit_button').click
@@ -107,7 +107,7 @@ RSpec.describe 'Remarks', type: :system do
 
     it '新規作成時に未入力のままチェックボタンを押すとエラーが出る', :js do
       visit meeting_room_path(meeting_room)
-      click_on 'コメントを投稿する'
+      click_on 'コメントする'
 
       find_by_id('submit_button').click
       expect(page).to have_content 'コメントを入力してください'
@@ -115,7 +115,7 @@ RSpec.describe 'Remarks', type: :system do
 
     it '新規作成時に50文字以上入力してチェックボタンを押すとエラーが出る', :js do
       visit meeting_room_path(meeting_room)
-      click_on 'コメントを投稿する'
+      click_on 'コメントする'
 
       fill_in 'remark_content', with: '0' * 51
       find_by_id('submit_button').click

@@ -1,6 +1,6 @@
 <%= turbo_frame_tag remark do %>
   <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark) do %>
-    <div class="border-t border-dashed border-orange-700/10">
+    <div class="border-t border-dashed border-orange-700/20">
       <div id="remark_<%= remark.id %>" class="w-full pb-3 hover:bg-orange-100 rounded-lg">
         <div class="flex items-center pt-2">
           <%= render 'remarks/user_icon', remark: %>
