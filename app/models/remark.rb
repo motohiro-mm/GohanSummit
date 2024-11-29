@@ -10,8 +10,8 @@ class Remark < ApplicationRecord
   validates :content, length: { maximum: 20, too_long: :too_long_proposal }, presence: { message: :blank_proposal }, if: :proposal?
   validates :content, length: { maximum: 50, too_long: :too_long_comment }, presence: { message: :blank_comment }, if: :comment?
 
-  scope :proposals, -> { where(remark_type: 'proposal') }
-  scope :comments, -> { where(remark_type: 'comment') }
+  scope :proposals, -> { where(remark_type: 'proposal').order(created_at: :desc) }
+  scope :comments, -> { where(remark_type: 'comment').order(created_at: :desc) }
 
   after_create_commit lambda {
     broadcast_remove_to [meeting_room, "#{remark_type}s"], target: "#{remark_type}_empty_message"

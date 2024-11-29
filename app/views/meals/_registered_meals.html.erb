@@ -1,8 +1,11 @@
 <% if meal_plan.meals.present? %>
-  <h3 class="font-bold">この日に登録されている献立</h3>
+  <h3 class="text-lg font-bold">確定した献立</h3>
+  クリックで献立の詳細が見られます。
   <% meal_plan.meals.sort_by_timing.each do |meal| %>
     <%= render meal %>
   <% end %>
+  <%= link_to '献立を編集する', edit_meal_plan_path(meal_plan), data: { turbo_frame: '_top' }, class: 'flex justify-center rounded-full p-2 bg-orange-100' %>
 <% else %>
   <h2 class="font-bold text-center">この日に登録されている<br>献立はありません。</h2>
+  <%= link_to '会議をせずに献立を登録する場合はこちら', new_meal_plan_path(meal_date: meal_plan.meal_date), data: { turbo_frame: '_top' }, class: 'my-2 underline flex justify-center' %>
 <% end %>

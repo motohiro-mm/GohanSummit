@@ -1,2 +1,2 @@
-<%= turbo_stream.update Remark.new, "" %>
+<%= turbo_stream.update dom_id(Remark.new, @remark.remark_type), "" %>
 <%= turbo_stream.prepend "flash", partial: "layouts/flash" %>

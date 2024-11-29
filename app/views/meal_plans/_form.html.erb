@@ -1,7 +1,7 @@
 <%= form_with(model: meal_plan, class: 'contents') do |form| %>
-  <%= render 'layouts/error_messages', model: meal_plan %>
-  <div class="my-5">
-    <%= render 'layouts/title_meal_date', meal_date: meal_plan.meal_date %>
+  <%= render 'layouts/title_meal_date', meal_date: meal_plan.meal_date %>
+  <div class="mx-3 my-5">
+    <%= render 'layouts/error_messages', model: meal_plan %>
     <%= form.hidden_field :meal_date %>
 
     <%= form.fields_for(:meals, meal_plan.meals.sort_by { |meal| Meal.timings[meal.timing] }) do |meal_form| %>

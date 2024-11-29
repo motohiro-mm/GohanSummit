@@ -15,6 +15,24 @@ module RemarksHelper
     end
   end
 
+  def form_remark(remark, new_remark_type = nil)
+    if new_remark_type == 'proposal'
+      dom_id(remark, 'proposal')
+    elsif new_remark_type == 'comment'
+      dom_id(remark, 'comment')
+    else
+      remark
+    end
+  end
+
+  def new_button_content(remark_type)
+    if remark_type == 'proposal'
+      '提案を登録する'
+    elsif remark_type == 'comment'
+      'コメントを投稿する'
+    end
+  end
+
   private
 
   def remark_placeholder(remark_type)

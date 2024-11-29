@@ -1,14 +1,14 @@
 <%= turbo_frame_tag remark do %>
-  <div id="remark_<%= remark.id %>" class="w-full flex justify-between items-center hover:bg-orange-100 rounded-lg">
-    <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark), class: 'w-5/6 z-0' do %>
-      <div class="flex justify-start items-center ml-2 my-3 font-bold text-wrap">
+  <div id="remark_<%= remark.id %>" class="w-full flex justify-between items-center">
+    <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark), class: 'hover:bg-orange-100 rounded-lg h-10 w-full' do %>
+      <div class="flex justify-start items-center ml-2 my-1 text-wrap">
         <%= render 'remarks/user_icon', remark: %>
         <%= remark.content %>
       </div>
-      <div class="text-center flex-shrink-0">
-        <%= link_to '登録', new_meal_plan_meal_path(remark.meeting_room.meal_plan, remark:), data: { turbo_frame: '_top' },
-                                                                                           class: 'rounded-full py-2 px-3 text-white bg-red-400 inline-block z-10 hover:bg-red-600' %>
-      </div>
     <% end %>
+    <div class="text-center flex-shrink-0 mx-1">
+      <%= link_to '献立へ登録', new_meal_plan_meal_path(remark.meeting_room.meal_plan, remark:), data: { turbo_frame: '_top' },
+                                                                                            class: 'rounded-full py-1 px-2 bg-white text-red-400 border-2 border-red-400/70 inline-block hover:bg-red-400 hover:text-white' %>
+    </div>
   </div>
 <% end %>
