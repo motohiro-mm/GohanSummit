@@ -5,11 +5,10 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: 'sessions#auth_failure'
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
-  resource :user, only: %i[update destroy]
-  get 'user', to: 'users#edit', as: 'edit_user'
-  get 'family', to: 'families#show', as: 'family'
-  get 'meal_plans/calendar', to: 'meal_plans#calendar'
+  resource :user, only: %i[edit update destroy], path_names: { edit: '' }
+  resource :family, only: %i[show], as: 'family'
   resources :meal_plans do
+    get 'calendar', on: :collection
     resources :meals, only: %i[new create]
   end
   resources :meeting_rooms, only: %i[show create] do
