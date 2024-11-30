@@ -3,12 +3,12 @@
   <% if proposals.empty? %>
     <div class="text-center">
       食べたいものを提案しましょう！<br>
-      提案した料理はそのまま献立表に<br>
-      登録ができます
+      提案した献立は献立表に<br>
+      そのまま登録ができます。
     </div>
   <% end %>
 </div>
-<div id="proposals">
+<div id="proposals" class="max-h-[7.5rem] overflow-y-auto">
   <%= turbo_frame_tag 'proposals' do %>
     <% proposals.each do |remark| %>
       <%= render 'remarks/proposal', remark: %>
