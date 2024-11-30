@@ -2,10 +2,12 @@
   <%= render 'layouts/error_messages', model: meal %>
   <div class="my-6">
     <%= form.hidden_field :id %>
-    <div id="timing_checkbox" class="checkbox-3 flex justify-around">
+    <div id="timing_checkbox" class="checkbox-3 flex justify-center gap-4 md:gap-16">
       <% Meal.timings.keys.each do |timing| %>
-        <%= form.radio_button :timing, timing, checked: (timing == 'lunch'), class: 'checkbox-3' %>
-        <%= form.label "timing_#{timing}", Meal.human_attribute_name("timing.#{timing}") %>
+        <div class="radio-wrapper flex items-center">
+          <%= form.radio_button :timing, timing, checked: (timing == 'lunch'), class: 'radio-input' %>
+          <%= form.label "timing_#{timing}", Meal.human_attribute_name("timing.#{timing}"), class: 'radio-label' %>
+        </div>
       <% end %>
     </div>
     <%= form.hidden_field :name, value: form.object.name %>
