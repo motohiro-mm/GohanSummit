@@ -18,11 +18,4 @@ RSpec.describe Family, type: :model do
       expect(Family.find_by(id: family.id)).to be_nil
     end
   end
-
-  describe '#invitation_url' do
-    it '招待用URLを返す' do
-      request_local = instance_double(ActionDispatch::Request, protocol: 'https://', host_with_port: 'localhost:3000')
-      expect(family.invitation_url(request_local)).to eq 'https://localhost:3000/welcome?invitation_token=test_token'
-    end
-  end
 end

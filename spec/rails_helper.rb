@@ -72,6 +72,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include LoginSupport, type: :system
   config.include ApplicationHelper, type: :helper
+  config.include FamiliesHelper, type: :helper
   config.include HomeHelper, type: :helper
   config.include MealPlansHelper, type: :helper
   config.include MealsHelper, type: :helper

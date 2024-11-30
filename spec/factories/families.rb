@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :family do
-    sequence(:invitation_token) { |n| "test123family#{n}" }
+    invitation_token { 'test123family_token' }
   end
 end
