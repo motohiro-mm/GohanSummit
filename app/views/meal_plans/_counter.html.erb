@@ -1,0 +1,24 @@
+<%= button_to meeting_rooms_path(meal_plan:, meal_date: date), method: :post do %>
+  <% if (meals_length(meal_plan) + proposals_length(meal_plan) + comments_length(meal_plan)).zero? %>
+    <div class="text-left rounded-lg border-4 border-double border-red-900/20 hover:bg-red-100">
+      <div class="text-xs text-center px-3 py-4">
+        会議室は<br>こちら
+      </div>
+    </div>
+  <% else %>
+    <div class="text-left rounded-lg border-2 border-red-900/20 divide-y-2 divide-red-900/10 hover:bg-red-100/50">
+      <div class="pl-3 pr-3.5 py-0.5 flex items-center justify-between">
+        <%= image_tag('pages/meal.svg', class: 'w-4 ml-0.5 mr-2', alt: '献立のマーク') %>
+        <%= meals_length(meal_plan) %>/3
+      </div>
+      <div class="pl-3 pr-3.5 py-0.5 flex items-center justify-between">
+        <%= image_tag('pages/light.svg', class: 'w-4 ml-0.5 mr-2', alt: '提案のマーク') %>
+        <%= proposals_length(meal_plan) %>
+      </div>
+      <div class="pl-3 pr-3.5 py-0.5 flex items-center justify-between">
+        <%= image_tag('pages/chat_single.svg', class: 'w-5 mr-1', alt: 'コメントのマーク') %>
+        <%= comments_length(meal_plan) %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
