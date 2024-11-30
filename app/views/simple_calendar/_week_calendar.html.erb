@@ -1,6 +1,6 @@
 <div>
-  <div class="relative ml-6 my-2 min-h-10 flex items-center">
-    <div class="absolute left-0 w-1/4 flex">
+  <div class="h-10 flex items-center justify-around bg-orange-200">
+    <div class="">
       <span class="font-semibold">
         <time datetime="<%= start_date.strftime('%Y-%m') %>">
           <%= "#{start_date.year}年" %>
@@ -8,28 +8,28 @@
       </span>
     </div>
 
-    <nav class="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-3">
+    <nav class="flex items-center">
       <%= link_to '', calendar.url_for_previous_view,
                   class: 'arrow_left' %>
-      <%= link_to t('simple_calendar.week.today'), calendar.url_for_today_view,
-                  class: 'hover:font-bold pr-1' %>
       <%= link_to '', calendar.url_for_next_view,
                   class: 'arrow_right' %>
     </nav>
+    <%= link_to t('simple_calendar.week.today'), calendar.url_for_today_view,
+                class: 'rounded-full px-3 py-1 border border-orange-950 hover:bg-orange-300' %>
   </div>
 
   <table class="w-full table-fixed border-collapse">
     <tbody>
     <% date_range.each do |day| %>
       <tr id="<%= day.strftime('row%Y%m%d') %>" class="relative border-t border-dashed border-orange-900/10">
-        <th class="w-1/4 items-center text-left p-3 text-orange-950/70">
+        <th class="w-1/6 items-center text-left pl-2 text-orange-950/70">
           <p class="text-center"><%= l day, format: :short %></p>
           <p class="text-center">
             <%= t('date.abbr_day_names')[day.wday] %>
           </p>
         </th>
 
-        <td id="<%= cell_day(day) %>" class="w-5/6 p-3">
+        <td id="<%= cell_day(day) %>" class="w-5/6">
           <%= content_tag :div, class: calendar.td_classes_for(day) do %>
             <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
           <% end %>
