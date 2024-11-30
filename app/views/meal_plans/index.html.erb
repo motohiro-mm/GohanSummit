@@ -1,25 +1,25 @@
 <% set_meta_tags title: '献立表' %>
 <% set_meta_tags description: '献立表のページです。' %>
 <div class="w-full">
-  <div>
-    <%= week_calendar events: @meal_plans do |date, meal_plan| %>
-      <div class="flex items-center">
-        <div class="block w-2/3 hover:bg-orange-100 rounded-lg m-1 px-2 md:px-4 py-2">
-          <%= link_to meal_plan_link(meal_plan, date) do %>
-            <% Meal.timings.each_key do |timing| %>
-              <div class="flex items-center my-1">
-                <%= image_tag("meals/#{timing}.svg", class: 'w-5 mr-4', alt: alt_meal_timing(timing)) %>
-                <span class="truncate">
-                  <%= meal_plan&.meals&.find_by(timing:)&.name || content_tag(:span, '未確定', class: 'text-orange-950/20') %>
-                </span>
-              </div>
-            <% end %>
+  <%= week_calendar events: @meal_plans do |date, meal_plan| %>
+    <div class="flex items-center justify-around">
+      <div class="inline-block w-2/3 md:w-3/4 hover:bg-orange-100 rounded-lg my-1 pl-1.5 md:px-4 py-2">
+        <%= link_to meal_plan_link(meal_plan, date) do %>
+          <% Meal.timings.each_key do |timing| %>
+            <div class="flex items-center my-1">
+              <%= image_tag("meals/#{timing}.svg", class: 'w-5 mr-2', alt: alt_meal_timing(timing)) %>
+              <span class="truncate block max-w-[170px] md:max-w-[350px]">
+                <%= meal_plan&.meals&.find_by(timing:)&.name || content_tag(:span, '未確定', class: 'text-orange-950/20') %>
+              </span>
+            </div>
           <% end %>
-        </div>
+        <% end %>
+      </div>
+      <div class="w-1/3 md:w-1/4 text-center mr-2 md:mr-6">
         <%= render 'counter', meal_plan: meal_plan, date: %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 <% if session[:welcome_modal] %>
   <%= render 'welcome_modal' %>

@@ -12,6 +12,7 @@ Rails.application.configure do
     Bullet.add_footer    = true
 
     Bullet.add_safelist type: :unused_eager_loading, class_name: 'MealPlan', association: :meals
+    Bullet.add_safelist type: :unused_eager_loading, class_name: 'MealPlan', association: :meeting_room
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
