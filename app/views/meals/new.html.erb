@@ -8,13 +8,13 @@
 <%= render 'meeting_rooms/meals_modal', meal_plan: @meal_plan %>
 <div class="p-4 w-full">
   <div class="mb-8">
-    以下の料理を献立に登録します。
+    以下の提案を献立に登録します。
     <div class="my-4 text-xl font-bold">
       <%= @meal.name %>
     </div>
     食べるタイミングを選んでください。<br>
-    既に登録されている献立に上書きしますので注意してください。
-
+    既に登録されている献立に上書きしますので、<br>
+    注意してください。
     <%= render 'meals/timing_form', meal_plan: @meal_plan, meal: @meal %>
   </div>
 </div>
