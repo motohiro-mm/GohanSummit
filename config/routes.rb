@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: 'sessions#auth_failure'
   get 'log_out', to: 'sessions#destroy', as: 'log_out'
-  resource :user, only: %i[edit update destroy], path_names: { edit: '' }
+  resource :user, only: %i[update destroy]
+  get 'user', to: 'users#edit', as: 'edit_user'
   resource :family, only: %i[show], as: 'family'
   resources :meal_plans do
     get 'calendar', on: :collection
