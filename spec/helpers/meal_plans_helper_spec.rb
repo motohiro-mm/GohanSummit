@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe MealPlansHelper, type: :helper do
   let(:user) { create(:user) }
-  let(:meal_plan) { create(:meal_plan, :with_breakfast_and_dinner, family: user.family) }
+  let(:meal_plan) { create(:meal_plan, :with_3_meals, family: user.family) }
   let(:meeting_room) { create(:meeting_room, family: user.family, meal_plan:) }
 
   describe '#meal_plan_link' do
@@ -25,6 +25,22 @@ RSpec.describe MealPlansHelper, type: :helper do
     end
   end
 
+  describe '#counter_number_color' do
+    it 'meals_lengthが0のときtext-red-400を返す' do
+      expect(counter_number_color(nil)).to eq('text-red-400')
+    end
+
+    it 'meals_lengthが2のときtext-red-400を返す' do
+      meal_plan_tomorrow = create(:meal_plan, :with_breakfast_and_dinner, meal_date: Time.zone.tomorrow, family: user.family)
+      expect(counter_number_color(meal_plan_tomorrow)).to eq('text-red-700')
+    end
+
+    it 'meals_lengthが3のときtext-red-950/70を返す' do
+      meal_plan
+      expect(counter_number_color(meal_plan)).to eq('text-red-950/70')
+    end
+  end
+
   describe '#meals_length' do
     it 'meal_planが存在しないとき0を返す' do
       expect(meals_length(nil)).to eq(0)
@@ -35,9 +51,9 @@ RSpec.describe MealPlansHelper, type: :helper do
       expect(meals_length(meal_plan)).to eq(0)
     end
 
-    it 'meal_planとmealが２食分登録されているとき２を返す' do
+    it 'meal_planとmealが3食分登録されているとき3を返す' do
       meal_plan
-      expect(meals_length(meal_plan)).to eq(2)
+      expect(meals_length(meal_plan)).to eq(3)
     end
   end
 
