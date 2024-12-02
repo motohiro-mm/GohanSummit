@@ -15,7 +15,7 @@ RSpec.describe 'Meals', type: :system do
   it '提案から献立を登録する' do
     visit new_meal_plan_meal_path(meal_plan, remark: proposal)
 
-    expect(page).to have_content '以下の料理を献立に登録します。'
+    expect(page).to have_content '以下の提案を献立に登録します。'
     within '#timing_checkbox' do
       choose '夜ごはん'
     end
@@ -30,7 +30,7 @@ RSpec.describe 'Meals', type: :system do
   it 'タイミングがない提案がきたらエラーを返す', :js do
     visit new_meal_plan_meal_path(meal_plan, remark: proposal)
 
-    expect(page).to have_content '以下の料理を献立に登録します。'
+    expect(page).to have_content '以下の提案を献立に登録します。'
     page.execute_script("document.querySelector('input[value=\"lunch\"]').checked = false")
     click_on '登録'
 
@@ -40,7 +40,7 @@ RSpec.describe 'Meals', type: :system do
   it '料理名がない提案がきたらエラーを返す', :js do
     visit new_meal_plan_meal_path(meal_plan, remark: proposal)
 
-    expect(page).to have_content '以下の料理を献立に登録します。'
+    expect(page).to have_content '以下の提案を献立に登録します。'
     page.execute_script("document.querySelector('input[name=\"meal[name]\"]').value = ''")
     click_on '登録'
 
