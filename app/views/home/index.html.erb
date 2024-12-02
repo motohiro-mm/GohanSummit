@@ -1,6 +1,157 @@
 <% set_meta_tags title: 'ごはんサミット' %>
 <% set_meta_tags description: 'ごはんサミットは、家族で献立の相談と献立の共有ができるアプリです。' %>
 
+
+<form>
+  <input type="hidden">
+  <div class="mt-6 mb-4 px-4">
+    <input type="hidden">
+    <div id="timing_checkbox" class="
+    flex
+    gap-2
+    md:gap-3
+    ">
+      <label class="
+      flex-1
+      py-3
+      border-2
+      border-dashed
+      border-[#ffc481]
+      rounded-xl
+      cursor-pointer
+      text-[#999]
+      bg-[#fff]
+      whitespace-nowrap
+      duration-200
+
+      flex
+      items-center
+      justify-center
+      gap-1
+      md:gap-2
+
+      hover:text-[#401109]
+      hover:bg-[#fffaf3]
+      hover:before:bg-[#fff]
+
+      has-[input:checked]:text-[#401109]
+      has-[input:checked]:font-bold
+      has-[input:checked]:bg-[#fff2e2]
+
+      before:content-['']
+      before:w-4 before:h-4
+      before:bg-[#ddd]
+      before:rounded-full
+      before:border-2
+      before:border-[#bbb]
+
+      has-[input:checked]:before:bg-[#f87171]
+      has-[input:checked]:before:border-[#f87171]
+      has-[input:checked]:before:shadow-[inset_0_0_0_2px_rgb(255,255,255)]
+      " for="meal_timing_breakfast">
+        <input class="hidden" type="radio" value="breakfast" name="meal[timing]" id="meal_timing_breakfast">
+        <span>朝ごはん</span>
+      </label>
+
+      <label class="
+      flex-1
+      py-3
+      border-2
+      border-dashed
+      border-[#ffc481]
+      rounded-xl
+      cursor-pointer
+      text-[#999]
+      bg-[#fff]
+      whitespace-nowrap
+      duration-200
+
+      flex
+      items-center
+      justify-center
+      gap-1
+      md:gap-2
+
+      hover:text-[#401109]
+      hover:bg-[#fffaf3]
+      hover:before:bg-[#fff]
+
+      has-[input:checked]:text-[#401109]
+      has-[input:checked]:font-bold
+      has-[input:checked]:bg-[#fff2e2]
+
+      before:content-['']
+      before:w-4 before:h-4
+      before:bg-[#ddd]
+      before:rounded-full
+      before:border-2
+      before:border-[#bbb]
+
+      has-[input:checked]:before:bg-[#f87171]
+      has-[input:checked]:before:border-[#f87171]
+      has-[input:checked]:before:shadow-[inset_0_0_0_2px_rgb(255,255,255)]
+      " for="meal_timing_lunch">
+        <input class="hidden" type="radio" value="lunch" checked="checked" name="meal[timing]" id="meal_timing_lunch">
+        <span>昼ごはん</span>
+      </label>
+
+      <label class="
+      flex-1
+      py-3
+      border-2
+      border-dashed
+      border-[#ffc481]
+      rounded-xl
+      cursor-pointer
+      text-[#999]
+      bg-[#fff]
+      whitespace-nowrap
+      duration-200
+
+      flex
+      items-center
+      justify-center
+      gap-1
+      md:gap-2
+
+      hover:text-[#401109]
+      hover:bg-[#fffaf3]
+      hover:before:bg-[#fff]
+
+      has-[input:checked]:text-[#401109]
+      has-[input:checked]:font-bold
+      has-[input:checked]:bg-[#fff2e2]
+
+      before:content-['']
+      before:w-4 before:h-4
+      before:bg-[#ddd]
+      before:rounded-full
+      before:border-2
+      before:border-[#bbb]
+
+      has-[input:checked]:before:bg-[#f87171]
+      has-[input:checked]:before:border-[#f87171]
+      has-[input:checked]:before:shadow-[inset_0_0_0_2px_rgb(255,255,255)]
+      " for="meal_timing_dinner">
+        <input class="hidden" type="radio" value="dinner" name="meal[timing]" id="meal_timing_dinner">
+        <span>夜ごはん</span>
+      </label>
+    </div>
+
+    <input type="hidden">
+    <input type="hidden">
+  </div>
+
+  <div class="text-center">
+    <input type="submit" name="commit" value="登録" class="rounded-full py-3 px-7 bg-red-400 text-white min-w-[13rem]" data-disable-with="登録">
+  </div>
+</form>
+
+
+
+
+
+
 <div class="mx-auto p-4 w-full text-center">
   <p class="m-4">
     <strong class="text-xl">ごはんサミットへようこそ！</strong><br>
