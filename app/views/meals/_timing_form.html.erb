@@ -1,4 +1,4 @@
-<%= form_with(model: [meal_plan, meal]) do |form| %>
+<%= form_with(model: [meal_plan, meal], url: meal_plan_meals_path(meal_plan)) do |form| %>
   <%= render 'layouts/error_messages', model: meal %>
   <div class="my-6">
     <%= form.hidden_field :id %>
@@ -9,7 +9,6 @@
       <% end %>
     </div>
     <%= form.hidden_field :name, value: form.object.name %>
-    <%= form.hidden_field :memo, value: '' %>
   </div>
   <div class="m-2 text-center">
     <%= form.submit '登録', class: 'rounded-full py-3 px-7 bg-red-400 text-white' %>
