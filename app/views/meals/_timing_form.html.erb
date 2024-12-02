@@ -2,18 +2,55 @@
   <%= render 'layouts/error_messages', model: meal %>
   <div class="my-6">
     <%= form.hidden_field :id %>
-    <div id="timing_checkbox" class="checkbox-3 flex justify-center gap-4 md:gap-16">
+    <div id="timing_checkbox" class="flex md:mx-8 gap-2 md:gap-10">
       <% Meal.timings.keys.each do |timing| %>
-        <div class="radio-wrapper flex items-center">
-          <%= form.radio_button :timing, timing, checked: (timing == 'lunch'), class: 'radio-input' %>
-          <%= form.label "timing_#{timing}", Meal.human_attribute_name("timing.#{timing}"), class: 'radio-label' %>
-        </div>
+        <%= form.label "timing_#{timing}", class: "
+          flex-1
+          py-3
+          border-2
+          border-dashed
+          border-[#ffc481]
+          rounded-xl
+          cursor-pointer
+          text-[#999]
+          bg-[#fff]
+          whitespace-nowrap
+          duration-200
+
+          flex
+          items-center
+          justify-center
+          gap-1
+          md:gap-2
+
+          hover:text-[#401109]
+          hover:bg-[#fffaf3]
+          hover:before:bg-[#fff]
+
+          has-[input:checked]:text-[#401109]
+          has-[input:checked]:font-bold
+          has-[input:checked]:bg-[#fff2e2]
+
+          before:content-['']
+          before:w-4 before:h-4
+          before:bg-[#ddd]
+          before:rounded-full
+          before:border-2
+          before:border-[#bbb]
+
+          has-[input:checked]:before:bg-[#f87171]
+          has-[input:checked]:before:border-[#f87171]
+          has-[input:checked]:before:shadow-[inset_0_0_0_2px_rgb(255,255,255)]
+        " do %>
+          <%= form.radio_button :timing, timing, checked: (timing == 'lunch'), class: 'hidden' %>
+          <span><%= Meal.human_attribute_name("timing.#{timing}") %></span>
+        <% end %>
       <% end %>
     </div>
     <%= form.hidden_field :name, value: form.object.name %>
     <%= form.hidden_field :memo, value: '' %>
   </div>
   <div class="m-2 text-center">
-    <%= form.submit '登録', class: 'rounded-full py-3 px-7 bg-red-400 text-white' %>
+    <%= form.submit '登録', class: 'rounded-full py-3 px-7 bg-red-400 text-lg text-white min-w-[8rem] md:min-w-[10rem]' %>
   </div>
 <% end %>
