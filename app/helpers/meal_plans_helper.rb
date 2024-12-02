@@ -9,6 +9,16 @@ module MealPlansHelper
     end
   end
 
+  def counter_number_color(meal_plan)
+    if meals_length(meal_plan).zero?
+      'text-red-400'
+    elsif meals_length(meal_plan) < 3
+      'text-red-700'
+    else
+      'text-red-950/70'
+    end
+  end
+
   def meals_length(meal_plan)
     meal_plan&.meals&.length.to_i
   end

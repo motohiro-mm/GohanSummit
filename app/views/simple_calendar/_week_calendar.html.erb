@@ -22,14 +22,14 @@
     <tbody>
     <% date_range.each do |day| %>
       <tr id="<%= day.strftime('row%Y%m%d') %>" class="relative border-t border-dashed border-orange-900/10">
-        <th class="w-1/6 items-center text-left pl-2 text-orange-950/70">
+        <th class="w-1/6 md:w-1/5 items-center text-left pl-2 text-orange-950/70">
           <p class="text-center"><%= l day, format: :short %></p>
           <p class="text-center">
             <%= t('date.abbr_day_names')[day.wday] %>
           </p>
         </th>
 
-        <td id="<%= cell_day(day) %>" class="w-5/6">
+        <td id="<%= cell_day(day) %>" class="w-5/6 md:4/5">
           <%= content_tag :div, class: calendar.td_classes_for(day) do %>
             <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
           <% end %>

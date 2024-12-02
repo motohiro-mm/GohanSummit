@@ -2,7 +2,7 @@
 <% set_meta_tags description: '献立の相談を行う会議室です。ここでは献立の提案とコメントを自由に行うことができます。' %>
 <%= action_cable_meta_tag %>
 <%= turbo_stream_from @meeting_room, 'remarks' %>
-<div class="mx-auto w-full overflow-hidden">
+<div class="w-full">
   <%= render 'layouts/title_meal_date', meal_date: @meeting_room.meal_plan.meal_date %>
   <%= render 'meals_modal', meal_plan: @meeting_room.meal_plan %>
   <div data-controller="cable-connection" data-target="appearance.status" data-cable-connection-target="status" class="hidden">
