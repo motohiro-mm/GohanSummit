@@ -11,7 +11,7 @@ module RemarksHelper
     if remark.remark_type == 'proposal'
       form.text_field(content, options)
     elsif remark.remark_type == 'comment'
-      form.text_area(content, options.merge(rows: 1))
+      form.text_area(content, options.merge(rows: 1, data: { controller: 'textarea-autogrow' }))
     end
   end
 
