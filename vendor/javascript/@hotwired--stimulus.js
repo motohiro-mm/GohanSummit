@@ -1,3 +1,5 @@
+// @hotwired/stimulus@3.2.2 downloaded from https://ga.jspm.io/npm:@hotwired/stimulus@3.2.2/dist/stimulus.js
+
 class EventListener {
   constructor(e, t, r) {
     this.eventTarget = e;

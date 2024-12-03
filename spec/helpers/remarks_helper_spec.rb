@@ -23,7 +23,8 @@ RSpec.describe RemarksHelper, type: :helper do
         placeholder: '中華の気分、軽めがいい',
         autofocus: true,
         class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50',
-        rows: 1
+        rows: 1,
+        data: { controller: 'textarea-autogrow' }
       }
       form = instance_double(ActionView::Helpers::FormBuilder)
       allow(form).to receive(:text_area).with('コメント', options).and_return('<textarea ...>')
