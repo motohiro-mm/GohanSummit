@@ -36,6 +36,7 @@ RSpec.describe 'Sessions', type: :system do
 
   it 'ログアウトする', :js do
     log_in_as user
+    expect(page).to have_content 'ログインしました'
 
     find_by_id('menu-close').click
     within('#menu-open') do

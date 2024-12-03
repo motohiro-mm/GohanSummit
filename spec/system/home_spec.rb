@@ -27,6 +27,7 @@ RSpec.describe 'Home', type: :system do
     end
 
     it '利用規約を開く', :js do
+      expect(page).to have_content 'ログインしました'
       find_by_id('menu-close').click
       within('#menu-open') do
         click_on('利用規約')
@@ -36,6 +37,7 @@ RSpec.describe 'Home', type: :system do
     end
 
     it 'プライバシーポリシーを開く', :js do
+      expect(page).to have_content 'ログインしました'
       find_by_id('menu-close').click
       within('#menu-open') do
         click_on('プライバシーポリシー')
@@ -45,6 +47,7 @@ RSpec.describe 'Home', type: :system do
     end
 
     it '使い方ページを開く', :js do
+      expect(page).to have_content 'ログインしました'
       find_by_id('menu-close').click
       within('#menu-open') do
         click_on('使い方')
