@@ -1,12 +1,11 @@
 <% set_meta_tags title: '献立の編集' %>
 <% set_meta_tags description: '献立の編集ができます。' %>
-<div class=" w-full">
-    <%= render 'form', meal_plan: @meal_plan %>
-  <div class="mt-4">
-  <%= render 'header_button', meal_plan: @meal_plan %>
-  </div>
-  <div class="text-center">
-    <%= link_to 'キャンセル', @meal_plan, class: 'rounded-full py-3 px-4 text-red-9500/50 bg-stone-100 inline-block hover:bg-stone-200' %>
-  </div>
-  <%= render 'delete_button', meal_plan: @meal_plan %>
+<%= render 'layouts/title_meal_date', meal_date: @meal_plan.meal_date %>
+<div class="my-2">
+  <%= render 'meeting_room_button', meal_plan: @meal_plan %>
 </div>
+<%= render 'form', meal_plan: @meal_plan %>
+<div class="flex text-center">
+  <%= link_to 'キャンセル', @meal_plan, class: 'rounded-full py-2 px-7 mx-auto min-w-[10rem] text-orange-950/80 bg-stone-100 hover:bg-stone-200' %>
+</div>
+<%= render 'delete_button', meal_plan: @meal_plan %>

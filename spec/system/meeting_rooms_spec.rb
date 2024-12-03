@@ -13,7 +13,7 @@ RSpec.describe 'MeetingRooms', type: :system do
   it '献立表一覧から会議室へ遷移する' do
     visit meal_plans_path(start_date: Time.zone.today)
     within "##{cell_day(Time.zone.today)}" do
-      click_on('会議室はこちら')
+      click_on '会議室はこちら'
     end
 
     expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
@@ -23,7 +23,7 @@ RSpec.describe 'MeetingRooms', type: :system do
 
   it '献立表詳細画面から会議室へ遷移する' do
     visit meal_plan_path(meal_plan)
-    click_on '会議へ'
+    click_on '会議室はこちら'
 
     expect(page).to have_content I18n.l(Time.zone.today, format: :medium)
     expect(page).to have_content '提案する'

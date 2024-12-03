@@ -1,6 +1,6 @@
 <%= form_with(model: [meal_plan, meal]) do |form| %>
   <%= render 'layouts/error_messages', model: meal %>
-  <div class="my-6">
+  <div class="my-8">
     <%= form.hidden_field :id %>
     <div id="timing_checkbox" class="flex md:mx-8 gap-2 md:gap-10">
       <% Meal.timings.keys.each do |timing| %>
@@ -51,6 +51,6 @@
     <%= form.hidden_field :memo, value: '' %>
   </div>
   <div class="m-2 text-center">
-    <%= form.submit '登録', class: 'rounded-full py-3 px-7 bg-red-400 text-lg text-white min-w-[8rem] md:min-w-[10rem]' %>
+    <%= form.submit '登録', class: 'rounded-full py-1.5 px-7 bg-red-400 text-lg text-white min-w-[10rem] hover:bg-red-600' %>
   </div>
 <% end %>
