@@ -176,15 +176,18 @@ textarea::placeholder {
 
 .icon_image {
   display: inline-block;
-  width: 5rem;
-  height: 5rem;
   padding: 0.2rem;
   border: 4px solid transparent;
+  border-radius: 100%;
+  background-color: #d6d3d1;
+  opacity: 0.5;
 }
 
 .icon_option input:checked + .icon_image {
   border-radius: 100%;
-  border-color: #fdba74;
+  border-color: #fb923c;
+  background-color: #fed7aa;
+  opacity: 1;
 }
 
 .comment-max-height {
