@@ -83,7 +83,7 @@ RSpec.describe 'MealPlans', type: :system do
 
   it '献立を編集する' do
     visit meal_plan_path(meal_plan)
-    click_on '編集リンクのペンマーク'
+    click_on '献立を編集する'
 
     within '#lunch' do
       fill_in '料理名', with: 'EditName'
@@ -96,7 +96,7 @@ RSpec.describe 'MealPlans', type: :system do
 
   it '編集中の献立の入力を全て削除し更新しようとしてバリデーションエラーが出る' do
     visit meal_plan_path(meal_plan)
-    click_on '編集リンクのペンマーク'
+    click_on '献立を編集する'
 
     within '#breakfast' do
       fill_in '料理名', with: ''
@@ -115,7 +115,7 @@ RSpec.describe 'MealPlans', type: :system do
 
   it '編集中の料理名を20文字以上、メモを200文字以上入力して更新しようとしてバリデーションエラーが出る' do
     visit meal_plan_path(meal_plan)
-    click_on '編集リンクのペンマーク'
+    click_on '献立を編集する'
 
     within '#breakfast' do
       fill_in '料理名', with: '0' * 21
