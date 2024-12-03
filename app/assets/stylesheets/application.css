@@ -58,22 +58,6 @@ textarea::placeholder {
   height: 22px;
 }
 
-.meeting_room_button {
-  display: flex;
-  align-items: center;
-  border-radius: 9999px;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  color: white;
-  background-color: #f87171;
-}
-
-.meeting_room_button:hover {
-  background-color: #dc2626;
-}
-
 .plus_icon {
   display: inline-block;
   color: #fb923c;
@@ -211,4 +195,8 @@ textarea::placeholder {
   .comment-max-height {
     max-height: calc(100vh - 508px);
   }
+}
+
+.field_with_errors {
+  display: contents;
 }
