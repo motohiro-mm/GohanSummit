@@ -1,29 +1,24 @@
 <% set_meta_tags title: '献立表（月毎）' %>
 <% set_meta_tags description: '月毎の献立表のページです。' %>
 <div class="w-full">
-  <div>
-    <%= month_calendar events: @meal_plans do |date, meal_plan| %>
-      <div class="hover:bg-orange-100 rounded-lg">
-        <p>
-          <%= date.day %>
-        </p>
+  <%= month_calendar events: @meal_plans do |date, meal_plan| %>
+    <div class="relative w-1/7 h-20 md:h-28 hover:bg-orange-50">
+      <p class="absolute inset-x-0 top-1">
+        <%= date.day %>
+      </p>
 
-        <div class="block mt-4">
-          <% if meal_plan.blank? || meal_plan.meals.blank? %>
-            <%= link_to '', new_meal_plan_path(meal_date: date), class: 'plus_icon relative mt-2 opacity-70' %>
-          <% else %>
-            <%= link_to meal_plan do %>
-              <ul>
-                <% meal_plan.meals.sort_by_timing.each do |meal| %>
-                  <li class="text-clip text-left text-[8px] sm:text-xs">
-                    <%= meal.name %>
-                  </li>
-                <% end %>
-              </ul>
-            <% end %>
+      <div class="absolute inset-x-0 bottom-2">
+        <%= link_to meal_plan_link(meal_plan, date) do %>
+          <% Meal.timings.each_key do |timing| %>
+            <div class="flex items-center leading-3 md:my-1">
+              <%= image_tag("meals/#{timing}.svg", class: 'w-2 md:w-3 mx-[2px] md:mx-0.5', alt: alt_meal_timing(timing)) %>
+              <span class="truncate block text-[6px] md:text-xs">
+              <%= meal_plan&.meals&.find_by(timing:)&.name || content_tag(:span, '未確定', class: 'text-orange-950/10') %>
+            </span>
+            </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

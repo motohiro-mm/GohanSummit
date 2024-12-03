@@ -1,42 +1,38 @@
-<div>
-  <div class="relative ml-6 my-2 min-h-10 flex items-center">
-    <div class="absolute left-0 w-1/4 flex">
-      <span class="font-bold">
-        <time datetime="<%= start_date.strftime('%Y-%m') %>">
-          <%= l start_date, format: :year_month %>
-        </time>
-      </span>
-    </div>
+<div class="h-10 flex items-center justify-around bg-orange-200">
+  <span class="font-semibold">
+    <time datetime="<%= start_date.strftime('%Y-%m') %>">
+      <%= l start_date, format: :year_month %>
+    </time>
+  </span>
 
-    <nav class="absolute left-1/2 transform -translate-x-1/2 flex items-center space-x-3">
-      <%= link_to '', calendar.url_for_previous_view,
-                  class: 'arrow_left' %>
-      <%= link_to t('simple_calendar.month.today'), calendar.url_for_today_view,
-                  class: 'hover:font-bold pr-1' %>
-      <%= link_to '', calendar.url_for_next_view,
-                  class: 'arrow_right' %>
-    </nav>
-  </div>
+  <nav class="flex items-center">
+    <%= link_to '', calendar.url_for_previous_view,
+                class: 'arrow_left' %>
+    <%= link_to '', calendar.url_for_next_view,
+                class: 'arrow_right' %>
+  </nav>
+  <%= link_to t('simple_calendar.month.today'), calendar.url_for_today_view,
+              class: 'mr-6 rounded-full px-3 py-1 border border-orange-950 hover:bg-orange-300' %>
+</div>
 
-  <table class="w-full table-fixed border-collapse">
-    <thead>
-    <tr class="bg-orange-50">
-      <% date_range.slice(0, 7).each do |day| %>
-        <th class="py-2 text-center"><%= t('date.abbr_day_names')[day.wday] %></th>
+<table class="w-full table-fixed border-collapse">
+  <thead>
+  <tr class="bg-orange-50">
+    <% date_range.slice(0, 7).each do |day| %>
+      <th class="py-2 text-center"><%= t('date.abbr_day_names')[day.wday] %></th>
+    <% end %>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% date_range.each_slice(7) do |week| %>
+    <tr>
+      <% week.each do |day| %>
+        <%= content_tag :td, id: cell_day(day), class: "text-center border-2 border-orange-100/50 #{calendar.td_classes_for(day)}" do %>
+          <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
+        <% end %>
       <% end %>
     </tr>
-    </thead>
-
-    <tbody>
-    <% date_range.each_slice(7) do |week| %>
-      <tr class="border-t border-dashed border-orange-100">
-        <% week.each do |day| %>
-          <%= content_tag :td, id: cell_day(day), class: "p-2 text-center border border-dashed border-orange-100 #{calendar.td_classes_for(day)}" do %>
-            <% instance_exec(day, calendar.sorted_events_for(day).first, &passed_block) %>
-          <% end %>
-        <% end %>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-</div>
+  <% end %>
+  </tbody>
+</table>
