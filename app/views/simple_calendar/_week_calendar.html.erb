@@ -18,7 +18,7 @@
 <table class="w-full table-fixed border-collapse">
   <tbody>
   <% date_range.each do |day| %>
-    <tr id="<%= day.strftime('row%Y%m%d') %>" class="relative border-t border-dashed border-orange-900/10">
+    <tr id="<%= day.strftime('row%Y%m%d') %>" class="relative border-b border-dashed border-orange-900/10">
       <th class="w-1/6 md:w-1/5 items-center text-left pl-2 text-orange-950/70">
         <p class="text-center"><%= l day, format: :short %></p>
         <p class="text-center">
