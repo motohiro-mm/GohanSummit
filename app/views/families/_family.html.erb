@@ -1,9 +1,11 @@
-<div class="my-4">
-  <strong class="block font-bold text-lg">この献立表の家族</strong>
-  <% family.users.each do |user| %>
-    <div class="my-5 flex items-center">
-      <%= image_tag "user_icons/#{user.icon}", class: 'icon', alt: "ユーザーアイコンの#{User::ICON[user.icon.to_sym]}のイラスト" %>
-      <span class="ml-2"><%= user.name %></span>
+<div class="w-5/6 md:w-3/4 mx-auto bg-orange-100/60 p-3 rounded-lg">
+    <div class="rounded-lg border-4 border-dashed border-white">
+      <strong class="block font-bold mt-4 text-center text-base md:text-lg">この献立表の家族</strong>
+      <% family.users.each do |user| %>
+        <div class="my-4 mx-3 flex items-center justify-center gap-2">
+          <%= image_tag "user_icons/#{user.icon}", class: 'icon', alt: "ユーザーアイコンの#{User::ICON[user.icon.to_sym]}のイラスト" %>
+          <span class="font-semibold"><%= user.name %></span>
+        </div>
+      <% end %>
     </div>
-  <% end %>
 </div>
