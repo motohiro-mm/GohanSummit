@@ -7,12 +7,6 @@
     URLをコピーして家族を献立表に招待しましょう。<br>
     同じユーザーは複数の献立表には参加できませんので、<br class="md:hidden">注意してください。
   </div>
-  <div class="my-4 text-center" data-controller="clipboard" data-clipboard-success-content-value="コピーしました！">
-    <%= text_field_tag :invitation_url, @family.invitation_url(request), readonly: true, autocomplete: 'off', data: { clipboard_target: 'source' },
-                                                                         class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
-    <%= button_tag '招待用URLをコピー', data: { action: 'clipboard#copy', clipboard_target: 'button' },
-                                 class: 'my-4 rounded-full py-1.5 px-7 bg-red-400 text-base md:text-lg text-white min-w-[13rem] hover:bg-red-600' %>
-    </div>
-  </div>
+  <%= render 'invitation_url_button', family: @family %>
   <%= render 'family', family: @family %>
 </div>
