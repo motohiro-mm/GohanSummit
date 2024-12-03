@@ -1,18 +1,18 @@
 <div id="<%= dom_id meal %>" class="border border-dashed border-red-900/10 rounded-lg p-4 my-2">
-  <div class="flex items-center">
+  <div class="flex items-center mb-4">
     <%= image_tag("meals/#{meal.timing}.svg", class: 'page-icon text-center mr-2', alt: alt_meal_timing(meal.timing)) %>
-    <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal.timing}") %></strong>
+    <span class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal.timing}") %></span>
   </div>
 
-  <div class="my-3">
-    <strong class="block mb-1"><%= Meal.human_attribute_name(:name) %></strong>
-    <span class="block rounded-md px-3 py-2"><%= meal.name %></span>
+  <div class="my-2 flex items-center justify-start">
+    <span class="min-w-[4rem] mr-2"><%= Meal.human_attribute_name(:name) %></span>
+    <strong class="text-base md:text-lg"><%= meal.name %></strong>
   </div>
 
   <% if meal.memo.present? %>
-    <div class="my-2">
-      <strong class="block mb-1"><%= Meal.human_attribute_name(:memo) %></strong>
-      <span class="block rounded-md px-3 py-2"><%= safe_join(meal.memo.split("\n"), tag.br) %></span>
+    <div class="my-2 flex items-center justify-start">
+      <span class="min-w-[4rem] mr-2"><%= Meal.human_attribute_name(:memo) %></span>
+      <span class=""><%= safe_join(meal.memo.split("\n"), tag.br) %></span>
     </div>
   <% end %>
 </div>
