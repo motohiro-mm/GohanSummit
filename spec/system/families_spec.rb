@@ -16,7 +16,7 @@ RSpec.describe 'Families', type: :system do
 
     click_on '招待用URLをコピー'
 
-    expect(page.driver.browser.switch_to.alert.text).to eq '招待用URLをコピーしました！'
+    expect(page).to have_content 'コピーしました！'
   end
 
   it '共有しているユーザーを表示する' do
