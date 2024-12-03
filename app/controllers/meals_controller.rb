@@ -7,9 +7,11 @@ class MealsController < ApplicationController
   end
 
   def create
-    @meal = Meal.build(meal_params)
     @meal_plan = current_user.family.meal_plans.find(meal_plan_id)
-    if @meal.create_or_update_meal_name(@meal_plan)
+    @meal = Meal.find_or_initialize_by(meal_plan_id: @meal_plan.id, timing: meal_params[:timing])
+    @meal.name = meal_params[:name]
+    @meal.memo = ''
+    if @meal.save(context: :save_by_proposal)
       redirect_to @meal_plan, notice: '献立を登録しました'
     else
       render :new, status: :unprocessable_entity
@@ -19,7 +21,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:id, :timing, :name, :memo)
+    params.require(:meal).permit(:timing, :name)
   end
 
   def meal_plan_id
