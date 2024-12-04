@@ -1,18 +1,3 @@
-import { Controller } from "@hotwired/stimulus";
+import Clipboard from "@stimulus-components/clipboard";
 
-export default class extends Controller {
-  static values = {
-    url: String,
-  };
-
-  copy() {
-    navigator.clipboard.writeText(this.urlValue).then(
-      () => {
-        alert("招待用URLをコピーしました！");
-      },
-      () => {
-        alert("コピーに失敗しました");
-      },
-    );
-  }
-}
+export default class extends Clipboard {}

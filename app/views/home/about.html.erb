@@ -1,91 +1,94 @@
 <% set_meta_tags title: '使い方' %>
 <% set_meta_tags description: 'ごはんサミットの使い方のページです。' %>
-<div class="mx-auto p-4 w-full">
-  <h1 class="my-4 text-center text-2xl font-bold">使い方</h1>
-  <p class="mx-4 my-8">
+<h1 class="flex items-center h-10 bg-orange-200 justify-center font-bold text-lg md:text-xl">使い方</h1>
+<div class="w-full">
+  <p class="mx-6 my-6">
     ごはんサミットは、
-    献立の相談と献立表の共有ができるアプリです。
+    献立の相談と献立表の共有が<br class="md:hidden">できるアプリです。
   </p>
-  <div class="mx-4">
-    <div class="mt-4 pt-4 border-t-4 border-dashed border-orange-50 leading-loose">
-      <h2 class="mb-2 text-lg">家族を招待する</h2>
-      <p>
-        家族で献立の相談・献立表を共有したい人は、まず家族を招待しましょう。
-      </p>
-      <p>
-        <%= link_to '家族を招待する', family_path, class: 'p-1 rounded-lg underline hover:bg-orange-200' %>
-        から招待用URLをコピーして家族にURLを教えます。
-      </p>
-      <p>
-        招待用URLから初回ログインを行うことで、献立表に参加できます。
-      </p>
+  <div class="mx-3 leading-loose">
+    <div class="my-6">
+      <div class="mt-6 mb-2 py-3 flex justify-start items-center rounded-md bg-orange-100">
+        <span class="mx-4 size-4 bg-red-400 rounded-sm"></span>
+        <h2 class="text-base md:text-lg">家族を招待する</h2>
+      </div>
+      <div class="mx-3">
+        <p>
+          家族で献立の相談・献立表を共有したい人は、<br class="md:hidden">まず家族を招待しましょう。
+        </p>
+        <p>
+          <%= link_to '家族を招待する', family_path, class: 'underline hover:font-semibold' %>
+          から招待用URLをコピーして、<br class="md:hidden">家族にURLを教えます。
+        </p>
+        <p>
+          招待用URLから初回ログインを行うことで、<br class="md:hidden">献立表に参加できます。
+        </p>
+      </div>
     </div>
-    <div class="mt-4 pt-4 border-t-4 border-dashed border-orange-50 leading-loose">
-      <h2 class="mb-2 text-lg">献立を相談する</h2>
-      <p>
-        <%= button_tag class: 'mx-1 mt-1 float-left flex items-center rounded-full py-1 px-2 text-white bg-red-400 hover:bg-red-600' do %>
-          <%#= image_tag('pages/chat_double.svg', class: 'w-4 h-4', alt: 'チャットのマーク') %>
-          <span class="ml-1 text-white text-sm">会議へ</span>
-        <% end %>
-        <span class="ml-2 align-middle">
-          からその日の会議室に移動します。
-        </span>
-      </p>
-      <p class="clear-both mt-4">
-        会議室では、その日に何を食べるのか相談して決めていきます。
-      </p>
-      <p>
-        <%= button_tag '提案する', class: 'text-sm m-1 px-3 rounded-full py-1.5 bg-orange-50 hover:bg-orange-200' %>
-        <span class="ml-2">
+    <div class="my-6">
+      <div class="mt-6 mb-2 py-3 flex justify-start items-center rounded-md bg-orange-100">
+        <span class="mx-4 size-4 bg-red-400 rounded-sm"></span>
+        <h2 class="text-base md:text-lg">献立を相談する</h2>
+      </div>
+      <div class="mx-3">
+        <p>
+          献立表の右側の表、もしくは献立詳細の上にある<br class="md:hidden">「会議室はこちら」をクリック<br class="hidden md:block">すると、その日の<br class="md:hidden">会議室に移動します。
+        </p>
+        <p>
+          会議室では、その日に何を食べるかを「提案」と<br class="md:hidden">「コメント」をすることで決めて<br class="hidden md:block">いきます。
+        </p>
+        <p class="my-1">
+          <span class="px-1 py-0.5 text-sm rounded-full border border-orange-950/50 bg-white hover:bg-orange-200">
+              <span class="text-left">＋</span>
+              <span class="mx-auto text-center">提案する</span>
+          </span>
           ：食べたいものを提案します。
-        </span>
-      </p>
-      <p>
-        <%= button_tag 'コメントする', class: 'text-sm m-1 px-1.5 rounded-full py-1.5 bg-orange-50 hover:bg-orange-200' %>
-        <span class="ml-2">
-          ：その日の気分などを自由にコメントします。
-        </span>
-      </p>
+        </p>
+        <p class="my-1">
+          <span class="px-1 py-0.5 text-sm rounded-full border border-orange-950/50 bg-white hover:bg-orange-200">
+              <span class="text-left">＋</span>
+              <span class="mx-auto text-center">コメントする</span>
+          </span>
+          ：自由にコメントします。<br>
+          その日の気分や他の予定など、献立を決めるに<br class="md:hidden">あたって必要なことをコメント<br class="hidden md:block">します。
+        </p>
+      </div>
     </div>
-    <div class="mt-4 pt-4 border-t-4 border-dashed border-orange-50 leading-loose">
-      <h2 class="mb-2 text-lg">会議で決めた献立を献立表に登録する</h2>
-      <p>
-        会議で提案した料理をそのまま献立表に登録ができます。
-      </p>
-      <p>
-        <%= button_tag '登録', class: 'text-sm rounded-full py-1 px-1.5 text-white bg-red-400 hover:bg-red-600' %>
-        <span class="ml-2">
-          をクリックして、食事のタイミングを選択して登録しましょう。
-        </span>
-      </p>
+    <div class="my-6">
+      <div class="mt-6 mb-2 py-3 flex justify-start items-center rounded-md bg-orange-100">
+        <span class="mx-4 size-4 bg-red-400 rounded-sm"></span>
+        <h2 class="text-base md:text-lg">会議で決めた献立を献立表に登録する</h2>
+      </div>
+      <div class="mx-3">
+        <p>
+          会議で提案した献立をそのまま献立表に登録が<br class="md:hidden">できます。
+        </p>
+        <p>
+          <span class="rounded-full py-0.5 px-1.5 bg-white text-sm text-red-400 border border-red-400/70 inline-block">
+            献立を登録
+          </span>
+          <span>
+            をクリックして食事のタイミングを<br class="md:hidden">選択して登録しましょう。
+          </span>
+        </p>
+      </div>
     </div>
-    <div class="mt-4 pt-4 border-t-4 border-dashed border-orange-50 leading-loose">
-      <h2 class="mb-2 text-lg">直接献立表に登録する</h2>
-      <p>
-        会議をせずに献立を直接登録することもできます。
-      </p>
-      <p class="flex justify-start items-center">
-        <%= button_tag '', class: 'plus_icon text-xs absolute block' %>
-        <span class="ml-10 my-2">
-          ボタンから、献立を登録できます。
-        </span>
-      </p>
-      <p>
-        同じ献立がかぶらないように、記録として残しておきましょう。
-      </p>
-    </div>
-    <div class="mt-4 pt-4 border-t-4 border-dashed border-orange-50 leading-loose">
-      <h2 class="mb-2 text-lg">ユーザー情報を変更する</h2>
-      <p>
-        <%= link_to 'ヘッダーのアイコン', user_path, class: 'p-1 rounded-lg underline hover:bg-orange-200' %>
-        から、ユーザー情報の変更ができます。
-      </p>
-      <p>
-        名前は自由に変更できます。
-      </p>
-      <p>
-        アイコン画像は動物のなかから選択してください。
-      </p>
+    <div class="my-6">
+      <div class="mt-6 mb-2 py-3 flex justify-start items-center rounded-md bg-orange-100">
+        <span class="mx-4 size-4 bg-red-400 rounded-sm"></span>
+        <h2 class="text-base md:text-lg">直接献立表に登録する</h2>
+      </div>
+      <div class="mx-3">
+        <p>
+          会議をしないで献立を直接登録することも<br class="md:hidden">できます。
+        </p>
+        <p>
+          献立表の献立部分をクリックすると、献立を登録<br class="md:hidden">できます。
+        </p>
+        <p>
+          同じ献立がかぶらないように、記録として残して<br class="md:hidden">おきましょう。
+        </p>
+      </div>
     </div>
   </div>
 </div>
