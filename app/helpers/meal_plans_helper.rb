@@ -24,11 +24,11 @@ module MealPlansHelper
   end
 
   def proposals_length(meal_plan)
-    meal_plan&.meeting_room&.remarks&.proposals&.length.to_i
+    meal_plan&.meeting_room&.remarks&.proposal&.length.to_i
   end
 
   def comments_length(meal_plan)
-    meal_plan&.meeting_room&.remarks&.comments&.length.to_i
+    meal_plan&.meeting_room&.remarks&.comment&.length.to_i
   end
 
   def form_url(meal_plan)

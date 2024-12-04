@@ -3,9 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe MealPlansHelper, type: :helper do
-  let(:user) { create(:user) }
-  let(:meal_plan) { create(:meal_plan, :with_3_meals, family: user.family) }
-  let(:meeting_room) { create(:meeting_room, family: user.family, meal_plan:) }
+  let(:meal_plan) { create(:meal_plan, :with_3_meals) }
+  let(:meeting_room) { create(:meeting_room, meal_plan:) }
   let(:new_action) { allow(helper).to receive(:action_name).and_return('new') }
   let(:edit_action) { allow(helper).to receive(:action_name).and_return('edit') }
 
@@ -33,7 +32,7 @@ RSpec.describe MealPlansHelper, type: :helper do
     end
 
     it 'meals_lengthが2のときtext-red-400を返す' do
-      meal_plan_tomorrow = create(:meal_plan, :with_breakfast_and_dinner, meal_date: Time.zone.tomorrow, family: user.family)
+      meal_plan_tomorrow = create(:meal_plan, :with_breakfast_and_dinner, meal_date: Time.zone.tomorrow)
       expect(counter_number_color(meal_plan_tomorrow)).to eq('text-red-700')
     end
 
@@ -70,7 +69,7 @@ RSpec.describe MealPlansHelper, type: :helper do
     end
 
     it 'proposalが1つ登録されているとき1を返す' do
-      create(:remark, remark_type: 0, content: 'カレー', meeting_room:, user:)
+      create(:remark, remark_type: 0, content: 'カレー', meeting_room:)
       expect(proposals_length(meal_plan)).to eq(1)
     end
   end
@@ -86,7 +85,7 @@ RSpec.describe MealPlansHelper, type: :helper do
     end
 
     it 'commentが1つ登録されているとき1を返す' do
-      create(:remark, remark_type: 1, content: '簡単に作れるものにしよう', meeting_room:, user:)
+      create(:remark, remark_type: 1, content: '簡単に作れるものにしよう', meeting_room:)
       expect(comments_length(meal_plan)).to eq(1)
     end
   end
