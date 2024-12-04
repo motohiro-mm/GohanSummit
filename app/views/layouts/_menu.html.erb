@@ -7,7 +7,7 @@
   </button>
   <div id="menu-open" data-dropdown-target="menu" class="hidden absolute top-4 right-0 mt-8 flex w-screen max-w-max text-orange-950">
     <div class="text-s bg-white rounded-lg border-2 border-orange-100 overflow-hidden w-52 z-30">
-      <%= link_to 'カレンダー表示する', meal_plans_calendar_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
+      <%= link_to 'カレンダー表示する', calendar_meal_plans_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
       <%= link_to '家族を招待する', family_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
       <%= link_to '使い方', about_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>
       <%= link_to '利用規約', terms_path, data: { dropdown_target: 'menuItem' }, class: 'no-underline block p-4 bg-white hover:bg-orange-100' %>

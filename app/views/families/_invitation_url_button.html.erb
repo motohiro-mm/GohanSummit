@@ -1,5 +1,5 @@
 <div class="my-4 text-center" data-controller="clipboard" data-clipboard-success-content-value="コピーしました！">
-  <%= text_field_tag :invitation_url, family.invitation_url(request), readonly: true, autocomplete: 'off', data: { clipboard_target: 'source' },
+  <%= text_field_tag :invitation_url, welcome_url(invitation_token: family.invitation_token), readonly: true, autocomplete: 'off', data: { clipboard_target: 'source' },
                                                                       class: 'block  p-1 rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
   <%= button_tag '招待用URLをコピー', data: { action: 'clipboard#copy', clipboard_target: 'button' },
                                class: 'my-4 rounded-full py-1.5 px-7 bg-red-400 text-base md:text-lg text-white min-w-[13rem] hover:bg-red-600' %>

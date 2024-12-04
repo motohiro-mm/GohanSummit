@@ -138,7 +138,7 @@ RSpec.describe 'MealPlans', type: :system do
 
   it '献立をカレンダー表示する' do
     meal_plan
-    visit meal_plans_calendar_path
+    visit calendar_meal_plans_path
     expect(page).to have_content '今月'
     within "##{cell_day(meal_plan.meal_date)}" do
       expect(page).to have_content 'BreakfastName'
