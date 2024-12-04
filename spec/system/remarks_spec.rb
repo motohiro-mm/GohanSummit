@@ -31,6 +31,7 @@ RSpec.describe 'Remarks', type: :system do
 
     it '新規作成時に未入力のままチェックボタンを押すとエラーが出る', :js do
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on '提案する'
 
       find_by_id('submit_button').click
@@ -39,6 +40,7 @@ RSpec.describe 'Remarks', type: :system do
 
     it '新規作成時に20文字以上入力してチェックボタンを押すとエラーが出る', :js do
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on '提案する'
 
       fill_in 'remark_content', with: '0' * 21
@@ -49,6 +51,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集する', :js do
       proposal
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'カレー'
 
       fill_in 'remark_content', with: 'シチュー'
@@ -62,6 +65,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集時に入力を削除してチェックボタンを押すとエラーが出る', :js do
       proposal
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'カレー'
 
       fill_in 'remark_content', with: ''
@@ -72,6 +76,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集時に20文字以上入力してチェックボタンを押すとエラーが出る', :js do
       proposal
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'カレー'
 
       fill_in 'remark_content', with: '0' * 21
@@ -82,6 +87,7 @@ RSpec.describe 'Remarks', type: :system do
     it '削除する', :js do
       proposal
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'カレー'
       find_by_id('trash_button').click
 
@@ -107,6 +113,7 @@ RSpec.describe 'Remarks', type: :system do
 
     it '新規作成時に未入力のままチェックボタンを押すとエラーが出る', :js do
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'コメントする'
 
       find_by_id('submit_button').click
@@ -115,6 +122,7 @@ RSpec.describe 'Remarks', type: :system do
 
     it '新規作成時に50文字以上入力してチェックボタンを押すとエラーが出る', :js do
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'コメントする'
 
       fill_in 'remark_content', with: '0' * 51
@@ -125,6 +133,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集する', :js do
       comment
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on '時間ない'
 
       fill_in 'remark_content', with: '楽したい'
@@ -138,6 +147,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集時に入力を削除してチェックボタンを押すとエラーが出る', :js do
       comment
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on '時間ない'
 
       fill_in 'remark_content', with: ''
@@ -148,6 +158,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集時に50文字以上入力してチェックボタンを押すとエラーが出る', :js do
       comment
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on '時間ない'
 
       fill_in 'remark_content', with: '0' * 51
@@ -158,6 +169,7 @@ RSpec.describe 'Remarks', type: :system do
     it '削除する', :js do
       comment
       visit meeting_room_path(meeting_room)
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on '時間ない'
       find_by_id('trash_button').click
 
