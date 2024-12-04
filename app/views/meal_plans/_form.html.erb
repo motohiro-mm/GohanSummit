@@ -1,31 +1,30 @@
 <%= form_with(model: meal_plan, url: form_url(meal_plan), method: form_method, class: 'contents') do |form| %>
-  <%= render 'layouts/error_messages', model: meal_plan %>
-  <div class="my-5">
-    <%= render 'layouts/title_meal_date', meal_date: meal_plan.meal_date %>
-    <%= form.hidden_field :meal_date %>
-
-    <%= form.fields_for(:meals, meal_plan.meals.sort_by { |meal| Meal.timings[meal.timing] }) do |meal_form| %>
-      <div id="<%= meal_form.object.timing %>" class="border border-dashed border-red-900/10 rounded-lg p-4 my-5">
-        <%= meal_form.hidden_field :timing, value: meal_form.object.timing %>
-        <div class="flex items-center">
-          <%= image_tag("meals/#{meal_form.object.timing}.svg", class: 'page-icon text-center mr-2', alt: alt_meal_timing(meal_form.index)) %>
-          <strong class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal_form.object.timing}") %></strong>
+  <div class="mx-3">
+    <%= render 'layouts/error_messages', model: meal_plan %>
+    <div class="px-4 border-2 border-dashed border-orange-900/10 rounded-lg">
+      <%= form.hidden_field :meal_date %>
+      <%= form.fields_for(:meals, meal_plan.meals.sort_by { |meal| Meal.timings[meal.timing] }) do |meal_form| %>
+        <div id="<%= meal_form.object.timing %>" class="w-full px-2 py-5">
+          <%= meal_form.hidden_field :timing, value: meal_form.object.timing %>
+          <div class="flex items-center mb-4">
+            <%= image_tag("meals/#{meal_form.object.timing}.svg", class: 'page-icon text-center mr-2', alt: alt_meal_timing(meal_form.index)) %>
+            <span class="block font-bold text-lg"><%= Meal.human_attribute_name("timing.#{meal_form.object.timing}") %></span>
+          </div>
+          <div class="my-2 flex items-center justify-start">
+            <%= meal_form.label :name, class: 'min-w-[3.5rem]' %>
+            <%= meal_form.text_field :name, placeholder: meal_name_placeholder(meal_form.index),
+                                            class: 'w-full px-2 py-0.5 text-sm md:text-base rounded-md border border-red-950/20 focus:ring-orange-950/50 focus:border-orange-950/50' %>
+          </div>
+          <div class="my-2 flex items-center justify-start">
+            <%= meal_form.label :memo, class: 'min-w-[3.5rem]' %>
+            <%= meal_form.text_area :memo, rows: 1, placeholder: meal_memo_placeholder(meal_form.index), data: { controller: 'textarea-autogrow' },
+                                           class: 'w-full px-2 py-0.5 text-sm md:text-base rounded-md border border-red-950/20 focus:ring-orange-950/50 focus:border-orange-950/50' %>
+          </div>
         </div>
-        <div class="my-3">
-          <%= meal_form.label :name, class: 'block mb-1' %>
-          <%= meal_form.text_field :name, placeholder: meal_name_placeholder(meal_form.index),
-                                          class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
-        </div>
-        <div class="my-2">
-          <%= meal_form.label :memo, class: 'block mb-1' %>
-          <%= meal_form.text_area :memo, rows: 1, placeholder: meal_memo_placeholder(meal_form.index),
-                                         class: 'block  rounded-md border border-red-950/20 px-3 py-2 w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
-        </div>
-      </div>
-    <% end %>
-
-    <div class="text-center">
-      <%= form.submit button_display, class: 'rounded-full mt-2 py-3 px-9 bg-red-400 text-white font-bold text-lg inline-block cursor-pointer hover:bg-red-500' %>
+      <% end %>
+    </div>
+    <div class="my-4 text-center">
+      <%= form.submit button_display, class: 'rounded-full py-1.5 px-7 bg-red-400 text-lg text-white min-w-[10rem] hover:bg-red-600' %>
     </div>
   </div>
 <% end %>

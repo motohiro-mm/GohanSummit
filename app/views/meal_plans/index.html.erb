@@ -1,33 +1,25 @@
 <% set_meta_tags title: '献立表' %>
 <% set_meta_tags description: '献立表のページです。' %>
 <div class="w-full">
-  <div>
-    <%= week_calendar events: @meal_plans do |date, meal_plan| %>
-      <% if meal_plan&.meals.blank? %>
-        <div class="flex items-center h-14">
-          <%= button_to meeting_rooms_path(meal_plan:, meal_date: date), method: :post,
-                                                                         class: 'absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 ml-2 meeting_room_button font-medium' do %>
-            <%= image_tag('pages/chat_double.svg', class: 'meal-icon', alt: 'チャットのマーク') %>
-            <span class="ml-1">会議へ</span>
+  <%= week_calendar events: @meal_plans do |date, meal_plan| %>
+    <div class="flex items-center justify-around">
+      <div class="inline-block w-2/3 md:w-3/4 hover:bg-orange-100 rounded-lg my-1 pl-1.5 md:px-4 py-2">
+        <%= link_to meal_plan_link(meal_plan, date) do %>
+          <% Meal.timings.each_key do |timing| %>
+            <div class="flex items-center my-1">
+              <%= image_tag("meals/#{timing}.svg", class: 'w-5 mr-2', alt: alt_meal_timing(timing)) %>
+              <span class="truncate block max-w-[170px] md:max-w-[310px]">
+                <%= meal_plan&.meals&.find_by(timing:)&.name || content_tag(:span, '未確定', class: 'text-orange-950/20') %>
+              </span>
+            </div>
           <% end %>
-          <%= link_to '', new_meal_plan_path(meal_date: date), id: 'plus_icon', class: 'plus_icon right-15' %>
-        </div>
-      <% else %>
-        <%= link_to meal_plan do %>
-          <div class="text-left flex items-center h-full min-h-14 w-full hover:bg-orange-100 rounded-lg">
-            <ul class="w-4/5 mx-auto pl-4 inline-block">
-              <% meal_plan.meals.sort_by_timing.each do |meal| %>
-                <li class="flex justify-start items-center my-1">
-                  <%= image_tag("meals/#{meal.timing}.svg", class: 'meal-icon text-center mr-2', alt: alt_meal_timing(meal.timing)) %>
-                  <%= meal.name %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
         <% end %>
-      <% end %>
-    <% end %>
-  </div>
+      </div>
+      <div class="w-1/3 md:w-1/4 text-center mr-2 md:mr-10">
+        <%= render 'counter', meal_plan: meal_plan, date: %>
+      </div>
+    </div>
+  <% end %>
 </div>
 <% if session[:welcome_modal] %>
   <%= render 'welcome_modal' %>

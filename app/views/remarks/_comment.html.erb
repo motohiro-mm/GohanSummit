@@ -1,10 +1,10 @@
 <%= turbo_frame_tag remark do %>
   <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark) do %>
-    <div class="border-b border-dashed border-orange-950/10">
-      <div id="remark_<%= remark.id %>" class="w-full mt-1 mb-2 pb-3 hover:bg-orange-100 rounded-lg">
-        <div class="flex items-center my-2 pt-2">
+    <div class="border-t border-dashed border-orange-700/20">
+      <div id="remark_<%= remark.id %>" class="w-full pb-3 hover:bg-orange-100 rounded-lg">
+        <div class="flex items-center pt-2">
           <%= render 'remarks/user_icon', remark: %>
-          <span class="text-sm">
+          <span class="text-xs md:text-sm">
             <%= l remark.created_at, format: :long %>
           </span>
         </div>

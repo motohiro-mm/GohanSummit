@@ -1,26 +1,12 @@
 <% set_meta_tags title: '家族を招待する' %>
 <% set_meta_tags description: '献立表に家族を招待するためのページです。' %>
-<div class="mx-auto p-4 w-full">
-  <div class="text-left mt-4">
-    <h1 class="font-bold text-2xl">献立表に家族を招待する</h1>
+<h1 class="flex items-center h-10 bg-orange-200 justify-center font-bold text-lg md:text-xl">献立表に家族を招待する</h1>
+<div class="mx-3 my-4">
+  <div class="my-4">
+    以下のURLから初回ログインをすることで、<br>この献立表に参加することができます。<br>
+    URLをコピーして家族を献立表に招待しましょう。<br>
+    同じユーザーは複数の献立表には参加できませんので、<br class="md:hidden">注意してください。
   </div>
-
-  <div class="my-5">
-    <div class="my-8">
-      <div class="my-4">
-        以下のURLから初回ログインをすることで、この献立表に参加することができます。<br>
-        URLをコピーして家族を献立表に招待しましょう。<br>
-        同じユーザーは複数の献立表には参加できませんので、注意してください。
-      </div>
-      <div class="block w-full">
-        <%= text_field_tag :invitation_url, welcome_url(invitation_token: @family.invitation_token), readonly: true, autocomplete: 'off',
-                                                                                                     class: 'w-full rounded-md border focus:ring-orange-950/50 focus:border-orange-950/50' %>
-      </div>
-      <div class="text-center">
-        <%= button_tag '招待用URLをコピー', data: { controller: 'clipboard', action: 'clipboard#copy', clipboard_url_value: welcome_url(invitation_token: @family.invitation_token) },
-                                     class: 'rounded-full inline-block mt-4 py-3 px-4 bg-red-400 text-white hover:bg-red-600' %>
-      </div>
-    </div>
-    <%= render 'family', family: @family %>
-  </div>
+  <%= render 'invitation_url_button', family: @family %>
+  <%= render 'family', family: @family %>
 </div>

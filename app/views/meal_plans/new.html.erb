@@ -1,8 +1,7 @@
 <% set_meta_tags title: '献立の新規作成' %>
 <% set_meta_tags description: '献立の新規作成ができます。' %>
-<div class="mx-auto p-4 w-full">
-  <%= render 'header_button', meal_plan: @meal_plan %>
-  <div class="mt-4">
-    <%= render 'form', meal_plan: @meal_plan %>
-  </div>
+<%= render 'layouts/title_meal_date', meal_date: @meal_plan.meal_date %>
+<div class="my-2">
+  <%= render 'meeting_room_button', meal_plan: @meal_plan %>
 </div>
+<%= render 'form', meal_plan: @meal_plan %>

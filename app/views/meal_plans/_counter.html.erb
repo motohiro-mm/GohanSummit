@@ -1,0 +1,28 @@
+<%= button_to meeting_rooms_path(meal_plan:, meal_date: date), method: :post do %>
+  <% if (meals_length(meal_plan) + proposals_length(meal_plan) + comments_length(meal_plan)).zero? %>
+    <div class="text-center px-2 py-4 leading-tight rounded-lg text-red-800 border-4 border-red-600/10 hover:bg-red-700/10">
+      会議室は<br>こちら
+    </div>
+  <% else %>
+    <div class="rounded-lg border-2 border-orange-900/20 divide-y-2 divide-orange-900/10 hover:bg-orange-600/10">
+      <div class="pl-3 pr-3.5 py-0.5 flex items-center justify-between">
+        <%= image_tag('pages/meal.svg', class: 'w-4 ml-0.5 mr-2', alt: '献立のマーク') %>
+        <span class="<%= counter_number_color(meal_plan) %>">
+          <%= meals_length(meal_plan) %>/3
+        </span>
+      </div>
+      <div class="pl-3 pr-3.5 py-0.5 flex items-center justify-between text-orange-500">
+        <%= image_tag('pages/light.svg', class: 'w-4 ml-0.5 mr-2', alt: '提案のマーク') %>
+        <span class="<%= counter_number_color(meal_plan) %>">
+          <%= proposals_length(meal_plan) %>
+        </span>
+      </div>
+      <div class="pl-3 pr-3.5 py-0.5 flex items-center justify-between text-green-600">
+        <%= image_tag('pages/chat_single.svg', class: 'w-5 mr-1', alt: 'コメントのマーク') %>
+        <span class="<%= counter_number_color(meal_plan) %>">
+          <%= comments_length(meal_plan) %>
+        </span>
+      </div>
+    </div>
+  <% end %>
+<% end %>

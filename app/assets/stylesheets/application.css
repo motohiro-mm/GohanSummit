@@ -39,8 +39,8 @@ textarea::placeholder {
 }
 
 .icon {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
 }
 
 .page-icon-big {
@@ -58,92 +58,13 @@ textarea::placeholder {
   height: 22px;
 }
 
-.meeting_room_button {
-  display: flex;
-  align-items: center;
-  border-radius: 9999px;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  color: white;
-  background-color: #f87171;
-}
-
-.meeting_room_button:hover {
-  background-color: #dc2626;
-}
-
-.remark_button {
-  border-radius: 9999px;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  background-color: #ffedd5;
-}
-
-.remark_button:hover {
-  background-color: #fdba74;
-}
-
-.plus_icon {
-  display: inline-block;
-  color: #fb923c;
-  font-size: 1rem;
-  font-weight: bold;
-  width: 2rem;
-  height: 2rem;
-  padding: 0.5rem;
-  border: 0.15rem dashed;
-  border-color: #fb923c;
-  border-radius: 9999px;
-}
-
-.right-15 {
-  position: absolute;
-  right: 15%;
-}
-
-.plus_icon::before {
-  content: "";
-  position: absolute;
-  background: #fb923c;
-  width: 1rem;
-  height: 0.15rem;
-  border-radius: 0.25rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.plus_icon::after {
-  content: "";
-  position: absolute;
-  background: #fb923c;
-  width: 0.15rem;
-  height: 1rem;
-  border-radius: 0.15rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.plus_icon:hover {
-  background-color: #fb923c;
-}
-
-.plus_icon:hover::before {
-  background: white;
-}
-
-.plus_icon:hover::after {
-  background: white;
-}
-
 .arrow_left {
   display: inline-block;
   width: 1rem;
   height: 2rem;
   position: relative;
+  padding: 1.5rem;
+  margin: 0 0.5rem 0 0;
 }
 
 .arrow_left::before {
@@ -169,6 +90,8 @@ textarea::placeholder {
   width: 1rem;
   height: 2rem;
   position: relative;
+  padding: 1.5rem;
+  margin: 0 0 0 0.5rem;
 }
 
 .arrow_right::before {
@@ -189,48 +112,6 @@ textarea::placeholder {
   border-right: 0.2rem solid rgb(67 20 7);
 }
 
-.box {
-  border: 0.2rem double rgba(67, 20, 7, 0.5);
-  border-radius: 12px;
-  position: relative;
-  margin-top: 1em;
-}
-.box h2 {
-  text-align: left;
-  position: absolute;
-  left: 0.8rem;
-  top: -1.5rem;
-}
-.box span {
-  padding: 0.5rem;
-  background: #fff;
-  color: rgb(67 20 7);
-}
-.box .inner {
-  padding: 1.2em 0.5em 0.5em;
-}
-
-.checkbox-3 {
-  border: none;
-}
-
-.checkbox-3 label {
-  align-items: center;
-  padding: 0.75rem;
-  border: 0.1rem dashed #fdba74;
-  border-radius: 1.8rem;
-  cursor: pointer;
-}
-
-.checkbox-3 input {
-  display: none;
-}
-
-.checkbox-3 input[type="radio"]:checked + label {
-  background-color: #fdba74;
-  color: #fff;
-}
-
 .hidden_radio {
   display: none;
 }
@@ -241,13 +122,30 @@ textarea::placeholder {
 
 .icon_image {
   display: inline-block;
-  width: 5rem;
-  height: 5rem;
   padding: 0.2rem;
   border: 4px solid transparent;
+  border-radius: 100%;
+  background-color: #d6d3d1;
+  opacity: 0.5;
 }
 
 .icon_option input:checked + .icon_image {
   border-radius: 100%;
-  border-color: #fdba74;
+  border-color: #fb923c;
+  background-color: #fed7aa;
+  opacity: 1;
+}
+
+.comment-max-height {
+  max-height: calc(100vh - 452px);
+}
+
+@media (min-width: 768px) {
+  .comment-max-height {
+    max-height: calc(100vh - 508px);
+  }
+}
+
+.field_with_errors {
+  display: contents;
 }

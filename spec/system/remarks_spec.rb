@@ -16,7 +16,7 @@ RSpec.describe 'Remarks', type: :system do
   describe '提案' do
     it '新規作成する', :js do
       visit meeting_room_path(meeting_room)
-      expect(page).to have_css 'h2', text: '候補'
+      expect(page).to have_css 'h2', text: '献立の提案'
       click_on '提案する'
 
       fill_in 'remark_content', with: 'やきにく'
@@ -93,7 +93,7 @@ RSpec.describe 'Remarks', type: :system do
   describe 'コメント' do
     it '新規作成する', :js do
       visit meeting_room_path(meeting_room)
-      expect(page).to have_css 'h2', text: '候補'
+      expect(page).to have_css 'h2', text: 'コメント'
       click_on 'コメントする'
 
       fill_in 'remark_content', with: 'たくさん食べたい'

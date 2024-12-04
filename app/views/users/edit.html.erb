@@ -1,34 +1,36 @@
 <% set_meta_tags title: 'ユーザー設定' %>
 <% set_meta_tags description: 'ユーザー設定のページです。' %>
-<div class="mx-auto p-4 w-full">
-  <h1 class="font-bold text-2xl">ユーザー設定</h1>
+<h1 class="flex items-center h-10 bg-orange-200 justify-center font-bold text-lg md:text-xl">ユーザー設定</h1>
+<div class="mx-3 my-4">
   <%= form_with(model: @user, class: 'contents') do |form| %>
     <%= render 'layouts/error_messages', model: @user %>
     <div class="my-5">
       <%= form.label :name, class: 'block mb-1' %>
       <%= form.text_field :name,
-                          class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
+                          class: 'block rounded-md border border-red-950/20 px-2 py-1 w-full focus:ring-orange-950/50 focus:border-orange-950/50' %>
     </div>
-    <div class="my-5">
-      <div class="my-4">アイコン画像</div>
-      <div class="flex flex-wrap gap-4 justify-between">
+    <div class="my-4">
+      <div class="my-2">アイコン画像</div>
+      <div class="flex flex-wrap gap-2 md:gap-4 justify-between">
         <% User.icons.keys.each do |icon| %>
           <label class="icon_option">
           <%= form.radio_button :icon, icon, class: 'hidden_radio' %>
-          <%= image_tag "user_icons/#{icon}", class: 'icon_image', alt: "ユーザーアイコンで選べる#{User::ICON[icon.to_sym]}のイラスト" %>
+          <%= image_tag "user_icons/#{icon}", class: 'icon_image w-12 md:w-20', alt: "ユーザーアイコンで選べる#{User::ICON[icon.to_sym]}のイラスト" %>
           </label>
         <% end %>
       </div>
     </div>
-    <div class="m-2 text-center">
-      <%= form.submit class: 'rounded-full py-3 px-7 bg-red-400 text-white hover:bg-red-600' %>
+    <div class="my-6 text-center">
+      <%= form.submit class: 'rounded-full py-1.5 px-7 bg-red-400 text-base text-white min-w-[10rem] hover:bg-red-600' %>
     </div>
   <% end %>
   <%= render 'families/family', family: @user.family %>
-  <div class="my-8 pt-8 border-t-4 border-dashed border-orange-50">
-    <h2 class="mb-2 text-lg">ユーザーの削除</h2>
-    ユーザーを削除すると、献立表を共有しているユーザーがいない場合は献立表のデータも削除されます。<br>
-    献立表を共有するユーザーが残っている場合、献立表は残ります。
+  <div class="my-8">
+    <h2 class="mb-2 text-base md:text-lg">ユーザーの削除</h2>
+     <p class="ml-4">
+      献立表を共有しているユーザーがいない場合、<br>献立表のデータも削除されます。<br>
+      献立表を共有するユーザーが残っている場合は、<br>献立表は残ります。
+     </p>
     <div class="text-right">
       <%= button_to 'ユーザーを削除する', user_path, method: :delete, data: { turbo_confirm: '本当に削除して良いですか？' }, class: 'mt-4 border-b-4 border-orange-950/10 px-2 pt-2 pb-1 rounded hover:bg-orange-950/10' %>
     </div>

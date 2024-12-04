@@ -1,19 +1,18 @@
 <% set_meta_tags title: 'ごはんサミット' %>
 <% set_meta_tags description: 'ごはんサミットは、家族で献立の相談と献立の共有ができるアプリです。' %>
-
-<div class="mx-auto p-4 w-full text-center">
-  <p class="m-4">
-    <strong class="text-xl">ごはんサミットへようこそ！</strong><br>
+<div class="mx-auto my-8 px-4 w-full text-center">
+  <strong class="text-xl md:text-2xl">ごはんサミットへようこそ！</strong><br>
+  <div class="w-2/3 md:w-1/2 mt-4 mx-auto">
+    <%= image_tag('home/logo_large.png', alt: 'ごはんサミットのロゴ') %>
+  </div>
+  <p class="my-4">
     ごはんサミットは、<br>
     献立の相談と献立表の共有ができるアプリです。
   </p>
-  <div class="w-2/3 mx-auto mb-8">
-    <%= image_tag('home/logo_large.png', alt: 'ごはんサミットのロゴ') %>
-  </div>
   <%= render 'login_block' %>
   <%= render 'over_view' %>
   <p class="my-8 mx-2">
-    <strong class="text-xl">家族で献立の相談・共有をしよう！</strong>
+    <strong class="text-lg md:text-xl">家族で献立の相談・共有をしよう！</strong>
   </p>
   <div class="w-2/3 mx-auto mb-8">
     <%= image_tag('/images/logo_small.png', alt: 'ごはんサミットのロゴ') %>

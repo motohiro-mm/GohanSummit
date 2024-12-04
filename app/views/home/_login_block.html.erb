@@ -1,7 +1,7 @@
-<div class="m-4">
-  <%= button_to 'Googleでログイン', google_oauth2_path(@invitation_token), method: :post, data: { turbo: false }, class: 'rounded-full py-3 px-4 bg-red-400 inline-block text-white hover:bg-red-600' %>
+<div class="my-8">
+  <%= button_to 'Googleでログイン', google_oauth2_path(@invitation_token), method: :post, data: { turbo: false }, class: 'w-2/3 md:w-1/2 rounded-full px-4 py-3 bg-red-400 text-lg inline-block text-white hover:bg-red-600' %>
 </div>
-<div class="mb-8 text-sm">
+<div class="mb-8 text-xs md:text-sm">
     <span>
       <%= link_to '利用規約', terms_path, class: 'hover:underline' %>
       ・

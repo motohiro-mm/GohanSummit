@@ -1,8 +1,20 @@
 <% if meal_plan.meals.present? %>
-  <h3 class="font-bold">この日に登録されている献立</h3>
-  <% meal_plan.meals.sort_by_timing.each do |meal| %>
-    <%= render meal %>
+  <h3 class="text-lg font-bold mt-6">確定した献立</h3>
+  <p class="mt-4 mb-2">
+    献立をクリックすると詳細が見られます。
+  </p>
+  <%= link_to meal_plan do %>
+    <div class="border-2 border-dashed border-orange-900/20 rounded-lg p-4 my-2 hover:bg-orange-50/50 hover:border-orange-900/40">
+      <% Meal.timings.each_key do |timing| %>
+        <div class="flex items-center my-1">
+          <%= image_tag("meals/#{timing}.svg", class: 'w-5 mr-4', alt: alt_meal_timing(timing)) %>
+          <%= meal_plan&.meals&.find_by(timing:)&.name || content_tag(:span, '未確定', class: 'text-orange-950/20') %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
+  <%= link_to '献立を編集する', edit_meal_plan_path(meal_plan), data: { turbo_frame: '_top' }, class: 'flex justify-center rounded-full mt-4 p-2 bg-orange-100 hover:bg-orange-200' %>
 <% else %>
-  <h2 class="font-bold text-center">この日に登録されている<br>献立はありません。</h2>
+  <h2 class="font-bold text-center mt-6">この日に登録されている<br>献立はありません。</h2>
+  <%= link_to '会議をせずに献立を登録する場合はこちら', new_meal_plan_path(meal_date: meal_plan.meal_date), data: { turbo_frame: '_top' }, class: 'my-2 underline flex justify-center' %>
 <% end %>

@@ -1,16 +1,55 @@
 <%= form_with(model: [meal_plan, meal], url: meal_plan_meals_path(meal_plan)) do |form| %>
   <%= render 'layouts/error_messages', model: meal %>
-  <div class="my-6">
+  <div class="my-8">
     <%= form.hidden_field :id %>
-    <div id="timing_checkbox" class="checkbox-3 flex justify-around">
+    <div id="timing_checkbox" class="flex md:mx-8 gap-2 md:gap-10">
       <% Meal.timings.keys.each do |timing| %>
-        <%= form.radio_button :timing, timing, checked: (timing == 'lunch'), class: 'checkbox-3' %>
-        <%= form.label "timing_#{timing}", Meal.human_attribute_name("timing.#{timing}") %>
+        <%= form.label "timing_#{timing}", class: "
+          flex-1
+          py-3
+          border-2
+          border-dashed
+          border-[#ffc481]
+          rounded-xl
+          cursor-pointer
+          text-[#999]
+          bg-[#fff]
+          whitespace-nowrap
+          duration-200
+
+          flex
+          items-center
+          justify-center
+          gap-1
+          md:gap-2
+
+          hover:text-[#401109]
+          hover:bg-[#fffaf3]
+          hover:before:bg-[#fff]
+
+          has-[input:checked]:text-[#401109]
+          has-[input:checked]:font-bold
+          has-[input:checked]:bg-[#fff2e2]
+
+          before:content-['']
+          before:w-4 before:h-4
+          before:bg-[#ddd]
+          before:rounded-full
+          before:border-2
+          before:border-[#bbb]
+
+          has-[input:checked]:before:bg-[#f87171]
+          has-[input:checked]:before:border-[#f87171]
+          has-[input:checked]:before:shadow-[inset_0_0_0_2px_rgb(255,255,255)]
+        " do %>
+          <%= form.radio_button :timing, timing, checked: (timing == 'lunch'), class: 'hidden' %>
+          <span><%= Meal.human_attribute_name("timing.#{timing}") %></span>
+        <% end %>
       <% end %>
     </div>
     <%= form.hidden_field :name, value: form.object.name %>
   </div>
   <div class="m-2 text-center">
-    <%= form.submit '登録', class: 'rounded-full py-3 px-7 bg-red-400 text-white' %>
+    <%= form.submit '登録', class: 'rounded-full py-1.5 px-7 bg-red-400 text-lg text-white min-w-[10rem] hover:bg-red-600' %>
   </div>
 <% end %>
