@@ -4,7 +4,7 @@
       <div id="remark_<%= remark.id %>" class="w-full pb-3 hover:bg-orange-100 rounded-lg">
         <div class="flex items-center pt-2">
           <%= render 'remarks/user_icon', remark: %>
-          <span class="text-xs md:text-sm">
+          <span id="remark_<%= remark.id %>_created_at" class="text-xs md:text-sm">
             <%= l remark.created_at, format: :long %>
           </span>
         </div>

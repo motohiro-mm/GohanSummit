@@ -12,9 +12,7 @@ RSpec.describe 'Remarks', type: :system do
   end
 
   describe '提案' do
-    before do
-      create(:remark, remark_type: 0, content: 'カレー', meeting_room:, user:)
-    end
+    let(:proposal) { create(:remark, remark_type: 0, content: 'カレー', meeting_room:, user:) }
 
     it '新規作成する', :js do
       visit meeting_room_path(meeting_room)
@@ -50,6 +48,7 @@ RSpec.describe 'Remarks', type: :system do
     end
 
     it '編集する', :js do
+      proposal
       visit meeting_room_path(meeting_room)
       expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'カレー'
@@ -63,6 +62,7 @@ RSpec.describe 'Remarks', type: :system do
     end
 
     it '編集時に入力を削除してチェックボタンを押すとエラーが出る', :js do
+      proposal
       visit meeting_room_path(meeting_room)
       expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'カレー'
@@ -73,6 +73,7 @@ RSpec.describe 'Remarks', type: :system do
     end
 
     it '編集時に20文字以上入力してチェックボタンを押すとエラーが出る', :js do
+      proposal
       visit meeting_room_path(meeting_room)
       expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'カレー'
@@ -83,6 +84,7 @@ RSpec.describe 'Remarks', type: :system do
     end
 
     it '削除する', :js do
+      proposal
       visit meeting_room_path(meeting_room)
       expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'カレー'
@@ -94,9 +96,7 @@ RSpec.describe 'Remarks', type: :system do
   end
 
   describe 'コメント' do
-    before do
-      create(:remark, remark_type: 1, content: '時間がないね', meeting_room:, user:)
-    end
+    let(:comment) { create(:remark, remark_type: 1, content: '時間がないね', meeting_room:, user:) }
 
     it '新規作成する', :js do
       visit meeting_room_path(meeting_room)
@@ -107,7 +107,7 @@ RSpec.describe 'Remarks', type: :system do
       find_by_id('submit_button').click
 
       expect(page).to have_content '投稿しました'
-      expect(page).to have_content Time.zone.today.strftime('%Y/%m/%d')
+      expect(page).to have_content 'コメントする'
       within "#remark_#{Remark.last.id}_content" do
         expect(page).to have_content 'たくさん食べたい'
       end
@@ -133,9 +133,12 @@ RSpec.describe 'Remarks', type: :system do
     end
 
     it '編集する', :js do
+      comment
       visit meeting_room_path(meeting_room)
-      expect(page).to have_content Time.zone.today.strftime('%Y/%m/%d')
-      click_on '時間がないね'
+      within "#remark_#{comment.id}_created_at" do
+        expect(page).to have_content Time.zone.today.strftime('%Y/%m/%d')
+      end
+      find("#remark_#{comment.id}_content", text: '時間がないね').click
 
       fill_in 'remark_content', with: '楽したい'
       find_by_id('submit_button').click
@@ -146,9 +149,12 @@ RSpec.describe 'Remarks', type: :system do
     end
 
     it '編集時に入力を削除してチェックボタンを押すとエラーが出る', :js do
+      comment
       visit meeting_room_path(meeting_room)
-      expect(page).to have_content Time.zone.today.strftime('%Y/%m/%d')
-      click_on '時間がないね'
+      within "#remark_#{comment.id}_created_at" do
+        expect(page).to have_content Time.zone.today.strftime('%Y/%m/%d')
+      end
+      find("#remark_#{comment.id}_content", text: '時間がないね').click
 
       fill_in 'remark_content', with: ''
       find_by_id('submit_button').click
@@ -156,9 +162,12 @@ RSpec.describe 'Remarks', type: :system do
     end
 
     it '編集時に50文字以上入力してチェックボタンを押すとエラーが出る', :js do
+      comment
       visit meeting_room_path(meeting_room)
-      expect(page).to have_content Time.zone.today.strftime('%Y/%m/%d')
-      click_on '時間がないね'
+      within "#remark_#{comment.id}_created_at" do
+        expect(page).to have_content Time.zone.today.strftime('%Y/%m/%d')
+      end
+      find("#remark_#{comment.id}_content", text: '時間がないね').click
 
       fill_in 'remark_content', with: '0' * 51
       find_by_id('submit_button').click
@@ -166,9 +175,12 @@ RSpec.describe 'Remarks', type: :system do
     end
 
     it '削除する', :js do
+      comment
       visit meeting_room_path(meeting_room)
-      expect(page).to have_css 'h2', text: 'コメント'
-      click_on '時間がないね'
+      within "#remark_#{comment.id}_created_at" do
+        expect(page).to have_content Time.zone.today.strftime('%Y/%m/%d')
+      end
+      find("#remark_#{comment.id}_content", text: '時間がないね').click
       find_by_id('trash_button').click
 
       expect(page).to have_content '削除しました'
