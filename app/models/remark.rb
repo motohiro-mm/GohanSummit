@@ -9,7 +9,7 @@ class Remark < ApplicationRecord
   validates :remark_type, presence: true
   validates :content, length: { maximum: 20, too_long: :too_long_proposal }, presence: { message: :blank_proposal }, if: :proposal?
   validates :content, length: { maximum: 50, too_long: :too_long_comment }, presence: { message: :blank_comment }, if: :comment?
-  
+
   after_create_commit lambda {
     broadcast_remove_to [meeting_room, remark_type.pluralize], target: "#{remark_type}_empty_message"
     broadcast_prepend_later_to [meeting_room, remark_type.pluralize], partial: "remarks/#{remark_type}", locals: { remark: self }, target: remark_type.pluralize

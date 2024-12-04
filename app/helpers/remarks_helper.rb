@@ -10,7 +10,7 @@ module RemarksHelper
 
     if remark.proposal?
       form.text_field(content, options)
-    elsif remark.comments?
+    elsif remark.comment?
       form.text_area(content, options.merge(rows: 1, data: { controller: 'textarea-autogrow' }))
     end
   end
