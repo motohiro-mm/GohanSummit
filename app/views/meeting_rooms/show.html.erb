@@ -40,7 +40,7 @@
           </div>
         </div>
         <%= turbo_frame_tag dom_id(Remark, 'comment') %>
-        <div class="grid gap border-dashed border-orange-700">
+        <div class="grid gap border-dashed border-orange-700 z-10">
           <%= render 'remarks/comments', meeting_room: @meeting_room, comments: @comments %>
         </div>
       </div>

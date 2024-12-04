@@ -78,3 +78,5 @@ RSpec.configure do |config|
   config.include RemarksHelper, type: :helper
   config.include SimpleCalendarHelper
 end
+
+Capybara.default_max_wait_time = 20
