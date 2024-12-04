@@ -7,7 +7,7 @@ RSpec.describe 'Remarks', type: :system do
   let(:meal_plan) { create(:meal_plan, :with_breakfast_and_dinner, family: user.family) }
   let(:meeting_room) { create(:meeting_room, family: user.family, meal_plan:) }
   let(:proposal) { create(:remark, remark_type: 0, content: 'カレー', meeting_room:, user:) }
-  let(:comment) { create(:remark, remark_type: 1, content: '簡単に作れるものにしよう', meeting_room:, user:) }
+  let(:comment) { create(:remark, remark_type: 1, content: '時間ない', meeting_room:, user:) }
 
   before do
     log_in_as user
@@ -96,12 +96,12 @@ RSpec.describe 'Remarks', type: :system do
       expect(page).to have_css 'h2', text: '献立の提案'
       click_on 'コメントする'
 
-      fill_in 'remark_content', with: 'たくさん食べたい'
+      fill_in 'remark_content', with: '時間ない'
       find_by_id('submit_button').click
 
       expect(page).to have_content '投稿しました'
       within '#comments' do
-        expect(page).to have_content 'たくさん食べたい', wait: 10
+        expect(page).to have_content '時間ない'
       end
     end
 
@@ -125,20 +125,20 @@ RSpec.describe 'Remarks', type: :system do
     it '編集する', :js do
       comment
       visit meeting_room_path(meeting_room)
-      click_on '簡単に作れるものにしよう', wait: 10
+      click_on '時間ない'
 
-      fill_in 'remark_content', with: '手の込んだものを作りたい'
+      fill_in 'remark_content', with: '楽したい'
       find_by_id('submit_button').click
 
       expect(page).to have_content '更新しました'
-      expect(page).to have_no_content '簡単に作れるものにしよう'
-      expect(page).to have_content '手の込んだものを作りたい'
+      expect(page).to have_no_content '時間ない'
+      expect(page).to have_content '楽したい'
     end
 
     it '編集時に入力を削除してチェックボタンを押すとエラーが出る', :js do
       comment
       visit meeting_room_path(meeting_room)
-      click_on '簡単に作れるものにしよう', wait: 10
+      click_on '時間ない'
 
       fill_in 'remark_content', with: ''
       find_by_id('submit_button').click
@@ -148,7 +148,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集時に50文字以上入力してチェックボタンを押すとエラーが出る', :js do
       comment
       visit meeting_room_path(meeting_room)
-      click_on '簡単に作れるものにしよう', wait: 10
+      click_on '時間ない'
 
       fill_in 'remark_content', with: '0' * 51
       find_by_id('submit_button').click
@@ -158,7 +158,7 @@ RSpec.describe 'Remarks', type: :system do
     it '削除する', :js do
       comment
       visit meeting_room_path(meeting_room)
-      click_on '簡単に作れるものにしよう', wait: 10
+      click_on '時間ない'
       find_by_id('trash_button').click
 
       expect(page).to have_content '削除しました'
