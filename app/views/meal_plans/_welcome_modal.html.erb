@@ -7,18 +7,20 @@
       <p class="text-lg md:text-xl font-bold my-2">
         ごはんサミットへようこそ！
       </p>
-      <div class="my-2 leading-snug">
-        <p class="font-semibold">
-          さっそく家族を<br class="md:hidden">献立表に招待しましょう。<br>
+      <% if current_user.family.users.length == 1 %>
+        <div class="my-2 leading-snug">
+          <p class="font-semibold">
+            さっそく家族を<br class="md:hidden">献立表に招待しましょう。<br>
+          </p>
+          <%= image_tag('home/invitation.png', class: 'w-2/3 md:w-1/2 mx-auto', alt: 'にわとりとひよこが出迎えるイラスト') %>
+          以下のURLから初回ログインすると、<br>この献立表に参加することができます。<br>
+          同じユーザーは複数の献立表には<br>参加できませんので注意してください。
+        </div>
+        <%= render 'families/invitation_url_button', family: current_user.family %>
+        <p class="text-center">
+          招待用URLはこのウィンドウを閉じても<br>メニューから確認できます。
         </p>
-        <%= image_tag('home/invitation.png', class: 'w-2/3 md:w-1/2 mx-auto', alt: 'にわとりとひよこが出迎えるイラスト') %>
-        以下のURLから初回ログインすると、<br>この献立表に参加することができます。<br>
-        同じユーザーは複数の献立表には<br>参加できませんので注意してください。
-      </div>
-      <%= render 'families/invitation_url_button', family: current_user.family %>
-      <p class="text-center">
-        招待用URLはこのウィンドウを閉じても<br>メニューから確認できます。
-      </p>
+      <% end %>
       <%= image_tag('home/welcome_modal.png', class: 'w-1/2 mx-auto mt-4', alt: 'ひよこが食べ物を思い浮かべているイラスト') %>
       <div class="text-center my-4">
         <%= link_to '使い方はこちら', about_path, class: 'w-3/4 py-2 text-base md:text-lg px-6 py-2 rounded-full bg-orange-200 hover:bg-orange-300', data: { action: 'modal#close', turbo_frame: '_top' } %>
