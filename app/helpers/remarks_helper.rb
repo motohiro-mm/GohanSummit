@@ -3,14 +3,14 @@
 module RemarksHelper
   def remark_input_field(form, remark, content)
     options = {
-      placeholder: remark_placeholder(remark.remark_type),
+      placeholder: remark_placeholder(remark),
       autofocus: true,
       class: 'block rounded-md border border-red-950/20  w-full focus:ring-orange-950/50 focus:border-orange-950/50'
     }
 
-    if remark.remark_type == 'proposal'
+    if remark.proposal?
       form.text_field(content, options)
-    elsif remark.remark_type == 'comment'
+    elsif remark.comment?
       form.text_area(content, options.merge(rows: 1, data: { controller: 'textarea-autogrow' }))
     end
   end
@@ -35,10 +35,10 @@ module RemarksHelper
 
   private
 
-  def remark_placeholder(remark_type)
-    if remark_type == 'proposal'
+  def remark_placeholder(remark)
+    if remark.proposal?
       'カレー、おすし、やきとり'
-    elsif remark_type == 'comment'
+    elsif remark.comment?
       '中華の気分、軽めがいい'
     end
   end

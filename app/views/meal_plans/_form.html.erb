@@ -1,9 +1,8 @@
-<%= form_with(model: meal_plan, class: 'contents') do |form| %>
+<%= form_with(model: meal_plan, url: form_url(meal_plan), method: form_method, class: 'contents') do |form| %>
   <div class="mx-3">
     <%= render 'layouts/error_messages', model: meal_plan %>
     <div class="px-4 border-2 border-dashed border-orange-900/10 rounded-lg">
       <%= form.hidden_field :meal_date %>
-
       <%= form.fields_for(:meals, meal_plan.meals.sort_by { |meal| Meal.timings[meal.timing] }) do |meal_form| %>
         <div id="<%= meal_form.object.timing %>" class="w-full px-2 py-5">
           <%= meal_form.hidden_field :timing, value: meal_form.object.timing %>
