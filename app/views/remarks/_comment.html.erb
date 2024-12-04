@@ -8,7 +8,7 @@
             <%= l remark.created_at, format: :long %>
           </span>
         </div>
-        <div class="mx-auto ml-7 px-3 break-all font-medium">
+        <div id="remark_<%= remark.id %>_content" class="mx-auto ml-7 px-3 break-all font-medium">
           <%= safe_join(remark.content.split("\n"), tag.br) %>
         </div>
       </div>

@@ -3,7 +3,9 @@
     <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark), class: 'hover:bg-orange-100 rounded-lg h-10 w-full' do %>
       <div class="flex justify-start items-center ml-2 my-1 text-wrap">
         <%= render 'remarks/user_icon', remark: %>
-        <%= remark.content %>
+        <span id="remark_<%= remark.id %>_content">
+          <%= remark.content %>
+        </span>
       </div>
     <% end %>
     <div class="text-center flex-shrink-0 mx-1">
