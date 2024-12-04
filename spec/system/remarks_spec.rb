@@ -125,7 +125,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集する', :js do
       comment
       visit meeting_room_path(meeting_room)
-      find("#remark_#{comment.id}_content", text: '簡単に作れるものにしよう', visible: :all).click
+      click_on '簡単に作れるものにしよう'
 
       fill_in 'remark_content', with: '手の込んだものを作りたい'
       find_by_id('submit_button').click
@@ -138,7 +138,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集時に入力を削除してチェックボタンを押すとエラーが出る', :js do
       comment
       visit meeting_room_path(meeting_room)
-      find("#remark_#{comment.id}_content", text: '簡単に作れるものにしよう', visible: :all).click
+      click_on '簡単に作れるものにしよう'
 
       fill_in 'remark_content', with: ''
       find_by_id('submit_button').click
@@ -148,7 +148,7 @@ RSpec.describe 'Remarks', type: :system do
     it '編集時に50文字以上入力してチェックボタンを押すとエラーが出る', :js do
       comment
       visit meeting_room_path(meeting_room)
-      find("#remark_#{comment.id}_content", text: '簡単に作れるものにしよう', visible: :all).click
+      click_on '簡単に作れるものにしよう'
 
       fill_in 'remark_content', with: '0' * 51
       find_by_id('submit_button').click
@@ -158,7 +158,7 @@ RSpec.describe 'Remarks', type: :system do
     it '削除する', :js do
       comment
       visit meeting_room_path(meeting_room)
-      find("#remark_#{comment.id}_content", text: '簡単に作れるものにしよう', visible: :all).click
+      click_on '簡単に作れるものにしよう'
       find_by_id('trash_button').click
 
       expect(page).to have_content '削除しました'
