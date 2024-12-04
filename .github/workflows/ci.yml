@@ -35,6 +35,12 @@ jobs:
         run: bundle exec rake assets:precompile
       - name: Run tests
         run: bundle exec rspec
+      - name: Archive rspec result screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rspec result screenshots
+          path: tmp/capybara/
   lint:
     runs-on: ubuntu-latest
     steps:
