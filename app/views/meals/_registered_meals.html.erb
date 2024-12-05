@@ -15,6 +15,8 @@
   <% end %>
   <%= link_to '献立を編集する', edit_meal_plan_path(meal_plan), data: { turbo_frame: '_top' }, class: 'flex justify-center rounded-full mt-4 p-2 bg-orange-100 hover:bg-orange-200' %>
 <% else %>
-  <h2 class="font-bold text-center mt-6">この日に登録されている<br>献立はありません。</h2>
-  <%= link_to '会議をせずに献立を登録する場合はこちら', new_meal_plan_path(meal_date: meal_plan.meal_date), data: { turbo_frame: '_top' }, class: 'my-2 underline flex justify-center' %>
+  <h2 class="font-bold text-center mt-6 mb-4">この日に登録されている<br>献立はありません。</h2>
+  <%= link_to new_meal_plan_path(meal_date: meal_plan.meal_date), data: { turbo_frame: '_top' }, class: 'text-center my-2 underline flex justify-center' do %>
+    会議をしないで<br class="md:hidden">献立を登録する場合はこちら
+  <% end %>
 <% end %>

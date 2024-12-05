@@ -7,7 +7,7 @@
     </div>
   <% end %>
 </div>
-<div id="comments" class="comment-max-height min-h-[10rem] overflow-y-auto">
+<div id="comments">
   <%= turbo_frame_tag 'comments' do %>
     <% comments.each do |remark| %>
       <%= render 'remarks/comment', remark: %>

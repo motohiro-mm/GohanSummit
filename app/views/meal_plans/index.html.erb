@@ -8,7 +8,7 @@
           <% Meal.timings.each_key do |timing| %>
             <div class="flex items-center my-1">
               <%= image_tag("meals/#{timing}.svg", class: 'w-5 mr-2', alt: alt_meal_timing(timing)) %>
-              <span class="truncate block max-w-[170px] md:max-w-[310px]">
+              <span class="truncate block max-w-[170px] md:max-w-[280px]">
                 <%= meal_plan&.meals&.find_by(timing:)&.name || content_tag(:span, '未確定', class: 'text-orange-950/20') %>
               </span>
             </div>
