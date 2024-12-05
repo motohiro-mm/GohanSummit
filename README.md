@@ -40,7 +40,7 @@ https://gohansummit.com
 会議室では、その日に何を食べるのかの相談をします。<br>
 食べたい料理が浮かんだら「提案する」、その他は「コメントする」をして相談していきます。<br>
 
-<img width="40%" alt="会議室ページ" src="https://github.com/user-attachments/assets/5e84d492-cf19-4e29-b619-751b51bb9dd0">
+<img width="40%" alt="会議室ページ" src="https://github.com/user-attachments/assets/79dfa93b-4cf8-45e6-980f-354ccd93951c">
 
 ### 献立を献立表に登録する
 
@@ -62,7 +62,7 @@ https://gohansummit.com
 
 献立表はトップページで確認できます。<br>
 
-<img width="40%" alt="献立表ページ" src="https://github.com/user-attachments/assets/687c7fcf-04a4-445a-984d-d2ed99d56e42">
+<img width="40%" alt="献立表ページ" src="https://github.com/user-attachments/assets/e4397be8-1211-437e-9e57-e9310c45f114">
 
 ## 環境
 
