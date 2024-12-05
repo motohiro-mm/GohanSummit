@@ -3,10 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe Family, type: :model do
-  let(:family) { create(:family, invitation_token: 'test_token') }
+  let(:family) { create(:family) }
   let(:user) { create(:user, family: family) }
 
-  describe '#destroy_family_having_no_user' do
+  describe '#destroy_having_no_user' do
     it '同じ家族のユーザーが存在するので家族を削除しない' do
       user
       family.destroy_having_no_user
