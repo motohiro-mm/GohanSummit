@@ -77,4 +77,5 @@ RSpec.configure do |config|
   config.include MealsHelper, type: :helper
   config.include RemarksHelper, type: :helper
   config.include SimpleCalendarHelper
+  config.include ActionCable::TestHelper
 end
