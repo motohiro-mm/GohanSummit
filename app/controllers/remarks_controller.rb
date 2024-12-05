@@ -12,10 +12,7 @@ class RemarksController < ApplicationController
   def create
     @remark = current_user.remarks.build(remark_params)
     if @remark.save
-      respond_to do |format|
-        format.html { redirect_to meeting_room_path(@meeting_room), notice: '投稿しました' }
-        format.turbo_stream { flash.now[:notice] = '投稿しました' }
-      end
+      flash.now[:notice] = '投稿しました'
     else
       render :new, status: :unprocessable_entity
     end
@@ -23,10 +20,7 @@ class RemarksController < ApplicationController
 
   def update
     if @remark.update(remark_params)
-      respond_to do |format|
-        format.html { redirect_to meeting_room_path(@meeting_room), notice: '更新しました' }
-        format.turbo_stream { flash.now[:notice] = '更新しました' }
-      end
+      flash.now[:notice] = '更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,10 +29,7 @@ class RemarksController < ApplicationController
   def destroy
     @remark.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to meeting_room_path(@meeting_room), notice: '削除しました', status: :see_other }
-      format.turbo_stream { flash.now[:notice] = '削除しました' }
-    end
+    flash.now[:notice] = '削除しました'
   end
 
   private
