@@ -4,13 +4,13 @@ class MealPlansController < ApplicationController
   before_action :set_meal_plan, only: %i[show edit update destroy]
 
   def index
-    @meal_plans = current_user.family.meal_plans.includes([:meals]).includes([:meeting_room])
+    @meal_plans = current_family.meal_plans.includes([:meals]).includes([:meeting_room])
   end
 
   def show; end
 
   def new
-    @meal_plan = current_user.family.meal_plans.find_or_initialize_by(meal_date: params[:meal_date])
+    @meal_plan = current_family.meal_plans.find_or_initialize_by(meal_date: params[:meal_date])
     @meal_plan.meals_build
   end
 
@@ -19,7 +19,7 @@ class MealPlansController < ApplicationController
   end
 
   def create
-    @meal_plan = current_user.family.meal_plans.find_or_initialize_by(meal_date: meal_plan_params[:meal_date])
+    @meal_plan = current_family.meal_plans.find_or_initialize_by(meal_date: meal_plan_params[:meal_date])
     @meal_plan.assign_attributes(meal_plan_params)
 
     if @meal_plan.save
@@ -45,13 +45,13 @@ class MealPlansController < ApplicationController
   end
 
   def calendar
-    @meal_plans = current_user.family.meal_plans.includes([:meals])
+    @meal_plans = current_family.meal_plans.includes([:meals])
   end
 
   private
 
   def set_meal_plan
-    @meal_plan = current_user.family.meal_plans.find(params[:id])
+    @meal_plan = current_family.meal_plans.find(params[:id])
   end
 
   def meal_plan_params

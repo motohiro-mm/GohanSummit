@@ -44,7 +44,7 @@ class RemarksController < ApplicationController
   private
 
   def set_meeting_room
-    @meeting_room = current_user.family.meeting_rooms.find(params[:meeting_room_id])
+    @meeting_room = current_family.meeting_rooms.find(params[:meeting_room_id])
   end
 
   def set_remark

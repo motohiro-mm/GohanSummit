@@ -2,6 +2,6 @@
 
 class FamiliesController < ApplicationController
   def show
-    @family = current_user.family
+    @family = current_family
   end
 end
