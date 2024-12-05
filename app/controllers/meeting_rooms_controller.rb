@@ -9,9 +9,7 @@ class MeetingRoomsController < ApplicationController
   end
 
   def create
-    meal_plan = current_family.meal_plans.find_or_create_by(meal_date: params[:meal_date]) do |mp|
-      mp.save(validate: false)
-    end
+    meal_plan = current_family.meal_plans.find_or_create_by(meal_date: params[:meal_date])
     meeting_room = current_family.meeting_rooms.find_or_create_by(meal_plan:)
     redirect_to meeting_room_path(meeting_room)
   end

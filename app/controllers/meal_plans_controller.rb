@@ -22,7 +22,7 @@ class MealPlansController < ApplicationController
     @meal_plan = current_family.meal_plans.find_or_initialize_by(meal_date: meal_plan_params[:meal_date])
     @meal_plan.assign_attributes(meal_plan_params)
 
-    if @meal_plan.save
+    if @meal_plan.save(context: :operate_including_meals)
       redirect_to @meal_plan, notice: '献立を作成しました'
     else
       @meal_plan.meals_build
