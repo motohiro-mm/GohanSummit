@@ -125,7 +125,7 @@ textarea::placeholder {
   padding: 0.2rem;
   border: 4px solid transparent;
   border-radius: 100%;
-  background-color: #d6d3d1;
+  background-color: #dfdfde;
   opacity: 0.5;
 }
 
