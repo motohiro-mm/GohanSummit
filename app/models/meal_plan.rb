@@ -6,13 +6,13 @@ class MealPlan < ApplicationRecord
   has_many :meals, dependent: :destroy
 
   validates :meal_date, presence: true, uniqueness: { scope: :family_id }
-  validate :at_least_a_meal?
+  validate :at_least_a_meal?, on: :operate_including_meals
 
   accepts_nested_attributes_for :meals, allow_destroy: true, reject_if: :reject_timing
 
   def update_meal_plan(attributes)
     assign_attributes(attributes)
-    return unless save
+    return unless save(context: :operate_including_meals)
 
     destroy_unnecessary_meals(attributes)
   end

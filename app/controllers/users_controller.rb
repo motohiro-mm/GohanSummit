@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def destroy
     current_user.destroy!
-    current_user.family.destroy_family_having_no_user
+    current_family.destroy_having_no_user
     reset_session
     redirect_to root_path, notice: 'ユーザーを削除しました', status: :see_other
   end

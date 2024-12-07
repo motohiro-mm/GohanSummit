@@ -7,9 +7,9 @@ class Family < ApplicationRecord
 
   validates :invitation_token, presence: true
 
-  def destroy_family_having_no_user
-    return if User.exists?(family_id: id)
+  def destroy_having_no_user
+    return if users.exists?
 
-    Family.find(id).destroy!
+    Family.find(id).destroy
   end
 end

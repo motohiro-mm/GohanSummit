@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # allow_browser versions: :modern
 
   before_action :authenticate
-  helper_method :logged_in?, :current_user
+  helper_method :logged_in?, :current_user, :current_family
 
   private
 
@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     return unless session[:user_id]
 
     @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def current_family
+    current_user.family
   end
 
   def authenticate
