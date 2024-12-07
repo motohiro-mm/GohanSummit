@@ -6,13 +6,13 @@
 
   <div class="my-3 flex items-center justify-start">
     <span class="min-w-[4rem]"><%= Meal.human_attribute_name(:name) %></span>
-    <strong class="text-base md:text-lg"><%= meal.name %></strong>
+    <strong class="text-base"><%= meal.name %></strong>
   </div>
 
   <% if meal.memo.present? %>
     <div class="my-3 flex items-center justify-start">
       <span class="min-w-[4rem]"><%= Meal.human_attribute_name(:memo) %></span>
-      <span class=""><%= safe_join(meal.memo.split("\n"), tag.br) %></span>
+      <span class="text-base"><%= safe_join(meal.memo.split("\n"), tag.br) %></span>
     </div>
   <% end %>
 </div>
