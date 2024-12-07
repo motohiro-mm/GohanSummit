@@ -5,8 +5,10 @@
   <div class="my-4">
     以下のURLから初回ログインをすることで、<br>この献立表に参加することができます。<br>
     URLをコピーして家族を献立表に招待しましょう。<br>
-    同じユーザーは複数の献立表には参加できませんので、<br class="md:hidden">注意してください。
+    同じユーザーは複数の献立表に参加できませんので、<br class="md:hidden">注意してください。
   </div>
-  <%= render 'invitation_url_button', family: @family %>
+  <div class="my-4">
+    <%= render 'invitation_url_button', family: @family %>
+  </div>
   <%= render 'family', family: @family %>
 </div>

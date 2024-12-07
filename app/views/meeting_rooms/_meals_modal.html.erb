@@ -7,7 +7,7 @@
       <%= render 'meals/registered_meals', meal_plan: meal_plan %>
     </div>
   </dialog>
-  <button data-action="modal#open" class="w-2/3 md:w-1/2 py-2 mx-auto flex items-center justify-around rounded-full border-2 border-orange-950/30 bg-orange-100 hover:bg-orange-50">
+  <button data-action="modal#open" class="w-2/3 md:w-1/2 py-2 mx-auto flex items-center justify-around rounded-full border-2 border-orange-950/40 bg-orange-100 hover:bg-orange-50">
     <%= image_tag('pages/meal.svg', class: 'w-5', alt: '献立のマーク') %>
     <span class=" text-center">確定した献立を確認する</span>
     <span class="font-semibold"><%= meal_plan.meals.length %>/3</span>

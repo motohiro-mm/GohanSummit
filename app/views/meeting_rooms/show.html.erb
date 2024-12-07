@@ -14,7 +14,7 @@
           </h2>
           <div class="w-1/2 flex justify-end mr-4">
             <%= link_to new_meeting_room_remark_path(@meeting_room, remark_type: :proposal), data: { turbo_frame: dom_id(Remark, 'proposal') },
-                                                                                             class: 'p-1.5 rounded-full border-2 border-orange-950/50 bg-white hover:bg-orange-200' do %>
+                                                                                             class: 'p-1.5 rounded-full border-2 border-orange-950/40 bg-white hover:bg-orange-200' do %>
               <span class="pl-2 text-left">＋</span>
               <span class="mx-auto pr-2 text-center">提案する</span>
             <% end %>
@@ -33,7 +33,7 @@
           </h2>
           <div class="flex justify-end mr-4">
             <%= link_to new_meeting_room_remark_path(@meeting_room, remark_type: :comment), data: { turbo_frame: dom_id(Remark, 'comment') },
-                                                                                            class: 'p-1.5 rounded-full border-2 border-orange-950/50 bg-white hover:bg-orange-200' do %>
+                                                                                            class: 'p-1.5 rounded-full border-2 border-orange-950/40 bg-white hover:bg-orange-200' do %>
               <span class="pl-2 text-left">＋</span>
               <span class="mx-auto pr-2 text-center">コメントする</span>
             <% end %>

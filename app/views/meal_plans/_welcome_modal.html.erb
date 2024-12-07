@@ -3,7 +3,7 @@
     <button data-action="modal#close" class="px-1 py-1 rounded-full bg-orange-100 text-right">
       <%= image_tag('pages/cross_mark.svg', class: 'page-icon text-center', alt: 'モーダルを閉じるバツマーク') %>
     </button>
-    <div class="mx-auto text-center leading-loose">
+    <div class="mx-auto text-center">
       <p class="text-lg md:text-xl font-bold my-2">
         ごはんサミットへようこそ！
       </p>
@@ -14,20 +14,25 @@
           </p>
           <%= image_tag('home/invitation.png', class: 'w-2/3 md:w-1/2 mx-auto', alt: 'にわとりとひよこが出迎えるイラスト') %>
           以下のURLから初回ログインすると、<br>この献立表に参加することができます。<br>
-          同じユーザーは複数の献立表には<br>参加できませんので注意してください。
+          このURLを招待したい家族に<br>教えてあげましょう。
+          <%= render 'families/invitation_url_button', family: current_family %>
+          <p class="text-center">
+            招待用URLはこのウィンドウを閉じても<br>メニューから確認できます。
+          </p>
         </div>
-        <%= render 'families/invitation_url_button', family: current_family %>
-        <p class="text-center">
-          招待用URLはこのウィンドウを閉じても<br>メニューから確認できます。
-        </p>
       <% end %>
-      <%= image_tag('home/welcome_modal.png', class: 'w-1/2 mx-auto mt-4', alt: 'ひよこが食べ物を思い浮かべているイラスト') %>
-      <div class="text-center my-4">
-        <%= link_to '使い方はこちら', about_path, class: 'w-3/4 py-2 text-base md:text-lg px-6 py-2 rounded-full bg-orange-200 hover:bg-orange-300', data: { action: 'modal#close', turbo_frame: '_top' } %>
+      <div class="my-6 leading-snug">
+        <p class="font-semibold">
+          使い方を確認しましょう。<br>
+        </p>
+        <%= image_tag('home/welcome_modal.png', class: 'w-1/2 mx-auto mt-4', alt: 'ひよこが食べ物を思い浮かべているイラスト') %>
+        <div class="text-center my-4">
+          <%= link_to '使い方はこちら', about_path, class: 'w-3/4 py-2 text-base md:text-lg px-6 py-2 rounded-full bg-orange-200 hover:bg-orange-300', data: { action: 'modal#close', turbo_frame: '_top' } %>
+        </div>
+        <p class="my-2">
+          会議の方法や献立の登録方法はこちら。
+        </p>
       </div>
-      <p class="my-2">
-        会議の方法や献立の登録方法はこちら。
-      </p>
     </div>
   </dialog>
 </div>
