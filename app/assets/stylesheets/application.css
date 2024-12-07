@@ -112,10 +112,6 @@ textarea::placeholder {
   border-right: 0.2rem solid rgb(67 20 7);
 }
 
-.hidden_radio {
-  display: none;
-}
-
 .icon_option {
   cursor: pointer;
 }
@@ -136,15 +132,6 @@ textarea::placeholder {
   opacity: 1;
 }
 
-.comment-max-height {
-  max-height: calc(100vh - 452px);
-}
-
-@media (min-width: 768px) {
-  .comment-max-height {
-    max-height: calc(100vh - 508px);
-  }
-}
 
 .field_with_errors {
   display: contents;

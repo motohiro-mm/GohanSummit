@@ -11,10 +11,10 @@
     </div>
     <div class="my-4">
       <div class="my-2">アイコン画像</div>
-      <div class="flex grid grid-cols-4 lg:grid-cols-6 gap-1 md:gap-2 lg:gap-4">
+      <div class="grid grid-cols-4 lg:grid-cols-6 gap-1 md:gap-2 lg:gap-4">
         <% User.icons.keys.each do |icon| %>
           <label class="mx-auto icon_option">
-          <%= form.radio_button :icon, icon, class: 'hidden_radio' %>
+          <%= form.radio_button :icon, icon, class: 'hidden' %>
           <%= image_tag "user_icons/#{icon}", class: 'icon_image w-20', alt: "ユーザーアイコンで選べる#{User::ICON[icon.to_sym]}のイラスト" %>
           </label>
         <% end %>
