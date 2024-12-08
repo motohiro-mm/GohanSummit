@@ -54,7 +54,7 @@ https://gohansummit.com
 #### 会議をせずに直接登録する
 
 会議をせずに献立を直接献立表に登録することもできます。<br>
-「プラス」ボタンから献立の登録ができます。<br>
+献立表から献立部分をクリックすると献立の登録ができます。<br>
 
 <img width="40%" alt="直接献立を登録するページ" src="https://github.com/user-attachments/assets/ea6184ed-a68b-49a1-bc07-4af7adee82d9">
 
