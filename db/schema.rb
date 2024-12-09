@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_30_054005) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_09_043120) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,7 +18,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_30_054005) do
     t.string "invitation_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["invitation_token"], name: "index_families_on_invitation_token"
+    t.index ["invitation_token"], name: "index_families_on_invitation_token", unique: true
   end
 
   create_table "meal_plans", force: :cascade do |t|
