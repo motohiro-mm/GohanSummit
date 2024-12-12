@@ -2,13 +2,20 @@
   <%= link_to edit_meeting_room_remark_path(remark.meeting_room, remark) do %>
     <div class="border-t border-dashed border-orange-700/20">
       <div id="remark_<%= remark.id %>" class="w-full pb-3 hover:bg-orange-100 rounded-lg">
-        <div class="flex items-center pt-2">
-          <%= render 'remarks/user_icon', remark: %>
-          <span class="text-xs md:text-sm">
-            <%= l remark.created_at, format: :long %>
+        <div class="flex justify-between items-center pt-2">
+          <span class="flex w-1/2 justify-start items-center">
+            <%= render 'remarks/user_icon', remark: %>
+            <span class="truncate text-xs md:text-sm">
+              <%= remark.user.name %>
+            </span>
           </span>
+          <div class="text-right w-1/2 inline-block">
+            <span class="mr-4 text-xs md:text-sm">
+              <%= l remark.created_at, format: :long %>
+            </span>
+          </div>
         </div>
-        <div class="mx-auto ml-7 px-3 break-all font-medium">
+        <div class="mx-auto ml-7 px-2 break-all font-medium">
           <%= safe_join(remark.content.split("\n"), tag.br) %>
         </div>
       </div>
