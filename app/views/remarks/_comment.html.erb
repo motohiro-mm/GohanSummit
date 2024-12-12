@@ -6,7 +6,7 @@
           <span class="flex w-1/2 justify-start items-center">
             <%= render 'remarks/user_icon', remark: %>
             <span class="truncate text-xs md:text-sm">
-              <%= remark.user.name %>
+              <%= remark.user&.name || '退会したユーザー' %>
             </span>
           </span>
           <div class="text-right w-1/2 inline-block">
