@@ -24,7 +24,7 @@ console_command = '/rails/bin/rails console'
   [checks.status]
     port = 3000
     type = 'http'
-    interval = '10s'
+    interval = '60s'
     timeout = '2s'
     grace_period = '5s'
     method = 'GET'
