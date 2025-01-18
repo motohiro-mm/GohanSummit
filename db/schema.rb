@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_09_043120) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_14_052311) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_09_043120) do
     t.check_constraint "remark_type = ANY (ARRAY[0, 1])", name: "remark_type_check"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "endpoint", null: false
+    t.string "auth_key", null: false
+    t.string "p256dh_key", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.bigint "family_id", null: false
     t.string "name", limit: 20, null: false
@@ -81,5 +91,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_09_043120) do
   add_foreign_key "meeting_rooms", "meal_plans"
   add_foreign_key "remarks", "meeting_rooms"
   add_foreign_key "remarks", "users"
+  add_foreign_key "subscriptions", "users"
   add_foreign_key "users", "families"
 end
