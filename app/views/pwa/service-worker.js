@@ -10,7 +10,7 @@ const pushHandler = async (event) => {
       body: notificationData.body,
       icon: notificationData.icon,
       data: notificationData.data,
-    }
+    },
   );
   event.waitUntil(notificationPromise);
 };

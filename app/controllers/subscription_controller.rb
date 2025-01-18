@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class SubscriptionController < ApplicationController
-
   def create
     Subscription.create!(
       user: current_user,
@@ -11,7 +10,9 @@ class SubscriptionController < ApplicationController
     )
   end
 
-  private def subscription_params
-    params.require(:subscription).permit(:endpoint, keys: [:auth, :p256dh])
+  private
+
+  def subscription_params
+    params.require(:subscription).permit(:endpoint, keys: %i[auth p256dh])
   end
 end

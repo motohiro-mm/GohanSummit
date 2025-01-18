@@ -6,11 +6,11 @@ export default class extends Controller {
     alreadySubscribed: { type: Boolean, default: false },
   };
   static targets = ["status"];
-  
+
   async connect() {
     await this.getSubscriptionStatus();
   }
-  
+
   async subscribe() {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
@@ -24,11 +24,9 @@ export default class extends Controller {
               (pushSubscription) => {
                 const subscription = pushSubscription.toJSON();
                 delete subscription.expirationTime;
-                const request = new FetchRequest(
-                  "post",
-                  "/subscription",
-                  { body: { subscription } }
-                );
+                const request = new FetchRequest("post", "/subscription", {
+                  body: { subscription },
+                });
                 request.perform().then((response) => {
                   if (response.ok) {
                     this.alreadySubscribedValue = true;
@@ -39,7 +37,7 @@ export default class extends Controller {
               },
               (error) => {
                 console.error(error);
-              }
+              },
             );
         }
         this.updateSubscriptionButton();
@@ -48,7 +46,7 @@ export default class extends Controller {
       window.alert("お使いのブラウザはプッシュ通知に対応していません");
     }
   }
-  
+
   async getSubscriptionStatus() {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.ready.then((serviceWorkerRegistration) => {
@@ -65,7 +63,7 @@ export default class extends Controller {
       });
     }
   }
-  
+
   async sendSamplePushNotification() {
     const request = new FetchRequest("post", "/sample_webpush_notifications");
     const response = await request.perform();
@@ -73,7 +71,7 @@ export default class extends Controller {
       console.error(response);
     }
   }
-  
+
   updateSubscriptionButton() {
     if (this.alreadySubscribedValue) {
       this.statusTarget.innerText = "講読済み";
