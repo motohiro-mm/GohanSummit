@@ -17,6 +17,10 @@
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
     <script async src="https://ga.jspm.io/npm:es-module-shims@1.8.2/dist/es-module-shims.js" data-turbo-track="reload"></script>
     <%= javascript_importmap_tags %>
+    <%= javascript_import_module_tag "service_worker_installer" %>
+    <script>
+      window.vapidPublicKey = new Uint8Array(<%= vapid_public_key_bytes %>)
+    </script>
   </head>
 
   <body class="text-sm md:text-base max-w-screen-sm mx-auto h-screen flex flex-col">

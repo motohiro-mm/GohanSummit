@@ -35,4 +35,12 @@
       <%= button_to 'ユーザーを削除する', user_path, method: :delete, data: { turbo_confirm: '本当に削除して良いですか？' }, class: 'mt-4 border-b-4 border-orange-950/10 px-2 pt-2 pb-1 rounded hover:bg-orange-950/10' %>
     </div>
   </div>
+  <div data-controller="push-notification">
+    <button data-action="click->push-notification#subscribe" data-push-notification-target="status" class="rounded-md bg-white px-3 py-3 mr-3 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 hover:bg-gray-50 disabled:bg-gray-400 disabled:pointer-events-none disabled:shadow-none mb-4">プッシュ通知を有効にする</button>
+    <button data-action="click->push-notification#sendSamplePushNotification" data-turbo-prefetch="false" class="rounded-md bg-white px-3 py-3 mb-4 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:bg-slate-500 disabled:pointer-events-none">
+      テスト通知を送信する
+    </button>
+    <p class="mb-1">※プッシュ通知は、プッシュ通知を有効にしたお使いのデバイスの全てに送信されます。</p>
+    <p>※プッシュ通知の到達の保障はいたしかねます。</p>
+  </div>
 </div>
