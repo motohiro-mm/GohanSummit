@@ -17,8 +17,9 @@ const pushHandler = async (event) => {
 
 const notificationClickHandler = async (event) => {
   event.notification.close();
-  if (event.notification.data.url !== undefined) {
-    event.waitUntil(self.clients.openWindow(event.notification.data.url));
+  const notificationData = event.notification.data;
+  if (notificationData.url !== undefined) {
+    event.waitUntil(self.clients.openWindow(notificationData.url));
   }
 };
 

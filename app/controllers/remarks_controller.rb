@@ -13,6 +13,7 @@ class RemarksController < ApplicationController
     @remark = current_user.remarks.build(remark_params)
     if @remark.save
       flash.now[:notice] = '投稿しました'
+      current_family.send_remark_notifications(@remark)
     else
       render :new, status: :unprocessable_entity
     end
