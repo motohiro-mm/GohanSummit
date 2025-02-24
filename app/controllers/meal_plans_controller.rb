@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class MealPlansController < ApplicationController
+  before_action :meal_plans_params_check, only: :index
   before_action :set_meal_plan, only: %i[show edit update destroy]
 
   def index
@@ -57,5 +58,17 @@ class MealPlansController < ApplicationController
 
   def meal_plan_params
     params.require(:meal_plan).permit(:meal_date, meals_attributes: %i[id name memo timing])
+  end
+
+  RANGE_YEAR = 30
+
+  def meal_plans_params_check
+    fetch_date = params.fetch(:start_date, Time.zone.today).to_date
+    lower_date = Time.zone.today.advance(years: - RANGE_YEAR)
+    upper_date = Time.zone.today.advance(years: RANGE_YEAR)
+    return if (lower_date..upper_date).cover?(fetch_date)
+
+    params[:start_date] = fetch_date.clamp(lower_date, upper_date)
+    redirect_to meal_plans_path(start_date: params[:start_date]), alert: "日時は±#{RANGE_YEAR}年の範囲で指定できます"
   end
 end
