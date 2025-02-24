@@ -4,7 +4,8 @@ class MealPlansController < ApplicationController
   before_action :set_meal_plan, only: %i[show edit update destroy]
 
   def index
-    @meal_plans = current_family.meal_plans.includes([:meals]).includes([:meeting_room])
+    start_date = params.fetch(:start_date, Time.zone.today).to_date
+    @meal_plans = current_family.meal_plans.where(meal_date: start_date.all_week).includes([:meals]).includes([:meeting_room])
   end
 
   def show; end
