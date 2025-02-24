@@ -132,7 +132,6 @@ textarea::placeholder {
   opacity: 1;
 }
 
-
 .field_with_errors {
   display: contents;
 }

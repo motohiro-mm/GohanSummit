@@ -4,6 +4,8 @@ class User < ApplicationRecord
   belongs_to :family
   has_many :remarks, dependent: :nullify
 
+  has_many :subscriptions, dependent: :destroy
+
   validates :name, presence: true
   validates :name, length: { maximum: 20 }
 

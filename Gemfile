@@ -17,6 +17,7 @@ gem 'stimulus-rails'
 gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
+gem 'web-push'
 
 group :development, :test do
   gem 'brakeman'

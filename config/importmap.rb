@@ -10,3 +10,6 @@ pin_all_from 'app/javascript/controllers', under: 'controllers'
 pin 'tailwindcss-stimulus-components' # @6.0.2
 pin 'stimulus-textarea-autogrow' # @4.1.0
 pin '@stimulus-components/clipboard', to: '@stimulus-components--clipboard.js' # @5.0.0
+
+pin 'service_worker_installer', preload: true
+pin '@rails/request.js', to: 'https://cdn.jsdelivr.net/npm/@rails/request.js@0.0.11/dist/requestjs.min.js'
