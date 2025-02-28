@@ -18,6 +18,22 @@ RSpec.describe 'MealPlans', type: :system do
     end
   end
 
+  it '献立の一覧表示画面でstart_dateに100年後の日時を入力すると30年後にリダイレクトされる' do
+    visit meal_plans_path(start_date: Time.zone.today.advance(years: 100))
+    expect(page).to have_content '日時は±30年の範囲で指定できます'
+    upper_date = Time.zone.today.advance(years: 30)
+    expect(page).to have_content "#{upper_date.year}年"
+    expect(page).to have_content "#{upper_date.month}/#{upper_date.day}"
+  end
+
+  it '献立の一覧表示画面でstart_dateに100年前の日時を入力すると30年前にリダイレクトされる' do
+    visit meal_plans_path(start_date: Time.zone.today.advance(years: -100))
+    expect(page).to have_content '日時は±30年の範囲で指定できます'
+    lower_date = Time.zone.today.advance(years: -30)
+    expect(page).to have_content "#{lower_date.year}年"
+    expect(page).to have_content "#{lower_date.month}/#{lower_date.day}"
+  end
+
   it '献立を登録する' do
     visit meal_plans_path(start_date: Time.zone.today)
     within "##{cell_day(Time.zone.today)}" do
@@ -143,5 +159,19 @@ RSpec.describe 'MealPlans', type: :system do
     within "##{cell_day(meal_plan.meal_date)}" do
       expect(page).to have_content 'BreakfastName'
     end
+  end
+
+  it '献立のカレンダー表示画面でstart_dateに100年後の日時を入力すると30年後にリダイレクトされる' do
+    visit calendar_meal_plans_path(start_date: Time.zone.today.advance(years: 100))
+    expect(page).to have_content '日時は±30年の範囲で指定できます'
+    upper_date = Time.zone.today.advance(years: 30)
+    expect(page).to have_content "#{upper_date.year}年#{upper_date.month}"
+  end
+
+  it '献立のカレンダー表示画面でstart_dateに100年前の日時を入力すると30年前にリダイレクトされる' do
+    visit calendar_meal_plans_path(start_date: Time.zone.today.advance(years: -100))
+    expect(page).to have_content '日時は±30年の範囲で指定できます'
+    lower_date = Time.zone.today.advance(years: -30)
+    expect(page).to have_content "#{lower_date.year}年#{lower_date.month}"
   end
 end
