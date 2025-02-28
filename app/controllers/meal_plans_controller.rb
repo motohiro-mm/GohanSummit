@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class MealPlansController < ApplicationController
-  before_action :meal_plans_params_check, only: %i[index calendar]
+  before_action :start_date_check, only: %i[index calendar]
   before_action :start_date_by_params, only: %i[index calendar]
   before_action :set_meal_plan, only: %i[show edit update destroy]
 
@@ -62,23 +62,26 @@ class MealPlansController < ApplicationController
 
   RANGE_YEAR = 30
 
-  def meal_plans_params_check
+  def start_date_check
     fetch_date = start_date_by_params
     lower_date = Time.zone.today.advance(years: - RANGE_YEAR)
     upper_date = Time.zone.today.advance(years: RANGE_YEAR)
     return if (lower_date..upper_date).cover?(fetch_date)
 
     params[:start_date] = fetch_date.clamp(lower_date, upper_date)
-    case params[:action]
-    when 'index'
-      path = meal_plans_path(start_date: params[:start_date])
-    when 'calendar'
-      path = calendar_meal_plans_path(start_date: params[:start_date])
-    end
-    redirect_to path, alert: "日時は±#{RANGE_YEAR}年の範囲で指定できます"
+    redirect_to redirect_path(params[:action], params[:start_date]), alert: "日時は±#{RANGE_YEAR}年の範囲で指定できます"
   end
 
   def start_date_by_params
     params.fetch(:start_date, Time.zone.today).to_date
+  end
+
+  def redirect_path(action, start_date)
+    case action
+    when 'index'
+      meal_plans_path(start_date:)
+    when 'calendar'
+      calendar_meal_plans_path(start_date:)
+    end
   end
 end
