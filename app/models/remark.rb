@@ -12,7 +12,7 @@ class Remark < ApplicationRecord
 
   after_create_commit lambda {
     broadcast_remove_to [meeting_room, remark_type.pluralize], target: "#{remark_type}_empty_message"
-    broadcast_prepend_later_to [meeting_room, remark_type.pluralize], partial: "remarks/#{remark_type}", locals: { remark: self }, target: remark_type.pluralize
+    broadcast_prepend_to [meeting_room, remark_type.pluralize], partial: "remarks/#{remark_type}", locals: { remark: self }, target: remark_type.pluralize
   }
   after_update_commit -> { broadcast_replace_later_to [meeting_room, remark_type.pluralize], partial: "remarks/#{remark_type}", locals: { remark: self }, target: "remark_#{id}" }
   after_destroy_commit -> { broadcast_remove_to [meeting_room, 'remarks'] }

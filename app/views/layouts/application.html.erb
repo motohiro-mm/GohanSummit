@@ -4,6 +4,10 @@
     <title><%= 'ごはんサミット' %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
+    <% if session[:check_notification_url] %>
+      <meta name="check-notification-url" content="true">
+      <% session.delete(:check_notification_url) %>
+    <% end %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= display_meta_tags(default_meta_tags) %>
@@ -23,7 +27,8 @@
     </script>
   </head>
 
-  <body class="text-sm md:text-base max-w-screen-sm mx-auto h-screen flex flex-col">
+  <body class="text-sm md:text-base max-w-screen-sm mx-auto h-screen flex flex-col"
+        data-controller="notification-url notification-redirect">
     <% unless current_page?(root_path) || current_page?(welcome_path) %>
         <%= render 'layouts/header' %>
     <% end %>

@@ -3,6 +3,8 @@
 class RemarksController < ApplicationController
   before_action :set_meeting_room, only: %i[new create edit update destroy]
   before_action :set_remark, only: %i[edit update destroy]
+  after_action :send_family_remark_notification, only: %i[create]
+
   def new
     @remark = Remark.build(remark_type: params[:remark_type])
   end
@@ -13,7 +15,6 @@ class RemarksController < ApplicationController
     @remark = current_user.remarks.build(remark_params)
     if @remark.save
       flash.now[:notice] = '投稿しました'
-      current_family.send_remark_notifications(@remark)
     else
       render :new, status: :unprocessable_entity
     end
@@ -45,5 +46,9 @@ class RemarksController < ApplicationController
 
   def remark_params
     params.require(:remark).permit(:meeting_room_id, :remark_type, :content)
+  end
+
+  def send_family_remark_notification
+    current_family.send_remark_notifications(@remark) if @remark.persisted?
   end
 end

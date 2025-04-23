@@ -27,20 +27,25 @@
   <%= render 'families/family', family: @user.family %>
   <div class="my-8">
     <h2 class="mb-2 text-base md:text-lg">ユーザーの削除</h2>
-     <p class="ml-4">
-      献立表を共有しているユーザーがいない場合、<br>献立表のデータも削除されます。<br>
-      献立表を共有するユーザーが残っている場合は、<br>献立表は残ります。
-     </p>
+      <p class="ml-4">
+        献立表を共有しているユーザーがいない場合、<br>献立表のデータも削除されます。<br>
+        献立表を共有するユーザーが残っている場合は、<br>献立表は残ります。
+      </p>
     <div class="text-right">
       <%= button_to 'ユーザーを削除する', user_path, method: :delete, data: { turbo_confirm: '本当に削除して良いですか？' }, class: 'mt-4 border-b-4 border-orange-950/10 px-2 pt-2 pb-1 rounded hover:bg-orange-950/10' %>
     </div>
   </div>
-  <div data-controller="push-notification">
-    <button data-action="click->push-notification#subscribe" data-push-notification-target="status" class="rounded-md bg-white px-3 py-3 mr-3 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-400 hover:bg-gray-50 disabled:bg-gray-400 disabled:pointer-events-none disabled:shadow-none mb-4">プッシュ通知を有効にする</button>
-    <button data-action="click->push-notification#sendSamplePushNotification" data-turbo-prefetch="false" class="rounded-md bg-white px-3 py-3 mb-4 font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 disabled:bg-slate-500 disabled:pointer-events-none">
-      テスト通知を送信する
-    </button>
-    <p class="mb-1">※プッシュ通知は、プッシュ通知を有効にしたお使いのデバイスの全てに送信されます。</p>
-    <p>※プッシュ通知の到達の保障はいたしかねます。</p>
+  <div class="border-t-4 border-dashed border-orange-100 p-4">
+    <div data-controller="push-notification" class="text-center">
+      <button data-action="click->push-notification#subscribe" data-push-notification-target="status" class="rounded-md bg-orange-100/60 px-3 py-3 m-4 font-semibold hover:bg-orange-200 disabled:bg-orange-200">プッシュ通知を有効にする</button>
+      <button data-action="click->push-notification#sendSamplePushNotification" data-turbo-prefetch="false" class="rounded-md bg-orange-100/60 px-3 py-3 m-4 font-semibold hover:bg-orange-200">
+        テスト通知を送信する
+      </button>
+    </div>
+    <p class="mx-2 my-1">プッシュ通知を有効にしたら一度リロードするか他のページへ遷移してください。</p>
+    <p class="mx-2 my-1">プッシュ通知が有効にならない場合、すでにブロックされていないか等を確認してください。
+    <%= link_to '参考サイト', 'https://www.kaspersky.co.jp/unsubscribe-from-push-notifications', target: :_blank, rel: 'noopener noreferrer', class: 'border-b-4 border-orange-950/10' %></p>
+    <p class="mx-2 my-1">プッシュ通知は、プッシュ通知を有効にしたお使いのデバイスの全てに送信されます。</p>
+    <p class="mx-2 my-1">プッシュ通知の到達の保障はいたしかねます。</p>
   </div>
 </div>
