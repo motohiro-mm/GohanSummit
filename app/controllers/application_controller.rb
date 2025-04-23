@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   def authenticate
     return if logged_in?
 
+    session[:return_to] = request.fullpath if request.get?
     redirect_to root_path, alert: 'ログインしてください'
   end
 end
